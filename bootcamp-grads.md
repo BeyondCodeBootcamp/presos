@@ -28,6 +28,8 @@
 
 <small>(``` `rg 'https' bootcamp-grads.md` ``` + RegEx-fu)</small>
 
+<small>created with [Markdown Slides](https://github.com/dadoomer/markdown-slides/)</small>
+
 [comment]: # (!!! data-auto-animate data-background-color="aquamarine")
 
 # Bad News:
@@ -676,6 +678,10 @@ are your friend
 
 [comment]: # (!!! data-auto-animate data-background-color="aquamarine")
 
+## Focus on your strengths
+
+[comment]: # (!!! data-auto-animate)
+
 ### Resume Don'ts
 
 [comment]: # (!!!)
@@ -978,6 +984,16 @@ Done.
   - Useful, Skillful Projects
 
 [comment]: # (!!! data-background-color="aquamarine")
+
+Do hard work for free.
+
+[comment]: # (!!! data-auto-animate)
+
+Write docs for projects.
+
+<small>(ex: [Markdown Slides](https://github.com/dadoomer/markdown-slides/commits?author=coolaj86))</small>
+
+[comment]: # (!!! data-auto-animate)
 
 README
 
