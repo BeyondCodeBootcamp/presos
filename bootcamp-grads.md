@@ -1042,13 +1042,34 @@ Learn the basics really well.
 
 - Files & Folders
 - Markdown
-- curl
 - http
-- caddy
 - dns
-- bash
+- "The Vending Machine Problem"
 - Vanilla Node
 - Vanilla DOM
+
+[comment]: # (!!!)
+
+Learn your tools really well.
+
+[comment]: # (!!!)
+
+- [webinstall.dev](https://webinstall.dev)
+- curl
+- caddy
+- vim
+- bash
+- linux - Running Linux 5th Edition
+
+[comment]: # (!!!)
+
+Everybody "knows" express.
+
+Everybody "knows" React.
+
+So stand out.
+
+Know well what others no nothing about.
 
 [comment]: # (!!! data-auto-animate)
 
