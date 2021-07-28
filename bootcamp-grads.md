@@ -750,6 +750,16 @@ are your friend
 - Word
 - `resume.wtf`
 - McDonald's
+- "junior"
+
+[comment]: # (!!! data-auto-animate)
+
+## Resume "Don't"s
+
+- Word
+- `resume.wtf`
+- McDonald's
+- "junior"
 - ALL THE THINGS
 
 [comment]: # (!!! data-auto-animate)
@@ -759,6 +769,7 @@ are your friend
 - Word
 - `resume.wtf`
 - McDonald's
+- "junior"
 - ALL THE THINGS
 
 (less is more)
