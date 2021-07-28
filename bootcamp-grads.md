@@ -1059,8 +1059,10 @@ Learn your tools really well.
 - curl
 - caddy
 - vim
+- [vim-essentials](https://webinstall.dev/vim-essentials)
 - bash
 - linux - Running Linux 5th Edition
+- Prettier
 
 [comment]: # (!!!)
 
