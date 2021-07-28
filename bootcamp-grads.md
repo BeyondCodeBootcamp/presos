@@ -236,6 +236,18 @@ vs
 
 [comment]: # (!!! data-auto-animate data-background-color="aquamarine")
 
+## Blog
+
+The De Facto Platform:
+- [gist.github.com](https://gist.github.com)
+
+In Progress:
+
+- [Bliss](https://github.com/BeyondCodeBootcamp/bliss)
+- [gist-blog](https://github.com/trevorhere/gist-blog)
+
+[comment]: # (!!! data-background-color="aquamarine")
+
 ## # 100 Days of Code
 
 Blog
