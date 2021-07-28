@@ -215,9 +215,19 @@ vs
 
 [github.com/BeyondCodeBootcamp/html-resume](https://github.com/BeyondCodeBootcamp/html-resume)
 
+[comment]: # (!!! data-auto-animate)
+
+# Don't Give a C.R.APP
+
+[github.com/ty193/MemoryGame](https://github.com/ty193/MemoryGame)
+
+vs
+
+[github.com/BeyondCodeBootcamp/html-resume](https://github.com/BeyondCodeBootcamp/html-resume)
+
 <small>keep empty C.R.Apps (and other crap) 🔒 private</small>
 
-[comment]: # (!!!)
+[comment]: # (!!! data-auto-animate)
 
 ## Markdown
 
