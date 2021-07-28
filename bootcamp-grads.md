@@ -25,6 +25,8 @@
 [Great README Examples](https://github.com/BeyondCodeBootcamp/beyondcodebootcamp/issues/11)•
 [Great Project Ideas](https://github.com/BeyondCodeBootcamp/beyondcodebootcamp/issues/10)
 
+<small>(``` `rg 'https' bootcamp-grads.md` ``` + RegEx-fu)</small>
+
 [comment]: # (!!! data-auto-animate data-background-color="aquamarine")
 
 # Bad News:
@@ -125,7 +127,7 @@ Not Your Friend
 [comment]: # (!!!)
 
 > "Finding work After Bootcamp w/ Christian Rodier"
-> 
+>
 > <https://youtu.be/qOWequc_CsM>
 
 [comment]: # (!!!)
@@ -269,7 +271,7 @@ blog, blog, blog, blog, blog, blog, blog, blog, blog, blog, blog, blog, blog, bl
 
 [comment]: # (!!!)
 
-JavaScript | Redux | Node.js | Express | PostgreSQL | OAuth | Massive | bcrypt | AWS InfiniDash | CSS | SASS | Git | Github | Bootstrap | Postman | SQL Tabs | Postman | Heroku | HTML5 |  nginx |  axios | Cloud Encabulator   
+JavaScript | Redux | Node.js | Express | PostgreSQL | OAuth | Massive | bcrypt | AWS InfiniDash | CSS | SASS | Git | Github | Bootstrap | Postman | SQL Tabs | Postman | Heroku | HTML5 |  nginx |  axios | Cloud Encabulator
 
 [comment]: # (!!!)
 
@@ -753,13 +755,13 @@ are your friend
 
 [comment]: # (!!! data-auto-animate)
 
-It's not your employer's responsibility 
+It's not your employer's responsibility
 
 to _force_ you to learn
 
 [comment]: # (!!! data-auto-animate)
 
-It's not your employer's responsibility 
+It's not your employer's responsibility
 
 to _force_ you to learn
 
@@ -770,7 +772,7 @@ into the estimate.
 
 [comment]: # (!!! data-auto-animate)
 
-It's not your employer's responsibility 
+It's not your employer's responsibility
 
 to _force_ you to learn
 
@@ -1031,6 +1033,22 @@ CHANGE THE FAVICON!!
 LinkedIn Skills Assessment
 
 Pluralsight IQ
+
+[comment]: # (!!!)
+
+Learn the basics really well.
+
+[comment]: # (!!!)
+
+- Files & Folders
+- Markdown
+- curl
+- http
+- caddy
+- dns
+- bash
+- Vanilla Node
+- Vanilla DOM
 
 [comment]: # (!!! data-auto-animate)
 
