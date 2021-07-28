@@ -215,6 +215,8 @@ vs
 
 [github.com/BeyondCodeBootcamp/html-resume](https://github.com/BeyondCodeBootcamp/html-resume)
 
+<small>keep empty C.R.Apps (and other crap) 🔒 private</small>
+
 [comment]: # (!!!)
 
 ## Markdown
@@ -640,6 +642,13 @@ are your friend
 ## Resume Dos
 
 - `Name - Position - Company.pdf`
+- `AJ ONeal - Senior Go - UltraLoop.pdf`
+
+[comment]: # (!!! data-auto-animate)
+
+## Resume Dos
+
+- `Name - Position - Company.pdf`
 - A _little_ color
 
 [comment]: # (!!! data-auto-animate)
@@ -910,7 +919,7 @@ Done.
 
 [webinstall.dev](https://webinstall.dev)
 
-[comment]: # (!!!)
+[comment]: # (!!! data-auto-animate)
 
 [webinstall.dev](https://webinstall.dev)
 
@@ -929,7 +938,7 @@ Done.
 - postgres
 - serviceman
 
-[comment]: # (!!! data-background-color="aquamarine")
+[comment]: # (!!! data-auto-animate data-background-color="aquamarine")
 
 ## Portfolio
 
@@ -983,7 +992,7 @@ Done.
   - "Cliché" (but GOOD!) Projects
   - Useful, Skillful Projects
 
-[comment]: # (!!! data-background-color="aquamarine")
+[comment]: # (!!! data-auto-animate data-background-color="aquamarine")
 
 Do hard work for free.
 
@@ -1037,7 +1046,9 @@ If you used a framework:
 
 DELETE _their_ README.
 
-CHANGE THE FAVICON!!
+<br>
+
+<small>(AND CHANGE THE FAVICON!!)</small>
 
 [comment]: # (!!!)
 
@@ -1091,6 +1102,28 @@ So stand out.
 Know well what others no nothing about.
 
 [comment]: # (!!! data-auto-animate)
+
+<small>(i.e. documentation, basic "newbie" stuff)</small>
+
+[comment]: # (!!! data-auto-animate)
+
+<small>a lot of people out have their jet packs on</small>
+
+<small>...but don't know how to tie their shoes</small>
+
+[comment]: # (!!! data-auto-animate)
+
+<small>don't be the smart guy on the jet pack</small>
+
+[comment]: # (!!! data-auto-animate)
+
+<small>don't be the smart guy on the jet pack</small>
+
+<small>be the dumb guy that can help people tie their shoes</small>
+
+[comment]: # (!!! data-auto-animate)
+
+
 
 > May the odds be ever in your favor.
 
