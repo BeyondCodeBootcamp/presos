@@ -687,6 +687,14 @@ are your friend
 
 [comment]: # (!!! data-auto-animate)
 
+## Resume Dos
+
+- `Name - Position - Company.pdf`
+- A _little_ <span style="color: #0B4DCD;">color</span>
+- Multiple Versions
+- Blue Links (or none at all)
+
+[comment]: # (!!! data-auto-animate)
 
 ## Resume Dos
 
@@ -694,6 +702,8 @@ are your friend
 - A _little_ <span style="color: #0B4DCD;">color</span>
 - Multiple Versions
 - Blue Links (or none at all)
+- Single Profile Pic
+- Single Username
 
 [comment]: # (!!! data-auto-animate data-background-color="aquamarine")
 
@@ -781,6 +791,7 @@ are your friend
 - McDonald's
 - "junior"
 - ALL THE THINGS
+- ALL THE USERNAMES
 
 (less is more)
 
