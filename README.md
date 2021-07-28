@@ -2,7 +2,7 @@
 
 Various presentation slides.
 
-- [For Bootcamp Grads](/bootcamp-grads/)
+- [For Bootcamp Grads](./bootcamp-grads/)
 
 ## Quick Start to Render
 
