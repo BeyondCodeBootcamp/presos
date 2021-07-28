@@ -2,6 +2,14 @@
 
 Various presentation slides.
 
+- [For Bootcamp Grads](/bootcamp-grads/)
+
+## Quick Start to Render
+
+```bash
+watchexec -r -e md -- bash render.sh YOUR_PRESO.md
+```
+
 # These slides are built with [_Markdown Slides_][mds]
 
 [mds]: https://github.com/dadoomer/markdown-slides
