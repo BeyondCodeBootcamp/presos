@@ -19,9 +19,9 @@ fi
 mdslides "$@"
 
 my_dir="$(basename "$1" ".md")"
-rm -rf "${my_dir}/"{dist,plugin}
+#rm -rf "${my_dir}/"{dist,plugin}
 
-pushd "${my_dir}" > /dev/null
-ln -s ../dist .
-ln -s ../plugin .
-popd > /dev/null
+#pushd "${my_dir}" > /dev/null
+#ln -s ../dist .
+#ln -s ../plugin .
+#popd > /dev/null
