@@ -1,4 +1,13 @@
-bootcamp-grads/
-
-dist/*
-plugin/*
+CONTRIBUTING.md
+css/
+demo.html
+examples/
+gulpfile.js
+index.html
+js/
+KaTeX/
+LICENSE
+package-lock.json
+package.json
+README.md
+test/

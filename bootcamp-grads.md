@@ -8,22 +8,23 @@
 
 # Links
 
-[Finding work After Bootcamp w/ Christian Rodier](https://youtu.be/qOWequc_CsM)•
-[Utah Node.js Discord](https://discord.gg/ZfqyYeMm)•
-[Utah Rust Discord](https://discord.gg/BzaAvDNY)•
-[Complete Github Markdown Cheat Sheet](https://github.com/BeyondCodeBootcamp/beyondcodebootcamp/blob/main/001-Markdown-Cheat-Sheet.md)•
+[Finding work After Bootcamp w/ Christian Rodier](https://youtu.be/qOWequc_CsM) •
+[Utah Node.js Discord](https://discord.gg/ZfqyYeMm) •
+[Utah Rust Discord](https://discord.gg/BzaAvDNY) •
+[Complete Github Markdown Cheat Sheet](https://github.com/BeyondCodeBootcamp/beyondcodebootcamp/blob/main/001-Markdown-Cheat-Sheet.md) •
 [Ultimate Markdown Challenge](https://gist.github.com/coolaj86/689e2cd8d5ad51f7196b8f23c116f8b1)•
-[What HTML is NOT](https://youtu.be/WWY7Rfjl2LQ)•
-[HTML Cheat Sheet](https://github.com/BeyondCodeBootcamp/beyondcodebootcamp/blob/main/002-HTML-Cheat-Sheet.md)•
-[MVP.css](https://andybrewer.github.io/mvp/)•
-[The Zen of Python](https://www.python.org/dev/peps/pep-0020/#the-zen-of-python)•
-[Crockford on JS](https://www.youtube.com/playlist?list=PL7664379246A246CB)•
-[Toward Go 2](https://blog.golang.org/toward-go2)•
-[DevMountain Template](https://docs.google.com/document/d/1wF1oJSzDVHcAclBBoc1KPti1XaxSQFGMljIuAgUcYCg/edit)•
-[Print-to-PDF HTML Template](https://github.com/BeyondCodeBootcamp/html-resume)•
-[webinstall.dev](https://webinstall.dev)•
-[Great README Examples](https://github.com/BeyondCodeBootcamp/beyondcodebootcamp/issues/11)•
-[Great Project Ideas](https://github.com/BeyondCodeBootcamp/beyondcodebootcamp/issues/10)
+[What HTML is NOT](https://youtu.be/WWY7Rfjl2LQ) •
+[HTML Cheat Sheet](https://github.com/BeyondCodeBootcamp/beyondcodebootcamp/blob/main/002-HTML-Cheat-Sheet.md) •
+[MVP.css](https://andybrewer.github.io/mvp/) •
+[The Zen of Python](https://www.python.org/dev/peps/pep-0020/#the-zen-of-python) •
+[Crockford on JS](https://www.youtube.com/playlist?list=PL7664379246A246CB) •
+[Toward Go 2](https://blog.golang.org/toward-go2) •
+[DevMountain Template](https://docs.google.com/document/d/1wF1oJSzDVHcAclBBoc1KPti1XaxSQFGMljIuAgUcYCg/edit) •
+[Print-to-PDF HTML Template](https://github.com/BeyondCodeBootcamp/html-resume) •
+[webinstall.dev](https://webinstall.dev) •
+[Great README Examples](https://github.com/BeyondCodeBootcamp/beyondcodebootcamp/issues/11) •
+[Great Project Ideas](https://github.com/BeyondCodeBootcamp/beyondcodebootcamp/issues/10) •
+[The Vending Machine Problem](https://www.youtube.com/watch?v=gkgQJBQ1Gq4)
 
 <small>(``` `rg 'https' bootcamp-grads.md` ``` + RegEx-fu)</small>
 
@@ -104,6 +105,10 @@ Beyond Code Bootcamp
 
 [comment]: # (!!!)
 
+## # N O F I L T E R
+
+[comment]: # (!!!)
+
 [**BeyondCodeBootcamp.github.io/presos/**](https://beyondcodebootcamp.github.io/presos)
 
 bootcamp-grads
@@ -111,10 +116,6 @@ bootcamp-grads
 <small>(or something like that)</small>
 
 [comment]: # (!!! data-auto-animate data-background-color="aquamarine")
-
-## # N O F I L T E R
-
-[comment]: # (!!!)
 
 # My Best Advice
 
@@ -1044,7 +1045,7 @@ Learn the basics really well.
 - Markdown
 - http
 - dns
-- "The Vending Machine Problem"
+- ["The Vending Machine Problem"](https://www.youtube.com/watch?v=gkgQJBQ1Gq4)
 - Vanilla Node
 - Vanilla DOM
 
