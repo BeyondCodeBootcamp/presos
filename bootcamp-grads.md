@@ -43,7 +43,9 @@ It's an Uphill Battle
 
 [comment]: # (!!!)
 
-# AJ ONeal (@coolaj86)
+# AJ ONeal
+
+### ([@coolaj86](https://coolaj86.com))
 
 Technophobic Technologist Extraordinaíre
 
