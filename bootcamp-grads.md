@@ -6,11 +6,26 @@
 [comment]: # (hash: false)
 [comment]: # (respondToHashChanges: false)
 
+### My Best Advice
+
+1. Community: [Meetup.com](https://meetup.com),
+   [Utah Node.js Discord](https://discord.gg/ZfqyYeMm)
+2. Markdown: [Ultimate Markdown Cheat Sheet](https://github.com/BeyondCodeBootcamp/beyondcodebootcamp/blob/main/001-Markdown-Cheat-Sheet.md)
+3. Blog: [bliss.js.org](https://bliss.js.org)
+4. [The Zen of Python](https://www.python.org/dev/peps/pep-0020/#the-zen-of-python),
+   [The Vending Machine Problem](https://www.youtube.com/watch?v=gkgQJBQ1Gq4)
+5. [Crockford on JS](https://www.youtube.com/playlist?list=PL7664379246A246CB),
+   [Toward Go 2](https://blog.golang.org/toward-go2)
+6. [Great Project Ideas](https://github.com/BeyondCodeBootcamp/beyondcodebootcamp/issues/10)
+7. [HTML Resume Template](https://github.com/BeyondCodeBootcamp/html-resume)
+8. [MVP.css](https://andybrewer.github.io/mvp/)
+9. [webinstall.dev](https://webinstall.dev)
+
 # Links
 
 [Finding Work w/ Christian R.](https://youtu.be/qOWequc_CsM) •
-[Utah Node.js Discord](https://discord.gg/ZfqyYeMm) •
-[Utah Rust Discord](https://discord.gg/BzaAvDNY) •
+[Utah Node.js Discord](https://discord.gg/7DKX7Vn4) •
+[Utah Rust Discord](https://discord.gg/rg6ZVdg5) •
 [Ultimate Markdown Cheat Sheet](https://github.com/BeyondCodeBootcamp/beyondcodebootcamp/blob/main/001-Markdown-Cheat-Sheet.md) •
 [Ultimate Markdown Challenge](https://gist.github.com/coolaj86/689e2cd8d5ad51f7196b8f23c116f8b1) •
 [Gist](https://gist.github.com) •
