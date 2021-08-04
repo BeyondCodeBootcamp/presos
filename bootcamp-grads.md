@@ -43,7 +43,7 @@ It's an Uphill Battle
 
 [comment]: # (!!!)
 
-# AJ ONeal
+# AJ ONeal (@coolaj86)
 
 Technophobic Technologist Extraordinaíre
 
@@ -106,7 +106,7 @@ Beyond Code Bootcamp
 
 [comment]: # (!!!)
 
-# Hiring Experience
+# Hiring
 
 [comment]: # (!!!)
 
