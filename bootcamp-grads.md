@@ -14,7 +14,7 @@
 [Ultimate Markdown Cheat Sheet](https://github.com/BeyondCodeBootcamp/beyondcodebootcamp/blob/main/001-Markdown-Cheat-Sheet.md) •
 [Ultimate Markdown Challenge](https://gist.github.com/coolaj86/689e2cd8d5ad51f7196b8f23c116f8b1) •
 [Gist](https://gist.github.com) •
-[Bliss](https://github.com/BeyondCodeBootcamp/bliss) •
+[bliss.js.org](https://bliss.js.org) •
 [gist-blog](https://github.com/trevorhere/gist-blog) •
 [What HTML is NOT](https://youtu.be/WWY7Rfjl2LQ) •
 [HTML Cheat Sheet](https://github.com/BeyondCodeBootcamp/beyondcodebootcamp/blob/main/002-HTML-Cheat-Sheet.md) •
@@ -244,9 +244,10 @@ vs
 The De Facto Platform:
 - [gist.github.com](https://gist.github.com)
 
-In Progress:
+Best of Breed:
+- [bliss.js.org](https://bliss.js.org)
 
-- [Bliss](https://github.com/BeyondCodeBootcamp/bliss)
+In Progress:
 - [gist-blog](https://github.com/trevorhere/gist-blog)
 
 [comment]: # (!!! data-background-color="aquamarine")
