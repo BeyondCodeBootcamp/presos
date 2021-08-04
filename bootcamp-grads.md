@@ -21,6 +21,8 @@
 8. [MVP.css](https://andybrewer.github.io/mvp/)
 9. [webinstall.dev](https://webinstall.dev)
 
+[comment]: # (!!! data-auto-animate data-background-color="aquamarine")
+
 # Links
 
 [Finding Work w/ Christian R.](https://youtu.be/qOWequc_CsM) •
@@ -48,7 +50,7 @@
 
 <small>created with [Markdown Slides](https://github.com/dadoomer/markdown-slides/)</small>
 
-[comment]: # (!!! data-auto-animate data-background-color="aquamarine")
+[comment]: # (!!! data-auto-animate)
 
 # Bad News:
 
