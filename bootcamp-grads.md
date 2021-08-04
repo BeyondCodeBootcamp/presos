@@ -241,8 +241,8 @@ vs
 
 ## Blog
 
+- [**bliss**.js.org](https://bliss.js.org) (Best of Breed)
 - [gist.github.com](https://gist.github.com) (De Facto)
-- [bliss.js.org](https://bliss.js.org) (Best of Breed)
 - [gist-blog](https://github.com/trevorhere/gist-blog) (In Progress)
 
 [comment]: # (!!! data-background-color="aquamarine")
