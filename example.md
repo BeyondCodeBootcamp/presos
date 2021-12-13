@@ -22,7 +22,7 @@ Another great slide
 
 A really WOW slide
 
-[comment]: # '!!! data-auto-animate data-background-color="aquamarine"'
+[comment]: # "!!! data-auto-animate data-background-color='aquamarine'"
 
 ```js [1-2|3|4]
 let a = 1;
