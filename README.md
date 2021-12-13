@@ -37,19 +37,20 @@ If you see `WARNING: Can not proceed... remove '~/.pyenv' first`, then you alrea
 Check the latest version:
 
 ```bash
-pyenv install --list | grep -v -- - | tail -n 1
+pyenv update
+pyenv install --list | grep -vi '[a-z]' | tail -n 1
 ```
 
 You can install that or, if you want to have the exact setup as I have, use 3.9.1:
 
 ```bash
-pyenv install -v 3.9.1
+pyenv install -v 3.10.1
 ```
 
 Then set that to the current version for your user:
 
 ```bash
-pyenv global 3.9.1
+pyenv global 3.10.1
 python --version
 ```
 
