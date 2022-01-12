@@ -223,8 +223,14 @@ Attach functions at the package (factory) level.
 ## Member Methods
 
 ```js
-person.greet = function (other) {
-    return `Hello ${other.name}! I'm ${person.name}!`;
+Person.create = function (p) {
+    // ...
+    
+    person.greet = function (other) {
+        return `Hello ${other.name}! I'm ${person.name}!`;
+    };
+
+    // ...
 };
 ```
 
@@ -233,8 +239,14 @@ person.greet = function (other) {
 ## Member Methods
 
 ```js
-person.greet = function (other) {
-    return `Hello ${other.name}! I'm ${person.name}!`;
+Person.create = function (p) {
+    // ...
+    
+    person.greet = function (other) {
+        return `Hello ${other.name}! I'm ${person.name}!`;
+    };
+
+    // ...
 };
 ```
 
