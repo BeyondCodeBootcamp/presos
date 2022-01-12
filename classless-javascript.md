@@ -333,7 +333,7 @@ If you want truly "private" member data. \
 
 [comment]: # "!!!"
 
-# Reappropriation
+# Co-opting / Appropriation
 
 [comment]: # "!!!"
 
