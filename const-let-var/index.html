@@ -1,0 +1,970 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>`const`, `let`, `var`</title>
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+<link rel="stylesheet" href="dist/theme/white.css" id="theme">
+		<!-- Theme used for syntax highlighted code -->
+<link rel="stylesheet" href="plugin/highlight/github.min.css" id="highlight-theme"></head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+<section data-markdown  ><textarea data-template>
+[comment]: # "markdown: { smartypants: true }"
+
+# `const`, `let`, `var`
+
+AJ ONeal <br> [@\_beyondcode](https://twitter.com/@_beyondcode) <br>
+[twitch.tv/coolaj86](https://twitch.tv/coolaj86)
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+(that was alphabetical order)
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+# `var`, `const`, `let`
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+(that's the order in which we'll discuss them)
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+# I'm AJ ONeal
+
+(and I hate `const`)
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+# `var`
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+# `var`
+
+- is _incredibly_ simple.
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+# `var`
+
+- is _incredibly_ simple.
+- has _exactly_ ONE rule
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+> Variables declared with **`var`** are scoped to the **_whole_ function** that
+> contains them, **recursively**.
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+And _exactly_ NO exceptions.
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+And _exactly_ NO exceptions.
+
+Period.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Example: Nested `var`s:
+
+```js[1-11|1-2|1-2,4-5]
+function foo() {
+  var answer = 42;
+
+  function bar() {
+    var random = 4;
+
+    // ...
+  }
+
+  // ...
+}
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Trick Question #1:
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Trick Question #1:
+
+What's the scope of **`awkward`**?
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Trick Question #1:
+
+What's the scope of **`awkward`**?
+
+```js[10|1,4]
+function foo() {
+  var answer = 42;
+
+  function bar() {
+    var random = 4;
+
+    // ...
+  }
+
+  var awkward = -0;
+
+  // ...
+}
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Scope starts at the **function declaration**.
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Scope starts at the **function declaration**.
+
+And is scoped to the _whole_ function.
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Scope starts at the **function declaration**.
+
+And is scoped to the _whole_ function.
+
+Recursively.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+```js[1,4,7]
+function foo() {
+  var answer = 42;
+
+  function bar() {
+    var random = 4;
+
+    function baz() {
+      var deep = 3;
+
+      // ...
+    }
+
+    // ...
+  }
+
+  // ...
+}
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Trick Question #2
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Trick Question #2
+
+How many scopes are there?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Trick Question #2
+
+How many scopes are there?
+
+```js[1-13|2,4,5,10]
+function foo() {
+  var answer = 42;
+
+  for (var i = 0; i < 10; i += 1) {
+    var silly = i;
+
+    // ...
+  }
+
+  var awkward = -0;
+
+  // ...
+}
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+ONE.
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+ONE.
+
+All **`var`** have **_whole-function_** scope.
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Trick Question #3:
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Trick Question #3:
+
+What's the scope of **`nofunc`**?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Trick Question #3:
+
+What's the scope of **`nofunc`**?
+
+```js[1]
+var nofunc = Infinity;
+
+function foo() {
+  var answer = 42;
+
+  function bar() {
+    var random = 4;
+
+    // ...
+  }
+
+  // ...
+}
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+No function.
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+No function.
+
+No scope.
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+No function.
+
+No scope.
+
+(it's **_global_**)
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### `var` Conclusion:
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### `var` Conclusion:
+
+`var` is _different_...
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### `var` Conclusion:
+
+`var` is _different_...
+
+but not _bad_.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+# `const`
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+... is tarded
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+### Part A: Appropriation
+
+What's **STUPID**...
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```js
+const PI = 3.1415926535897932384626433832795028841971693993751058209749445923078164062;
+```
+
+(what a `const` _should_ look like)
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+> <small>"The `const` keyword declares the following item as constant. Constant
+> items can be completely computed at compile time, and any code that refers to
+> them is replaced with the constant's computed value during compilation.
+>
+> A constant has no memory or other storage associated with it (it is not a
+> place). You can think of constant as a convenient name for a particular
+> value."</small>
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+> <small>"The `const` keyword declares the following item as constant. Constant
+> items can be completely computed at compile time, and any code that refers to
+> them is replaced with the constant's computed value during compilation.
+>
+> A constant has no memory or other storage associated with it (it is not a
+> place). You can think of constant as a convenient name for a particular
+> value."</small>
+
+\- _NOT EcmaScript_
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+> <small>"The `const` keyword declares the following item as constant. Constant
+> items can be completely computed at compile time, and any code that refers to
+> them is replaced with the constant's computed value during compilation.
+>
+> A constant has no memory or other storage associated with it (it is not a
+> place). You can think of constant as a convenient name for a particular
+> value."</small>
+
+\- _NOT EcmaScript_
+
+<small>(quoted from "Rust for Rustaceans" by Jon Gjengset)</small>
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Recap
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Recap
+
+- `const` means `constant`.
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Recap
+
+- `const` means `constant`.
+- _constants_ can be computed at _compile_ time.
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Recap
+
+- `const` means `constant`.
+- _constants_ can be computed at _compile_ time.
+- the value of a _constant_ doesn't change.
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+And conventionally...
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+And conventionally...
+
+```js
+const PI = 3.1415926535897932384626433832795028841971693993751058209749445923078164062;
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+And conventionally...
+
+```js
+const PI = 3.1415926535897932384626433832795028841971693993751058209749445923078164062;
+```
+
+a `const` is `ALL_CAPS`
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+... but not in EcmaScript.
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```js
+function greet(name) {
+  // variable!
+  const greeting = `Hello ${name}!`;
+
+  // ...
+}
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```js
+function greet(name) {
+  // variable!
+  const greeting = `Hello ${name}!`;
+
+  // ...
+}
+```
+
+Can't be computed ahead-of-time?
+
+NOT a constant!
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```js
+const items = [];
+
+// mutable!
+items.push(1);
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```js
+const items = [];
+
+// mutable!
+items.push(1);
+```
+
+Can't be mutated... at all?
+
+NOT a constant!
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+An immutable reference is no more a `const`...
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+An immutable reference is no more a `const`...
+
+than acne is a cancer.
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+But...
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+But...
+
+but...
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+But...
+
+but...
+
+but...
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```js
+const answer = 42;
+
+// throws an error!
+// See! It's an immutable reference!!
+answer += 1;
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```js
+const answer = 42;
+
+// throws an error!
+// See! It's an immutable reference!!
+answer += 1;
+```
+
+Not a _constant_!
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Part B: Moral Just Cause
+
+What's **_WORSE_**...
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Readable conditional assignment:
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Readable conditional assignment:
+
+```js
+function greet(name) {
+  var foo;
+
+  if (name) {
+    foo = "Hey ${name}!";
+  } else {
+    foo = "Welcome!";
+  }
+
+  // ...
+}
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+With `const` brain drain:
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+With `const` brain drain:
+
+```js
+function greet(name) {
+  const foo = name ? "Welcome!" : "Hey ${name}!";
+
+  // ...
+}
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+With `const` brain drain:
+
+```js
+function greet(name) {
+  const foo = name ? "Welcome!" : "Hey ${name}!";
+
+  // ...
+}
+```
+
+😈
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Anyway...
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+<small>I don't know about you but...</small>
+
+Forgetting if I want to change a variable
+
+<small>_isn't_ a problem I have.</small>
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+<small>I don't know about you but...</small>
+
+Forgetting if I want to change a variable
+
+<small>_isn't_ a problem I have.</small>
+
+<small>(at least not in _that_ way but... more on that later)</small>
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+# `let`
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`let` is **_supposed_** to declare variables
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`let` is **_supposed_** to declare variables
+
+in block scope
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`let` is **_supposed_** to declare variables
+
+in block scope
+
+```js
+{
+  {
+    {
+      let awkward = -0;
+    }
+  }
+}
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```js[3-4,7,10-12]
+function foo() {
+
+  for (let i = 0; i < 10; i += 1) {
+    let silly = i;
+
+    // ...
+  }
+
+  {
+    {
+      let awkward = -0;
+    }
+  }
+
+  // ...
+}
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+And that _mostly_ works...
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+And that _mostly_ works...
+
+but is only _necessary_ for anti-patterns
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+And that _mostly_ works...
+
+but is only _necessary_ for anti-patterns
+
+(meaning really long functions)
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+And `let` _breaks_ `switch`:
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```js[3,7]
+switch (name) {
+  case "foo":
+    let answer = 42;
+    // ...
+    break;
+  case "bar":
+    let answer = 4;
+    // ...
+    break;
+  // ...
+}
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```js[3,7]
+switch (name) {
+  case "foo":
+    let answer = 42;
+    // ...
+    break;
+  case "bar":
+    let answer = 4;
+    // ...
+    break;
+  // ...
+}
+```
+
+(Schrodinger's **`var`**)
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+```js[7]
+switch (name) {
+  case "foo":
+    let answer = 42;
+    // ...
+    break;
+  case "bar":
+    answer = 4;
+    // ...
+    break;
+  // ...
+}
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+```js[3-6,9-12]
+switch (name) {
+  case "foo":
+    {
+      let answer = 42;
+      // ...
+    }
+    break;
+  case "bar":
+    {
+      let answer = 4;
+      // ...
+    }
+    break;
+  // ...
+}
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+# 🤷‍♀️
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+# Missed Opportunities
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Problems that I _do_ have
+
+that `const` and `let` still don't solve:
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+# Shadowing
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`let` doesn't enable _intentional_ shadowing:
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`let` doesn't enable _intentional_ shadowing:
+
+```js
+function foo() {
+  let answer = "42";
+  let answer = parseInt(a, 10);
+
+  // ...
+}
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+and `const` doesn't prevent _unintentional_ shadowing:
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+and `const` doesn't prevent _unintentional_ shadowing:
+
+```js
+function foo() {
+  const name = "foo";
+
+  function bar() {
+    const name = "bar";
+
+    // ...
+  }
+
+  // ...
+}
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`try` / `catch` is still broken:
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`try` / `catch` is still broken:
+
+```js
+let name;
+
+try {
+  name = "foo";
+  throw new Error("oops");
+} catch (e) {
+  // nothing is undone
+  // (the stack is not unwound)
+}
+
+// name is still "foo"!
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+# 🤷‍♂️
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Conclusion
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Conclusion
+
+- _Fails_ to make EcmaScript like other languages
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Conclusion
+
+- _Fails_ to make EcmaScript like other languages
+- Doesn't _fix_ JavaScript's bugs
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Conclusion
+
+- _Fails_ to make EcmaScript like other languages
+- Doesn't _fix_ JavaScript's bugs
+- Adds _more_ bugs to EcmaScript
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Conclusion
+
+- _Fails_ to make EcmaScript like other languages
+- Doesn't _fix_ JavaScript's bugs
+- Adds _more_ bugs to EcmaScript
+
+Therefore...
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Conclusion
+
+- _Fails_ to make EcmaScript like other languages
+- Doesn't _fix_ JavaScript's bugs
+- Adds _more_ bugs to EcmaScript
+
+Therefore...
+
+# BAD IDEA!
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+# FIN
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+- Like
+- Sub
+- Follow
+- Click all-the-things
+
+</textarea></section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/math/math.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+Reveal.initialize({
+controls : false,
+markdown : {smartypants: true},
+controls : false,
+keyboard : true,
+hash : false,
+respondToHashChanges : false,
+				hash: true,
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath ]
+			});
+		</script>
+	</body>
+</html>
