@@ -1,0 +1,410 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>Classless JavaScript</title>
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+<link rel="stylesheet" href="dist/theme/white.css" id="theme">
+		<!-- Theme used for syntax highlighted code -->
+<link rel="stylesheet" href="plugin/highlight/zenburn.min.css" id="highlight-theme"></head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+<section data-markdown  ><textarea data-template>
+[comment]: # "markdown: { smartypants: true }"
+
+# Classless JavaScript
+
+AJ ONeal
+<br>
+[@\_beyondcode](https://twitter.com/@_beyondcode)
+<br>
+[twitch.tv/coolaj86](https://twitch.tv/coolaj86)
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+### a.k.a.
+
+_JavaScript as the good Crockford intended_
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+# TL;DR
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+```js
+var Person = module.exports;
+```
+
+```js
+Person.create = function (p) {
+    var person = {
+        name: p.name || "Another Jane Doe",
+        age: p.age || 0,
+    };
+
+    person.creditCard = function () {
+        return "****-****-****-" + p.creditCard.slice(-4);
+    };
+
+    return person;
+};
+```
+
+```js
+Person.save = async function (p) {
+    return await request({
+        url: `/api/person/${p.id}`,
+        json: p,
+    });
+};
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+> I made up the term 'object-oriented', and I can tell you I didn't have C++ in mind
+>
+> \- Alan Kay, OOPSLA '97
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+### Newsflash
+
+JavaScript doesn't have classes.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Why would anyone _want_
+<br>
+to do classes in JavaScript?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Benefits of JavaScript
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Benefits of JavaScript
+
+-   Serializable
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Benefits of JavaScript
+
+-   Serializable
+-   Duck-Typed
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Benefits of JavaScript
+
+-   Serializable
+-   Duck-Typed
+-   Closures
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Benefits of JavaScript
+
+-   Serializable
+-   Duck-Typed
+-   Closures
+-   Async
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Benefits of JavaScript
+
+-   Serializable
+-   Duck-Typed
+-   Closures
+-   Async
+
+Pretty much the same as Go and Rust.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+## Serializable, Hydratable
+
+```json5
+{
+    name: "John Doe",
+    age: 37,
+}
+```
+
+JSON, APIs, Database
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+## Duct-Typed
+
+```js
+// if is Promise-like
+if (o.then) {
+    return await o;
+}
+return o;
+```
+
+Mix and match capabilities.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+## Closures
+
+```js
+function createApiRequest(key, secret) {
+    return async function (data) {
+        return await request({
+            auth: { user: key, pass: secret },
+            json: data,
+        });
+    };
+}
+```
+
+Composable, ad-hoc state.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+## Async
+
+```js
+await Promise.all([
+    //
+    apiRequest(opts),
+    fs.readFile(opts),
+]);
+```
+
+Non-blocking event loop, without mutexes.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+## Detriments of Classes
+
+-   Awkward State (_this_-ness)
+-   Inheritance
+-   General Complexity
+
+Pretty much the same as C#, C++, and Java.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+## Factories & Value Objects
+
+```js
+var Person = module.exports;
+
+Person.create = function (p) {
+    var person = {
+        name: p.name || "Another Jane Doe",
+        age: p.age || 0,
+    };
+
+    // ...
+
+    return person;
+};
+```
+
+Plain-old functions & JSON.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+## Static Methods
+
+```js
+Person.greet = function (p, other) {
+    return `Hello ${other.name}! I'm ${p.name}!`;
+};
+```
+
+Attach functions at the package (factory) level.
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Member Methods
+
+```js
+Person.create = function (p) {
+    // ...
+    
+    person.greet = function (other) {
+        return `Hello ${other.name}! I'm ${person.name}!`;
+    };
+
+    // ...
+};
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Member Methods
+
+```js
+Person.create = function (p) {
+    // ...
+    
+    person.greet = function (other) {
+        return `Hello ${other.name}! I'm ${person.name}!`;
+    };
+
+    // ...
+};
+```
+
+Taints the object (too much like classes).
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+## Realistic Static Method
+
+```js
+Person.save = async function (p) {
+    return await request({
+        url: `/api/person/${p.id}`,
+        json: p,
+    });
+};
+```
+
+```js
+await Person.save(p);
+```
+
+For "public" or "static" methods.
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Realistic Member Method
+
+```js
+Person.create = function (p) {
+    let cc = p.creditCard;
+    p.creditCard = null;
+
+    // ...
+};
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Realistic Member Method
+
+```js
+Person.create = function (p) {
+    let cc = p.creditCard;
+    p.creditCard = null;
+
+    // ...
+};
+```
+
+```js
+person.creditCard = function (expose) {
+    if (expose) {
+        return cc;
+    }
+    return "****-****-****-" + cc.slice(-4);
+};
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+## Realistic Member Method
+
+```js
+Person.create = function (p) {
+    let cc = p.creditCard;
+    p.creditCard = null;
+
+    // ...
+};
+```
+
+```js
+person.creditCard = function (expose) {
+    if (expose) {
+        return cc;
+    }
+    return "****-****-****-" + cc.slice(-4);
+};
+```
+
+If you want truly "private" member data. \
+(or have data you need to scrub)
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+# Co-opting / Appropriation
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+## prototype !== class
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+## prototype === polyfill
+
+</textarea></section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/math/math.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+Reveal.initialize({
+controls : false,
+markdown : {smartypants: true},
+controls : false,
+keyboard : true,
+hash : false,
+respondToHashChanges : false,
+				hash: true,
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath ]
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>All The Concurrency Models of the Rainbow 🌈</title>
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+<link rel="stylesheet" href="dist/theme/black.css" id="theme">
+		<!-- Theme used for syntax highlighted code -->
+<link rel="stylesheet" href="plugin/highlight/zenburn.css" id="highlight-theme"></head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+<section data-markdown  ><textarea data-template>
+[comment]: # (markdown: { smartypants: true })
+
+## All The Concurrency Models of the Rainbow 🌈
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+🦀 🐹 📦
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+## Blocking
+
+What Concurrency is NOT
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+```rs
+use std::net::TcpListener;
+
+fn main() {
+    let listener = TcpListener::bind("127.0.0.1:7878").unwrap();
+
+    for stream in listener.incoming() {
+        let stream = stream.unwrap();
+
+        println!("Connection established!");
+    }
+}
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+### Concurrency vs Parallelism
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+### Parallelism
+
+```rs
+for job in jobs {
+  thread::spawn(|| {
+      handle_job(job);
+  });
+}
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+### Concurrency
+
+```js
+$$('button').forEach(function (el) {
+  el.addEventListener('click', function () {
+    // do stuff
+  });
+})
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+### Types of Concurrency
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+# Threads
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+# Event Loops
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+# Channels
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+# Async/Await
+
+</textarea></section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/math/math.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+Reveal.initialize({
+controls : false,
+markdown : {smartypants: true},
+controls : false,
+keyboard : true,
+hash : false,
+respondToHashChanges : false,
+				hash: true,
+				math: {
+					local: 'KaTeX/katex.js'
+				},
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath ]
+			});
+		</script>
+	</body>
+</html>

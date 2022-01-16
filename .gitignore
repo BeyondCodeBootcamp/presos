@@ -3,7 +3,7 @@ css/
 demo.html
 examples/
 gulpfile.js
-index.html
+/index.html
 js/
 KaTeX/
 LICENSE
