@@ -19,11 +19,13 @@ AJ ONeal <br> [@\_beyondcode](https://twitter.com/@_beyondcode) <br>
 
 # `var`, `const`, `let`
 
-[comment]: # "!!!"
+[comment]: # "!!! data-auto-animate"
+
+# `var`, `const`, `let`
 
 (that's the order in which we'll discuss them)
 
-[comment]: # "!!!"
+[comment]: # "!!! data-auto-animate"
 
 # I'm AJ ONeal
 
@@ -63,9 +65,27 @@ Period.
 
 [comment]: # "!!! data-auto-animate"
 
+Example: Flat `var`s:
+
+```js [1-11|2,8]
+function foo() {
+  var answer = 42;
+
+  // ...
+}
+
+function bar() {
+  var random = 4;
+
+  // ...
+}
+```
+
+[comment]: # "!!! data-auto-animate"
+
 Example: Nested `var`s:
 
-```js[1-11|1-2|1-2,4-5]
+```js [1-11|1-2|1-2,4-5]
 function foo() {
   var answer = 42;
 
@@ -95,7 +115,7 @@ Trick Question #1:
 
 What's the scope of **`awkward`**?
 
-```js[10|1,4]
+```js [10|1,4]
 function foo() {
   var answer = 42;
 
@@ -131,7 +151,7 @@ Recursively.
 
 [comment]: # "!!! data-auto-animate"
 
-```js[1,4,7]
+```js [1,4,7]
 function foo() {
   var answer = 42;
 
@@ -167,7 +187,7 @@ Trick Question #2
 
 How many scopes are there?
 
-```js[1-13|2,4,5,10]
+```js [1-13|2,4,5,10]
 function foo() {
   var answer = 42;
 
@@ -183,13 +203,24 @@ function foo() {
 }
 ```
 
+[comment]: # "!!!"
+
+## 1
+
 [comment]: # "!!! data-auto-animate"
 
-ONE.
+## 1
+
+- One `function`.
 
 [comment]: # "!!! data-auto-animate"
 
-ONE.
+## 1
+
+- One `function`.
+- One scope.
+
+[comment]: # "!!! data-auto-animate"
 
 All **`var`** have **_whole-function_** scope.
 
@@ -209,7 +240,7 @@ Trick Question #3:
 
 What's the scope of **`nofunc`**?
 
-```js[1]
+```js [1]
 var nofunc = Infinity;
 
 function foo() {
@@ -227,21 +258,29 @@ function foo() {
 
 [comment]: # "!!! data-auto-animate"
 
-No function.
+# None
 
 [comment]: # "!!! data-auto-animate"
 
-No function.
+# None
 
-No scope.
+- No `function`.
 
 [comment]: # "!!! data-auto-animate"
 
-No function.
+# None
 
-No scope.
+- No `function`.
+- No scope.
 
-(it's **_global_**)
+[comment]: # "!!! data-auto-animate"
+
+# None
+
+- No `function`.
+- No scope.
+
+<small>(it's **_global_**)</small>
 
 [comment]: # "!!! data-auto-animate"
 
@@ -261,21 +300,31 @@ No scope.
 
 but not _bad_.
 
+[comment]: # "!!!"
+
+# `const`
+
 [comment]: # "!!! data-auto-animate"
 
 # `const`
 
-[comment]: # "!!!"
-
 ... is tarded
 
-[comment]: # "!!!"
+[comment]: # "!!! data-auto-animate"
 
-### Part A: Appropriation
+### Part A:
 
-What's **STUPID**...
+Appropriation
 
-[comment]: # "!!!"
+[comment]: # "!!! data-auto-animate"
+
+### Part A:
+
+Appropriation
+
+(what's **STUPID**...)
+
+[comment]: # "!!! data-auto-animate"
 
 ```js
 const PI = 3.1415926535897932384626433832795028841971693993751058209749445923078164062;
@@ -291,33 +340,9 @@ const PI = 3.1415926535897932384626433832795028841971693993751058209749445923078
 >
 > A constant has no memory or other storage associated with it (it is not a
 > place). You can think of constant as a convenient name for a particular
-> value."</small>
+> value." </small>
 
-[comment]: # "!!! data-auto-animate"
-
-> <small>"The `const` keyword declares the following item as constant. Constant
-> items can be completely computed at compile time, and any code that refers to
-> them is replaced with the constant's computed value during compilation.
->
-> A constant has no memory or other storage associated with it (it is not a
-> place). You can think of constant as a convenient name for a particular
-> value."</small>
-
-\- _NOT EcmaScript_
-
-[comment]: # "!!! data-auto-animate"
-
-> <small>"The `const` keyword declares the following item as constant. Constant
-> items can be completely computed at compile time, and any code that refers to
-> them is replaced with the constant's computed value during compilation.
->
-> A constant has no memory or other storage associated with it (it is not a
-> place). You can think of constant as a convenient name for a particular
-> value."</small>
-
-\- _NOT EcmaScript_
-
-<small>(quoted from "Rust for Rustaceans" by Jon Gjengset)</small>
+<small>"Rust for Rustaceans" by Jon Gjengset</small>
 
 [comment]: # "!!! data-auto-animate"
 
@@ -470,9 +495,17 @@ Not a _constant_!
 
 [comment]: # "!!! data-auto-animate"
 
-## Part B: Moral Just Cause
+## Part B:
 
-What's **_WORSE_**...
+Just Moral Cause
+
+[comment]: # "!!! data-auto-animate"
+
+## Part B:
+
+Just Moral Cause
+
+(what's **_WORSE_**...)
 
 [comment]: # "!!! data-auto-animate"
 
@@ -580,9 +613,8 @@ in block scope
 
 [comment]: # "!!! data-auto-animate"
 
-```js[3-4,7,10-12]
+```js [3-4,7,10-12]
 function foo() {
-
   for (let i = 0; i < 10; i += 1) {
     let silly = i;
 
@@ -623,7 +655,7 @@ And `let` _breaks_ `switch`:
 
 [comment]: # "!!!"
 
-```js[3,7]
+```js [3,7]
 switch (name) {
   case "foo":
     let answer = 42;
@@ -639,7 +671,7 @@ switch (name) {
 
 [comment]: # "!!! data-auto-animate"
 
-```js[3,7]
+```js [3,7]
 switch (name) {
   case "foo":
     let answer = 42;
@@ -657,7 +689,7 @@ switch (name) {
 
 [comment]: # "!!! data-auto-animate"
 
-```js[7]
+```js [7]
 switch (name) {
   case "foo":
     let answer = 42;
@@ -673,7 +705,7 @@ switch (name) {
 
 [comment]: # "!!!"
 
-```js[3-6,9-12]
+```js [3-6,9-12]
 switch (name) {
   case "foo":
     {
