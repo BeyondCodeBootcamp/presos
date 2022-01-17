@@ -41,14 +41,14 @@ AJ ONeal <br> [@\_beyondcode](https://twitter.com/@_beyondcode) <br>
 
 # `var`
 
--   is _incredibly_ simple.
+- is _incredibly_ simple.
 
 [comment]: # "!!! data-auto-animate"
 
 # `var`
 
--   is _incredibly_ simple.
--   has _exactly_ ONE rule
+- is _incredibly_ simple.
+- has _exactly_ ONE rule
 
 [comment]: # "!!! data-auto-animate"
 
@@ -71,15 +71,15 @@ Example: Flat `var`s:
 
 ```js [1-11|2,8]
 function foo() {
-    var answer = 42;
+  var answer = 42;
 
-    // ...
+  // ...
 }
 
 function bar() {
-    var random = 4;
+  var random = 4;
 
-    // ...
+  // ...
 }
 ```
 
@@ -89,15 +89,15 @@ Example: Nested `var`s:
 
 ```js [1-11|1-2|1-2,4-5]
 function foo() {
-    var answer = 42;
+  var answer = 42;
 
-    function bar() {
-        var random = 4;
-
-        // ...
-    }
+  function bar() {
+    var random = 4;
 
     // ...
+  }
+
+  // ...
 }
 ```
 
@@ -119,17 +119,17 @@ What's the scope of **`awkward`**?
 
 ```js [10|1,4]
 function foo() {
-    var answer = 42;
+  var answer = 42;
 
-    function bar() {
-        var random = 4;
-
-        // ...
-    }
-
-    var awkward = -0;
+  function bar() {
+    var random = 4;
 
     // ...
+  }
+
+  var awkward = -0;
+
+  // ...
 }
 ```
 
@@ -155,21 +155,21 @@ Recursively.
 
 ```js [1,4,7]
 function foo() {
-    var answer = 42;
+  var answer = 42;
 
-    function bar() {
-        var random = 4;
+  function bar() {
+    var random = 4;
 
-        function baz() {
-            var deep = 3;
+    function baz() {
+      var deep = 3;
 
-            // ...
-        }
-
-        // ...
+      // ...
     }
 
     // ...
+  }
+
+  // ...
 }
 ```
 
@@ -191,17 +191,17 @@ How many scopes are there?
 
 ```js [1-13|2,4,5,10]
 function foo() {
-    var answer = 42;
+  var answer = 42;
 
-    for (var i = 0; i < 10; i += 1) {
-        var silly = i;
-
-        // ...
-    }
-
-    var awkward = -0;
+  for (var i = 0; i < 10; i += 1) {
+    var silly = i;
 
     // ...
+  }
+
+  var awkward = -0;
+
+  // ...
 }
 ```
 
@@ -213,14 +213,14 @@ function foo() {
 
 ## 1
 
--   One `function`.
+- One `function`.
 
 [comment]: # "!!! data-auto-animate"
 
 ## 1
 
--   One `function`.
--   One scope.
+- One `function`.
+- One scope.
 
 [comment]: # "!!! data-auto-animate"
 
@@ -246,15 +246,15 @@ What's the scope of **`nofunc`**?
 var nofunc = Infinity;
 
 function foo() {
-    var answer = 42;
+  var answer = 42;
 
-    function bar() {
-        var random = 4;
-
-        // ...
-    }
+  function bar() {
+    var random = 4;
 
     // ...
+  }
+
+  // ...
 }
 ```
 
@@ -266,21 +266,21 @@ function foo() {
 
 # None
 
--   No `function`.
+- No `function`.
 
 [comment]: # "!!! data-auto-animate"
 
 # None
 
--   No `function`.
--   No scope.
+- No `function`.
+- No scope.
 
 [comment]: # "!!! data-auto-animate"
 
 # None
 
--   No `function`.
--   No scope.
+- No `function`.
+- No scope.
 
 <small>(it's **_global_**)</small>
 
@@ -354,22 +354,22 @@ Recap
 
 Recap
 
--   `const` means `constant`.
+- `const` means `constant`.
 
 [comment]: # "!!! data-auto-animate"
 
 Recap
 
--   `const` means `constant`.
--   _constants_ can be computed at _compile_ time.
+- `const` means `constant`.
+- _constants_ can be computed at _compile_ time.
 
 [comment]: # "!!! data-auto-animate"
 
 Recap
 
--   `const` means `constant`.
--   _constants_ can be computed at _compile_ time.
--   the value of a _constant_ doesn't change.
+- `const` means `constant`.
+- _constants_ can be computed at _compile_ time.
+- the value of a _constant_ doesn't change.
 
 [comment]: # "!!! data-auto-animate"
 
@@ -401,10 +401,10 @@ a `const` is `ALL_CAPS`
 
 ```js
 function greet(name) {
-    // variable!
-    const greeting = `Hello ${name}!`;
+  // variable!
+  const greeting = `Hello ${name}!`;
 
-    // ...
+  // ...
 }
 ```
 
@@ -412,10 +412,10 @@ function greet(name) {
 
 ```js
 function greet(name) {
-    // variable!
-    const greeting = `Hello ${name}!`;
+  // variable!
+  const greeting = `Hello ${name}!`;
 
-    // ...
+  // ...
 }
 ```
 
@@ -519,15 +519,15 @@ Readable conditional assignment:
 
 ```js
 function greet(name) {
-    var foo;
+  var foo;
 
-    if (name) {
-        foo = "Hey ${name}!";
-    } else {
-        foo = "Welcome!";
-    }
+  if (name) {
+    foo = "Hey ${name}!";
+  } else {
+    foo = "Welcome!";
+  }
 
-    // ...
+  // ...
 }
 ```
 
@@ -541,9 +541,9 @@ With `const` brain drain:
 
 ```js
 function greet(name) {
-    const foo = name ? "Hey ${name}!" : "Welcome!";
+  const foo = name ? "Hey ${name}!" : "Welcome!";
 
-    // ...
+  // ...
 }
 ```
 
@@ -553,9 +553,9 @@ With `const` brain drain:
 
 ```js
 function greet(name) {
-    const foo = name ? "Welcome!" : "Hey ${name}!";
+  const foo = name ? "Welcome!" : "Hey ${name}!";
 
-    // ...
+  // ...
 }
 ```
 
@@ -589,6 +589,12 @@ Forgetting if I want to change a variable
 
 [comment]: # "!!! data-auto-animate"
 
+# `let`
+
+(Schrodinger's **`var`**)
+
+[comment]: # "!!! data-auto-animate"
+
 `let` is **_supposed_** to declare variables
 
 [comment]: # "!!! data-auto-animate"
@@ -605,31 +611,34 @@ in block scope
 
 ```js
 {
+  {
     {
-        {
-            let awkward = -0;
-        }
+      let awkward = -0;
     }
+  }
 }
 ```
 
 [comment]: # "!!! data-auto-animate"
 
-```js [2-3,7,9-11]
+er... **_whole_** block scope...
+
+```js [3-4,7,10-13]
 function foo() {
-    for (let i = 0; i < 10; i += 1) {
-        let silly = i;
-
-        // ...
-    }
-
-    {
-        {
-            let awkward = -0;
-        }
-    }
+  for (let i = 0; i < 10; i += 1) {
+    let silly = i;
 
     // ...
+  }
+
+  {
+    {
+      let awkward = -0;
+    }
+    let superAwkward = -0;
+  }
+
+  // ...
 }
 ```
 
@@ -659,15 +668,15 @@ And `let` _breaks_ `switch`:
 
 ```js [3,7]
 switch (name) {
-    case "foo":
-        let answer = 42;
-        // ...
-        break;
-    case "bar":
-        let answer = 4;
-        // ...
-        break;
+  case "foo":
+    let answer = 42;
     // ...
+    break;
+  case "bar":
+    let answer = 4;
+    // ...
+    break;
+  // ...
 }
 ```
 
@@ -675,15 +684,15 @@ switch (name) {
 
 ```js [3,7]
 switch (name) {
-    case "foo":
-        let answer = 42;
-        // ...
-        break;
-    case "bar":
-        let answer = 4;
-        // ...
-        break;
+  case "foo":
+    let answer = 42;
     // ...
+    break;
+  case "bar":
+    let answer = 4;
+    // ...
+    break;
+  // ...
 }
 ```
 
@@ -693,15 +702,15 @@ switch (name) {
 
 ```js [7]
 switch (name) {
-    case "foo":
-        let answer = 42;
-        // ...
-        break;
-    case "bar":
-        answer = 4;
-        // ...
-        break;
+  case "foo":
+    let answer = 42;
     // ...
+    break;
+  case "bar":
+    answer = 4;
+    // ...
+    break;
+  // ...
 }
 ```
 
@@ -709,19 +718,19 @@ switch (name) {
 
 ```js [3-6,9-12]
 switch (name) {
-    case "foo":
-        {
-            let answer = 42;
-            // ...
-        }
-        break;
-    case "bar":
-        {
-            let answer = 4;
-            // ...
-        }
-        break;
-    // ...
+  case "foo":
+    {
+      let answer = 42;
+      // ...
+    }
+    break;
+  case "bar":
+    {
+      let answer = 4;
+      // ...
+    }
+    break;
+  // ...
 }
 ```
 
@@ -743,12 +752,12 @@ But...
 
 ```js
 function confusing() {
-    for (let count = 0; count < 10; count += 10) {
-        setTimeout(function () {
-            // count increments as... expected?
-            console.log(count);
-        }, 1000);
-    }
+  for (let count = 0; count < 10; count += 10) {
+    setTimeout(function () {
+      // count increments as... expected?
+      console.log(count);
+    }, 1000);
+  }
 }
 ```
 
@@ -780,10 +789,28 @@ that `const` and `let` still don't solve:
 
 ```js
 function foo() {
-    let answer = "42";
-    let answer = parseInt(a, 10);
+  let answer = "42";
+  let answer = parseInt(answer, 10);
+
+  // ...
+}
+```
+
+[comment]: # "!!! data-auto-animate"
+
+of any sort...
+
+```js
+function foo() {
+  let answer = "42";
+
+  function bar() {
+    let answer = parseInt(answer, 10);
 
     // ...
+  }
+
+  // ...
 }
 ```
 
@@ -797,15 +824,15 @@ and `const` doesn't prevent _unintentional_ shadowing:
 
 ```js
 function foo() {
-    const name = "foo";
+  const name = "foo";
 
-    function bar() {
-        const name = "bar";
-
-        // ...
-    }
+  function bar() {
+    const name = "bar";
 
     // ...
+  }
+
+  // ...
 }
 ```
 
@@ -821,11 +848,11 @@ function foo() {
 let name;
 
 try {
-    name = "foo";
-    throw new Error("oops");
+  name = "foo";
+  throw new Error("oops");
 } catch (e) {
-    // nothing is undone
-    // (the stack is not unwound)
+  // nothing is undone
+  // (the stack is not unwound)
 }
 
 // name is still "foo"!
@@ -843,30 +870,30 @@ try {
 
 ## Conclusion
 
--   _Fails_ to make EcmaScript like other languages
+- _Fails_ to make EcmaScript like other languages
 
 [comment]: # "!!! data-auto-animate"
 
 ## Conclusion
 
--   _Fails_ to make EcmaScript like other languages
--   Doesn't _fix_ JavaScript's bugs
+- _Fails_ to make EcmaScript like other languages
+- Doesn't _fix_ JavaScript's bugs
 
 [comment]: # "!!! data-auto-animate"
 
 ## Conclusion
 
--   _Fails_ to make EcmaScript like other languages
--   Doesn't _fix_ JavaScript's bugs
--   Adds _more_ bugs to EcmaScript
+- _Fails_ to make EcmaScript like other languages
+- Doesn't _fix_ JavaScript's bugs
+- Adds _more_ bugs to EcmaScript
 
 [comment]: # "!!! data-auto-animate"
 
 ## Conclusion
 
--   _Fails_ to make EcmaScript like other languages
--   Doesn't _fix_ JavaScript's bugs
--   Adds _more_ bugs to EcmaScript
+- _Fails_ to make EcmaScript like other languages
+- Doesn't _fix_ JavaScript's bugs
+- Adds _more_ bugs to EcmaScript
 
 Therefore...
 
@@ -874,9 +901,9 @@ Therefore...
 
 ## Conclusion
 
--   _Fails_ to make EcmaScript like other languages
--   Doesn't _fix_ JavaScript's bugs
--   Adds _more_ bugs to EcmaScript
+- _Fails_ to make EcmaScript like other languages
+- Doesn't _fix_ JavaScript's bugs
+- Adds _more_ bugs to EcmaScript
 
 Therefore...
 
@@ -888,9 +915,9 @@ Therefore...
 
 [comment]: # "!!!"
 
--   Like
--   Sub
--   Follow
--   Click all-the-things
+- Like
+- Sub
+- Follow
+- Click all-the-things
 
 [comment]: # "!!!"
