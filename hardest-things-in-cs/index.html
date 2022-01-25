@@ -1,0 +1,1182 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>The 2 Hardest Things</title>
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+<link rel="stylesheet" href="dist/theme/white.css" id="theme">
+		<!-- Theme used for syntax highlighted code -->
+<link rel="stylesheet" href="plugin/highlight/github.css" id="highlight-theme"></head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+<section data-markdown  data-auto-animate><textarea data-template>
+[comment]: # "markdown: { smartypants: true }"
+
+# The 2 Hardest Things
+
+in Computer Science...
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+# The 2 Hardest Things
+
+in Computer Science...
+
+1.  Caching
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+# The 2 Hardest Things
+
+in Computer Science...
+
+1.  Caching
+2.  Naming Things
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+# The 2 Hardest Things
+
+in Computer Science...
+
+1.  Caching
+2.  Naming Things
+3.  Off-by-one Errors
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+AJ ONeal <br> [@\_beyondcode](https://twitter.com/@_beyondcode) <br>
+[twitch.tv/coolaj86](https://twitch.tv/coolaj86)
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+oh...
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+# The _3_ Hardest Things
+
+in Computer Science...
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+(note\: not presented in alphabetical order)
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+# 3. Off-by-One
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Count to 10
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+(I'll wait)
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+How many numbers did you count?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+How many numbers did you count?
+
+<small>(_not_ what did you count to)</small>
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+11
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+11
+
+<small>_Right?_</small>
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Trick Q #1a
+
+How **_many_** numbers are in this range?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Trick Q #1a
+
+How **_many_** numbers are in this range?
+
+```rs
+for i in 0..10 {
+    // ...
+}
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Trick Q #1a
+
+How **_many_** numbers are in this range?
+
+```rs
+let mut count = 0;
+
+for i in 0..10 {
+    count += 1
+}
+
+println!("{}", count);
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Trick Q #1b
+
+**_Which_** numbers are in this range?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Trick Q #1b
+
+**_Which_** numbers are in this range?
+
+```rs
+for i in 0..10 {
+    // ...
+}
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Trick Q #1b
+
+**_Which_** numbers are in this range?
+
+```rs
+for i in 0..10 {
+    println!("Number: {}", i)
+}
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Trick Q #1c
+
+How about **_this_** range?
+
+```rs
+for i in 1..10 {
+    // ...
+}
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Trick Q #1d
+
+Or **_this_** range?
+
+```rs
+for i in 0...10 {
+    // ...
+}
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Trick Q #2
+
+What's the **_first_** element in this array?
+
+```rs
+let fruits = vec![
+    "apples",
+    "bananas",
+    "cherries",
+    "durians",
+    "elderberries",
+    // ...
+];
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Are you sure?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Are you sure?
+
+```rs
+let fruits = vec![
+    "apples",
+    "bananas",
+    "cherries",
+    "durians",
+    "elderberries",
+    // ...
+];
+```
+
+```rs
+println!("{}", fruits[1])
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Are you sure?
+
+```rs
+let fruits = vec![
+    "apples",
+    "bananas",
+    "cherries",
+    "durians",
+    "elderberries",
+    // ...
+];
+```
+
+```rs
+println!("{}", fruits[1])
+```
+
+```rs
+"bananas"
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+So...
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Trick Q #3
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Trick Q #3
+
+Which fruits would this range print?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Trick Q #3
+
+Which fruits would this range print?
+
+```rs
+let fruits = vec![
+    "apples",
+    "bananas",
+    "cherries",
+    "durians",
+    "elderberries",
+    // ...
+];
+```
+
+```rs
+for i in 2..5 {
+    // ...
+}
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+What do you get when you mix an Elephant + a Rhino?
+
+![](https://dianacooper.com/wp-content/uploads/2020/08/Elephant-Rhino-Prayer-backdrop-scaled.jpg)
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+!["elephino"](http://www.freakingnews.com/pictures/14000/Rhino-Elephant-14396.jpg)
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Count to 10
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Count to 10
+
+_...again_
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+No! Wait!
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Trick Q #4a
+
+Can you find the needle in this haystack?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Trick Q #4a
+
+Can you find the needle in this haystack?
+
+```js
+let index = "hello".indexOf("h");
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Trick Q #4a
+
+Can you find the needle in this haystack?
+
+```js
+let index = "hello".indexOf("h");
+// 0
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Trick Q #4b
+
+How about _this_ one?
+
+```js
+let index = "haystack".indexOf("needle");
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Trick Q #4b
+
+How about _this_ one?
+
+```js
+let index = "haystack".indexOf("needle");
+// -1
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Trick Q #4c
+
+Which fruit will this select?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Trick Q #4c
+
+Which fruit will this select?
+
+```js
+let arr = ["apples", "bananas", "cherries"];
+
+arr[arr.length];
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Trick Q #4c
+
+And this one?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Trick Q #4c
+
+And this one?
+
+```js
+let arr = [];
+
+arr[arr.length];
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Count to 10
+
+_...one last time_
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Not to mention
+
+-   Octal (8) 0..7
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Not to mention
+
+-   Octal (8) 0..7
+-   Hex (16) 0-9,A-F
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Not to mention
+
+-   Octal (8) 0..7
+-   Hex (16) 0-9,A-F
+-   Byte (256) 0..255
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Or even typos
+
+```js
+// empty an array
+arr.splice(0);
+
+// copy an array
+arr.slice(0);
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Or _slightly_ different APIs
+
+```js
+"foobar".substring(3, 4);
+// b
+
+"foobar".substr(3, 4);
+// bar
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Want to _really_ understand off-by-one errors?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Want to _really_ understand off-by-one errors?
+
+Implement **Chess** in a 1-D Array.
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Want to _really_ understand off-by-one errors?
+
+Implement **Chess** in a 1-D Array.
+
+<small>hint: you could use 65 board squares (instead of 64)</small>
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Want to _really_ understand off-by-one errors?
+
+Implement **Chess** in a 1-D Array.
+
+<small>hint: you could use 65 board squares (instead of 64)</small>
+
+<small>though... it might not even help</small>
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+# Naming things
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+To-do:
+
+-   https://youtu.be/BXRgZpxjqJ0?t=600
+-   https://youtu.be/ELTZkbHJ-Xg?t=600
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+What should we call this collection of functions?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+What should we call this collection of functions?
+
+-   login()
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+What should we call this collection of functions?
+
+-   login()
+-   verify()
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+What should we call this collection of functions?
+
+-   login()
+-   verify()
+-   createUser()
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+-   Auth?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+-   Auth?
+-   User?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+-   Auth?
+-   User?
+-   Session?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Probably.
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+How about a package with these?
+
+-   map()
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+How about a package with these?
+
+-   map()
+-   reduce()
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+How about a package with these?
+
+-   map()
+-   reduce()
+-   leftPad()
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+How about a package with these?
+
+-   map()
+-   reduce()
+-   leftPad()
+-   unique()
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+How about a package with these?
+
+-   map()
+-   reduce()
+-   leftPad()
+-   unique()
+-   divide()
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+-   stuff?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+-   stuff?
+-   lodash?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+-   stuff?
+-   lodash?
+-   dependency hell
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+-   stuff?
+-   lodash?
+-   **_dependency hell_**
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Industry Standard Terms
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Industry Standard Terms
+
+-   map vs migrate vs transform
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Industry Standard Terms
+
+-   token
+-   code
+-   secret
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Industry Standard Terms
+
+-   PK is Private Key... or Public Key?
+-   API Key or Secret Key?
+-   Client ID vs Consumer ID
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Think back to Chess
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+What do you call where the pieces go?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+What do you call where the pieces go?
+
+-   Slots?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+What do you call where the pieces go?
+
+-   Slots?
+-   Places?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+What do you call where the pieces go?
+
+-   Slots?
+-   Places?
+-   Squares?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+What do you call where the pieces go?
+
+-   Slots?
+-   Places?
+-   Squares?
+-   Cells?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+What do you call where the pieces go?
+
+-   Slots?
+-   Places?
+-   Squares?
+-   Cells?
+-   Thingies?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Oh!
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Oh!
+
+How about just `b[i]`?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Oh!
+
+How about just `b[i]`?
+
+😈
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+What does this even do?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+What does this even do?
+
+```js
+function limit(list) {
+    return list.filter(function (item) {
+        return item.parts.some(function (part) {
+            return part.complete;
+        });
+    });
+}
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+!["elephino"](http://www.freakingnews.com/pictures/14000/Rhino-Elephant-14396.jpg)
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+...
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Naming stuff is important
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Naming stuff is important
+
+... but hard
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+# Caching & Invalidating
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Trick Question #B
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Ever given a girlfriend (or sibling) a key to...
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Ever given a girlfriend (or sibling) a key to...
+
+-   your apartment?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Ever given a girlfriend (or sibling) a key to...
+
+-   your apartment?
+-   car?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+and it turns out...
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+and it turns out...
+
+they is CRAZY!!!
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+(you can't invalidate a copy you don't control)
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Trick Question #8
+
+Have you ever sat through a roll call in school?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Trick Question #8
+
+Have you ever sat through a roll call in school?
+
+> If you're absent, raise your hand
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Trick Question #2
+
+Are you familiar with daylight savings?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+How do you schedule an event 6 months in advance?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+How do you schedule an event 6 months in advance?
+
+... or 2 years in the future?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Trick Question #1
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Ever tried to use a React app?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Ever tried to use a React app?
+
+-   reload
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Ever tried to use a React app?
+
+-   reload
+-   reload twice
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Ever tried to use a React app?
+
+-   reload
+-   reload twice
+-   clear cache
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Ever tried to use a React app?
+
+-   reload
+-   reload twice
+-   clear cache
+-   clear cookies
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Ever tried to use a React app?
+
+-   reload
+-   reload twice
+-   clear cache
+-   clear cookies
+-   clear cache, cookies, & localStorage
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Ever tried to use a React app?
+
+-   reload
+-   reload twice
+-   clear cache
+-   clear cookies
+-   clear cache, cookies, & localStorage
+-   turn it off and on again
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Ever tried to use a React app?
+
+-   reload
+-   reload twice
+-   clear cache
+-   clear cookies
+-   clear cache, cookies, & localStorage
+-   turn it off and on again
+-   delete and reinstall... your OS
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+![](https://i.redd.it/ea4wrrd22yv41.jpg)
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Trick Question #10
+
+How do you update a website?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Trick Question #10
+
+How do you update a website?
+
+-   When the content changes?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Trick Question #10
+
+How do you update a website?
+
+-   When the content changes?
+-   When the theme is changed?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Trick Question #10
+
+How do you update a website?
+
+-   When the content changes?
+-   When the theme is changed?
+-   When the related articles change?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Trick Question #10
+
+How do you update a website?
+
+-   When the content changes?
+-   When the theme is changed?
+-   When the related articles change?
+-   When the author info changes?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Plus...
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Plus...
+
+You also have all the **off-by-one** problems too.
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Plus...
+
+You also have all the **off-by-one** problems too.
+
+😈
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Or take the opposite approach:
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Or take the opposite approach:
+
+Have you ever tried to use GraphQL?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+<video controls autoplay loop preload="auto" muted>
+<source src="https://video.twimg.com/tweet_video/E_VdvegXMAgjuYS.mp4" />
+</video>
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+# Solutions?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Hashes
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Hashes
+
+-   app.js?hash=**_abc123_**
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Hashes
+
+-   app.js?hash=**_abc123_**
+-   app.**_abc123_**.js
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## TTL
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## TTL
+
+-   Seconds
+-   UTC
+-   Local + Offset + Timezone
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+I dunno...
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+I dunno...
+
+be SMART
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+I dunno...
+
+be SMART
+
+-   Fresh
+-   Stale
+-   Expired
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+NOT Service Workers!
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+NOT Service Workers!
+
+😬
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+# Questions?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+-   👍 Like
+-   🔔 Sub [youtube.com/coolaj86](https://youtube.com/coolaj86)
+-   ➡️ Follow [twitch.tv/coolaj86](https://twitch.tv/coolaj86)
+-   🖱 Click ALL-THE-THINGS!
+
+</textarea></section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/math/math.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+Reveal.initialize({
+controls : false,
+markdown : {smartypants: true},
+controls : false,
+keyboard : true,
+hash : false,
+respondToHashChanges : false,
+				hash: true,
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath ]
+			});
+		</script>
+	</body>
+</html>
