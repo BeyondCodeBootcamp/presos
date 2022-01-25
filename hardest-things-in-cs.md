@@ -465,7 +465,7 @@ Implement **Chess** in a 1-D Array.
 
 [comment]: # "!!! data-auto-animate"
 
-# Naming things
+# 2. Naming things
 
 [comment]: # "!!! data-auto-animate"
 
@@ -709,7 +709,7 @@ Naming stuff is important
 
 [comment]: # "!!! data-auto-animate"
 
-# Caching & Invalidating
+# 1. Caching & Invalidating
 
 [comment]: # "!!! data-auto-animate"
 
