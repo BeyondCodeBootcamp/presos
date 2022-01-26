@@ -44,6 +44,24 @@ AJ ONeal <br> [@\_beyondcode](https://twitter.com/@_beyondcode) <br>
 
 [comment]: # "!!! data-auto-animate"
 
+Technophobic Technologist
+
+[comment]: # "!!! data-auto-animate"
+
+Technophobic Technologist
+
+Dangerous Wrong Thinker
+
+[comment]: # "!!! data-auto-animate"
+
+Technophobic Technologist
+
+Dangerous Wrong Thinker
+
+Equal Opportunity Offender
+
+[comment]: # "!!! data-auto-animate"
+
 oh...
 
 [comment]: # "!!! data-auto-animate"
@@ -581,17 +599,17 @@ How about a package with these?
 
 [comment]: # "!!! data-auto-animate"
 
-Industry Standard Terms
+### Industry Standard Terms
 
 [comment]: # "!!! data-auto-animate"
 
-Industry Standard Terms
+### Industry Standard Terms
 
 -   map vs migrate vs transform
 
 [comment]: # "!!! data-auto-animate"
 
-Industry Standard Terms
+### Industry Standard Terms
 
 -   token
 -   code
@@ -599,7 +617,7 @@ Industry Standard Terms
 
 [comment]: # "!!! data-auto-animate"
 
-Industry Standard Terms
+### Industry Standard Terms
 
 -   PK is Private Key... or Public Key?
 -   API Key or Secret Key?
@@ -607,50 +625,73 @@ Industry Standard Terms
 
 [comment]: # "!!! data-auto-animate"
 
-Think back to Chess
+Now think back to **Chess**...
 
 [comment]: # "!!! data-auto-animate"
 
-What do you call where the pieces go?
+What do you call **_where the pieces go_**?
 
 [comment]: # "!!! data-auto-animate"
 
-What do you call where the pieces go?
+What do you call **_where the pieces go_**?
 
 -   Slots?
 
 [comment]: # "!!! data-auto-animate"
 
-What do you call where the pieces go?
-
--   Slots?
--   Places?
-
-[comment]: # "!!! data-auto-animate"
-
-What do you call where the pieces go?
+What do you call **_where the pieces go_**?
 
 -   Slots?
 -   Places?
--   Squares?
 
 [comment]: # "!!! data-auto-animate"
 
-What do you call where the pieces go?
+What do you call **_where the pieces go_**?
 
 -   Slots?
 -   Places?
 -   Squares?
--   Cells?
 
 [comment]: # "!!! data-auto-animate"
 
-What do you call where the pieces go?
+What do you call **_where the pieces go_**?
 
 -   Slots?
 -   Places?
 -   Squares?
 -   Cells?
+
+[comment]: # "!!! data-auto-animate"
+
+What do you call **_where the pieces go_**?
+
+-   Slots?
+-   Places?
+-   Squares?
+-   Cells?
+-   Spaces?
+
+[comment]: # "!!! data-auto-animate"
+
+What do you call **_where the pieces go_**?
+
+-   Slots?
+-   Places?
+-   Squares?
+-   Cells?
+-   Spaces?
+-   Coords?
+
+[comment]: # "!!! data-auto-animate"
+
+What do you call **_where the pieces go_**?
+
+-   Slots?
+-   Places?
+-   Squares?
+-   Cells?
+-   Spaces?
+-   Coords?
 -   Thingies?
 
 [comment]: # "!!! data-auto-animate"
@@ -673,6 +714,10 @@ How about just `b[i]`?
 
 [comment]: # "!!! data-auto-animate"
 
+<small>(I vote `squares`.)</small>
+
+[comment]: # "!!! data-auto-animate"
+
 What does this even do?
 
 [comment]: # "!!! data-auto-animate"
@@ -688,6 +733,12 @@ function limit(list) {
     });
 }
 ```
+
+[comment]: # "!!! data-auto-animate"
+
+Story Time™
+
+that one pull request...
 
 [comment]: # "!!! data-auto-animate"
 
@@ -991,6 +1042,39 @@ NOT Service Workers!
 NOT Service Workers!
 
 😬
+
+[comment]: # "!!! data-auto-animate"
+
+# Summary
+
+[comment]: # "!!!"
+
+## Caching
+
+Caching is all about
+
+-   the level of granularity
+-   tolerance for error
+
+[comment]: # "!!!"
+
+## Naming things
+
+Naming things is part of _engineering_ that
+
+-   takes billable time
+-   reduces wasted time (mental load, outdated documentation, etc)
+
+## Off-by-one Errors
+
+Counting is hard because...
+
+-   0-indexed vs 1-indexed
+-   inclusive vs non-inclusive ranges
+
+We count in different ways.
+
+Edge cases and boundary conditions matter.
 
 [comment]: # "!!! data-auto-animate"
 
