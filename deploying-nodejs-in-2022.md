@@ -16,6 +16,10 @@
 
 [comment]: # "!!!"
 
+# 🤠
+
+[comment]: # "!!!"
+
 ![](https://coolaj86.com/assets/media/coolaj86-2017.jpg)
 
 AJ ONeal <br> [@\_beyondcode](https://twitter.com/@_beyondcode) <br>
@@ -256,6 +260,14 @@ sudo env PATH="${PATH}" \
 
 [comment]: # "!!!"
 
+(avoid useless abstractions, learn useful skills)
+
+[comment]: # "!!!"
+
+(2mb of JS for [6 lines of git](https://therootcompany.com/blog/how-github-does-smarter-shallow-clones/))
+
+[comment]: # "!!!"
+
 "Linux"
 
 vs
@@ -264,15 +276,23 @@ vs
 
 [comment]: # "!!!"
 
-"Linux"
+"Web Security"
 
 vs
 
-"Web Security"
+"Deploy Node.js App"
 
 [comment]: # "!!!"
 
 "High-Availability Kubernetes Cluster Containerization"
+
+vs
+
+"Deploy Node.js App"
+
+[comment]: # "!!!"
+
+"Black Box"
 
 vs
 
@@ -311,7 +331,9 @@ touch ~/srv/Caddyfile
 
 [comment]: # "!!!"
 
-Caddyfile: <a href="https://webinstall.dev/caddy">https://webinstall.dev/caddy</a>
+Caddyfile QuickStart
+
+<a href="https://webinstall.dev/caddy">https://webinstall.dev/caddy</a>
 
 [comment]: # "!!!"
 
