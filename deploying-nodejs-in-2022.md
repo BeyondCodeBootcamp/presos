@@ -366,6 +366,13 @@ sudo env PATH="${PATH}" \
 [comment]: # "!!!"
 
 ```bash
+sudo mkdir -p /var/log/journal
+sudo chown -R root:systemd-journal /var/log/journal/
+sudo sed -i 's/#\?Storage=.*/Storage=persistent/' /etc/systemd/journald.conf
+sudo systemctl restart systemd-journald
+```
+
+```bash
 sudo journalctl -xefu YOUR-PROJECT
 ```
 
