@@ -365,14 +365,31 @@ sudo env PATH="${PATH}" \
 
 [comment]: # "!!!"
 
+Enable `journalctl`:
+
+```bash
+sudo systemctl enable systemd-journald
+sudo systemctl restart systemd-journald
+```
+
+[comment]: # "!!!"
+
+If that didn't work:
+
 ```bash
 sudo mkdir -p /var/log/journal
 sudo chown -R root:systemd-journal /var/log/journal/
 sudo sed -i 's/#\?Storage=.*/Storage=persistent/' /etc/systemd/journald.conf
+
 sudo systemctl restart systemd-journald
 ```
 
+https://gist.github.com/JPvRiel/b7c185833da32631fa6ce65b40836887
+
+[comment]: # "!!!"
+
 ```bash
+sudo systemctl restart YOUR-PROJECT
 sudo journalctl -xefu YOUR-PROJECT
 ```
 
