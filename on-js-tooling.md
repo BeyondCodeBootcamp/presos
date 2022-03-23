@@ -48,13 +48,14 @@ No meta programming!
 
 [Navigating Node.js in 2022: Tools](https://beyondcodebootcamp.github.io/presos/navigating-nodejs-in-2022/#/42)
 
-1. Prettier
-2. JSLint
-3. JSDoc
+1. vim-essentials
+2. Prettier
+3. JSHint
+4. JSDoc
 
 [comment]: # "!!!"
 
-### 4. Basetag
+### 5. Basetag
 
 [comment]: # "!!!"
 
@@ -76,7 +77,7 @@ let balls = require("$/baseball/balls"); // ✅
 
 [comment]: # "!!!"
 
-### 5. Mono Repos
+### 6. Mono Repos
 
 [comment]: # "!!!"
 
@@ -129,11 +130,11 @@ https://coolaj86.com/articles/vanilla-devops-git-credentials-cheatsheet/
 
 [comment]: # "!!!"
 
-### 6. Testing
+### 7. Testing
 
 [comment]: # "!!!"
 
-<img src="https://i.imgur.com/v7vxWfU.png" />
+<img height="600px" src="https://i.imgur.com/v7vxWfU.png" />
 
 [comment]: # "!!!"
 
