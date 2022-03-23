@@ -1,0 +1,815 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>Part 2: On Node.js</title>
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+<link rel="stylesheet" href="dist/theme/white.css" id="theme">
+		<!-- Theme used for syntax highlighted code -->
+<link rel="stylesheet" href="plugin/highlight/github.css" id="highlight-theme"></head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+<section data-markdown  ><textarea data-template>
+[comment]: # "markdown: { smartypants: true }"
+
+## Part 2: On Node.js
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+<img title="node.js: official logo" src="https://nodejs.org/static/images/logos/nodejs-new-pantone-black.svg" width="60%" />
+
+https://nodejs.org/en/about/resources/
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+# Prelude
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+If you don't have a _really_ good reason to use Rust
+
+🦀
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+... you should almost certainly be using Go.
+
+🐹
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+### Why?
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+<img title="node.js: an absolute dumpster fire" src="https://i.imgur.com/OlolkHa.png" width=70% />
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+-   Microsoft - C# (TS) [WikiPedia: TypeScript](https://en.wikipedia.org/wiki/TypeScript)
+-   Yahuda Katz - Ruby (Ember) https://yehudakatz.com
+-   CoffeeScript - Ruby
+-   Elm - Erlang (Elixer)
+-   JSX - OCaml (Reason) [React to the Future](https://www.youtube.com/watch?v=5fG_lyNuEAw)
+-   Straight-up Ignorance - [TC-39 Proposal: RegExp.escape (comment)](https://github.com/tc39/proposal-regex-escaping/issues/37#issuecomment-1056902176)
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+!["node.js: too many cooks"](https://i.imgur.com/GIKXLBA.png)
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+> The Problem with React is JavaScript <br>- Creator of React
+
+<small>(paraphrased)</small>
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+React to the Future (2019)
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/5fG_lyNuEAw?start=114" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<small><a href="https://www.youtube.com/watch?v=5fG_lyNuEAw?t=114">https://youtube.com/watch?v=5fG_lyNuEAw?t=114</a></small>
+
+<small>
+<ul>
+<li>1:54 - 2:14</li>
+</ul>
+</small>
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+If you stand for nothing, You will fall for anything.
+
+💔
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+<img src="https://i.imgur.com/OwZqa2V.png" />
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+<img src="https://i.imgur.com/Ia6lnEj.png" />
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+!["classical learning curves"](https://i.imgur.com/RT2rUfV.png)
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Uo3cL4nrGOk?start=323" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+https://youtu.be/Uo3cL4nrGOk?t=323
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+I _do_ love JavaScript...
+
+but it's a minefield 💣
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+# Node.js Gems
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+### 0. Install
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Consistent, Conflict-free Install
+
+<https://webinstall.dev/node>
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+-   ~~brew~~
+-   ~~nvm~~
+-   ~~pkg~~
+-   ~~exe~~
+-   tar + webi
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+### 1. Less is More
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+JavaScript vs "The Good Parts"
+
+<img width="600px" src="https://i.imgur.com/bxmJwGr.jpg" />
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+vs ECMAScript
+
+<img width="600px" src="https://i.imgur.com/bxmJwGr.jpg" />
+
+<img height="400px" src="https://i.imgur.com/3QYPIIb.jpg" />
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+### 2. Classless
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+[beyondcodebootcamp.github.io/presos/classless-javascript](https://beyondcodebootcamp.github.io/presos/classless-javascript/)
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Classless JavaScript (2021)
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/-wz2Ued0Zkc?start=337" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<small><a href="https://www.youtube.com/watch?v=-wz2Ued0Zkc">https://youtube.com/watch?v=-wz2Ued0Zkc</a></small>
+
+<small>
+<ul>
+<li>5:37 - 6:22</li>
+</ul>
+</small>
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+-   "flat is better than nested" - [Zen of Python](https://github.com/ewjoachim/zen-of-python)
+-   serializable as JSON
+-   avoid shallow abstractions
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Single, Package-level Export
+
+```js
+var Person = module.exports;
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Simple, this-less "constructor"
+
+```js
+Person.create = function (p) {
+    var person = {
+        name: p.name || "Another Jane Doe",
+        age: p.age || 0,
+    };
+
+    // ...
+
+    return person;
+};
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Package-level public methods
+
+```js
+Person.save = async function (p) {
+    return await request({
+        url: `/api/person/${p.id}`,
+        json: p,
+    });
+};
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Private data via Closures
+
+```js
+Person.create = function (p) {
+    var person = {
+        /* ... */
+    };
+
+    person.creditCard = function () {
+        return "****-****-****-" + p.creditCard.slice(-4);
+    };
+
+    // ...
+
+    return person;
+};
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+_"Composition over Inheritance"_
+
+```js
+function createApiRequest(key, secret) {
+    return async function (data) {
+        return await request({
+            auth: { user: key, pass: secret },
+            json: data,
+        });
+    };
+}
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+### 3. Array Methods
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Don't
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+> Better to be absent of semantic meaning than to portray the **wrong** semantic meaning.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+<img src="https://i.imgur.com/wBs4K8d.jpg" />
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+> `reduce` is for **lossy** aggregation
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+```js
+[5, 4, 3, 2, 1].reduce(function (total, val) {
+    return total + val;
+});
+```
+
+<small>the sum of the whole cannot be represented as its component parts</small>
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+~~When in doubt~~ Always, `forEach()`.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+```js
+var friendsMap = {};
+
+friends.forEach(function (f) {
+    friendsMap[f.id] = f;
+});
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+### 4. ❌ Generics
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Avoid useless abstractions
+
+<small>(particularly `lodash`, syntax sugar)</small>
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+_"a little copying is better than a little dependency"_
+
+```js
+// ❌
+leftpad(str, n, c);
+```
+
+```js
+// ✅
+String#padStart(n, c)
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+_"shallow abstractions do nothing in the fight against complexity"_
+
+```js
+// ❌
+_.map(arry, fn);
+```
+
+```js
+// ✅
+arr.map(fn);
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Explicit over implicit (low-context over high-context)
+
+```js
+// ❌
+[...arr];
+```
+
+```js
+// ✅
+arr.slice(0);
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+```js
+// ❌
+const foo = (x) => !x;
+```
+
+```js
+// ✅
+function foo(x) {
+    return !x;
+}
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Ternaries are the devil's playground
+
+```js
+// ❌
+let x = cond ? "special" : "default";
+```
+
+```js
+// ✅ "make the zero value useful"
+let x = "default";
+if (cond) {
+    x = "special";
+}
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+No nesting templates
+
+```js
+// ❌ (contrived, but you get the point)
+let greeting = `Hello, ${`${p.getTitle()} ${p.getName()}`}!`;
+```
+
+```js
+// ✅
+let title = p.getTitle();
+let name = p.getName();
+let greeting = `Hello, ${title} ${name}!`;
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Stick to the built-in tooling <br><small>(unless you have a <em>very</em> good reason not to!)</small>
+
+-   pnpm
+-   yarn
+-   ... 🤮
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+**5. AJScript**
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+_"The Missing Pieces"_, on Speed Dial
+
+[github.com/coolaj86/AJScript/issues?q=label=std](https://github.com/coolaj86/AJScript/issues?q=label%3Astd)
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+-   `Date._toLocalISOString()`
+-   `Promise._sleep()`
+-   `Promise._forEach()`
+-   `Promise._map()`
+-   `Math._randomInt()`
+-   `RegExp._escape()`
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+(for top-level packages only: don't include in libraries)
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+### 6. Nothingness
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+-   null
+-   "not defined"
+-   `undefined`
+-   `delete`
+-   `false`
+-   `""`
+-   `0`
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+```js
+// 🤷‍♂️
+person.spouse = null;
+// 'object' === typeof person.spouse
+```
+
+```js
+// 🤷‍♂️
+person.spouse = undefined;
+```
+
+```js
+// 🤷‍♂️
+delete person.spouse;
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+```js
+if ("spouse" in person) {
+    // ...
+}
+```
+
+```js
+if (person.spouse) {
+    // ...
+}
+```
+
+```js
+JSON.stringify(person);
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+```js
+if ("spouse" in person) {
+    // ...
+}
+```
+
+```js
+Object.keys(person);
+```
+
+```js
+{ ...person }
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+```js
+person.felon = person.felon ?? true;
+```
+
+```js
+person.felon = person.felon || true;
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+### 7. const, let, var
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+The TRUTH about const, let, & var (2022)
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/snrAnYQ9NXE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<small><a href="https://www.youtube.com/watch?v=snrAnYQ9NXE">https://youtube.com/watch?v=snrAnYQ9NXE</a></small>
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+const: No such thing.
+
+```js
+const person = { name: "AJ" };
+
+person.name = "Mysterio";
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+ALL CAPS, or bust
+
+```js
+const PI = 3.141_592_653_589_793;
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+let go...
+
+```js
+{
+    let x = 11;
+    {
+        let x = 37;
+        {
+            let x = 42;
+        }
+    }
+    {
+        let x = 42;
+    }
+}
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+let down... (temporal dead zone)
+
+```js
+switch (x) {
+    case 11:
+        {
+            let y = 11;
+        }
+        break;
+    default: {
+        let y = 11;
+    }
+}
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+let me die...
+
+```js
+foo: {
+    bar: "baz";
+}
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+`var`: Just Works™
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+### 8. await / catch
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Don't trade one pyramid of doom for another...
+
+```js
+// ❌
+try {
+    asyncable();
+} catch (e) {
+    // swallow error ??
+}
+```
+
+```js
+// ✅
+await asyncable().catch(function (err) {
+    // Correct or Classify, but do not Catch to silence...
+    // (let errors bubble until they burst)
+});
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+### 9. async router
+
+(proper error handling in express)
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+https://github.com/therootcompany/async-router
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Async, Await, and Promises in Express for Node.js
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/XFn0SJmGYs4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<small><a href="https://www.youtube.com/watch?v=XFn0SJmGYs4">https://youtube.com/watch?v=XFn0SJmGYs4</a></small>
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+```js
+let server = express();
+let app = new require("@root/async-router").Router();
+
+app.get("/api/hello", async function (req, res) {
+    // ...
+});
+
+server.use(app);
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Alternatively...
+
+```js
+let server = express();
+let app = express.Router();
+
+app.get("/api/hello", function (req, res) {
+    Promise.resolve()
+        .then(async function (req, res) {
+            // ...
+        })
+        .catch(next);
+});
+
+server.use(app);
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Use the built-in error handler!
+
+```js
+app.use("/", function (err, req, res, next) {
+    if (isSafe(err)) {
+        res.json(err);
+        return;
+    }
+
+    console.error(err);
+});
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+### 10. Buffers & Streams
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Pipe, whenever possible.
+
+```js
+input.pipe(output);
+```
+
+```js
+let rs = Fs.createReadStream(fullpath);
+rs.name; // the file's name!
+rs.pipe(res);
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Never use `data`!
+
+```js
+rs.on("readable", function () {
+    for (;;) {
+        var chunk = rs.read();
+
+        if (!chunk) {
+            break;
+        }
+
+        // ...
+    }
+});
+```
+
+</textarea></section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/math/math.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+Reveal.initialize({
+controls : false,
+markdown : {smartypants: true},
+controls : false,
+keyboard : true,
+hash : false,
+respondToHashChanges : false,
+				hash: true,
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath ]
+			});
+		</script>
+	</body>
+</html>
