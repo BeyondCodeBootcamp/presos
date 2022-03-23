@@ -241,6 +241,14 @@ Overheard at the Water Cooler...
 
 [comment]: # "!!!"
 
+> RISC
+
+[comment]: # "!!!"
+
+<img src="https://images.macrumors.com/t/vAKsAXh9KGPBHskUiaqA-t6Pu6g=/2500x0/filters:no_upscale()/article-new/2022/03/apple-silicon-chips.jpg" />
+
+[comment]: # "!!!"
+
 ### 2. Emergent Design
 
 (Delay Decision-Making)
