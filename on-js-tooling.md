@@ -14,6 +14,8 @@
 
 [comment]: # "!!!"
 
+Enums are for tooling.
+
 ```js
 var People = modules.exports;
 
@@ -22,6 +24,25 @@ People.types = {
     BAD: "BAD",
 };
 ```
+
+<small>(auto-complete, yada yada)</small>
+
+[comment]: # "!!!"
+
+No meta programming!
+
+```js
+// ❌
+["GOOD", "BAD"].forEach(function (val) {
+    People.types[val] = val;
+});
+```
+
+<br>
+
+<small>... because `tsc` (the TS hinter) doesn't know the first thing about JS... </small>
+
+🤦‍♀️
 
 [comment]: # "!!!"
 

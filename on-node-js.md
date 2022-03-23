@@ -103,6 +103,16 @@ but it's a minefield 💣
 
 [comment]: # "!!!"
 
+Y U No TypeScript!?!?
+
+[comment]: # "!!!"
+
+> When you mix two complex things together, you typically get the multiplication of their demerits, not the sum of their benefits
+
+(again, [WikiPedia: TypeScript](https://en.wikipedia.org/wiki/TypeScript))
+
+[comment]: # "!!!"
+
 # Node.js Gems
 
 [comment]: # "!!!"
