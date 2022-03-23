@@ -52,6 +52,8 @@ A "Live at Head" Language
 
 > The most important archaeological finds of the 22nd century.
 
+<small><a href="https://creedsofcraftsmanship.com">Creeds of Craftsmanship . com</a></small>
+
 [comment]: # "!!!"
 
 The Zen of Python (2004)
