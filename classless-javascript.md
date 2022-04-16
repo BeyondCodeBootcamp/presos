@@ -8,10 +8,8 @@
 
 # Classless JavaScript
 
-AJ ONeal
-<br>
-[@\_beyondcode](https://twitter.com/@_beyondcode)
-<br>
+AJ ONeal <br>
+[@\_beyondcode](https://twitter.com/@_beyondcode) <br>
 [twitch.tv/coolaj86](https://twitch.tv/coolaj86)
 
 [comment]: # "!!!"
@@ -32,31 +30,32 @@ var Person = module.exports;
 
 ```js
 Person.create = function (p) {
-    var person = {
-        name: p.name || "Another Jane Doe",
-        age: p.age || 0,
-    };
+  var person = {
+    name: p.name || "Another Jane Doe",
+    age: p.age || 0,
+  };
 
-    person.creditCard = function () {
-        return "****-****-****-" + p.creditCard.slice(-4);
-    };
+  person.creditCard = function () {
+    return "****-****-****-" + p.creditCard.slice(-4);
+  };
 
-    return person;
+  return person;
 };
 ```
 
 ```js
 Person.save = async function (p) {
-    return await request({
-        url: `/api/person/${p.id}`,
-        json: p,
-    });
+  return await request({
+    url: `/api/person/${p.id}`,
+    json: p,
+  });
 };
 ```
 
 [comment]: # "!!!"
 
-> I made up the term 'object-oriented', and I can tell you I didn't have C++ in mind
+> I made up the term 'object-oriented', and I can tell you I
+> didn't have C++ in mind
 >
 > \- Alan Kay, OOPSLA '97
 
@@ -68,9 +67,7 @@ JavaScript doesn't have classes.
 
 [comment]: # "!!!"
 
-Why would anyone _want_
-<br>
-to do classes in JavaScript?
+Why would anyone _want_ <br> to do classes in JavaScript?
 
 [comment]: # "!!!"
 
@@ -80,40 +77,40 @@ to do classes in JavaScript?
 
 ## Benefits of JavaScript
 
--   Serializable
+- Serializable
 
 [comment]: # "!!! data-auto-animate"
 
 ## Benefits of JavaScript
 
--   Serializable
--   Duck-Typed
+- Serializable
+- Duck-Typed
 
 [comment]: # "!!! data-auto-animate"
 
 ## Benefits of JavaScript
 
--   Serializable
--   Duck-Typed
--   Closures
+- Serializable
+- Duck-Typed
+- Closures
 
 [comment]: # "!!! data-auto-animate"
 
 ## Benefits of JavaScript
 
--   Serializable
--   Duck-Typed
--   Closures
--   Async
+- Serializable
+- Duck-Typed
+- Closures
+- Async
 
 [comment]: # "!!! data-auto-animate"
 
 ## Benefits of JavaScript
 
--   Serializable
--   Duck-Typed
--   Closures
--   Async
+- Serializable
+- Duck-Typed
+- Closures
+- Async
 
 Pretty much the same as Go and Rust.
 
@@ -123,8 +120,8 @@ Pretty much the same as Go and Rust.
 
 ```json5
 {
-    name: "John Doe",
-    age: 37,
+  name: "John Doe",
+  age: 37,
 }
 ```
 
@@ -137,7 +134,7 @@ JSON, APIs, Database
 ```js
 // if is Promise-like
 if (o.then) {
-    return await o;
+  return await o;
 }
 return o;
 ```
@@ -149,13 +146,13 @@ Mix and match capabilities.
 ## Closures
 
 ```js
-function createApiRequest(key, secret) {
-    return async function (data) {
-        return await request({
-            auth: { user: key, pass: secret },
-            json: data,
-        });
-    };
+function createApiRequester(key, secret) {
+  return async function (data) {
+    return await request({
+      auth: { user: key, pass: secret },
+      json: data,
+    });
+  };
 }
 ```
 
@@ -163,13 +160,27 @@ Composable, ad-hoc state.
 
 [comment]: # "!!!"
 
+```js
+Person.api = createApiRequester(
+  "https://example.co",
+  "my-user",
+  "my-token"
+);
+
+await Person.api("/api/person/1");
+
+await person.api("/api/person/1", { name: "AJ" });
+```
+
+[comment]: # "!!!"
+
 ## Async
 
 ```js
 await Promise.all([
-    //
-    apiRequest(opts),
-    fs.readFile(opts),
+  //
+  apiRequest(opts),
+  fs.readFile(opts),
 ]);
 ```
 
@@ -179,9 +190,9 @@ Non-blocking event loop, without mutexes.
 
 ## Detriments of Classes
 
--   Awkward State (_this_-ness)
--   Inheritance
--   General Complexity
+- Awkward State (_this_-ness)
+- Inheritance
+- General Complexity
 
 Pretty much the same as C#, C++, and Java.
 
@@ -193,14 +204,14 @@ Pretty much the same as C#, C++, and Java.
 var Person = module.exports;
 
 Person.create = function (p) {
-    var person = {
-        name: p.name || "Another Jane Doe",
-        age: p.age || 0,
-    };
+  var person = {
+    name: p.name || "Another Jane Doe",
+    age: p.age || 0,
+  };
 
-    // ...
+  // ...
 
-    return person;
+  return person;
 };
 ```
 
@@ -212,7 +223,7 @@ Plain-old functions & JSON.
 
 ```js
 Person.greet = function (p, other) {
-    return `Hello ${other.name}! I'm ${p.name}!`;
+  return `Hello ${other.name}! I'm ${p.name}!`;
 };
 ```
 
@@ -224,13 +235,13 @@ Attach functions at the package (factory) level.
 
 ```js
 Person.create = function (p) {
-    // ...
-    
-    person.greet = function (other) {
-        return `Hello ${other.name}! I'm ${person.name}!`;
-    };
+  // ...
 
-    // ...
+  person.greet = function (other) {
+    return `Hello ${other.name}! I'm ${person.name}!`;
+  };
+
+  // ...
 };
 ```
 
@@ -240,13 +251,13 @@ Person.create = function (p) {
 
 ```js
 Person.create = function (p) {
-    // ...
-    
-    person.greet = function (other) {
-        return `Hello ${other.name}! I'm ${person.name}!`;
-    };
+  // ...
 
-    // ...
+  person.greet = function (other) {
+    return `Hello ${other.name}! I'm ${person.name}!`;
+  };
+
+  // ...
 };
 ```
 
@@ -258,10 +269,10 @@ Taints the object (too much like classes).
 
 ```js
 Person.save = async function (p) {
-    return await request({
-        url: `/api/person/${p.id}`,
-        json: p,
-    });
+  return await request({
+    url: `/api/person/${p.id}`,
+    json: p,
+  });
 };
 ```
 
@@ -277,10 +288,10 @@ For "public" or "static" methods.
 
 ```js
 Person.create = function (p) {
-    let cc = p.creditCard;
-    p.creditCard = null;
+  let cc = p.creditCard;
+  p.creditCard = null;
 
-    // ...
+  // ...
 };
 ```
 
@@ -290,19 +301,19 @@ Person.create = function (p) {
 
 ```js
 Person.create = function (p) {
-    let cc = p.creditCard;
-    p.creditCard = null;
+  let cc = p.creditCard;
+  p.creditCard = null;
 
-    // ...
+  // ...
 };
 ```
 
 ```js
 person.creditCard = function (expose) {
-    if (expose) {
-        return cc;
-    }
-    return "****-****-****-" + cc.slice(-4);
+  if (expose) {
+    return cc;
+  }
+  return "****-****-****-" + cc.slice(-4);
 };
 ```
 
@@ -312,19 +323,19 @@ person.creditCard = function (expose) {
 
 ```js
 Person.create = function (p) {
-    let cc = p.creditCard;
-    p.creditCard = null;
+  let cc = p.creditCard;
+  p.creditCard = null;
 
-    // ...
+  // ...
 };
 ```
 
 ```js
 person.creditCard = function (expose) {
-    if (expose) {
-        return cc;
-    }
-    return "****-****-****-" + cc.slice(-4);
+  if (expose) {
+    return cc;
+  }
+  return "****-****-****-" + cc.slice(-4);
 };
 ```
 

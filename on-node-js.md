@@ -40,12 +40,15 @@ If you don't have a _really_ good reason to use Rust
 
 [comment]: # "!!!"
 
--   Microsoft - C# (TS) [WikiPedia: TypeScript](https://en.wikipedia.org/wiki/TypeScript)
--   Yahuda Katz - Ruby (Ember) https://yehudakatz.com
--   CoffeeScript - Ruby
--   Elm - Erlang (Elixer)
--   JSX - OCaml (Reason) [React to the Future](https://www.youtube.com/watch?v=5fG_lyNuEAw)
--   Straight-up Ignorance - [TC-39 Proposal: RegExp.escape (comment)](https://github.com/tc39/proposal-regex-escaping/issues/37#issuecomment-1056902176)
+- Microsoft - C# (TS)
+  [WikiPedia: TypeScript](https://en.wikipedia.org/wiki/TypeScript)
+- Yahuda Katz - Ruby (Ember) https://yehudakatz.com
+- CoffeeScript - Ruby
+- Elm - Erlang (Elixer)
+- JSX - OCaml (Reason)
+  [React to the Future](https://www.youtube.com/watch?v=5fG_lyNuEAw)
+- Straight-up Ignorance -
+  [TC-39 Proposal: RegExp.escape (comment)](https://github.com/tc39/proposal-regex-escaping/issues/37#issuecomment-1056902176)
 
 [comment]: # "!!!"
 
@@ -53,7 +56,8 @@ If you don't have a _really_ good reason to use Rust
 
 [comment]: # "!!!"
 
-> The Problem with React is JavaScript <br>- Creator of React
+> The Problem with React is JavaScript <br>- Creator of
+> React
 
 <small>(paraphrased)</small>
 
@@ -107,9 +111,12 @@ Y U No TypeScript!?!?
 
 [comment]: # "!!!"
 
-> When you mix two complex things together, you typically get the multiplication of their demerits, not the sum of their benefits
+> When you mix two complex things together, you typically
+> get the multiplication of their demerits, not the sum of
+> their benefits
 
-(again, [WikiPedia: TypeScript](https://en.wikipedia.org/wiki/TypeScript))
+(again,
+[WikiPedia: TypeScript](https://en.wikipedia.org/wiki/TypeScript))
 
 [comment]: # "!!!"
 
@@ -127,11 +134,11 @@ Consistent, Conflict-free Install
 
 [comment]: # "!!!"
 
--   ~~brew~~
--   ~~nvm~~
--   ~~pkg~~
--   ~~exe~~
--   tar + webi
+- ~~brew~~
+- ~~nvm~~
+- ~~pkg~~
+- ~~exe~~
+- tar + webi
 
 [comment]: # "!!!"
 
@@ -175,9 +182,10 @@ Classless JavaScript (2021)
 
 [comment]: # "!!!"
 
--   "flat is better than nested" - [Zen of Python](https://github.com/ewjoachim/zen-of-python)
--   serializable as JSON
--   avoid shallow abstractions
+- "flat is better than nested" -
+  [Zen of Python](https://github.com/ewjoachim/zen-of-python)
+- serializable as JSON
+- avoid shallow abstractions
 
 [comment]: # "!!!"
 
@@ -193,14 +201,14 @@ Simple, this-less "constructor"
 
 ```js
 Person.create = function (p) {
-    var person = {
-        name: p.name || "Another Jane Doe",
-        age: p.age || 0,
-    };
+  var person = {
+    name: p.name || "Another Jane Doe",
+    age: p.age || 0,
+  };
 
-    // ...
+  // ...
 
-    return person;
+  return person;
 };
 ```
 
@@ -210,10 +218,10 @@ Package-level public methods
 
 ```js
 Person.save = async function (p) {
-    return await request({
-        url: `/api/person/${p.id}`,
-        json: p,
-    });
+  return await request({
+    url: `/api/person/${p.id}`,
+    json: p,
+  });
 };
 ```
 
@@ -223,17 +231,17 @@ Private data via Closures
 
 ```js
 Person.create = function (p) {
-    var person = {
-        /* ... */
-    };
+  var person = {
+    /* ... */
+  };
 
-    person.creditCard = function () {
-        return "****-****-****-" + p.creditCard.slice(-4);
-    };
+  person.creditCard = function () {
+    return "****-****-****-" + p.creditCard.slice(-4);
+  };
 
-    // ...
+  // ...
 
-    return person;
+  return person;
 };
 ```
 
@@ -242,14 +250,29 @@ Person.create = function (p) {
 _"Composition over Inheritance"_
 
 ```js
-function createApiRequest(key, secret) {
-    return async function (data) {
-        return await request({
-            auth: { user: key, pass: secret },
-            json: data,
-        });
-    };
+function createApiRequester(baseUrl, key, secret) {
+  return async function (url, data) {
+    return await request({
+      url: `${baseUrl}/${url}`,
+      auth: { user: key, pass: secret },
+      json: data,
+    });
+  };
 }
+```
+
+[comment]: # "!!!"
+
+```js
+Person.api = createApiRequester(
+  "https://example.co",
+  "my-user",
+  "my-token"
+);
+
+await Person.api("/api/person/1");
+
+await person.api("/api/person/1", { name: "AJ" });
 ```
 
 [comment]: # "!!!"
@@ -262,7 +285,8 @@ Don't
 
 [comment]: # "!!!"
 
-> Better to be absent of semantic meaning than to portray the **wrong** semantic meaning.
+> Better to be absent of semantic meaning than to portray
+> the **wrong** semantic meaning.
 
 [comment]: # "!!!"
 
@@ -276,11 +300,12 @@ Don't
 
 ```js
 [5, 4, 3, 2, 1].reduce(function (total, val) {
-    return total + val;
+  return total + val;
 });
 ```
 
-<small>the sum of the whole cannot be represented as its component parts</small>
+<small>the sum of the whole cannot be represented as its
+component parts</small>
 
 [comment]: # "!!!"
 
@@ -292,7 +317,7 @@ Don't
 var friendsMap = {};
 
 friends.forEach(function (f) {
-    friendsMap[f.id] = f;
+  friendsMap[f.id] = f;
 });
 ```
 
@@ -322,7 +347,8 @@ String#padStart(n, c)
 
 [comment]: # "!!!"
 
-_"shallow abstractions do nothing in the fight against complexity"_
+_"shallow abstractions do nothing in the fight against
+complexity"_
 
 ```js
 // ❌
@@ -358,7 +384,7 @@ const foo = (x) => !x;
 ```js
 // ✅
 function foo(x) {
-    return !x;
+  return !x;
 }
 ```
 
@@ -375,7 +401,7 @@ let x = cond ? "special" : "default";
 // ✅ "make the zero value useful"
 let x = "default";
 if (cond) {
-    x = "special";
+  x = "special";
 }
 ```
 
@@ -397,11 +423,12 @@ let greeting = `Hello, ${title} ${name}!`;
 
 [comment]: # "!!!"
 
-Stick to the built-in tooling <br><small>(unless you have a <em>very</em> good reason not to!)</small>
+Stick to the built-in tooling <br><small>(unless you have a
+<em>very</em> good reason not to!)</small>
 
--   pnpm
--   yarn
--   ... 🤮
+- pnpm
+- yarn
+- ... 🤮
 
 [comment]: # "!!!"
 
@@ -415,12 +442,12 @@ _"The Missing Pieces"_, on Speed Dial
 
 [comment]: # "!!!"
 
--   `Date._toLocalISOString()`
--   `Promise._sleep()`
--   `Promise._forEach()`
--   `Promise._map()`
--   `Math._randomInt()`
--   `RegExp._escape()`
+- `Date._toLocalISOString()`
+- `Promise._sleep()`
+- `Promise._forEach()`
+- `Promise._map()`
+- `Math._randomInt()`
+- `RegExp._escape()`
 
 [comment]: # "!!!"
 
@@ -432,13 +459,13 @@ _"The Missing Pieces"_, on Speed Dial
 
 [comment]: # "!!!"
 
--   null
--   "not defined"
--   `undefined`
--   `delete`
--   `false`
--   `""`
--   `0`
+- null
+- "not defined"
+- `undefined`
+- `delete`
+- `false`
+- `""`
+- `0`
 
 [comment]: # "!!!"
 
@@ -462,13 +489,13 @@ delete person.spouse;
 
 ```js
 if ("spouse" in person) {
-    // ...
+  // ...
 }
 ```
 
 ```js
 if (person.spouse) {
-    // ...
+  // ...
 }
 ```
 
@@ -480,7 +507,7 @@ JSON.stringify(person);
 
 ```js
 if ("spouse" in person) {
-    // ...
+  // ...
 }
 ```
 
@@ -538,16 +565,16 @@ let go...
 
 ```js
 {
-    let x = 11;
+  let x = 11;
+  {
+    let x = 37;
     {
-        let x = 37;
-        {
-            let x = 42;
-        }
+      let x = 42;
     }
-    {
-        let x = 42;
-    }
+  }
+  {
+    let x = 42;
+  }
 }
 ```
 
@@ -557,14 +584,14 @@ let down... (temporal dead zone)
 
 ```js
 switch (x) {
-    case 11:
-        {
-            let y = 11;
-        }
-        break;
-    default: {
-        let y = 11;
+  case 11:
+    {
+      let y = 11;
     }
+    break;
+  default: {
+    let y = 11;
+  }
 }
 ```
 
@@ -574,7 +601,7 @@ let me die...
 
 ```js
 foo: {
-    bar: "baz";
+  bar: "baz";
 }
 ```
 
@@ -593,17 +620,17 @@ Don't trade one pyramid of doom for another...
 ```js
 // ❌
 try {
-    asyncable();
+  asyncable();
 } catch (e) {
-    // swallow error ??
+  // swallow error ??
 }
 ```
 
 ```js
 // ✅
 await asyncable().catch(function (err) {
-    // Correct or Classify, but do not Catch to silence...
-    // (let errors bubble until they burst)
+  // Correct or Classify, but do not Catch to silence...
+  // (let errors bubble until they burst)
 });
 ```
 
@@ -632,7 +659,7 @@ let server = express();
 let app = new require("@root/async-router").Router();
 
 app.get("/api/hello", async function (req, res) {
-    // ...
+  // ...
 });
 
 server.use(app);
@@ -647,11 +674,11 @@ let server = express();
 let app = express.Router();
 
 app.get("/api/hello", function (req, res) {
-    Promise.resolve()
-        .then(async function (req, res) {
-            // ...
-        })
-        .catch(next);
+  Promise.resolve()
+    .then(async function (req, res) {
+      // ...
+    })
+    .catch(next);
 });
 
 server.use(app);
@@ -663,12 +690,12 @@ Use the built-in error handler!
 
 ```js
 app.use("/", function (err, req, res, next) {
-    if (isSafe(err)) {
-        res.json(err);
-        return;
-    }
+  if (isSafe(err)) {
+    res.json(err);
+    return;
+  }
 
-    console.error(err);
+  console.error(err);
 });
 ```
 
@@ -696,15 +723,15 @@ Never use `data`!
 
 ```js
 rs.on("readable", function () {
-    for (;;) {
-        var chunk = rs.read();
+  for (;;) {
+    var chunk = rs.read();
 
-        if (!chunk) {
-            break;
-        }
-
-        // ...
+    if (!chunk) {
+      break;
     }
+
+    // ...
+  }
 });
 ```
 
