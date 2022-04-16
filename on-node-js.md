@@ -696,6 +696,8 @@ app.use("/", function (err, req, res, next) {
   }
 
   console.error(err);
+  res.statusCode = 500;
+  res.json({ message: "internal error" });
 });
 ```
 
