@@ -1,0 +1,571 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>Go Proverbs</title>
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+<link rel="stylesheet" href="dist/theme/white.css" id="theme">
+		<!-- Theme used for syntax highlighted code -->
+<link rel="stylesheet" href="plugin/highlight/github.min.css" id="highlight-theme"></head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+<section data-markdown  ><textarea data-template>
+[comment]: # "markdown: { smartypants: true }"
+
+## Go Proverbs
+
+(JavaScript Edition!)
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+## ~~Go~~ Node Proverbs
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+AJ ONeal <br>
+[@\_beyondcode](https://twitter.com/@_beyondcode) <br>
+[twitch.tv/coolaj86](https://twitch.tv/coolaj86)
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Dangerous Wrong Thinker
+
+Equal Opportunity Offender
+
+Technophobic Technologist Extraordinairé
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Creeds of Craftsmanship
+
+> The most important archaeological finds of the 22nd
+> century.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+- The Zen of Python
+- The Go Proverbs
+- ... (more to come)
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Go Proverbs with Rob Pike
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/PAAkCSZUG1c?start=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<small><a href="https://www.youtube.com/watch?v=PAAkCSZUG1c&t=0s">https://youtube.com/watch?v=PAAkCSZUG1c&t=0s</a></small>
+
+<small><a href="https://creedsofcraftsmanship.com">Creeds of
+Craftsmanship . com</a></small>
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+1\) Don't communicate by sharing memory, share memory by
+communicating.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Don't communicate by sharing memory...
+
+```js
+var done = false;
+
+if (done) {
+  // ...
+}
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Share memory by communicating
+
+```js
+promise.then(...);
+```
+
+```js
+$el.on('click', function () { ... });
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+2\) Concurrency is not parallelism.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Concurrency
+
+```js
+app.get("/api/hello", function (req, res) {
+  // ...
+  res.json({
+    success: true,
+  });
+});
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Parallelism
+
+```js
+Promise.all(photos.map(Resizer.resize));
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+3\) Channels orchestrate; mutexes serialize.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+~~3\) Channels orchestrate; mutexes serialize.~~
+
+3\) Promises & Events orchestrate; await serializes.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Orchestration
+
+```js
+await Promise.all([
+  Promise.race(getMilk(), getSoy()),
+  Promise.race(getEggs(), getApplesauce()),
+  getDishes(),
+  getUtensils(),
+]);
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Serialization (Chaining)
+
+```js
+await mix();
+await bake();
+await serve();
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+4\) The bigger the interface, the weaker the abstraction.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Small interface
+
+```js
+Database.engine = {
+  get: async function (key) {
+    let path = safeJoin(dir, key);
+    return await fs.readFile(path, "utf8");
+  },
+  set: async function (key, text) {
+    await fs.writeFile(key, text, "utf8");
+  },
+};
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Big interface
+
+```js
+Database.engine = {
+  get: function (/* ... */) {},
+  set: function (/* ... */) {},
+  index: function (/* ... */) {},
+  remove: function (/* ... */) {},
+  findBy: function (/* ... */) {},
+  createCursor: function (/* ... */) {},
+  createTransaction: function (/* ... */) {},
+};
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+5\) Make the zero value useful.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Ugly:
+
+```js
+const foo = hasBaz ? "baz" : "bar";
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Useful:
+
+```js
+let foo = "bar";
+if (hasBaz) {
+  foo = "baz";
+}
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+~~5\) Make the zero value useful.~~
+
+5b\) Make the unexpected value useful.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Dangerous
+
+```js
+let isExpired = token.expires > Date.now();
+if (isExpired) {
+  // ...
+}
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Safe
+
+```js
+let isFresh = token.expires < Date.now();
+if (!isFresh) {
+  // ...
+}
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+6\) interface{} says nothing.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+```js
+// TODO
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+7\) Gofmt's style is no one's favorite, yet `gofmt` is
+everyone's favorite.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+~~7\) Gofmt's style is no one's favorite, yet `gofmt` is
+everyone's favorite.~~
+
+7\) Prettier's style is no one's favorite, yet `prettier` is
+everyone's favorite.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+`package.json`:
+
+```json
+{
+  "scripts": {
+    "fmt": "npx prettier@2 -w '**/*.{js,md}'"
+  }
+}
+```
+
+```js
+npm run fmt
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+[The Prettier Rationale](https://prettier.io/docs/en/rationale.html)
+
+<https://prettier.io/docs/en/rationale.html>
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+8\) A little copying is better than a little dependency.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+## `leftPad`
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+## `lodash`
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+```js
+Object.keys(obj).forEach(function (key) {
+  let val = obj[key];
+  // ...
+});
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+9\) Syscall must always be guarded with build tags.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+# 🤷‍♂️
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+10\) Cgo must always be guarded with build tags.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+# 🤷‍♂️
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+11\) Cgo is not Go.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+~~11\) Cgo is not Go.~~
+
+- JSX is not JS.
+- ECMAScript is not JavaScript.
+- Babel is not ECMAScript.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+12\) With the unsafe package there are no guarantees.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+# 🤷‍♂️
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+13\) Clear is better than clever.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Clear:
+
+```js
+let foo = "bar";
+if (hasBaz) {
+  foo = "baz";
+}
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Clever:
+
+```js
+const foo = hasBaz ? "baz" : "bar";
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+14\) Reflection is never clear.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+~~14\) Reflection is never clear.~~
+
+14\) Meta programming is never clear.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+```js
+thing.count += 1;
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+```js
+Object.defineProperty(thing, "count", {
+  get: function () {
+    return thing.count || 0;
+  },
+  writable: false,
+});
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+```js
+let thing = {
+  count: 0,
+};
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+15\) Errors are values.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Bad:
+
+```js
+try {
+  await doStuff();
+} catch (e) {
+  // ...
+}
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Good:
+
+```js
+doStuff().catch(function (err) {
+  // handle or rethrow
+});
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+16\) Don't just check errors, handle them gracefully.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Check:
+
+```js
+doStuff().catch(function (err) {
+  res.end("oops!");
+});
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Handler:
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+```js
+doStuff().catch(function (err) {
+  if (Db.noRecord === err) {
+    return {};
+  }
+  throw err;
+});
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+17\) Design the architecture, name the components, document
+the details.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+# 👍
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+18\) Documentation is for users.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+# 📝
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+19\) Don't panic.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+```js
+await doStuff().catch(...);
+```
+
+</textarea></section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/math/math.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+Reveal.initialize({
+controls : false,
+markdown : {smartypants: true},
+controls : false,
+keyboard : true,
+hash : false,
+respondToHashChanges : false,
+				hash: true,
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath ]
+			});
+		</script>
+	</body>
+</html>
