@@ -16,6 +16,10 @@
 
 [comment]: # "!!!"
 
+<https://beyondcodebootcamp.github.io/presos/go-proverbs-for-js/>
+
+[comment]: # "!!!"
+
 AJ ONeal <br>
 [@\_beyondcode](https://twitter.com/@_beyondcode) <br>
 [twitch.tv/coolaj86](https://twitch.tv/coolaj86)
