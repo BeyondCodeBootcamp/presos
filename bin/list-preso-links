@@ -1,0 +1,51 @@
+#!/bin/sh
+
+# list-preso-links
+#
+# List GitHub Pages markdown links for each presentation, sorted by date.
+#
+# Usage:
+#
+#   ./bin/list-preso-links
+#
+# Example output:
+#
+#   <!-- [2022-03-23 01:38:54 -0600] `const`, `let`, `var` -->
+#   - [Const Let Var](https://beyondcodebootcamp.github.io/presos/const-let-var)
+#   <!-- [2022-03-23 01:38:54 -0600] Whole Numbers<br>in Programming -->
+#   - [Integer Division](https://beyondcodebootcamp.github.io/presos/integer-division)
+
+my_base="https://beyondcodebootcamp.github.io/presos"
+
+list() {
+    for my_preso in *.md; do
+        if [ "README.md" = "$my_preso" ]; then
+            continue
+        fi
+        my_name="$(
+            basename "$my_preso" ".md"
+        )"
+
+        my_date="$(
+            git log --diff-filter=A --format=%ci -- byu-2022.md |
+                grep '\d\+-\d\+-\d\+ \d\+:\d\+:\d\+'
+        )"
+        my_first_slide="$(
+            grep -m 1 '^#' "$my_preso" |
+                cut -d' ' -f 2-
+        )"
+
+        my_title="$(
+            echo "$my_name" |
+                perl -pe 's/(^|-)(\w)/ \U$2/g' |
+                cut -d' ' -f 2-
+        )"
+
+        echo "- <!-- [$my_date] $my_first_slide --> [$my_title]($my_base/$my_name)"
+    done
+}
+
+list |
+    sort -ir |
+    perl -pe 's/-->/-->\n-/g' |
+    perl -pe 's/- <!--/  <!--/g'
