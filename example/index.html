@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>Great Title</title>
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+<link rel="stylesheet" href="dist/theme/white.css" id="theme">
+		<!-- Theme used for syntax highlighted code -->
+<link rel="stylesheet" href="plugin/highlight/zenburn.min.css" id="highlight-theme"></head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+<section data-markdown  ><textarea data-template>
+[comment]: # "markdown: { smartypants: true }"
+
+# Great Title
+
+A great slide
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+# Two
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+# Three
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+# Four
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+# A Second Slide
+
+Another great slide
+
+</textarea></section>
+<section data-markdown  data-auto-animate data-background-color='aquamarine'><textarea data-template>
+
+# An Animated Slide
+
+A really WOW slide
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```js [1-2|3|4]
+let a = 1;
+let b = 2;
+let c = (x) => 1 + 2 + x;
+c(3);
+```
+
+<!-- .element: data-id="code" -->
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```js [5]
+let a = 1;
+let b = 2;
+let c = (x) => 1 + 2 + x;
+c(3);
+c(5);
+```
+
+<!-- .element: data-id="code" -->
+
+</textarea></section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/math/math.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+Reveal.initialize({
+controls : false,
+markdown : {smartypants: true},
+controls : false,
+keyboard : true,
+hash : false,
+respondToHashChanges : false,
+				hash: true,
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath ]
+			});
+		</script>
+	</body>
+</html>
