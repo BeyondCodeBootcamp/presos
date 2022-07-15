@@ -8,7 +8,7 @@
 
 ## Promises
 
-<https://beyondcodebootcamp.github.io/presos/js-promises/>
+<small><a href="https://beyondcodebootcamp.github.io/presos/js-promises/">https://beyondcodebootcamp.github.io/presos/js-promises/</a></small>
 
 [comment]: # "!!!"
 
