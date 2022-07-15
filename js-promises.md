@@ -8,6 +8,9 @@
 
 ## Promises
 
+<small>This Presentation, on YouTube: <br>
+<a href="https://youtu.be/xkc2ejOpStw">https://youtu.be/xkc2ejOpStw</a></small>
+
 <small><a href="https://beyondcodebootcamp.github.io/presos/js-promises/">https://beyondcodebootcamp.github.io/presos/js-promises/</a></small>
 
 [comment]: # "!!!"
