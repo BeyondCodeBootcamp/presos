@@ -176,7 +176,7 @@ let promise = {
 
   resolve: function (result) {
     promise._callbacks.forEach(function (fn) {
-      fn();
+      fn(result);
     });
   },
 };
@@ -193,7 +193,7 @@ let promise = {
 
   resolve: function (result) {
     promise._callbacks.forEach(function (fn) {
-      fn();
+      fn(result);
     });
   },
 };
@@ -213,12 +213,12 @@ let promise = {
 
   resolve: function (result) {
     promise._callbacks.forEach(function (fn) {
-      fn();
+      fn(result);
     });
   },
-  reject: function (result) {
+  reject: function (err) {
     promise._errbacks.forEach(function (fn) {
-      fn();
+      fn(err);
     });
   },
 };
@@ -235,12 +235,12 @@ let promise = {
 
   resolve: function (result) {
     promise._callbacks.forEach(function (fn) {
-      fn();
+      fn(result);
     });
   },
-  reject: function (result) {
+  reject: function (err) {
     promise._errbacks.forEach(function (fn) {
-      fn();
+      fn(err);
     });
   },
 };
@@ -416,10 +416,17 @@ async function getUsers() {
 Always `await .catch()`.
 
 ```js
-async function getUsers() {
-  return await DB.Users.all();
-}
+let user = Users.getOrCreate(email).catch(function (err) {
+  if ("NOT_FOUND" === err.code) {
+    return Foo.create();
+  }
+
+  throw err;
+});
 ```
 
 [comment]: # "!!! data-auto-animate"
+
+## FIN
+
 [comment]: # "!!! data-auto-animate"
