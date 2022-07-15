@@ -12,6 +12,16 @@
 
 [comment]: # "!!!"
 
+Helpful links:
+
+- [Promise.\_map(arr)](https://github.com/coolaj86/AJScript/issues/14) -
+  sequential execution
+- [Promise.\_parallel(arr)](https://github.com/coolaj86/AJScript/issues/9) -
+  batch execution
+- [Crock on JS: Function the Ultimate](https://youtu.be/ya4UHuXNygM?list=PLxki0D-ilnqbtvVf7xKP0gmIgp5UPS9hu&t=2564)
+
+[comment]: # "!!!"
+
 AJ ONeal <br>
 [@\_beyondcode](https://twitter.com/@_beyondcode) <br>
 [twitch.tv/coolaj86](https://twitch.tv/coolaj86)
