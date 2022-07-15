@@ -1,0 +1,498 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>Promises</title>
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+<link rel="stylesheet" href="dist/theme/white.css" id="theme">
+		<!-- Theme used for syntax highlighted code -->
+<link rel="stylesheet" href="plugin/highlight/github.min.css" id="highlight-theme"></head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+<section data-markdown  ><textarea data-template>
+[comment]: # "markdown: { smartypants: true }"
+
+## Promises
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+AJ ONeal <br>
+[@\_beyondcode](https://twitter.com/@_beyondcode) <br>
+[twitch.tv/coolaj86](https://twitch.tv/coolaj86)
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Dangerous Wrong Thinker
+
+Equal Opportunity Offender
+
+Technophobic Technologist Extraordinairé
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Utah Node.js
+
+Utah Rust
+
+twitch.tv/coolaj86
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+<img title="JavaScript: community logo" src="https://raw.githubusercontent.com/voodootikigod/logo.js/master/js.png" width="60%" />
+
+https://github.com/voodootikigod/logo.js/
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+<img title="node.js: official logo" src="https://nodejs.org/static/images/logos/nodejs-new-pantone-black.svg" width="60%" />
+
+https://nodejs.org/en/about/resources/
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+- Anatomy
+- Why?
+- Usage
+- Creation
+- Gotchas
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+**What's a Promise?**
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```js [1]
+let promise = {};
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```js [1]
+let promise = {};
+```
+
+A promise is an object
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```js [2]
+let promise = {
+  _callbacks: [],
+};
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```js [2]
+let promise = {
+  _callbacks: [],
+};
+```
+
+with an array for success handlers <br> (callback functions)
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```js [4-6]
+let promise = {
+  _callbacks: [],
+
+  then: function (fn) {
+    promise._callbacks.push(fn);
+  },
+};
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```js [4-6]
+let promise = {
+  _callbacks: [],
+
+  then: function (fn) {
+    promise._callbacks.push(fn);
+  },
+};
+```
+
+and a `then` function. <br> <small>just a fancy
+`arr.push()`</small>
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```js [3]
+let promise = {
+  _callbacks: [],
+  _errbacks: [],
+
+  then: function (fn) {
+    promise._callbacks.push(fn);
+  },
+};
+```
+
+It also has an array for error handlers (errbacks)
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```js [8-10]
+let promise = {
+  _callbacks: [],
+  _errbacks: [],
+
+  then: function (fn) {
+    promise._callbacks.push(fn);
+  },
+  catch: function (fn) {
+    promise._errbacks.push(fn);
+  },
+};
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```js [8-10]
+let promise = {
+  _callbacks: [],
+  _errbacks: [],
+
+  then: function (fn) {
+    promise._callbacks.push(fn);
+  },
+  catch: function (fn) {
+    promise._errbacks.push(fn);
+  },
+};
+```
+
+and a `catch()` <br> <small>another fancy `arr.push()`
+function</small>
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```js [7-11]
+let promise = {
+  _callbacks: [],
+  _errbacks: [],
+
+  // ...
+
+  resolve: function (result) {
+    promise._callbacks.forEach(function (fn) {
+      fn();
+    });
+  },
+};
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```js [7-11]
+let promise = {
+  _callbacks: [],
+  _errbacks: [],
+
+  // ...
+
+  resolve: function (result) {
+    promise._callbacks.forEach(function (fn) {
+      fn();
+    });
+  },
+};
+```
+
+The `resolve` function <br> <small>which calls the success
+handlers</small>
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```js [12-16]
+let promise = {
+  _callbacks: [],
+  _errbacks: [],
+
+  // ...
+
+  resolve: function (result) {
+    promise._callbacks.forEach(function (fn) {
+      fn();
+    });
+  },
+  reject: function (result) {
+    promise._errbacks.forEach(function (fn) {
+      fn();
+    });
+  },
+};
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```js [12-16]
+let promise = {
+  _callbacks: [],
+  _errbacks: [],
+
+  // ...
+
+  resolve: function (result) {
+    promise._callbacks.forEach(function (fn) {
+      fn();
+    });
+  },
+  reject: function (result) {
+    promise._errbacks.forEach(function (fn) {
+      fn();
+    });
+  },
+};
+```
+
+And the `reject` function <br> <small>which calls the
+success handlers</small>
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Why?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+When you want to handle an event ONE _TIME_:
+
+```js
+document.addEventListener("click", handleClick);
+
+function handleClick() {
+  // ...
+
+  document.removeEventListener("click", handleClick);
+}
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+When you want to handle an event in MANY _PLACES_:
+
+```js
+function doFoo() {
+  // ...
+  document.addEventListener("click", handleClick);
+}
+
+function doBar() {
+  // ...
+  document.addEventListener("click", handleClick);
+}
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+When you want to handle an event LATE:
+
+```js
+// click happens... NOW
+
+function doFoo() {
+  // ...
+  document.addEventListener("click", handleClick);
+}
+
+// doFoo happens LATE
+doFoo();
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Usage
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Available in JavaScript since 1997
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```js
+promise.then(function (result) {
+  // do stuff
+});
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```js
+promise.catch(function (err) {
+  if ("NOT_FOUND" === err.code) {
+    return Foo.create();
+  }
+
+  throw err;
+});
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```js
+promise
+  .catch(function (err) {
+    if ("NOT_FOUND" === err.code) {
+      return Foo.create();
+    }
+
+    throw err;
+  })
+  .then(function (result) {
+    // do stuff
+  });
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Creation
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+🔙 that thing back there
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Or, since 2015:
+
+```js
+async function getUsers() {
+  return [];
+}
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Or, since 2015:
+
+```js
+async function getUsers() {
+  return [];
+}
+```
+
+```js
+getUsers().then(function (users) {
+  // ...
+});
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Or, since 2015:
+
+```js
+async function getUsers() {
+  return [];
+}
+```
+
+```js
+getUsers().then(function (users) {
+  // ...
+});
+```
+
+```js
+let users = await getUsers();
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+# Gotchas
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Always `return await`.
+
+```js
+async function getUsers() {
+  return await DB.Users.all();
+}
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Always `await .catch()`.
+
+```js
+async function getUsers() {
+  return await DB.Users.all();
+}
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+</textarea></section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/math/math.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+Reveal.initialize({
+controls : false,
+markdown : {smartypants: true},
+controls : false,
+keyboard : true,
+hash : false,
+respondToHashChanges : false,
+				hash: true,
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath ]
+			});
+		</script>
+	</body>
+</html>
