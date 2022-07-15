@@ -27,7 +27,7 @@ list() {
         )"
 
         my_date="$(
-            git log --diff-filter=A --format=%ci -- byu-2022.md |
+            git log --diff-filter=A --format=%ci -- ${my_preso} |
                 grep '\d\+-\d\+-\d\+ \d\+:\d\+:\d\+'
         )"
         my_first_slide="$(
@@ -41,7 +41,7 @@ list() {
                 cut -d' ' -f 2-
         )"
 
-        echo "- <!-- [$my_date] $my_first_slide --> [$my_title]($my_base/$my_name)"
+        echo "- <!-- [$my_date] $my_first_slide --> [$my_title]($my_base/$my_name/)"
     done
 }
 
