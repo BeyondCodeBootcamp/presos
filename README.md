@@ -1,6 +1,8 @@
-# Beyond Code Presos
+# [Beyond Code Presos](https://github.com/BeyondCodeBootcamp/presos/)
 
-Sources: <https://github.com/BeyondCodeBootcamp/presos/>
+- Index: <https://beyondcodebootcamp.github.io/presos/>
+- Sources: <https://github.com/BeyondCodeBootcamp/presos/>
+- Example: <https://beyondcodebootcamp.github.io/presos/example/>
 
 Presentation Slides + Videos:
 
