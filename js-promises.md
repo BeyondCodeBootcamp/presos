@@ -8,6 +8,8 @@
 
 ## Promises
 
+<https://beyondcodebootcamp.github.io/presos/js-promises/>
+
 [comment]: # "!!!"
 
 AJ ONeal <br>
