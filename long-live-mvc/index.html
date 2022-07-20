@@ -1,0 +1,477 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>MVC is Dead.</title>
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+<link rel="stylesheet" href="dist/theme/white.css" id="theme">
+		<!-- Theme used for syntax highlighted code -->
+<link rel="stylesheet" href="plugin/highlight/github.min.css" id="highlight-theme"></head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+<section data-markdown  ><textarea data-template>
+[comment]: # "markdown: { smartypants: true }"
+
+## MVC is Dead.
+
+(Long Live MVC!)
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+### Useful Links
+
+<small>Slides:
+<a href="https://beyondcodebootcamp.github.io/presos/long-live-mvc/">https://beyondcodebootcamp.github.io/presos/long-live-mvc/</a></small>
+
+<small>Video:
+<a href="https://youtube.com/coolaj86">https://youtu.be/VIDEO_GOES_HERE</a></small>
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+AJ ONeal <br>
+[@\_beyondcode](https://twitter.com/@_beyondcode) <br>
+[twitch.tv/coolaj86](https://twitch.tv/coolaj86)
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Dangerous Wrong Thinker
+
+Equal Opportunity Offender
+
+Technophobic Technologist Extraordinairé
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Utah Node.js
+
+Utah Rust
+
+twitch.tv/coolaj86
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+# MVC
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+**Let's Consider Some Code**
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```js [1-9]
+router.get("/api/gizmos/average-cost", function (req, res) {
+  let gizmos = Db.getGizmos();
+  let gizmos = gizmos.filter(function (g) {
+    return g.upsideDown;
+  });
+  let total = gizmos.reduce(pluckCost, 0);
+  let average = total / gizmos.length;
+  res.result({ average });
+});
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```js [1,9]
+router.get("/api/gizmos/average-cost", function (req, res) {
+  let gizmos = Db.getGizmos();
+  let gizmos = gizmos.filter(function (g) {
+    return g.upsideDown;
+  });
+  let total = gizmos.reduce(pluckCost, 0);
+  let average = total / gizmos.length;
+  res.result({ average });
+});
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```js [2]
+router.get("/api/gizmos/average-cost", function (req, res) {
+  let gizmos = Db.getGizmos();
+  let gizmos = gizmos.filter(function (g) {
+    return g.upsideDown;
+  });
+  let total = gizmos.reduce(pluckCost, 0);
+  let average = total / gizmos.length;
+  res.result({ average });
+});
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```js [3-5]
+router.get("/api/gizmos/average-cost", function (req, res) {
+  let gizmos = Db.getGizmos();
+  let gizmos = gizmos.filter(function (g) {
+    return g.upsideDown;
+  });
+  let total = gizmos.reduce(pluckCost, 0);
+  let average = total / gizmos.length;
+  res.result({ average });
+});
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```js [6-7]
+router.get("/api/gizmos/average-cost", function (req, res) {
+  let gizmos = Db.getGizmos();
+  let gizmos = gizmos.filter(function (g) {
+    return g.upsideDown;
+  });
+  let total = gizmos.reduce(pluckCost, 0);
+  let average = total / gizmos.length;
+  res.result({ average });
+});
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+```js [8]
+router.get("/api/gizmos/average-cost", function (req, res) {
+  let gizmos = Db.getGizmos();
+  let gizmos = gizmos.filter(function (g) {
+    return g.upsideDown;
+  });
+  let total = gizmos.reduce(pluckCost, 0);
+  let average = total / gizmos.length;
+  res.result({ average });
+});
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Code is for Humans.
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Code is for (dumb) Humans.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+We break ideas into paragraphs.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Code should read like paragraphs.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+```js
+router.get("/api/gizmos/average-cost", function (req, res) {
+  let gizmos = Db.getGizmos();
+  let gizmos = gizmos.filter(function (g) {
+    return g.upsideDown;
+  });
+
+  let total = gizmos.reduce(pluckCost, 0);
+  let average = total / gizmos.length;
+
+  res.result({ average });
+});
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Code needs comments...
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+```js
+router.get("/api/gizmos/average-cost", function (req, res) {
+  // Get stuff in the shape we need it
+  let gizmos = Db.getGizmos();
+  let gizmos = gizmos.filter(function (g) {
+    return g.upsideDown;
+  });
+
+  // Do what we need to do
+  let total = gizmos.reduce(pluckCost, 0);
+  let average = total / gizmos.length;
+
+  // Present the API to the user
+  res.result({ average });
+});
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Code _shouldn't_ need comments!
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+```js
+Db.getUpsideDownGizmos = function () {
+  let gizmos = Db.getGizmos();
+  let gizmos = gizmos.filter(function (g) {
+    return g.upsideDown;
+  });
+
+  return gizmos;
+};
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+```js
+Gizmos.calculateAveragePrice = function (gizmos) {
+  let total = gizmos.reduce(pluckCost, 0);
+  let average = total / gizmos.length;
+
+  return average;
+};
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+```js
+GizmosApi.showAverageCost = function (req, res) {
+  let gizmos = Db.getUpsideDownGizmos();
+  let average = calculateAveragePrice(gizmos);
+  res.result({ average });
+};
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+```js
+router.get(
+  "/api/gizmos/average-cost",
+  GizmosApi.showAverageCost
+);
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+## What is MVC?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+- MVC
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+- MVC
+- MVVM
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+- MVC
+- MVVM
+- MVP
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+A _terrible_ name.
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+A _terrible_ name.
+
+- Model
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+A _terrible_ name.
+
+- Model
+  - **Storage** (DB)
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+A _terrible_ name.
+
+- Model
+  - **Storage** (DB)
+- View
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+A _terrible_ name.
+
+- Model
+  - **Storage** (DB)
+  - `find`, `getBy`
+- View
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+A _terrible_ name.
+
+- Model
+  - **Storage** (DB)
+  - `find`, `getBy`
+- View
+  - **Presentation** (UI, CLI, API)
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+A _terrible_ name.
+
+- Model
+  - **Storage** (DB)
+  - `find`, `getBy`
+- View
+  - **Presentation** (UI, CLI, API)
+  - `{{.}}`, `console`, 'res.json()'
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+A _terrible_ name.
+
+- Model
+  - **Storage** (DB)
+  - `find`, `getBy`
+- View
+  - **Presentation** (UI, CLI, API)
+  - `{{.}}`, `console`, 'res.json()'
+- Controller
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+A _terrible_ name.
+
+- Model
+  - **Storage** (DB)
+  - `find`, `getBy`
+- View
+  - **Presentation** (UI, CLI, API)
+  - `{{.}}`, `console`, 'res.json()'
+- Controller
+  - **Business Logic** (Testable Stuff)
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+A _terrible_ name.
+
+- Model
+  - **Storage** (DB)
+  - `find`, `getBy`
+- View
+  - **Presentation** (UI, CLI, API)
+  - `{{.}}`, `console`, 'res.json()'
+- Controller
+  - **Business Logic** (Testable Stuff)
+  - `if`, `for`, `throw`
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+## MVC is Dead
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+We don't put Mustaches on Rails anymore!!!
+
+\{\{...\}\}
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+## Models are Dead
+
+❌ Changing between Databases
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+## Views are Dead
+
+❌ \{\{...\}\}
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+## Controllers are Dead
+
+❌ Generic Reusability
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+## MVC is Dead
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+> A design pattern is a crutch to use when you have either a
+> mediocre team, or they have to work with other mediocre
+> teams. - [TodPunk][todpunk]
+
+[todpunk]: https://github.com/todpunk
+
+<!-- -->
+
+## Long Live MVC!
+
+</textarea></section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/math/math.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+Reveal.initialize({
+controls : false,
+markdown : {smartypants: true},
+controls : false,
+keyboard : true,
+hash : false,
+respondToHashChanges : false,
+				hash: true,
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath ]
+			});
+		</script>
+	</body>
+</html>
