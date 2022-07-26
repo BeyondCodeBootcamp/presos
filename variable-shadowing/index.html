@@ -1,0 +1,250 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>Shadowing</title>
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+<link rel="stylesheet" href="dist/theme/white.css" id="theme">
+		<!-- Theme used for syntax highlighted code -->
+<link rel="stylesheet" href="plugin/highlight/github.min.css" id="highlight-theme"></head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+<section data-markdown  ><textarea data-template>
+[comment]: # "markdown: { smartypants: true }"
+
+## Shadowing
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+### Useful Links
+
+<small>Slides:
+<a href="https://beyondcodebootcamp.github.io/">https://beyondcodebootcamp.github.io/</a></small>
+
+<small>Video:
+<a href="https://youtube.com/coolaj86">https://youtu.be/ID_GOES_HERE</a></small>
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+AJ ONeal <br>
+[@\_beyondcode](https://twitter.com/@_beyondcode) <br>
+[youtube.com/coolaj86](https://youtube.com/coolaj86)
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Dangerous Wrong Thinker
+
+Equal Opportunity Offender
+
+Technophobic Technologist Extraordinairé
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Utah Node.js
+
+Utah Rust
+
+Twitch.tv/coolaj86
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Like, Sub, & Follow
+
+<small>(if this is useful, or entertaining)</small>
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+# Shadowing
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+When you want to _reuse_
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+When you want to _reuse_
+
+the _name_ of a variable.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+```rs [1-2]
+let answer = "42";
+let answer = answer.parse::<i32>().unwrap();
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+## Scenario
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+All command line args are _strings_.
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+(even when they're numbers)
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```rs [1-7]
+let ageStr = env::args().skip(1).next()
+  .unwrap();
+println!("age: {}", age);
+
+let ageNum = ageStr.parse::<i32>()
+  .unwrap();
+println!("age: {}", age);
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```rs [1]
+let ageStr = env::args().skip(1).next()
+  .unwrap();
+println!("age: {}", age);
+
+let ageNum = ageStr.parse::<i32>()
+  .unwrap();
+println!("age: {}", age);
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```rs [5]
+let ageStr = env::args().skip(1).next()
+  .unwrap();
+println!("age: {}", age);
+
+let ageNum = ageStr.parse::<i32>()
+  .unwrap();
+println!("age: {}", age);
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+But
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+storing _type information_
+
+in a _name_
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+... is lame.
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```rs [1-11]
+// type of age is string
+let age = env::args().skip(1).next()
+  .unwrap();
+println!("age: {}", age);
+
+// different memory location for age, as int!
+// (the other age may still be useful through other references)
+let age = ageStr.parse::<i32>()
+  .unwrap();
+println!("age: {}", age);
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```rs [1-2]
+// type of 'age' is string
+let age = env::args().skip(1).next()
+  .unwrap();
+println!("age: {}", age);
+
+// different memory location for new 'age', as int!
+// (the other age may still be useful through other references)
+let age = ageStr.parse::<i32>()
+  .unwrap();
+println!("age: {}", age);
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```rs [6-8]
+// type of 'age' is string
+let age = env::args().skip(1).next()
+  .unwrap();
+println!("age: {}", age);
+
+// different memory location for new 'age', as int!
+// (the other age may still be useful through other references)
+let age = ageStr.parse::<i32>()
+  .unwrap();
+println!("age: {}", age);
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Like, Sub, & Follow
+
+<small>(if you wannu)</small>
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Thanks.
+
+</textarea></section>
+<section data-markdown ><textarea data-template>
+
+FIN
+</textarea></section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/math/math.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+Reveal.initialize({
+controls : false,
+markdown : {smartypants: true},
+controls : false,
+keyboard : true,
+hash : false,
+respondToHashChanges : false,
+				hash: true,
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath ]
+			});
+		</script>
+	</body>
+</html>

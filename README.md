@@ -2,10 +2,15 @@
 
 - Index: <https://beyondcodebootcamp.github.io/presos/>
 - Sources: <https://github.com/BeyondCodeBootcamp/presos/>
-- Example: <https://beyondcodebootcamp.github.io/presos/example/>
+- Example:
+  <https://beyondcodebootcamp.github.io/presos/example/>
 
 Presentation Slides + Videos:
 
+  <!-- [2022-07-26 15:59:21 -0600] Shadowing -->
+- ⚡️ [Variable Shadowing][variable-shadowing]
+  [variable-shadowing]:
+  https://beyondcodebootcamp.github.io/presos/variable-shadowing/
   <!-- [2022-07-20 04:41:53 -0600] MVC is Dead -->
 - [MVC is Dead](https://beyondcodebootcamp.github.io/presos/long-live-mvc/)
   <!-- [2022-07-14 19:46:54 -0600] JS Promises -->
