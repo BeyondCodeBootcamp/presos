@@ -18,7 +18,7 @@
 my_base="https://beyondcodebootcamp.github.io/presos"
 
 list() {
-    for my_preso in *.md; do
+    for my_preso in src/*.md; do
         if [ "README.md" = "$my_preso" ]; then
             continue
         fi
