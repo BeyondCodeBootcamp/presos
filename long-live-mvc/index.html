@@ -782,6 +782,17 @@ let Gizmos = require("./lib/gizmos.js");
 (and use a directed graph of dependencies)
 
 </textarea></section>
+<section data-markdown  ><textarea data-template>
+
+```txt
+foobar5000/
+└── lib/
+    ├── gizmo-widgets.lib   # lift mutual dependencies
+    ├── gizmos.lib
+    └── widgets.lib
+```
+
+</textarea></section>
 <section data-markdown  data-auto-animate><textarea data-template>
 
 **Let's Consider Some (frontend) Code**
@@ -842,7 +853,7 @@ Gizmos.route.showAverageCost = async function (location) {
 ```
 
 </textarea></section>
-<section data-markdown  data-auto-animate><textarea data-template>
+<section data-markdown  ><textarea data-template>
 
 `./router.js`:
 
@@ -852,6 +863,8 @@ app.routeAndRender(
   Gizmos.route.showAverageCost
 );
 ```
+
+(could apply to the CLI too)
 
 </textarea></section>
 <section data-markdown  ><textarea data-template>

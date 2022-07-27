@@ -696,6 +696,16 @@ let Gizmos = require("./lib/gizmos.js");
 
 [comment]: # "!!!"
 
+```txt
+foobar5000/
+└── lib/
+    ├── gizmo-widgets.lib   # lift mutual dependencies
+    ├── gizmos.lib
+    └── widgets.lib
+```
+
+[comment]: # "!!!"
+
 **Let's Consider Some (frontend) Code**
 
 [comment]: # "!!! data-auto-animate"
@@ -760,7 +770,9 @@ app.routeAndRender(
 );
 ```
 
-[comment]: # "!!! data-auto-animate"
+(could apply to the CLI too)
+
+[comment]: # "!!!"
 
 Like, Sub, & Follow
 
