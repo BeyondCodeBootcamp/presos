@@ -26,17 +26,17 @@
 ### Useful Links
 
 <small>Slides:
-<a href="https://beyondcodebootcamp.github.io/presos/long-live-mvc/">https://beyondcodebootcamp.github.io/presos/long-live-mvc/</a></small>
+<a href="https://beyondcodebootcamp.github.io/presos/long-live-mvc/">https://beyondcodebootcamp.github.io/</a></small>
 
 <small>Video:
-<a href="https://youtube.com/coolaj86">https://youtu.be/VIDEO_GOES_HERE</a></small>
+<a href="https://www.youtube.com/watch?v=bO7nynlX8a0">https://youtu.be/bO7nynlX8a0</a></small>
 
 </textarea></section>
 <section data-markdown  ><textarea data-template>
 
 AJ ONeal <br>
 [@\_beyondcode](https://twitter.com/@_beyondcode) <br>
-[twitch.tv/coolaj86](https://twitch.tv/coolaj86)
+[youtube.com/coolaj86](https://youtube.com/coolaj86)
 
 </textarea></section>
 <section data-markdown  ><textarea data-template>
@@ -54,221 +54,14 @@ Utah Node.js
 
 Utah Rust
 
-twitch.tv/coolaj86
+Twitch.tv/coolaj86
 
 </textarea></section>
 <section data-markdown  ><textarea data-template>
 
-# MVC
+## MVC is Dead.
 
-</textarea></section>
-<section data-markdown  ><textarea data-template>
-
-**Let's Consider Some Code**
-
-</textarea></section>
-<section data-markdown  data-auto-animate><textarea data-template>
-
-```js [1-9]
-router.get("/api/gizmos/average-cost", function (req, res) {
-  let gizmos = Db.getGizmos();
-  let gizmos = gizmos.filter(function (g) {
-    return g.upsideDown;
-  });
-  let total = gizmos.reduce(pluckCost, 0);
-  let average = total / gizmos.length;
-  res.result({ average });
-});
-```
-
-</textarea></section>
-<section data-markdown  data-auto-animate><textarea data-template>
-
-```js [1,9]
-router.get("/api/gizmos/average-cost", function (req, res) {
-  let gizmos = Db.getGizmos();
-  let gizmos = gizmos.filter(function (g) {
-    return g.upsideDown;
-  });
-  let total = gizmos.reduce(pluckCost, 0);
-  let average = total / gizmos.length;
-  res.result({ average });
-});
-```
-
-</textarea></section>
-<section data-markdown  data-auto-animate><textarea data-template>
-
-```js [2]
-router.get("/api/gizmos/average-cost", function (req, res) {
-  let gizmos = Db.getGizmos();
-  let gizmos = gizmos.filter(function (g) {
-    return g.upsideDown;
-  });
-  let total = gizmos.reduce(pluckCost, 0);
-  let average = total / gizmos.length;
-  res.result({ average });
-});
-```
-
-</textarea></section>
-<section data-markdown  data-auto-animate><textarea data-template>
-
-```js [3-5]
-router.get("/api/gizmos/average-cost", function (req, res) {
-  let gizmos = Db.getGizmos();
-  let gizmos = gizmos.filter(function (g) {
-    return g.upsideDown;
-  });
-  let total = gizmos.reduce(pluckCost, 0);
-  let average = total / gizmos.length;
-  res.result({ average });
-});
-```
-
-</textarea></section>
-<section data-markdown  data-auto-animate><textarea data-template>
-
-```js [6-7]
-router.get("/api/gizmos/average-cost", function (req, res) {
-  let gizmos = Db.getGizmos();
-  let gizmos = gizmos.filter(function (g) {
-    return g.upsideDown;
-  });
-  let total = gizmos.reduce(pluckCost, 0);
-  let average = total / gizmos.length;
-  res.result({ average });
-});
-```
-
-</textarea></section>
-<section data-markdown  ><textarea data-template>
-
-```js [8]
-router.get("/api/gizmos/average-cost", function (req, res) {
-  let gizmos = Db.getGizmos();
-  let gizmos = gizmos.filter(function (g) {
-    return g.upsideDown;
-  });
-  let total = gizmos.reduce(pluckCost, 0);
-  let average = total / gizmos.length;
-  res.result({ average });
-});
-```
-
-</textarea></section>
-<section data-markdown  ><textarea data-template>
-
-Code is for Humans.
-
-</textarea></section>
-<section data-markdown  data-auto-animate><textarea data-template>
-
-Code is for (dumb) Humans.
-
-</textarea></section>
-<section data-markdown  ><textarea data-template>
-
-We break ideas into paragraphs.
-
-</textarea></section>
-<section data-markdown  ><textarea data-template>
-
-Code should read like paragraphs.
-
-</textarea></section>
-<section data-markdown  ><textarea data-template>
-
-```js
-router.get("/api/gizmos/average-cost", function (req, res) {
-  let gizmos = Db.getGizmos();
-  let gizmos = gizmos.filter(function (g) {
-    return g.upsideDown;
-  });
-
-  let total = gizmos.reduce(pluckCost, 0);
-  let average = total / gizmos.length;
-
-  res.result({ average });
-});
-```
-
-</textarea></section>
-<section data-markdown  ><textarea data-template>
-
-Code needs comments...
-
-</textarea></section>
-<section data-markdown  ><textarea data-template>
-
-```js
-router.get("/api/gizmos/average-cost", function (req, res) {
-  // Get stuff in the shape we need it
-  let gizmos = Db.getGizmos();
-  let gizmos = gizmos.filter(function (g) {
-    return g.upsideDown;
-  });
-
-  // Do what we need to do
-  let total = gizmos.reduce(pluckCost, 0);
-  let average = total / gizmos.length;
-
-  // Present the API to the user
-  res.result({ average });
-});
-```
-
-</textarea></section>
-<section data-markdown  ><textarea data-template>
-
-Code _shouldn't_ need comments!
-
-</textarea></section>
-<section data-markdown  ><textarea data-template>
-
-```js
-Db.getUpsideDownGizmos = function () {
-  let gizmos = Db.getGizmos();
-  let gizmos = gizmos.filter(function (g) {
-    return g.upsideDown;
-  });
-
-  return gizmos;
-};
-```
-
-</textarea></section>
-<section data-markdown  ><textarea data-template>
-
-```js
-Gizmos.calculateAveragePrice = function (gizmos) {
-  let total = gizmos.reduce(pluckCost, 0);
-  let average = total / gizmos.length;
-
-  return average;
-};
-```
-
-</textarea></section>
-<section data-markdown  ><textarea data-template>
-
-```js
-GizmosApi.showAverageCost = function (req, res) {
-  let gizmos = Db.getUpsideDownGizmos();
-  let average = calculateAveragePrice(gizmos);
-  res.result({ average });
-};
-```
-
-</textarea></section>
-<section data-markdown  ><textarea data-template>
-
-```js
-router.get(
-  "/api/gizmos/average-cost",
-  GizmosApi.showAverageCost
-);
-```
+(Long Live MVC!)
 
 </textarea></section>
 <section data-markdown  ><textarea data-template>
@@ -304,6 +97,7 @@ A _terrible_ name.
 A _terrible_ name.
 
 - Model
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.
 
 </textarea></section>
 <section data-markdown  data-auto-animate><textarea data-template>
@@ -311,6 +105,7 @@ A _terrible_ name.
 A _terrible_ name.
 
 - Model
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.
   - **Storage** (DB)
 
 </textarea></section>
@@ -319,8 +114,9 @@ A _terrible_ name.
 A _terrible_ name.
 
 - Model
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.
   - **Storage** (DB)
-- View
+  - `find`, `getBy`
 
 </textarea></section>
 <section data-markdown  data-auto-animate><textarea data-template>
@@ -328,6 +124,7 @@ A _terrible_ name.
 A _terrible_ name.
 
 - Model
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.
   - **Storage** (DB)
   - `find`, `getBy`
 - View
@@ -338,22 +135,11 @@ A _terrible_ name.
 A _terrible_ name.
 
 - Model
-  - **Storage** (DB)
-  - `find`, `getBy`
-- View
-  - **Presentation** (UI, CLI, API)
-
-</textarea></section>
-<section data-markdown  data-auto-animate><textarea data-template>
-
-A _terrible_ name.
-
-- Model
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.
   - **Storage** (DB)
   - `find`, `getBy`
 - View
   - **Presentation** (UI, CLI, API)
-  - `{{.}}`, `console`, 'res.json()'
 
 </textarea></section>
 <section data-markdown  data-auto-animate><textarea data-template>
@@ -361,11 +147,25 @@ A _terrible_ name.
 A _terrible_ name.
 
 - Model
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.
   - **Storage** (DB)
   - `find`, `getBy`
 - View
   - **Presentation** (UI, CLI, API)
-  - `{{.}}`, `console`, 'res.json()'
+  - `render()`, `log()`, 'res.json()'
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+A _terrible_ name.
+
+- Model
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.
+  - **Storage** (DB)
+  - `find`, `getBy`
+- View
+  - **Presentation** (UI, CLI, API)
+  - `render()`, `log()`, 'res.json()'
 - Controller
 
 </textarea></section>
@@ -374,11 +174,12 @@ A _terrible_ name.
 A _terrible_ name.
 
 - Model
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.
   - **Storage** (DB)
   - `find`, `getBy`
 - View
   - **Presentation** (UI, CLI, API)
-  - `{{.}}`, `console`, 'res.json()'
+  - `render()`, `log()`, 'res.json()'
 - Controller
   - **Business Logic** (Testable Stuff)
 
@@ -388,11 +189,12 @@ A _terrible_ name.
 A _terrible_ name.
 
 - Model
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.
   - **Storage** (DB)
   - `find`, `getBy`
 - View
   - **Presentation** (UI, CLI, API)
-  - `{{.}}`, `console`, 'res.json()'
+  - `render()`, `log()`, 'res.json()'
 - Controller
   - **Business Logic** (Testable Stuff)
   - `if`, `for`, `throw`
@@ -405,35 +207,41 @@ A _terrible_ name.
 </textarea></section>
 <section data-markdown  ><textarea data-template>
 
-We don't put Mustaches on Rails anymore!!!
-
-\{\{...\}\}
-
-</textarea></section>
-<section data-markdown  ><textarea data-template>
-
 ## Models are Dead
 
-❌ Changing between Databases
+❌ We don't _actually_ switch databases
 
 </textarea></section>
 <section data-markdown  ><textarea data-template>
 
 ## Views are Dead
 
-❌ \{\{...\}\}
+❌ No more `{{ ... }}` on Rails!
 
 </textarea></section>
 <section data-markdown  ><textarea data-template>
 
 ## Controllers are Dead
 
-❌ Generic Reusability
+❌ Generic "reusability" is a liability
 
 </textarea></section>
 <section data-markdown  ><textarea data-template>
 
-## MVC is Dead
+## Categorganization is Dead
+
+```txt
+foobar5000/
+├──❌ models/
+│  ├── gizmos.db
+│  └── widgets.db
+├──❌ views/
+│  ├── gizmos.fml
+│  └── widgets.fml
+└──❌ controllers/
+   ├── gizmos.app
+   └── widgets.app
+```
 
 </textarea></section>
 <section data-markdown  ><textarea data-template>
@@ -446,8 +254,634 @@ We don't put Mustaches on Rails anymore!!!
 
 <!-- -->
 
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
 ## Long Live MVC!
 
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+MVC is an _Emergent Design_
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+- ~~Model~~
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+- ~~Model~~
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.
+  - Get the right stuff, in the right shape
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+- ~~Model~~
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.
+  - Get the right stuff, in the right shape
+- ~~View~~
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+- ~~Model~~
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.
+  - Get the right stuff, in the right shape
+- ~~View~~
+  - How to interact with the product
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+- ~~Model~~
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.
+  - Get the right stuff, in the right shape
+- ~~View~~
+  - How to interact with the product
+- ~~Controller~~
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+- ~~Model~~
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.
+  - Get the right stuff, in the right shape
+- ~~View~~
+  - How to interact with the product
+- ~~Controller~~
+  - Business logic, Unique value
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+- Testability
+- Throw-away-ability
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+**Let's Consider Some (backend) Code**
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```js [1-9]
+router.get("/api/gizmos/average-cost", function (req, res) {
+  let gizmos = await Db.getGizmos();
+  gizmos = gizmos.filter(function (g) {
+    return g.upsideDown;
+  });
+  let total = gizmos.reduce(pluckCost, 0);
+  let average = total / gizmos.length;
+  res.result({ average });
+});
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```js [1,9]
+router.get("/api/gizmos/average-cost", function (req, res) {
+  let gizmos = await Db.getGizmos();
+  gizmos = gizmos.filter(function (g) {
+    return g.upsideDown;
+  });
+  let total = gizmos.reduce(pluckCost, 0);
+  let average = total / gizmos.length;
+  res.result({ average });
+});
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```js [2]
+router.get("/api/gizmos/average-cost", function (req, res) {
+  let gizmos = await Db.getGizmos();
+  gizmos = gizmos.filter(function (g) {
+    return g.upsideDown;
+  });
+  let total = gizmos.reduce(pluckCost, 0);
+  let average = total / gizmos.length;
+  res.result({ average });
+});
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```js [3-5]
+router.get("/api/gizmos/average-cost", function (req, res) {
+  let gizmos = await Db.getGizmos();
+  gizmos = gizmos.filter(function (g) {
+    return g.upsideDown;
+  });
+  let total = gizmos.reduce(pluckCost, 0);
+  let average = total / gizmos.length;
+  res.result({ average });
+});
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```js [6-7]
+router.get("/api/gizmos/average-cost", function (req, res) {
+  let gizmos = await Db.getGizmos();
+  gizmos = gizmos.filter(function (g) {
+    return g.upsideDown;
+  });
+  let total = gizmos.reduce(pluckCost, 0);
+  let average = total / gizmos.length;
+  res.result({ average });
+});
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```js [8]
+router.get("/api/gizmos/average-cost", function (req, res) {
+  let gizmos = await Db.getGizmos();
+  gizmos = gizmos.filter(function (g) {
+    return g.upsideDown;
+  });
+  let total = gizmos.reduce(pluckCost, 0);
+  let average = total / gizmos.length;
+  res.result({ average });
+});
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Code is for Humans.
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Code is for (dumb) Humans.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+We break ideas into paragraphs.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Code should read like paragraphs.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+```js
+router.get("/api/gizmos/average-cost", function (req, res) {
+  let gizmos = await Db.getGizmos();
+  gizmos = gizmos.filter(function (g) {
+    return g.upsideDown;
+  });
+
+  let total = gizmos.reduce(pluckCost, 0);
+  let average = total / gizmos.length;
+
+  res.result({ average });
+});
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Code needs comments...
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```js
+router.get("/api/gizmos/average-cost", function (req, res) {
+  // Get stuff in the shape we need it
+  let gizmos = await Db.getGizmos();
+  gizmos = gizmos.filter(function (g) {
+    return g.upsideDown;
+  });
+
+  // Do what we need to do
+  let total = gizmos.reduce(pluckCost, 0);
+  let average = total / gizmos.length;
+
+  // Present the API to the user
+  res.result({ average });
+});
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Code _shouldn't_ need comments!
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Code _shouldn't_ need comments!
+
+(comments become out-of-sync)
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+```js
+Gizmos.data.getUpsideDownGizmos = async function () {
+  let gizmos = await Db.getGizmos();
+  gizmos = gizmos.filter(function (g) {
+    return g.upsideDown;
+  });
+
+  return gizmos;
+};
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+```js
+Gizmos.ctrl.calculateAveragePrice = function (gizmos) {
+  let total = gizmos.reduce(pluckCost, 0);
+  let average = total / gizmos.length;
+
+  return average;
+};
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+```js
+Gizmos.view.showAverageCost = async function (req, res) {
+  let gizmos = await Db.getUpsideDownGizmos();
+  let average = calculateAveragePrice(gizmos);
+  res.result({ average });
+};
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```js
+router.get(
+  "/api/gizmos/average-cost",
+  Gizmos.view.showAverageCost
+);
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+But 4 slides?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+But 4 slides?
+
+Really??
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+But 4 slides?
+
+Really??
+
+**_FOUR_** files to tab through!?
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Well... no.
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`./lib/gizmos.js`:
+
+```js
+Gizmos.data.getUpsideDownGizmos = async function () {
+  // ...
+};
+
+Gizmos.ctrl.calculateAveragePrice = function (gizmos) {
+  // ...
+};
+
+Gizmos.view.showAverageCost = function (req, res) {
+  // ...
+};
+```
+
+`./router.js`:
+
+```js
+router.get(
+  "/api/gizmos/average-cost",
+  Gizmos.view.showAverageCost
+);
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+- Storage
+- Component (Unit Testable)
+  - Get the right stuff, in the right shape
+  - Business logic, Unique value
+- View-Controllers
+  - Glue component pieces into presentation
+- Global Router
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+- Storage
+- Component (Unit Testable)
+  - Get the right stuff, in the right shape
+  - Business logic, Unique value
+- View-Controllers
+  - Glue component pieces into presentation
+- Global Router
+- Libraries + Utilities
+  - Generic, reusable stuff
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Components + Libs
+
+```txt
+└── lib/
+   ├── storage.lib
+   ├── averager.lib
+   └── widgets.lib
+```
+
+View-Controllers
+
+```
+├── router/         # API
+│  ├── widgets.app
+│  └── serve.app
+│
+├── webapp/         # Web UI
+│  └── store.html
+│
+└── bin/            # CLI
+   └── foobar500
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Emergent Design
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Emergent Design
+
+- 🎯 Red
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Emergent Design
+
+- 🎯 Red
+- ✅ Green
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Emergent Design
+
+- 🎯 Red
+- ✅ Green
+- ⚙️ Refactor
+
+<!-- Best refactor icon? ♺ ♻️ 🎨 🔨 🦄 ⚡️ 🚜 🚧 ⚙️  🌈 -->
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+## Caveat
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Circular Component Dependencies
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Don't overwrite `exports`:
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Don't overwrite `exports`:
+
+```js [1-7]
+// ✅
+let Gizmos = exports;
+
+Gizmos.foo = { ... };
+
+// ❌
+// exports = Gizmos;
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Don't overwrite `exports`:
+
+```js [5-7]
+// ✅
+let Gizmos = exports;
+
+Gizmos.foo = { ... };
+
+// ❌
+// exports = Gizmos;
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Don't overwrite `exports`:
+
+```js [1-2]
+// ✅
+let Gizmos = exports;
+
+Gizmos.foo = { ... };
+
+// ❌
+// exports = Gizmos;
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Don't destructure imports
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Don't destructure imports
+
+```js [1-5]
+// ❌
+// let { view: GizmosView } = require('./lib/gizmos.js');
+
+// ✅
+let Gizmos = require("./lib/gizmos.js");
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Don't destructure imports
+
+```js [1-2]
+// ❌
+// let { view: GizmosView } = require('./lib/gizmos.js');
+
+// ✅
+let Gizmos = require("./lib/gizmos.js");
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Don't destructure imports
+
+```js [4-5]
+// ❌
+// let { view: GizmosView } = require('./lib/gizmos.js');
+
+// ✅
+let Gizmos = require("./lib/gizmos.js");
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+(and use a directed graph of dependencies)
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+```txt
+foobar5000/
+└── lib/
+    ├── gizmo-widgets.lib   # lift mutual dependencies
+    ├── gizmos.lib
+    └── widgets.lib
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+**Let's Consider Some (frontend) Code**
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+```js [1-14]
+app.route("/#/gizmos/:fn", function (location) {
+  let gizmos = await Api.getGizmos();
+  gizmos = gizmos.filter(function (g) {
+    return g.upsideDown;
+  });
+
+  let total = gizmos.reduce(pluckCost, 0);
+  let average = total / gizmos.length;
+
+  app.render(
+    './partials/gizmo-average.xjs.html',
+    { gizmos: { cost: average } }
+  );
+});
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+```js
+Gizmos.data.getUpsideDownGizmos = async function () {
+  let gizmos = await api.get("/api/gizmos");
+  gizmos = gizmos.filter(function (g) {
+    return g.upsideDown;
+  });
+  return gizmos;
+};
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+```js
+Gizmos.ctrl.calculateAveragePrice = function (gizmos) {
+  let total = gizmos.reduce(pluckCost, 0);
+  let average = total / gizmos.length;
+  return average;
+};
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+```js
+Gizmos.route.showAverageCost = async function (location) {
+  let gizmos = await Gizmos.data.getUpsideDownGizmos();
+  let average = Gizmos.ctrl.calculateAveragePrice(gizmos);
+  return { gizmos: { cost: average } };
+};
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+`./router.js`:
+
+```js
+app.routeAndRender(
+  "/api/gizmos/average-cost",
+  Gizmos.route.showAverageCost
+);
+```
+
+(could apply to the CLI too)
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Like, Sub, & Follow
+
+<small>(if you wannu)</small>
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Thanks.
+
+</textarea></section>
+<section data-markdown ><textarea data-template>
+
+FIN
 </textarea></section>
 			</div>
 		</div>
