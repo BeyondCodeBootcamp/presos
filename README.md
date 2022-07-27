@@ -7,8 +7,10 @@
 
 Presentation Slides + Videos:
 
-  <!-- [2022-07-26 15:59:21 -0600] Shadowing -->
+  <!-- [2022-08-02 17:26:57 -0600] Hello Go -->
 
+- 🐹 [Hello Go](./hello-go/)
+  <!-- [2022-07-26 15:59:21 -0600] Shadowing -->
 - ⚡️ [Variable Shadowing](./variable-shadowing/)
   <!-- [2022-07-20 04:41:53 -0600] MVC is Dead -->
 - 📦 [MVC is Dead](./long-live-mvc/)
