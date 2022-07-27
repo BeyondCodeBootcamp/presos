@@ -272,12 +272,12 @@ MVC is an _Emergent Design_
 - ~~Controller~~
   - Business logic, Unique value
 
-[comment]: # "!!!"
+[comment]: # "!!! data-auto-animate"
 
 - Testability
 - Throw-away-ability
 
-[comment]: # "!!! data-auto-animate"
+[comment]: # "!!!"
 
 **Let's Consider Some (backend) Code**
 
