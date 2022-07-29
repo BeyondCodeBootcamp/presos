@@ -132,14 +132,14 @@ in a _name_
 [comment]: # "!!! data-auto-animate"
 
 ```rs [1-11]
-// type of age is string
+// type of 'age' is string
 let age = env::args().skip(1).next()
   .unwrap();
 println!("age: {}", age);
 
-// different memory location for age, as int!
+// different memory location for new 'age', as int!
 // (the other age may still be useful through other references)
-let age = ageStr.parse::<i32>()
+let age = age.parse::<i32>()
   .unwrap();
 println!("age: {}", age);
 ```
@@ -154,7 +154,7 @@ println!("age: {}", age);
 
 // different memory location for new 'age', as int!
 // (the other age may still be useful through other references)
-let age = ageStr.parse::<i32>()
+let age = age.parse::<i32>()
   .unwrap();
 println!("age: {}", age);
 ```
@@ -169,7 +169,7 @@ println!("age: {}", age);
 
 // different memory location for new 'age', as int!
 // (the other age may still be useful through other references)
-let age = ageStr.parse::<i32>()
+let age = age.parse::<i32>()
   .unwrap();
 println!("age: {}", age);
 ```
