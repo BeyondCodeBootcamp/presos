@@ -8,13 +8,16 @@
 Presentation Slides + Videos:
 
   <!-- [2022-07-26 15:59:21 -0600] Shadowing -->
+
 - ⚡️ [Variable Shadowing](./variable-shadowing/)
   <!-- [2022-07-20 04:41:53 -0600] MVC is Dead -->
-- [MVC is Dead](https://beyondcodebootcamp.github.io/presos/long-live-mvc/)
+- 📦 [MVC is Dead](./long-live-mvc/)
   <!-- [2022-07-14 19:46:54 -0600] JS Promises -->
-- [The Anatomy of Promises - Utah JS - July 14th, 2022](https://beyondcodebootcamp.github.io/presos/js-promises/)
+- 🦴
+  [The Anatomy of Promises - Utah JS - July 14th, 2022](./js-promises/)
   <!-- [2022-04-21 14:32:00 -0600] Go Proverbs -->
-- [Go Proverbs for JavaScript - Utah Node.js - May 4th, 2022](https://beyondcodebootcamp.github.io/presos/go-proverbs-for-js/)
+- 🧙‍♂️
+  [Go Proverbs for JavaScript - Utah Node.js - May 4th, 2022](./go-proverbs-for-js/)
   <!-- [2022-03-23 01:38:54 -0600] AJ's BYU 2022 Lecture Series -->
 - [Software Engineering's Greatest Hits - BYU - March 23rd, 2022](https://beyondcodebootcamp.github.io/presos/byu-2022/)
     <!-- [2022-03-23 01:03:02 -0600] Software Engineering's <br>Greatest Hits -->
