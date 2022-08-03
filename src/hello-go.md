@@ -79,7 +79,7 @@ to `goreleaser`
 
 - install
 - go mod
-- semver with git tags
+- version (semver with git tags)
 - embed (including files in the binary)
 - tools/tools.go
 - standard flags (version, help, etc)
@@ -254,6 +254,7 @@ func main() {
 ```txt
 hello/
 ├── .git/
+├── .ignore
 ├── go.mod
 ├── go.lock
 ├── hello.go
@@ -446,6 +447,14 @@ go build -mod=vendor ./...
 
 [comment]: # "!!!"
 
+`.ignore`:
+
+```txt
+vendor
+```
+
+[comment]: # "!!!"
+
 # 11. Hello `go generate`
 
 [comment]: # "!!! data-auto-animate"
@@ -514,36 +523,213 @@ go build -mod=vendor -o goodbye ./cmd/goodbye/
 
 [comment]: # "!!!"
 
-# 9. Hello GoDoc
+# 13. Hello GoDoc
+
+[comment]: # "!!!"
+
+`doc.go`:
 
 [comment]: # "!!!"
 
 [godoc-tricks](https://pkg.go.dev/github.com/fluhus/godoc-tricks)
 
-[comment]: # "!!! data-auto-animate"
+[comment]: # "!!!"
 
-# An Animated Slide
+# 14. Hello `version`
 
-A really WOW slide
+[comment]: # "!!!"
 
-[comment]: # "!!! data-auto-animate"
+```go
+if len(args) > 1 {
+		arg := args[0]
+		if "-V" == arg || "version" == strings.TrimPrefix(arg, "-") {
+				ver()
+				os.Exit(0)
+		}
+}
+```
 
-```js [1-2|3|4]
-let a = 1;
-let b = 2;
-let c = (x) => 1 + 2 + x;
-c(3);
+[comment]: # "!!!"
+
+```go
+git tag v1.0.0
+```
+
+[comment]: # "!!!"
+
+- GoReleaser
+- Go GitVer: \
+  <https://github.com/therootcompany/go-gitver>
+
+[comment]: # "!!!"
+
+# 15. Hello `embed`
+
+[comment]: # "!!!"
+
+```
+# Create config directory
+hello init
+
+# Serve auto-magic configurator
+hello server
+```
+
+[comment]: # "!!!"
+
+```go
+package hello
+
+import "embed"
+
+//go:embed html/* assets/*
+// FS is the virtual embedded filesystem for all the Hello World things
+var FS embed.FS
+```
+
+[comment]: # "!!!"
+
+```go
+import (
+	// ...
+	hello "github.com/BeyondCodeBootcamp/hello-go"
+)
+
+func main() {
+	f, _ := hello.FS.Open("assets/proverbs.txt")
+	proverbs, _ := ioutil.ReadAll(f)
+	fmt.Printf("%s", proverbs)
+}
 ```
 
 [comment]: # "!!! data-auto-animate"
 
-Like, Sub, & Follow
+# 16. Hello `goreleaser`
 
-<small>(if you wannu)</small>
+[comment]: # "!!!"
+
+Cheat Sheet:
+
+https://webinstall.dev/goreleaser
+
+[comment]: # "!!! data-auto-animate"
+
+- PREDICTABLE
+
+[comment]: # "!!! data-auto-animate"
+
+- PREDICTABLE
+- REPRODUCIBLE
+
+[comment]: # "!!! data-auto-animate"
+
+- PREDICTABLE
+- REPRODUCIBLE
+- GUARANTEED
+
+[comment]: # "!!!"
+
+- version
+- git commit
+- date
+
+[comment]: # "!!!"
+
+`main.go`:
+
+```go
+var (
+  version = "v0.0.0"
+  date    = "0001-01-01T00:00:00Z"
+  commit  = "0000000"
+)
+```
+
+[comment]: # "!!!"
+
+`.goreleaser.yml`:
+
+```yml
+builds:
+  - env:
+      - CGO_ENABLED=0
+    main: ./main.go
+    binary: mssql-to-csv
+    goos:
+      - linux
+      - windows
+    goarch:
+      - amd64
+      - arm64
+archives:
+  - format_overrides:
+      - goos: windows
+        format: zip
+```
+
+[comment]: # "!!!"
+
+```txt
+~/.config/goreleaser/github_token
+```
+
+<https://github.com/settings/tokens/new>
+
+[comment]: # "!!!"
+
+Cheat Sheet:
+
+https://webinstall.dev/goreleaser
+
+[comment]: # "!!! data-auto-animate"
+
+# 17. Hello `webi`
+
+[comment]: # "!!! data-auto-animate"
+
+- PREDICTABLE
+
+[comment]: # "!!! data-auto-animate"
+
+- PREDICTABLE
+- REPRODUCIBLE
+
+[comment]: # "!!! data-auto-animate"
+
+- PREDICTABLE
+- REPRODUCIBLE
+- GUARANTEED
+
+[comment]: # "!!! data-auto-animate"
+
+Template Repo: <small>
+<a href="https://github.com/BeyondCodeBootcamp/hello-go">github.com/BeyondCodeBootcamp/hello-go</a></small>
+
+```txt
+./dist/webi/
+```
+
+[comment]: # "!!!"
+
+# 17. Hello `webi`
+
+[comment]: # "!!!"
+
+No time. 😢
+
+[comment]: # "!!!"
+
+[Zig makes CGO Cross-Compilation Just Work](https://dev.to/kristoff/zig-makes-go-cross-compilation-just-work-29ho)
 
 [comment]: # "!!!"
 
 Thanks.
+
+[comment]: # "!!!"
+
+Like, Sub, & Follow
+
+<small>(if you wannu)</small>
 
 [comment]: # "!!!"
 
