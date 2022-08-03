@@ -1,0 +1,1738 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>Semantic Arrays</title>
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+<link rel="stylesheet" href="dist/theme/white.css" id="theme">
+		<!-- Theme used for syntax highlighted code -->
+<link rel="stylesheet" href="plugin/highlight/github.min.css" id="highlight-theme"></head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+<section data-markdown  ><textarea data-template>
+[comment]: # "markdown: { smartypants: true }"
+
+# Semantic Arrays
+
+When in doubt, `forEach`
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+### Useful Links
+
+<table>
+
+<tr><td>
+<small>Slides:
+<a href="https://beyondcodebootcamp.github.io/presos/js-array-methods/">https://beyondcodebootcamp.github.io/</a></small>
+</td></tr>
+
+<tr><td>
+<small>Video:
+<a href="https://www.youtube.com/watch?v=ID_GOES_HERE">https://youtu.be/ID_GOES_HERE</a></small>
+</td></tr>
+
+<tr><td>
+<small>Slides Builder:
+<a href="https://beyondcodebootcamp.github.io/presos/#quick-start-to-render">MD Slides</a></small>
+</td></tr>
+
+</table>
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Like, Sub, & Follow
+
+<small>(if this is useful, or entertaining)</small>
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+AJ ONeal <br>
+[@\_beyondcode](https://twitter.com/@_beyondcode) <br>
+[youtube.com/coolaj86](https://youtube.com/coolaj86)
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Dangerous Wrong Thinker
+
+Equal Opportunity Offender
+
+Technophobic Technologist Extraordinairé
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Utah Node.js
+
+Utah Rust
+
+[twitch.tv/coolaj86](https://twitch.tv/coolaj86)
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+## Semantic Arrays
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Semantic JS Array Methods<br/><small>(when in doubt:
+<code>forEach</code>)</small>
+
+<table>
+
+  <tr>
+  <th><small> Array <br />Method </small></th>
+  <th><small> Mutates <br />Value </small></th>
+  <th><small> Mutates <br />Array </small></th>
+  <th></th>
+  <th><small> Return <br />Value </small></th>
+  </tr>
+
+  <tr><td><small>
+  <code>.forEach(fn)</code> <br />
+  <code>.filter(fn)</code> <br />
+  <code>.map(fn)</code> <br />
+  <code>.reduce(fn, v)</code> <br />
+  <code>.some(fn)</code> <br />
+  <code>.every(fn)</code> <br />
+  <code>.find(fn)</code> <br />
+  <code>.indexOf(v)</code> <br />
+  <code>.includes(v)</code> <br />
+  <code>.reverse()</code> <br />
+  <code>.slice(n, m)</code> <br />
+  <code>.sort(fn)</code> <br />
+  <code>.splice(i, n)</code> <br />
+  </small></td>
+
+  <!-- TODO: concat, join, push, pop, unshift, shift -->
+
+  <td><small>
+  ✅ <br />
+  ⚠️ <br />
+  ⚠️ <br />
+  ⚠️ <br />
+  ⚠️ <br />
+  ⚠️ <br />
+  ⚠️ <br />
+  ❌ <br />
+  ❌ <br />
+  ❌ <br />
+  ❌ <br />
+  ⚠️ <br />
+  ❌ <br />
+  </small></td>
+
+  <td><small>
+  ⚠️ <br />
+  ⚠️ <br />
+  ⚠️ <br />
+  ⚠️ <br />
+  ⚠️ <br />
+  ⚠️ <br />
+  ⚠️ <br />
+  ❌ <br />
+  ❌ <br />
+  ✅ <br />
+  ❌ <br />
+  ✅ <br />
+  ✅ <br />
+  </small></td>
+
+  <td><small>
+  <br />
+  🔗 <br />
+  🔗 <br />
+  ⚠️ <br />
+  <br />
+  <br />
+  ⚠️ <br />
+  <br />
+  <br />
+  🔗 <br />
+  🔗 <br />
+  🔗 <br />
+  ⚠️ <br />
+  </small></td>
+
+  <td><small>
+  <code>void</code> <br />
+  <code>[]</code> (copy)<br />
+  <code>[]</code> (transform)<br />
+  <em>any</em> <br />
+  <code>false</code> <br />
+  <code>true</code> <br />
+  <em>any</em> <br />
+  <code>integer</code> <br />
+  <code>false</code> <br />
+  <em>self</em> <br />
+  <code>[]</code> (copy)<br />
+  <em>self</em> <br />
+  <code>[]</code> (copy)<br />
+  </small></td>
+
+  </tr>
+</table>
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+## Semantic
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+> "of or relating to meaning"
+
+<a href="https://search.brave.com/search?q=define+semantic" target="_define_semantic"><small>Merriam-Webster:
+semantic</small></a>
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+<table>
+<tr>
+<td>
+acceptable <br />
+allowable <br />
+correct <br />
+linguistic <br />
+</td>
+<td>
+morphological <br />
+phonological <br />
+syntactic <br />
+well-formed <br />
+</td>
+</tr>
+</table>
+
+<a href="https://www.thesaurus.com/browse/semantic" target="_thesaurus_semantic"><small>thesaurus.com:
+semantic</small></a>
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+## Non-Semantic
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### solecistic
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### solecistic
+
+- nonstandard usage
+- violation of etiquette
+- impropriety, mistake, or incongruity
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+## StoryTime
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+<img alt="four-wheeler foot area" src="https://i.imgur.com/GvvkHV7.jpg" width="70%" />
+
+<small>(I got my kickstart stuck in my foot peg)</small>
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Kickstart
+
+<img alt="engine kickstart" src="https://i.imgur.com/Z1uWNS9.jpg" width="60%" />
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Foot Peg
+
+<img alt="atv foot peg" src="https://i.imgur.com/R4iN6jB.jpg" width="60%" />
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Wrench
+
+<img alt="socket wrench" src="https://i.imgur.com/WvqbuQp.jpg" width="50%" />
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+wrench ~= lever
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+> "you must have a pry bar"
+
+### vs
+
+> "be sure to bring your wrench"
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+> It's fine to use the wrong tool \
+> when you don't have the right tool.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+But, in JavaScript, \
+we (almost) always \
+have the right tool.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+JavaScript Array Methods:
+
+<img alt="too many cooks" src="https://i.imgur.com/qXiRFTi.jpg" width="60%" />
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Goal
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Goal
+
+~~to be semantic~~
+
+<!-- could be overly specific -->
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Goal
+
+~~to be semantic~~
+
+to _not_ be incongruous
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+> "you don't always know what's right, \
+> but you often know what's wrong - \
+> so don't do that"
+
+<small>- John Ousterhout (paraphrased)</small>
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+> "in the face of ambiguity, \
+> refuse the temptation to guess"
+
+<small>- The Zen of Python</small>
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+> "better _no_ info \
+> than _bad_ info"
+
+<small>- AJ</small>
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+# ✅ ⚠️ ❌
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Semantic JS
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```js
+"" + 1;
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```js
+"" + 1;
+```
+
+vs
+
+```js
+(1).toString();
+
+String(1);
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```js
+"1" * 1;
+```
+
+vs
+
+```js
+parseFloat("1");
+
+parseInt("1", 10);
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Array Semantics
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+❌ `new Array()`
+
+```js
+let arr = new Array(n...);
+```
+
+✅ `[]`
+
+```js
+let arr = [a, ...];
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+❌ `new Array()`
+
+Ambiguous
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+❌ `new Array()`
+
+Ambiguous
+
+```js
+new Array(length);
+```
+
+```js
+new Array(v, ...)
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+❌ `new Array()`
+
+Ambiguous
+
+```js
+new Array(1);
+
+// [ undefined ]
+// [ 1 ]
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+❌ `new Array()`
+
+not _verbose_ but ...
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+❌ `new Array()`
+
+not _verbose_ but ...
+
+_"bloat without distinction"_
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+✅ `[]`
+
+`[]` is correct
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Naming Semantics
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+⚠️
+
+```js
+let arr = ...
+```
+
+✅
+
+```js
+let foos = ...
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+⚠️ `arr`
+
+Generic
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+⚠️ `arr`
+
+Generic
+
+(no specific problem to solve)
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+⚠️ `arr`
+
+(no specific problem to solve)
+
+communicates ignorance
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+⚠️ `arr`
+
+communicates ignorance
+
+> we just don't know
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+⚠️ `arr`
+
+appropriate for "utility" fns
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+⚠️ `arr`
+
+appropriate for "utility" fns
+
+> this is a set \
+> the quality of "set"ness is important
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+⚠️ `arr`
+
+utility libs are _not_ appropriate
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+⚠️ `arr`
+
+utility libs are _not_ appropriate
+
+(no specific problem to solve)<sup>2</sup>
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+✅ `foos`
+
+Specific
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+✅ `foos`
+
+> these are `foos` \
+> each `foo` is valuable
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+> "it's an array"
+
+<small>_not_ vital communication</small>
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+> "it's a bunch of _foos_"
+
+<small>Array*ness* (cardinality) is communicated by
+pluralization</small>
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Iteration Semantics
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+⚠️ `v`
+
+```js
+// key, value
+arr.forEach(function (v) {
+  // do stuff
+});
+```
+
+```js
+// index, element
+arr.forEach(function (el) {
+  // do stuff
+});
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+❌ `e`
+
+```js
+// also error, exception, event
+arr.forEach(function (e) {
+  // do stuff
+});
+```
+
+```js
+// item, but also index
+arr.forEach(function (i) {
+  // do stuff
+});
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+> The _category_ of the data
+
+vs
+
+> The _story_ of the data
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Semantic Lambdas
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+❌
+
+```js
+// not a lambda
+arr.forEach((v) => {
+  // return to nothing
+});
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+lambda
+
+> "The 11th letter of the Greek alphabet."
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+lambda
+
+> "an uncharged unstable elementary particle that has a mass
+> 2183 times that of an electron and that decays typically
+> into a nucleon and a pion"
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+lambda
+
+> "the likelihood that a small body will encounter a planet
+> or a dwarf planet leading to a deflection of a significant
+> magnitude"
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+lambda
+
+<small>(Computer Science)</small>
+
+> "the time window over which a process is observed for
+> determining the working memory set for a digital
+> computer's virtual memory management"
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+lambda
+
+<small>(Computer Science)</small>
+
+> "the empty string"
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+lambda
+
+<small>(Lambda Calculus, CS)</small>
+
+> "a universal model of computation that can be used to
+> simulate any Turing machine"
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+# 🤷‍♂️
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Semantic JS Array Methods<br/><small>(when in doubt:
+<code>forEach</code>)</small>
+
+<table>
+
+  <tr>
+  <th><small> Array <br />Method </small></th>
+  <th><small> Mutates <br />Value </small></th>
+  <th><small> Mutates <br />Array </small></th>
+  <th></th>
+  <th><small> Return <br />Value </small></th>
+  </tr>
+
+  <tr><td><small>
+  <code>.forEach(fn)</code> <br />
+  <code>.filter(fn)</code> <br />
+  <code>.map(fn)</code> <br />
+  <code>.reduce(fn, v)</code> <br />
+  <code>.some(fn)</code> <br />
+  <code>.every(fn)</code> <br />
+  <code>.find(fn)</code> <br />
+  <code>.indexOf(v)</code> <br />
+  <code>.includes(v)</code> <br />
+  <code>.reverse()</code> <br />
+  <code>.slice(n, m)</code> <br />
+  <code>.sort(fn)</code> <br />
+  <code>.splice(i, n)</code> <br />
+  </small></td>
+
+  <!-- TODO: concat, join, push, pop, unshift, shift -->
+
+  <td><small>
+  ✅ <br />
+  ⚠️ <br />
+  ⚠️ <br />
+  ⚠️ <br />
+  ⚠️ <br />
+  ⚠️ <br />
+  ⚠️ <br />
+  ❌ <br />
+  ❌ <br />
+  ❌ <br />
+  ❌ <br />
+  ⚠️ <br />
+  ❌ <br />
+  </small></td>
+
+  <td><small>
+  ⚠️ <br />
+  ⚠️ <br />
+  ⚠️ <br />
+  ⚠️ <br />
+  ⚠️ <br />
+  ⚠️ <br />
+  ⚠️ <br />
+  ❌ <br />
+  ❌ <br />
+  ✅ <br />
+  ❌ <br />
+  ✅ <br />
+  ✅ <br />
+  </small></td>
+
+  <td><small>
+  <br />
+  🔗 <br />
+  🔗 <br />
+  ⚠️ <br />
+  <br />
+  <br />
+  ⚠️ <br />
+  <br />
+  <br />
+  🔗 <br />
+  🔗 <br />
+  🔗 <br />
+  ⚠️ <br />
+  </small></td>
+
+  <td><small>
+  <code>void</code> <br />
+  <code>[]</code> (copy)<br />
+  <code>[]</code> (transform)<br />
+  <em>any</em> <br />
+  <code>false</code> <br />
+  <code>true</code> <br />
+  <em>any</em> <br />
+  <code>integer</code> <br />
+  <code>false</code> <br />
+  <em>self</em> <br />
+  <code>[]</code> (copy)<br />
+  <em>self</em> <br />
+  <code>[]</code> (copy)<br />
+  </small></td>
+
+  </tr>
+</table>
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+**`.forEach()`**
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.forEach()`
+
+Do _something_ for each element
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.forEach()`
+
+Do _something_ for each element
+
+```js
+arr.forEach(function (el, i) {
+  // do something
+});
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.forEach()`
+
+Do _something_ for each element
+
+- Not very _precise_
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.forEach()`
+
+Do _something_ for each element
+
+- Not very _precise_
+- Almost never _wrong_
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+- Almost never _wrong_
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+- Almost never _wrong_
+
+<!-- what if you _don't_ want to iterate over _each_ thing -->
+
+**`forEach()`** can't **`break`**
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+So what if you _don't_ want \
+to iterate over **_every_** thing?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+**`.some(fn)`**
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.some(fn)`
+
+Return `true` on success \
+<small>(when you're done)</small>
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.some(fn)`
+
+Return `true` on success \
+<small>(when you're done)</small>
+
+```js
+let hasGuardian = attendees.some(isAdult);
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.some(fn)`
+
+Return `true` on success \
+<small>(when you're done)</small>
+
+- Returns `true` when you return _truthy_
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.some(fn)`
+
+Return `true` on success \
+<small>(when you're done)</small>
+
+- Returns `true` when you return _truthy_
+- Returns `false` otherwise
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.some(fn)`
+
+Return `true` on success \
+<small>(when you're done)</small>
+
+- Returns `true` when you return _truthy_
+- Returns `false` otherwise
+  - `[]`
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+**`.every(fn)`**
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.every(fn)`
+
+Useless... ??
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.every(fn)`
+
+Returns `true`... unless you stop it
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.every(fn)`
+
+Returns `true`... unless you stop it
+
+```js
+let permittedToDieHard = movieGoers.every(isAdult);
+```
+
+<small>(including the group of 0)</small>
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.every(fn)`
+
+Returns `true`... unless you stop it
+
+- `true` by default (`[]`)
+- "breaks" (`false`)
+- unless you "continue" (`true`)
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+So... maybe
+
+`.some(fn)`
+
+is useless?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Probably
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Probably
+
+- `.find(fn)`
+- `.includes(v)`
+- `.indexOf(v)`
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.find(fn)`
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+**`.find(fn)`**
+
+Like `.some()`, but returns the _value_.
+
+```js
+let guardian = attendees.find(isAdult);
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.find(fn)`
+
+Like `.some()`, but returns the _value_.
+
+- **NOT** the value you returned
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+**`.includes(v)`**
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.includes(v)`
+
+Returns `true` if _exactly_ **`v`** is in the array
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.includes(v)`
+
+Returns `true` if _exactly_ **`v`** is in the array
+
+```js
+let hasBond = spies.includes(agent007);
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.includes(v)`
+
+Returns `true` if _exactly_ **`v`** is in the array
+
+- **Strictly-Typed**
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.includes(v)`
+
+Returns `true` if _exactly_ **`v`** is in the array
+
+- **Strictly-Typed**
+- 1 !== "1"
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+**`.indexOf(v)`**
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.indexOf(v)`
+
+Like `includes(v)`, but returns the **0-based** index
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.indexOf(v)`
+
+Like `includes(v)`, but returns the **0-based** index
+
+```js
+let index = sights.indexOf(waldo);
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.indexOf(v)`
+
+Like `includes(v)`, but returns the **0-based** index
+
+- 0 is _falsy_
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.indexOf(v)`
+
+Like `includes(v)`, but returns the **0-based** index
+
+- `0` is _falsy_
+- `-1` is _truthy_
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.indexOf(v)`
+
+Like `includes(v)`, but returns the **0-based** index
+
+- `0` is _falsy_
+- `-1` is _truthy_
+- not cool
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.indexOf(v)`
+
+Like `includes(v)`, but returns the **0-based** index
+
+- `0` is _falsy_
+- `-1` is _truthy_
+- not cool
+- (functional programs don't index)
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+So what _is_ cool?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+**`.filter(fn)`**
+
+<!-- of course -->
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.filter(fn)`
+
+Like `find(fn)`, but keeps on going!
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.filter(fn)`
+
+Like `find(fn)`, but keeps on going!
+
+```js
+let guardians = attendees.filter(isAdult);
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.filter(fn)`
+
+Like `find(fn)`, but keeps on going!
+
+- returns a **_new_** array
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.filter(fn)`
+
+Like `find(fn)`, but keeps on going!
+
+- returns a **_new_** array
+- _truthy_ returns include the value
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.filter(fn)`
+
+Like `find(fn)`, but keeps on going!
+
+- returns a **_new_** array
+- _truthy_ returns include the value
+- non-_truthy_ returns don't
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.map(fn)`
+
+Reshape / Transform the data.
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.map(fn)`
+
+Reshape / Transform the data.
+
+```js
+let guardians = adults.map(function (a) {
+  return {
+    name: `${a.given_name} ${a.family_name}`,
+    age: toAge(m.birthdate),
+  };
+});
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.map(fn)`
+
+Reshape / Transform the data.
+
+- Creates a COPY of the data
+- Does NOT modify original data
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Neat Trick
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Neat Trick
+
+```js [1-3]
+let betterRobots = robots
+  .map(makeBetterOrDiscard)
+  .filter(Boolean);
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.reduce(fn, init)`
+
+🤖 Danger! Danger! 🚨
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.reduce(fn, init)`
+
+Perform a lossy (non 1:1) aggregation
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.reduce(fn, init)`
+
+Perform a lossy (non 1:1) aggregation
+
+```js
+await guardians.reduce(async function (promise, g) {
+  await promise;
+  await Guardians.save(g);
+}, Promise.resolve());
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.reduce(fn, init)`
+
+<br />
+
+lambda
+
+<small>(Lambda Calculus, CS)</small>
+
+> "performing reduction operations"
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.reduce(fn, init)`
+
+✅
+
+```js
+arr.reduce((total, n) => total + n);
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.reduce(fn, init)`
+
+Perform a lossy (non 1:1) aggregation
+
+- Many values in
+- One (non-reversible) value out
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.reduce(fn, init)`
+
+<img alt="apple cider reduction" src="https://i.imgur.com/2jP3qJ4.jpg" width="33%" />
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.reduce(fn, init)`
+
+- ❌ `.filter(fn)`
+- ❌ `.map(fn)`
+- ❌ `.filter(fn).map(fn)`
+- ❌ declare a variable
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+**`.slice(n, m)`**
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.slice(n, m)`
+
+Copies the values between _n_ and _m_ into a new array.
+
+```js
+let hold = "threshold".slice(5, 9);
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.slice(n, m)`
+
+Copies the values between _n_ and _m_ into a new array.
+
+- great for batching _x_ at a time
+- _n_ (inclusive)
+- _m_ (exclusive)
+- 🚨 .slice(-n) gives last _n_ values
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Semantic Chaining
+
+NONE OF THOSE (except `forEach()`)
+
+are used to MODIFY the original array.
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```js
+let totalManHours = workers
+  .filter(isHuman)
+  .map(getHoursWorked)
+  .reduce((total, hours) => total + hours);
+```
+
+⚠️ type confusion
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+> "Do one thing, \
+> and do it well"
+
+<small>- The Unix Philosophy</small>
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Or don't...
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+**`.splice(i, n)`**
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.splice(i, n)`
+
+Remove _n_ items, starting at the given index
+
+```js
+attendees.splice(chuckAt, 1);
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.splice(i, n)`
+
+Remove _n_ items, starting at the given index
+
+- Removes elements
+- Starts at `index`
+- Counts `n` elements
+  - `.slice(n, i+n)`
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.splice(i, n)`
+
+Remove _n_ items, starting at the given index
+
+- Removes elements
+- Starts at `index`
+- Counts `n` elements
+  - `.slice(n, i+n)`
+- Also great for batching
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.splice(i, n)`
+
+The Swiss-Army Knife \
+that no one wanted, needed, or deserved \
+<small>(🚨 you'll cut your eye out, kid! 🚨)</small>
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.splice(i, n)`
+
+(technically can _replace_ or _add_ elements... \
+but don't do this)
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+On to the *un*cool boring stuff...
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+**`.sort(fn)`**
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+**`.sort(fn)`**
+
+Return `-1` to ascend or `1` to descend
+
+```js
+attendees.sort(youngToOld);
+```
+
+```js
+function youngToOld(a, b) {
+  return a.age - b.age;
+}
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+**`.sort(fn)`**
+
+Return `-1` to ascend or `1` to descend
+
+- unpredictable when `fn` is nullish
+- [0, 1, 10, 2, 3, 4]
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+**`.reverse(fn)`**
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.reverse(fn)`
+
+Change the order, exactly.
+
+```js
+arr.reverse();
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.reverse(fn)`
+
+Change the order, exactly.
+
+- 'nuff said
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Ultra Boring
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+LIFO
+
+- `.push(v)`
+- `.pop()`
+
+FILO
+
+- `.unshift(v)`
+- `.shift(v)`
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.push(v)`
+
+Add a value to the end (`.length`)
+
+```js
+completed.push(task);
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.pop()`
+
+Remove a value from the end (`.length - 1`)
+
+```js
+let task = tasks.pop();
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.unshift(v)`
+
+Add a value to the start (`0`)
+
+```js
+priorityQueue.unshift(importantTask);
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.shift()`
+
+Remove a value from the start (`0`)
+
+```js
+let nextJob = jobQueue.shift();
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+**`.concat(arr)`**
+
+```js
+let guests = adults.concat(minors);
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Honorable Mention
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+**`.join(str)`**
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.join(str)`
+
+Create a CSV or some such
+
+```js
+let salutation = ["Mr.", "John", null, "Smith", null]
+  .filter(Boolean)
+  .join(" ");
+
+// "Mr. John Smith"
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+`.join(str)`
+
+Create a CSV or some such
+
+- variadic & sparse lists
+- NO final delimiter
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Bonus Round
+
+**`.remove()`**
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```js
+function remove(arr, i) {
+  return arr.splice(i, 1)[0];
+}
+```
+
+```js
+function removeOne(arr, el) {
+  let i = arr.indexOf(el);
+  if (i > -1) {
+    return arr.splice(i, 1)[0];
+  }
+}
+```
+
+```js
+let leftovers = questionables.filter(isGood);
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+But... why not _just_ `.forEach()`?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+But... why not _just_ `.forEach()`?
+
+- chaining
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+But... why not _just_ `.forEach()`?
+
+- chaining
+- (cool?)
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+But... why not _just_ `.forEach()`?
+
+- chaining
+- (cool?)
+- readability (smaller code blocks)
+  - (at the expense of performance)
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+But... why not _just_ `.forEach()`?
+
+- chaining
+- (cool?)
+- readability (smaller code blocks)
+  - (at the expense of performance)
+- side effects
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Q&A
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+### Thanks
+
+Like, Sub, & Follow
+
+<small>(if you wannu)</small>
+
+</textarea></section>
+<section data-markdown ><textarea data-template>
+
+FIN
+</textarea></section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/math/math.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+Reveal.initialize({
+controls : false,
+markdown : {smartypants: true},
+controls : false,
+keyboard : true,
+hash : false,
+respondToHashChanges : false,
+				hash: true,
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath ]
+			});
+		</script>
+	</body>
+</html>
