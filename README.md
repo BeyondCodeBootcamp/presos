@@ -7,43 +7,42 @@
 
 Presentation Slides + Videos:
 
-  <!-- [2022-08-02 17:26:57 -0600] Hello Go -->
-
 - 🐹 [Hello Go](./hello-go/)
-  <!-- [2022-07-26 15:59:21 -0600] Shadowing -->
+  <!-- [2022-08-02 17:26:57 -0600] Hello Go -->
 - ⚡️ [Variable Shadowing](./variable-shadowing/)
-  <!-- [2022-07-20 04:41:53 -0600] MVC is Dead -->
+  <!-- [2022-07-26 15:59:21 -0600] Shadowing -->
 - 📦 [MVC is Dead](./long-live-mvc/)
-  <!-- [2022-07-14 19:46:54 -0600] JS Promises -->
+  <!-- [2022-07-20 04:41:53 -0600] MVC is Dead -->
 - 🦴
   [The Anatomy of Promises - Utah JS - July 14th, 2022](./js-promises/)
-  <!-- [2022-04-21 14:32:00 -0600] Go Proverbs -->
+  <!-- [2022-07-14 19:46:54 -0600] JS Promises -->
 - 🧙‍♂️
   [Go Proverbs for JavaScript - Utah Node.js - May 4th, 2022](./go-proverbs-for-js/)
-  <!-- [2022-03-23 01:38:54 -0600] AJ's BYU 2022 Lecture Series -->
+  <!-- [2022-04-21 14:32:00 -0600] Go Proverbs -->
 - [Software Engineering's Greatest Hits - BYU - March 23rd, 2022](https://beyondcodebootcamp.github.io/presos/byu-2022/)
-    <!-- [2022-03-23 01:03:02 -0600] Software Engineering's <br>Greatest Hits -->
+  <!-- [2022-03-23 01:38:54 -0600] AJ's BYU 2022 Lecture Series -->
   - [On Software Engineering](https://beyondcodebootcamp.github.io/presos/on-software-engineering/)
-    <!-- [2022-03-23 05:18:18 -0600] On Node.js -->
+    <!-- [2022-03-23 01:03:02 -0600] Software Engineering's <br>Greatest Hits -->
   - [On Node Js](https://beyondcodebootcamp.github.io/presos/on-node-js/)
-    <!-- [2022-03-23 05:18:18 -0600] Node.js Tooling -->
+    <!-- [2022-03-23 05:18:18 -0600] On Node.js -->
   - [On Js Tooling](https://beyondcodebootcamp.github.io/presos/on-js-tooling/)
-  <!-- [2022-03-17 15:05:11 -0600] Deploying -->
+    <!-- [2022-03-23 05:18:18 -0600] Node.js Tooling -->
 - [Deploying Node.js in 2022 - Utah Node.js - March 17th, 2022](https://beyondcodebootcamp.github.io/presos/deploying-nodejs-in-2022/)
-  <!-- [2022-02-18 02:13:05 -0700] Navigating -->
+  <!-- [2022-03-17 15:05:11 -0600] Deploying -->
 - [Navigating Node.js in 2022 - Utah Node.js - February 18th, 2022](https://beyondcodebootcamp.github.io/presos/navigating-nodejs-in-2022/)
-  <!-- [2022-01-24 23:44:42 -0700] The 2 Hardest Things -->
+  <!-- [2022-02-18 02:13:05 -0700] Navigating -->
 - [Hardest Things in CS - Beyond Code - January 24th, 2022](https://beyondcodebootcamp.github.io/presos/hardest-things-in-cs/)
-  <!-- [2022-01-16 02:17:42 -0700] `const`, `let`, `var` -->
+  <!-- [2022-01-24 23:44:42 -0700] The 2 Hardest Things -->
 - [const, let, var - Beyond Code - January 16th, 2022](https://beyondcodebootcamp.github.io/presos/const-let-var/)
-  <!-- [2021-12-13 02:10:19 -0700] Classless JavaScript -->
+  <!-- [2022-01-16 02:17:42 -0700] `const`, `let`, `var` -->
 - [Classless JavaScript - Utah Node.js - December 13th, 2022](https://beyondcodebootcamp.github.io/presos/classless-javascript/)
-  <!-- [2021-08-12 18:01:43 -0600] All The Concurrency Models of the Rainbow 🌈 -->
+  <!-- [2021-12-13 02:10:19 -0700] Classless JavaScript -->
 - [The Concurrency Rainbow - Utah Rust - August 12th, 2022](https://beyondcodebootcamp.github.io/presos/concurrency-rainbow/)
-  <!-- [2021-07-28 05:11:36 -0600] My Best Advice -->
+  <!-- [2021-08-12 18:01:43 -0600] All The Concurrency Models of the Rainbow 🌈 -->
 - [My Best Advice for Bootcamp Grads - July 28th, 2022](https://beyondcodebootcamp.github.io/presos/bootcamp-grads/)
-  <!-- [2021-07-28 01:43:19 -0600] Whole Numbers<br>in Programming -->
+  <!-- [2021-07-28 05:11:36 -0600] My Best Advice -->
 - [Integer Division - July 28th, 2022](https://beyondcodebootcamp.github.io/presos/integer-division/)
+  <!-- [2021-07-28 01:43:19 -0600] Whole Numbers<br>in Programming -->
 
 <!-- TODO
   Nothings of JavaScript
