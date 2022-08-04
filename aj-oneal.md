@@ -12,17 +12,24 @@ A great subtitle
 
 ### Useful Links
 
-<small>Slides:
-<a href="https://beyondcodebootcamp.github.io/presos/CHANGE_ME/">https://beyondcodebootcamp.github.io/</a></small>
+<table>
 
+<tr><td>
+<small>Slides:
+<a href="https://beyondcodebootcamp.github.io/presos/">https://beyondcodebootcamp.github.io/</a></small>
+</td></tr>
+
+<tr><td>
 <small>Video:
 <a href="https://www.youtube.com/watch?v=ID_GOES_HERE">https://youtu.be/ID_GOES_HERE</a></small>
+</td></tr>
 
-[comment]: # "!!!"
+<tr><td>
+<small>Slides Builder:
+<a href="https://beyondcodebootcamp.github.io/presos/#quick-start-to-render">MD Slides</a></small>
+</td></tr>
 
-Like, Sub, & Follow
-
-<small>(if this is useful, or entertaining)</small>
+</table>
 
 [comment]: # "!!!"
 
