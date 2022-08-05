@@ -10,6 +10,8 @@
 
 A great subtitle
 
+[comment]: # "!!! data-auto-animate"
+
 ### Useful Links
 
 <table>
