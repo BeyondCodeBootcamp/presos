@@ -15,7 +15,8 @@
 #   <!-- [2022-03-23 01:38:54 -0600] Whole Numbers<br>in Programming -->
 #   - [Integer Division](https://beyondcodebootcamp.github.io/presos/integer-division)
 
-my_base="https://beyondcodebootcamp.github.io/presos"
+#my_base="https://beyondcodebootcamp.github.io/presos"
+my_base="./"
 
 list() {
     for my_preso in src/*.md; do
@@ -27,7 +28,7 @@ list() {
         )"
 
         my_date="$(
-            git log --diff-filter=A --format=%ci -- ${my_preso} |
+            git log --diff-filter=A --format=%ci -- "$my_preso" |
                 grep '\d\+-\d\+-\d\+ \d\+:\d\+:\d\+'
         )"
         my_first_slide="$(
