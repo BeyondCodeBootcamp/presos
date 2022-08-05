@@ -63,6 +63,12 @@ Utah Rust
 
 again
 
+[comment]: # "!!!"
+
+Like, Sub, & Follow
+
+<small>(if you find this useful, or entertaining)</small>
+
 [comment]: # "!!! data-auto-animate"
 
 # An Animated Slide
