@@ -49,6 +49,8 @@ Technophobic Technologist Extraordinairé
 
 [comment]: # "!!!"
 
+JavaScript Jabber
+
 Utah Node.js
 
 Utah Rust
