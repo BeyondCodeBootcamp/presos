@@ -7,6 +7,8 @@
 
 Presentation Slides + Videos:
 
+- ⏩ [Semantic Arrays](./semantic-arrays/)
+  <!-- [2022-08-05 13:39:07 -0600] Semantic Arrays -->
 - 🐹 [Hello Go](./hello-go/)
   <!-- [2022-08-02 17:26:57 -0600] Hello Go -->
 - ⚡️ [Variable Shadowing](./variable-shadowing/)
