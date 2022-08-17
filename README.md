@@ -7,6 +7,8 @@
 
 Presentation Slides + Videos:
 
+- 💡 [Express.js ProTips™](./express-pro-tips/)
+  <!-- [2022-08-17 11:56:57 -0600] Express.js ProTips™ -->
 - ⏩ [Semantic Arrays](./semantic-arrays/)
   <!-- [2022-08-05 13:39:07 -0600] Semantic Arrays -->
 - 🐹 [Hello Go](./hello-go/)
