@@ -148,7 +148,7 @@ Also:
 
 [comment]: # "!!!"
 
-### 1. Use Node's HTTP
+### 1. Use Node's `http`
 
 [comment]: # "!!!"
 
