@@ -1,0 +1,870 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>Semantic JavaScript</title>
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+<link rel="stylesheet" href="dist/theme/white.css" id="theme">
+		<!-- Theme used for syntax highlighted code -->
+<link rel="stylesheet" href="plugin/highlight/github.min.css" id="highlight-theme"></head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+<section data-markdown  data-auto-animate><textarea data-template>
+[comment]: # "markdown: { smartypants: true }"
+
+# Semantic JavaScript
+
+(Intentional JavaScript)
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+### Useful Links
+
+<table>
+
+<tr><td>
+<small>Slides:
+<a href="https://beyondcodebootcamp.github.io/presos/">https://beyondcodebootcamp.github.io/</a></small>
+</td></tr>
+
+<tr><td>
+<small>Video:
+<a href="https://www.youtube.com/watch?v=ID_GOES_HERE">https://youtu.be/ID_GOES_HERE</a></small>
+</td></tr>
+
+<tr><td>
+<small>Slides Builder:
+<a href="https://beyondcodebootcamp.github.io/presos/#quick-start-to-render">MD Slides</a></small>
+</td></tr>
+
+</table>
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+AJ ONeal <br>
+[@\_beyondcode](https://twitter.com/@_beyondcode) <br>
+[youtube.com/coolaj86](https://youtube.com/coolaj86)
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Dangerous Wrong Thinker
+
+Equal Opportunity Offender
+
+Technophobic Technologist Extraordinairé
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+JavaScript Jabber
+
+Utah Node.js
+
+Utah Rust
+
+[twitch.tv/coolaj86](https://twitch.tv/coolaj86)
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Like, Sub, & Follow
+
+<small>(if you find this useful, or entertaining)</small>
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Semantic
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Semantic
+
+> "of or relating to meaning"
+
+<a href="https://search.brave.com/search?q=define+semantic" target="_define_semantic"><small>Merriam-Webster:
+semantic</small></a>
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+<table>
+<tr>
+<td>
+acceptable <br />
+allowable <br />
+correct <br />
+linguistic <br />
+</td>
+<td>
+morphological <br />
+phonological <br />
+syntactic <br />
+well-formed <br />
+</td>
+</tr>
+</table>
+
+<a href="https://www.thesaurus.com/browse/semantic" target="_thesaurus_semantic"><small>thesaurus.com:
+semantic</small></a>
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Non-Semantic
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Non-Semantic
+
+### solecistic
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### solecistic
+
+- nonstandard usage
+- violation of etiquette
+- impropriety, mistake, or incongruity
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+### StoryTime
+
+<img alt="four-wheeler foot area" src="https://i.imgur.com/GvvkHV7.jpg" width="70%" />
+
+<small>(I got my kickstart stuck in my foot peg)</small>
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Kickstart
+
+<img alt="engine kickstart" src="https://i.imgur.com/Z1uWNS9.jpg" width="60%" />
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Foot Peg
+
+<img alt="atv foot peg" src="https://i.imgur.com/R4iN6jB.jpg" width="60%" />
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+<img alt="four-wheeler foot area" src="https://i.imgur.com/GvvkHV7.jpg" width="70%" />
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Wrench
+
+<img alt="socket wrench" src="https://i.imgur.com/WvqbuQp.jpg" width="50%" />
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+wrench ~= lever
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+> "you must have a pry bar"
+
+### vs
+
+> "be sure to bring your wrench"
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+> It's fine to use the wrong tool \
+> when you don't have the right tool.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+But, in JavaScript, \
+we (almost) always \
+have the right tool.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+JavaScript Array Methods:
+
+<img alt="too many cooks" src="https://i.imgur.com/qXiRFTi.jpg" width="60%" />
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Goal
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Goal
+
+to be semantic ✅
+
+<!-- could be overly specific -->
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Goal
+
+to be semantic ✅
+
+to _not_ be incongruous ✅✅
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+> "you don't always know what's right, \
+> but you often know what's wrong - \
+> so don't do that"
+
+<small>- John Ousterhout (paraphrased)</small>
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+> "in the face of ambiguity, \
+> refuse the temptation to guess"
+
+<small>- The Zen of Python</small>
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+> "better _no_ info \
+> than _bad_ info"
+
+<small>- AJ</small>
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Nz8ssH7LiB0?start=13" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<small>Video:
+<a href="https://www.youtube.com/watch?v=Nz8ssH7LiB0&t=13s">https://youtu.be/Nz8ssH7LiB0&t=13s</a></small>
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+# ✅ ⚠️ ❌
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+# ✅ ⚠️ ❌
+
+## Semantic JS
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Semantic JS
+
+<small><em>Strings</em></small>
+
+```js
+"" + 1;
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Semantic JS
+
+<small><em>Strings</em></small>
+
+```js
+"" + 1;
+```
+
+vs
+
+```js
+(1).toString();
+
+String(1);
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Semantic JS
+
+<small><em>Numbers</em></small>
+
+```js
+"1" * 1;
+```
+
+vs
+
+```js
+parseFloat("1");
+
+parseInt("1", 10);
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Array Semantics
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Array Semantics
+
+❌ `new Array()`
+
+```js
+let arr = new Array(n...);
+```
+
+✅ `[]`
+
+```js
+let arr = [a, ...];
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+❌ `new Array()`
+
+Ambiguous
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+❌ `new Array()`
+
+Ambiguous
+
+```js
+new Array(length);
+```
+
+```js
+new Array(v, ...)
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+❌ `new Array()`
+
+Ambiguous
+
+```js
+new Array(1);
+
+// [ undefined ]
+// [ 1 ]
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+❌ `new Array()`
+
+not _verbose_ but ...
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+❌ `new Array()`
+
+not _verbose_ but ...
+
+_"bloat without distinction"_
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+✅ Communicate Intent
+
+```js
+let arr = [];
+```
+
+```js
+Array.from(arrayLike);
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Semantics Usage
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Semantic Usage
+
+⚠️
+
+```js
+let arr = ...
+```
+
+✅
+
+```js
+let foos = ...
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+⚠️ `arr`
+
+Generic
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+⚠️ `arr`
+
+Generic
+
+(no specific problem to solve)
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+⚠️ `arr`
+
+(no specific problem to solve)
+
+communicates ignorance
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+⚠️ `arr`
+
+communicates ignorance
+
+> we just don't know
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+⚠️ `arr`
+
+appropriate for "utility" fns
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+⚠️ `arr`
+
+appropriate for "utility" fns
+
+> this is a set \
+> the quality of "set"ness is important
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+⚠️ `arr`
+
+utility libs are _not_ appropriate
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+⚠️ `arr`
+
+utility libs are _not_ appropriate
+
+(no specific problem to solve)<sup>2</sup>
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+✅ `foos`
+
+Specific
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+✅ `foos`
+
+Specific
+
+(not literally `foos`, but `users`, `tasks`, etc)
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+✅ `foos`
+
+> these are `foos` \
+> each `foo` is valuable
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+> "it's an array"
+
+<small>_not_ vital communication</small>
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+> "it's a bunch of _foos_"
+
+<small>Array*ness* (cardinality) is communicated by
+pluralization</small>
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+## Iteration Semantics
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+✅ `"foo"`
+
+```js
+// 'foo' of 'foos'
+foos.forEach(function (foo) {
+  // do stuff
+});
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+✅ `"f"` for `"foo"`
+
+```js
+// 'f' of 'foos'
+foos.forEach(function (f) {
+  // do stuff
+});
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+✅ `"person"`
+
+```js
+// 'person' of 'persons'
+persons.forEach(function (person) {
+  // do stuff
+});
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+✅ `"p"` for `person`
+
+```js
+// 'p' for 'person'
+persons.forEach(function (p) {
+  // do stuff
+});
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+⚠️ `"v"` for `value`
+
+```js
+// key, value
+arr.forEach(function (v) {
+  // do stuff
+});
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+⚠️ `"el"` for `element`
+
+```js
+// index, element
+arr.forEach(function (el) {
+  // do stuff
+});
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+❌ `"e"` for `exception`
+
+```js
+// also error, exception, event
+arr.forEach(function (e) {
+  // do stuff
+});
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+❌ `"i"` for `item`
+
+```js
+// item, but also index
+arr.forEach(function (i) {
+  // do stuff
+});
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+> The _category_ of the data _(collection)_
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+> The _category_ of the data _(collection)_
+
+vs
+
+> The _story_ of the data _(interactions)_
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Booleans vs Enums
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Booleans vs Enums
+
+- allowed
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Booleans vs Enums
+
+- allowed
+  - boolean
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Booleans vs Enums
+
+- admin
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Booleans vs Enums
+
+- isAdmin
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Booleans vs Enums
+
+- isAdmin
+  - boolean
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Booleans vs Enums
+
+- hasAdminRights
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Booleans vs Enums
+
+- asAdmin
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Booleans vs Enums
+
+- hasChildren
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Booleans vs Enums
+
+- hasChildren
+  - boolean
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Booleans vs Enums
+
+- public
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Booleans vs Enums
+
+- public
+- private
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Booleans vs Enums
+
+- public
+- private
+- unlisted
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Booleans vs Enums
+
+- public
+- private
+- unlisted
+- whitelist
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Booleans vs Enums
+
+- privacy
+  - "public"
+  - "unlisted"
+  - "whitelist"
+  - "private"
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Booleans vs Enums
+
+- privacy
+  - "public"
+  - "unlisted"
+  - "whitelist"
+  - "private"
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Common Conventions
+
+```txt
+a,b    - sortable values
+args   - variadic arguments
+arr    - Array
+el     - Element
+err    - Error (Exception)
+ev     - Event
+i,j    - index (or count)
+k      - key
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+## Common Conventions
+
+```txt
+n,m    - Number (or quantity)
+opts   - misc options
+r      - record
+req    - server request
+res    - server response
+resp   - client response
+v,x    - value
+x,y,z  - planer coords
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/ph9HGYkAiWw?start=32" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<small>Video:
+<a href="https://www.youtube.com/watch?v=ph9HGYkAiWw&t=32s">https://youtu.be/ph9HGYkAiWw&t=32s</a></small>
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+Q&A
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Like, Sub, & Follow
+
+<small>(if you wannu)</small>
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Thanks.
+
+</textarea></section>
+<section data-markdown ><textarea data-template>
+
+FIN
+</textarea></section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/math/math.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+Reveal.initialize({
+controls : false,
+markdown : {smartypants: true},
+controls : false,
+keyboard : true,
+hash : false,
+respondToHashChanges : false,
+				hash: true,
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath ]
+			});
+		</script>
+	</body>
+</html>

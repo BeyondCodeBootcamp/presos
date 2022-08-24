@@ -7,6 +7,8 @@
 
 Presentation Slides + Videos:
 
+- 👩‍🏫 [Semantic Javascript](.//semantic-javascript/)
+  <!-- [2022-08-24 14:47:49 -0600] Semantic JavaScript -->
 - 💡 [Express.js ProTips™](./express-pro-tips/)
   <!-- [2022-08-17 11:56:57 -0600] Express.js ProTips™ -->
 - ⏩ [Semantic Arrays](./semantic-arrays/)
