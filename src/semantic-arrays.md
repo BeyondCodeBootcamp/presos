@@ -718,6 +718,24 @@ Perform a lossy (non 1:1) aggregation
 
 [comment]: # "!!! data-auto-animate"
 
+```js
+/**
+ * @param {Reducer} reducer
+ * @param {Number|Promise} init
+ */
+Array.reduce = function (reducer, init) {
+  /* ... */
+};
+```
+
+- ❌ `Array` (`filter`, `map`)
+- ❌ `Boolean` (`some`, `every`)
+- ❌ `String` (`+=`, `Array<String>`)
+- ❌ `Object` (mutable side effects??)
+- ⚠️ `BigInt` (??)
+
+[comment]: # "!!! data-auto-animate"
+
 **`.slice(n, m)`**
 
 [comment]: # "!!! data-auto-animate"

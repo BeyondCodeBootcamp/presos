@@ -794,6 +794,25 @@ Perform a lossy (non 1:1) aggregation
 </textarea></section>
 <section data-markdown  data-auto-animate><textarea data-template>
 
+```js
+/**
+ * @param {Reducer} reducer
+ * @param {Number|Promise} init
+ */
+Array.reduce = function (reducer, init) {
+  /* ... */
+};
+```
+
+- ❌ `Array` (`filter`, `map`)
+- ❌ `Boolean` (`some`, `every`)
+- ❌ `String` (`+=`, `Array<String>`)
+- ❌ `Object` (mutable side effects??)
+- ⚠️ `BigInt` (??)
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
 **`.slice(n, m)`**
 
 </textarea></section>
