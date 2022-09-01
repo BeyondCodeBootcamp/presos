@@ -129,6 +129,77 @@ lambda
 
 [comment]: # "!!! data-auto-animate"
 
+`.reduce(fn, init)`
+
+🤖 Danger! Danger! 🚨
+
+[comment]: # "!!! data-auto-animate"
+
+`.reduce(fn, init)`
+
+Perform a lossy (non 1:1) aggregation
+
+[comment]: # "!!! data-auto-animate"
+
+`.reduce(fn, init)`
+
+Perform a lossy (non 1:1) aggregation
+
+```js
+await guardians.reduce(async function (promise, g) {
+  await promise;
+  await Guardians.save(g);
+}, Promise.resolve());
+```
+
+[comment]: # "!!! data-auto-animate"
+
+`.reduce(fn, init)`
+
+<br />
+
+lambda
+
+<small>(Lambda Calculus, CS)</small>
+
+> "performing reduction operations"
+
+[comment]: # "!!! data-auto-animate"
+
+`.reduce(fn, init)`
+
+✅
+
+```js
+arr.reduce((total, n) => total + n);
+```
+
+[comment]: # "!!! data-auto-animate"
+
+`.reduce(fn, init)`
+
+Perform a lossy (non 1:1) aggregation
+
+- Many values in
+- One (non-reversible) value out
+
+[comment]: # "!!! data-auto-animate"
+
+`.reduce(fn, init)`
+
+<img alt="apple cider reduction" src="https://i.imgur.com/2jP3qJ4.jpg" width="33%" />
+
+[comment]: # "!!! data-auto-animate"
+
+`.reduce(fn, init)`
+
+- ❌ `.filter(fn)`
+- ❌ `.map(fn)`
+- ❌ `.filter(fn).map(fn)`
+- ❌ declare a variable
+
+[comment]: # "!!! data-auto-animate"
+
 Q&A
 
 [comment]: # "!!!"
