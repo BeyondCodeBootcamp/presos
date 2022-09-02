@@ -640,9 +640,9 @@ Reshape / Transform the data.
 ### Neat Trick
 
 ```js [1-3]
-let betterRobots = robots
-  .map(makeBetterOrDiscard)
-  .filter(Boolean);
+let betterRobots = humans
+  .filter(isReplicant)
+  .map(makeBetter);
 ```
 
 [comment]: # "!!! data-auto-animate"
