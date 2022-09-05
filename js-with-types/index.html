@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-<title>JavaScript with Types</title>
+<title>TODOS</title>
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
 <link rel="stylesheet" href="dist/theme/white.css" id="theme">
@@ -15,6 +15,12 @@
 			<div class="slides">
 <section data-markdown  data-auto-animate><textarea data-template>
 [comment]: # "markdown: { smartypants: true }"
+
+# TODOS
+
+- Where do `nullish` best fit?
+  - optional params and props vs undefined
+- ## Tips and Tricks
 
 # JavaScript with Types
 
@@ -48,6 +54,9 @@ Types without Transpilation
 </td></tr>
 
 </table>
+
+- [JSDoc: Tags: @type](https://jsdoc.app/tags-type)
+- [TypeScript: Everyday Types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html)
 
 </textarea></section>
 <section data-markdown  ><textarea data-template>
@@ -247,11 +256,27 @@ mv tsconfig.json jsconfig.json
 </textarea></section>
 <section data-markdown  data-auto-animate><textarea data-template>
 
+## JavaScript is...
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Duck-Typed
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Typed for JIT-Optimization
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
 ## Types of Types
 
 <table>
 <tr>
-<th><small>Basic</small></th>
+<th><small>Single-Value</small></th>
+<th><small>Multi-Value</small></th>
 <th><small>Collection</small></th>
 <th><small>Meta</small></th>
 </tr>
@@ -260,27 +285,46 @@ mv tsconfig.json jsconfig.json
 
 <td><small>
 <ul>
-<li>primitives</li>
-<li>struct</li>
-<li>function</li>
+<li>Primitives<ul>
+  <li>Booleans</li>
+  <li>Number</li>
+  <li>String</li>
+  <li>BigInt*</li>
+  <li>Int/Uint*</li>
+</ul></li>
+<li>Function</li>
+<li>Null<em>ish</em><ul>
+  <li><code>null</code></li>
+  <li><code>undefined</code></li>
+  <li><code>not defined</code></li>
+</ul></li>
 </ul>
 </small></td>
 
 <td><small>
 <ul>
-  <li>key-value pairs</li>
-  <li>list</li>
-  <li>tuple</li>
+  <li>Struct</li>
+  <li>Tuple</li>
+  <li>WeakMap*</li>
+  <li>WeakSet*</li>
+</ul>
+</small></td>
+
+<td><small>
+<ul>
+  <li>Map<br>(key-value pairs)</li>
+  <li>List<br>(indexed values)</li>
 </ul>
 </small></td>
 
 <td><small>
 <ul>
 <li>newtypes</li>
-<li>type aliases (marker types)</li>
-<li>value enums (C-style)</li>
-<li>type enums (functional-style)</li>
-<li>mixins (JS-style)</li>
+<li>type aliases<br>(marker types)</li>
+<li>value enums<br>(C-style)</li>
+<li>type enums<br>(functional-style)</li>
+<li>mixins<br>(unions)</li>
+<li>templates</li>
 </ul>
 </small></td>
 
@@ -290,12 +334,7 @@ mv tsconfig.json jsconfig.json
 </textarea></section>
 <section data-markdown  data-auto-animate><textarea data-template>
 
-### Primitives
-
-</textarea></section>
-<section data-markdown  data-auto-animate><textarea data-template>
-
-### Primitives
+### Reference Material
 
 - [JSDoc: Tags: @type](https://jsdoc.app/tags-type)
 - [TypeScript: Everyday Types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html)
@@ -303,36 +342,123 @@ mv tsconfig.json jsconfig.json
 </textarea></section>
 <section data-markdown  data-auto-animate><textarea data-template>
 
-### Primitives
+# CAVEAT
 
-- `"Hello, World!"`
-- `0.0`
-- `true`
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+# CAVEAT
+
+💩, because slides.
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Type Syntax
+
+```js [1-99]
+/**
+ * ...
+ */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Type Syntax
+
+```js [1]
+/**
+ * ...
+ */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Type Syntax
+
+```js [2]
+/**
+ * ...
+ */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Type Syntax
+
+```js [3]
+/**
+ * ...
+ */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Type Syntax
+
+```js [1]
+/** ... */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Type Syntax
+
+```js [1]
+/** @type {FooPerson} */
+var person;
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Type Syntax
+
+```js [3-4]
+/**
+ * A great person
+ * @typedef {Object} FooPerson
+ * @prop {Number} fooAge
+ */
+```
+
+```js [3-4]
+/**
+ * Greet with great kindness
+ * @callback FooGreeter
+ * @param {FooPerson} other
+ */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## 1. Single-Value Types
 
 </textarea></section>
 <section data-markdown  data-auto-animate><textarea data-template>
 
 ### Primitives
 
-- `{BigInt}`
-- `{Boolean}`
-- `{Number}`
-- `{String}`
-
 </textarea></section>
 <section data-markdown  data-auto-animate><textarea data-template>
 
 ### Primitives
 
-```js
+```js [1-9]
 /** @type {String} */
-let name;
+let name = "Hello World!";
 
 /** @type {Number} */
-let age;
+let answer = 42;
 
 /** @type {Boolean} */
-let human;
+let alive = true;
 ```
 
 </textarea></section>
@@ -340,24 +466,1544 @@ let human;
 
 ### Primitives
 
-- ⚠️ `{Buffer}`
-- ⚠️ `{Integer}`
+```js [1-2]
+/** @type {String} */
+let name = "Hello World!";
 
-<small>(kinda, but not)</small>
+/** @type {Number} */
+let answer = 42;
+
+/** @type {Boolean} */
+let alive = true;
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Primitives
+
+```js [4-5]
+/** @type {String} */
+let name = "Hello World!";
+
+/** @type {Number} */
+let answer = 42;
+
+/** @type {Boolean} */
+let alive = true;
+```
 
 </textarea></section>
 <section data-markdown  data-auto-animate><textarea data-template>
 
 ### Primitives
 
-- `null`
-- `undefined`
-- _not defined_
+```js [7-9]
+/** @type {String} */
+let name = "Hello World!";
+
+/** @type {Number} */
+let answer = 42;
+
+/** @type {Boolean} */
+let alive = true;
+```
 
 </textarea></section>
 <section data-markdown  data-auto-animate><textarea data-template>
 
 ### Primitives
+
+```js
+/** @type {Boolean?} */
+let alive = null;
+
+/** @type {Boolean?|undefined} */
+let cat;
+```
+
+<small>(more on `null`*ish*ness later...)</small>
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Primitives
+
+```js [1-99]
+/**
+ * @param {String} name
+ * @param {Number} answer
+ * @param {Boolean} alive
+ */
+function doScience(name, age, alive) {
+  // ...
+}
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### ⚠️ Primitives++
+
+```js
+/** @type {BigInt} */
+let debt = 1_000_000_000_000n;
+
+/** @type {Uint8Array} */
+let answers = Uint8Array.from([11, 37, 42]);
+
+/** @type {Buffer|ArrayBuffer} */
+let bytes = Buffer.from([255, 255, 255, 255]);
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### ⚠️ Built-Ins
+
+```js
+/** @type {Date} */
+let matcher = Date.parse("2022-09-22T15:05:00.000-0600");
+
+/** @type {RegExp} */
+let matcher = /^abc$/;
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Functions
+
+```js [1-99]
+/**
+ * Greet another Person
+ * @callback Greeter
+ * @param {Object} other
+ * @param {String} other.name
+ */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Functions
+
+```js [3]
+/**
+ * Greet another Person
+ * @callback Greeter
+ * @param {Object} other
+ * @param {String} other.name
+ */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Functions
+
+```js [1-99]
+/** @type {Greeter} */
+function greet(other) {
+  return `Hello, ${other.name}!`;
+}
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Functions
+
+```js [1]
+/** @type {Greeter} */
+function (other) {
+    return `Hello, ${other.name}!`;
+}
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### ❌ `@function`
+
+```js [1-99]
+/**
+ * Greet another Person
+ * @function Greeter
+ * @param {Object} other
+ * @param {String} other.name
+ */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### ❌ `@function`
+
+```js [3]
+/**
+ * Greet another Person
+ * @function Greeter
+ * @param {Object} other
+ * @param {String} other.name
+ */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### ❌ `@typedef {Function}`
+
+```js [1-99]
+/**
+ * Greet another Person
+ * @typedef {Function} Greeter
+ * @param {Object} other
+ * @param {String} other.name
+ */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### ❌ `@typedef {Function}`
+
+```js [3]
+/**
+ * Greet another Person
+ * @typedef {Function} Greeter
+ * @param {Object} other
+ * @param {String} other.name
+ */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## 🪲
+
+<small><a href="https://github.com/microsoft/TypeScript/issues/50274" target="_blank">github.com/microsoft/TypeScript/issues/50274</a></small>
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Functions
+
+```diff [1-99]
+  /**
+   * Greet another Person
+-  * @callback Greeter
+   * @param {Object} other
+   * @param {String} other.name
+   */
+-
+- /** @type {Greeter} */
+  function (other) {
+      return `Hello, ${other.name}!`;
+  }
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Functions
+
+```js [1-99]
+/**
+ * Greet another Person
+ * @param {Object} other
+ * @param {String} other.name
+ */
+function (other) {
+    return `Hello, ${other.name}!`;
+}
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Side Note
+
+⚠️ Syntax vs Semantics
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Side Note
+
+⚠️ Syntax vs Semantics
+
+- "Object" _notation_: {}
+- "Array" _notation_: []
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Side Note
+
+⚠️ Syntax vs Semantics
+
+- "Object" _notation_: {}
+- "Array" _notation_: []
+
+(no intention / meaning)
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## 2. Multi-Value Types
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Structs & Tuples
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Structs
+
+POJO
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Structs
+
+POJO
+
+(Plain-Old JSON Object)
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Structs
+
+<small>(a blast from the recent past)</small>
+
+```js [1-99]
+/**
+ * Greet another Person
+ * @callback Greeter
+ * @param {Object} other
+ * @param {String} other.name
+ * @param {Number} other.age
+ */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Structs
+
+```js [4-6]
+/**
+ * Greet another Person
+ * @callback Greeter
+ * @param {Object} other
+ * @param {String} other.name
+ * @param {Number} other.age
+ */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Structs
+
+```js [3]
+/**
+ * A great human being
+ * @typedef {Object} Person
+ * @param {String} other.name
+ * @param {Number} other.age
+ */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Structs
+
+```js [4-6]
+/**
+ * A great human being
+ * @typedef {Object} Person
+ * @prop {String} name
+ * @prop {Number} age
+ */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Structs
+
+```js [2]
+/**
+ * A great human being
+ * @typedef {Object} Person
+ * @prop {String} name
+ * @prop {Number} age
+ */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Structs
+
+```diff [2-3]
+  /**
+-  * Greet another Person
++  * A great human being
+-  * @callback Greeter
++  * @typedef {Object} Person
++  * @prop {String} name
++  * @prop {Number} age
+-  * @param {Object} other
+-  * @param {String} other.name
+-  * @param {Number} other.age
+   */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Structs
+
+```diff [4-5]
+  /**
+-  * Greet another Person
++  * A great human being
+-  * @callback Greeter
++  * @typedef {Object} Person
++  * @prop {String} name
++  * @prop {Number} age
+-  * @param {Object} other
+-  * @param {String} other.name
+-  * @param {Number} other.age
+   */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Structs
+
+```diff [6-10]
+  /**
+-  * Greet another Person
++  * A great human being
+-  * @callback Greeter
++  * @typedef {Object} Person
++  * @prop {String} name
++  * @prop {Number} age
+-  * @param {Object} other
+-  * @param {String} other.name
+-  * @param {Number} other.age
+   */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Structs
+
+```js [6]
+/**
+ * A great human being
+ * @typedef {Object} Person
+ * @prop {String} name
+ * @prop {Number} age
+ * @prop {Array<Person>} friends
+ */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Structs
+
+```js [6]
+/**
+ * A great human being
+ * @typedef {Object} Person
+ * @prop {String} name
+ * @prop {Number} age
+ * @prop {Array<Person>} friends - mutual follows
+ */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Structs
+
+```js [7]
+/**
+ * A great human being
+ * @typedef {Object} Person
+ * @prop {String} name
+ * @prop {Number} age
+ * @prop {Array<Person>} friends - mutual follows
+ * @prop {Greeter} greet
+ */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### ⚠️ `@prop` vs `@param`
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### ⚠️ `@prop` vs `@param`
+
+```js [1-99]
+/**
+ * @callback Greeter
+ * @param {Person} other
+ */
+```
+
+```js [1-99]
+/**
+ * @typedef {Object} Person
+ * @prop {Person} other
+ */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### ⚠️ `@prop` vs `@param`
+
+```js [1-99]
+/**
+ * @callback Greeter
+ * @param {Person} other
+ */
+```
+
+```js [1-99]
+/**
+ * @typedef {Object} Person
+ * @prop {Person} other
+ */
+```
+
+<small>(I mix up <code>@prop</code> and <code>@param</code>
+all the time... 🪲)</small>
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### ⚠️ `@prop` vs `@param`
+
+Why can't <code>@param</code> just be an <em>alias</em> of
+<code>@prop</code>?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### ⚠️ `@prop` vs `@param`
+
+```js [1-99]
+/**
+ * @callback Greeter
+ * @param {Person} other
+ * @prop {Person} other
+ */
+```
+
+```js [1-99]
+function greet(other) {
+  // ...
+}
+greet.other = person;
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### ⚠️ `@prop` vs `@param`
+
+```js [3-4]
+/**
+ * @callback Greeter
+ * @param {Person} other
+ * @prop {Person} other
+ */
+```
+
+```js [4]
+function greet(other) {
+  // ...
+}
+greet.other = person;
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Tuples
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Tuples
+
+WAT!?
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Tuples
+
+Struct...
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Tuples
+
+Struct...
+
+but _indexed_, rather than _named_
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Tuples
+
+```js [1-99]
+/**
+ * @typedef {[Person, Error]} PersonResult
+ */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Tuples
+
+```js [1-99]
+/**
+ * @typedef {[Person, Error]} PersonResult
+ */
+```
+
+```js [1-99]
+let [person, err] = await Person.getById(37);
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Tuples
+
+```js [1-99]
+/**
+ * @typedef {[Person, Error]} PersonResult
+ */
+```
+
+```js [1-99]
+let [person, err] = await Person.getById(37);
+```
+
+<small>(Go and Rust devs get this)</small>
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Tuples
+
+```js [1-99]
+let [person, err] = await Person.getById(37);
+```
+
+```js [1-99]
+let { person, error } = await Person.getById(37);
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Tuples
+
+```js [1-99]
+let { person, error } = await Person.getById(37);
+```
+
+<small>(JavaScript devs get this)</small>
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Tuples
+
+```js [1-99]
+/**
+ * @typedef {[EventName,EventData]} SocketIoResult
+ */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Tuples
+
+```js [1-99]
+/**
+ * @typedef {[EventName,EventData]} SocketIoResult
+ */
+```
+
+```js [1-99]
+/** @type {SocketIoResult} */
+let result = ["follow", { "source": ... }]
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## 3. Collection Types
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## 3. Collection Types
+
+A bunch of <em>things</em>
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## 3. Collection Types
+
+A bunch of <em>things</em>
+
+of the same (or <em>like</em>) type(s)
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Maps & Lists
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Lists
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Lists
+
+```js [1-99]
+/** @type {Array<String>} */
+let fruits = ["apple", "banana", "grape"];
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Lists
+
+```js [1]
+/** @type {Array<String>} */
+let fruits = ["apple", "banana", "grape"];
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Lists
+
+```js [1]
+/** @type {Array<String>} */
+let fruits = ["apple", "banana", "grape"];
+```
+
+(but that's moot - it's already inferred)
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Lists
+
+```js [1-99]
+/** @type {Array<Fruit>} */
+let fruits = [
+  { name: "apple", calories: 90 },
+  { name: "banana", calories: 105 },
+];
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Lists
+
+```js [1]
+/** @type {Array<Fruit>} */
+let fruits = [
+  { name: "apple", calories: 90 },
+  { name: "banana", calories: 105 },
+];
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Lists
+
+```js [1,3]
+/** @type {Array<Fruit>} */
+let fruits = [
+  { name: "apple", calories: 90 },
+  { name: "banana", calories: 105 },
+];
+```
+
+🦆 Quack!
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Lists
+
+⚠️
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Lists
+
+⚠️
+
+```js [1-99]
+/**
+ * @typedef {Array<String>} Fruits
+ */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Lists
+
+⚠️
+
+```js [1-99]
+/**
+ * @typedef {Array<String>} Fruits
+ */
+```
+
+<small>(type the <em>things</em>, not the
+collections)</small>
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Maps
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Maps
+
+```js [1-99]
+/** @type {Object.<String, Fruit>} */
+let fruits = [
+  "apple": {
+    calories: 90,
+    colors: ["green", "yellow", "red"] ,
+  },
+];
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Maps
+
+```js [1]
+/** @type {Object.<String, Fruit>} */
+let fruits = [
+  "apple": {
+    calories: 90,
+    colors: ["green", "yellow", "red"] ,
+  },
+];
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Maps
+
+```js [1-99]
+/** @type {Object.<String, Fruit>} */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Maps
+
+```js [1-99]
+/** @type {Object.<String, Fruit>} */
+```
+
+```js [1-99]
+/** @type {Record<String, Fruit>} */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Maps
+
+```js [1-99]
+/** @type {Object.<String, Fruit>} */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Maps
+
+❌
+
+```js [1]
+/** @type {Object.<Number, Fruit>} */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Maps
+
+❌
+
+```js [1]
+/** @type {Object.<Number, Fruit>} */
+```
+
+(Object keys are _always_ strings)
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Maps
+
+✅
+
+```js [1-99]
+/**
+ * @typedef {String} FruitNames
+ */
+
+/** @type {Object.<FruitNames, Fruit>} */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Maps
+
+✅
+
+```js [1-99]
+/**
+ * @typedef {"apple"|"banana"|"grape"} FruitNames
+ */
+
+/** @type {Object.<FruitNames, Fruit>} */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Maps
+
+✅
+
+```js [1-99]
+/**
+ * @typedef {"apple"|"banana"|"grape"} FruitNames
+ */
+
+/** @type {Object.<FruitNames, Fruit>} */
+```
+
+(kinda tuple-ish 🤷‍♂️)
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Maps
+
+⚠️
+
+```js [1-99]
+/** @type {Object.<String, any>} */
+```
+
+(for a cache or some such?)
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Maps
+
+⚠️
+
+```js [1-99]
+/** @type {Object.<String, any>} */
+```
+
+(will the IDs overlap?)
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Maps & Lists
+
+- List for when the _order_ (or _index_) is meaningful
+- Map for when the _id_ is more meaningful
+  - Cache
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## 4. Meta Types
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Enums
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Enums
+
+- Value Enums
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Enums
+
+- Value Enums
+- Type Enums
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Enums
+
+- Value Enums
+- Type Enums
+- Implied? Enums
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Value Enums
+
+```go
+const (
+  NONE = 0 // falsy, defaulty
+  VIEWER = 1
+  EDITOR = 2
+  OWNER = 3
+)
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### ~~Value~~ Weak Sauce Enums
+
+```go
+const (
+  NONE = 0 // falsy, defaulty
+  VIEWER = 1
+  EDITOR = 2
+  OWNER = 3
+)
+```
+
+❌ (C-style)
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Value Enums
+
+TODO - Note to self - do enums before type aliases!
+
+```js
+/** @typedef {"apple"|"banana"|"grape"} FruitNames */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Value Enums
+
+```js
+/** @typedef {"apple"|"banana"|"grape"} FruitNames */
+```
+
+```js
+/** @type {FruitNames} */
+let fruit = "monkey";
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Value Enums
+
+```js
+/** @typedef {"apple"|"banana"|"grape"} FruitNames */
+```
+
+```js
+/**
+ * @param {FruitNames} fruitName
+ */
+function smashFruit(fruitName) {
+  // ...
+}
+
+smashFruit("monkey");
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Type Enums
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Type Enums
+
+```js
+/** @typedef {Array|Uint8Array|Buffer} Bytes */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Type Enums
+
+```js
+/** @typedef {Person|Human} PersonLike */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Type Enums
+
+💩 (code smell)
+
+```js
+/** @typedef {String|Number|BigInt} BigNumber */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Type Enums
+
+🤷‍♂️ (legacy code)
+
+```js
+/**
+ * @param {Object|Function} [opts]
+ * @param {Function} [cb]
+ */
+function getImages(opts, cb) {
+  // ...
+}
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Type Enums
+
+🤷‍♂️ (legacy code)
+
+```js
+/**
+ * @param {WidgetOpts|WidgetCallback} [opts]
+ * @param {WidgetCallback} [cb]
+ */
+function getImages(opts, cb) {
+  // ...
+}
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Implied Enums
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Implied Enums
+
+> If it fits it ships!
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Implied Enums
+
+TODO - a superset also fits
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Type Alias
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Type Alias
+
+a.k.a. Marker Type
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Type Alias
+
+```js [1-99]
+/** @typedef {Number} Dollars */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Type Alias
+
+```js [1-99]
+/** @typedef {Number} Dollars */
+```
+
+(improve documentation)
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Type Alias
+
+(improve documentation)
+
+```js [1-99]
+/** @typedef {Number} Dollars */
+
+/** @type {Dollars}
+let salary = 1_000_000;
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### ❌ NewType
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### ❌ NewType
+
+```js [1-2]
+/** @type {Dollars} */
+let salary = 1_000_000;
+let payPeriods = 24; // Number
+let pay = salary / payPeriods;
+// 💣 Error!
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### ❌ NewType
+
+```js [3]
+/** @type {Dollars} */
+let salary = 1_000_000;
+let payPeriods = 24; // Number
+let pay = salary / payPeriods;
+// 💣 Error!
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### ❌ NewType
+
+```js [4]
+/** @type {Dollars} */
+let salary = 1_000_000;
+let payPeriods = 24; // Number
+let pay = salary / payPeriods;
+// 💣 Error!
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### ❌ NewType
+
+```js [4-5]
+/** @type {Dollars} */
+let salary = 1_000_000;
+let payPeriods = 24; // Number
+let pay = salary / payPeriods;
+// 💣 Error!
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+🦆 Quack!
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+🦆 Quack!
+
+- Duck-typed
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+🦆 Quack!
+
+- Duck-typed
+- Type inference
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+🦆 Quack!
+
+- Duck-typed
+- Type inference
+- JIT-optimized
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Mixins
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Mixins
+
+Unions
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Mixins
+
+Polymorphism
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Mixins
+
+Polymorphism
+
+😬
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Mixins
+
+/\*\*
+
+- A great human being
+- @typedef {Object} BasePerson
+- @param {String} other.name
+- @param {Number} other.age \*/
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Mixins
+
+```js [1-4]
+/**
+ * @typedef {Object} WithFriends
+ * @prop {Array<Person>} friends
+ */
+
+/**
+ * @typedef {BasePerson & WithFriends} PersonWithFriends
+ */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Mixins
+
+```js [6-9]
+/**
+ * @typedef {Object} WithFriends
+ * @prop {Array<Person>} friends
+ */
+
+/**
+ * @typedef {BasePerson & WithFriends} PersonWithFriends
+ */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Mixins
+
+```js [1-4]
+/**
+ * @typedef {Object} WithPosts
+ * @prop {Array<Post>} posts
+ */
+
+/**
+ * @typedef {BasePerson & WithPosts} PersonWithPosts
+ */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Mixins
+
+```js [6-9]
+/**
+ * @typedef {Object} WithPosts
+ * @prop {Array<Post>} posts
+ */
+
+/**
+ * @typedef {BasePerson & WithPosts} PersonWithPosts
+ */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Mixins
+
+Full Person
+
+```js [1-99]
+/**
+ * @typedef {BasePerson & WithFriends & WithPosts} FullPerson
+ */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Type Utils
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Type Utils
+
+Person-like (with Partial)
+
+```js [1-99]
+/**
+ * @typedef {Partial<Person>} PersonLike
+ */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Mixins
+
+```js [1-99]
+/**
+ * @typedef {Object} WithFriends
+ * @prop {Array<Person>}
+ *
+ * @typedef {Person & WithFriends} PersonWithFriends
+ */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+TODO
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+```js
+/**
+ * @typedef {Perennial|Annual} Plant
+ */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### TODO
+
+- `@typedef (optional) {Object} <name>`
+- types are file-scope, not package-scope
+- alphabetize for better diffs
+- FruitLike
+
+### LATER - Multi-value
+
+```js
+/**
+ * @param {Object} other
+ * @param {String} other.name
+ */
+```
+
+```js [1-99]
+@callback Greeter - Greets a new user
+@param {Person} other
+function greet(other) {
+    return `Hello, ${other.name}!`;
+}
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Null*ish*
 
 - `null`
 - `undefined`

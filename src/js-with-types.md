@@ -6,6 +6,12 @@
 [comment]: # "hash: false"
 [comment]: # "respondToHashChanges: false"
 
+# TODOS
+
+- Where do `nullish` best fit?
+  - optional params and props vs undefined
+- ## Tips and Tricks
+
 # JavaScript with Types
 
 A deep dive into TSC & JSDoc with Vanilla JS!
@@ -36,6 +42,9 @@ Types without Transpilation
 </td></tr>
 
 </table>
+
+- [JSDoc: Tags: @type](https://jsdoc.app/tags-type)
+- [TypeScript: Everyday Types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html)
 
 [comment]: # "!!!"
 
@@ -212,11 +221,24 @@ mv tsconfig.json jsconfig.json
 
 [comment]: # "!!! data-auto-animate"
 
+## JavaScript is...
+
+[comment]: # "!!! data-auto-animate"
+
+### Duck-Typed
+
+[comment]: # "!!! data-auto-animate"
+
+### Typed for JIT-Optimization
+
+[comment]: # "!!! data-auto-animate"
+
 ## Types of Types
 
 <table>
 <tr>
-<th><small>Basic</small></th>
+<th><small>Single-Value</small></th>
+<th><small>Multi-Value</small></th>
 <th><small>Collection</small></th>
 <th><small>Meta</small></th>
 </tr>
@@ -225,27 +247,46 @@ mv tsconfig.json jsconfig.json
 
 <td><small>
 <ul>
-<li>primitives</li>
-<li>struct</li>
-<li>function</li>
+<li>Primitives<ul>
+  <li>Booleans</li>
+  <li>Number</li>
+  <li>String</li>
+  <li>BigInt*</li>
+  <li>Int/Uint*</li>
+</ul></li>
+<li>Function</li>
+<li>Null<em>ish</em><ul>
+  <li><code>null</code></li>
+  <li><code>undefined</code></li>
+  <li><code>not defined</code></li>
+</ul></li>
 </ul>
 </small></td>
 
 <td><small>
 <ul>
-  <li>key-value pairs</li>
-  <li>list</li>
-  <li>tuple</li>
+  <li>Struct</li>
+  <li>Tuple</li>
+  <li>WeakMap*</li>
+  <li>WeakSet*</li>
+</ul>
+</small></td>
+
+<td><small>
+<ul>
+  <li>Map<br>(key-value pairs)</li>
+  <li>List<br>(indexed values)</li>
 </ul>
 </small></td>
 
 <td><small>
 <ul>
 <li>newtypes</li>
-<li>type aliases (marker types)</li>
-<li>value enums (C-style)</li>
-<li>type enums (functional-style)</li>
-<li>mixins (JS-style)</li>
+<li>type aliases<br>(marker types)</li>
+<li>value enums<br>(C-style)</li>
+<li>type enums<br>(functional-style)</li>
+<li>mixins<br>(unions)</li>
+<li>templates</li>
 </ul>
 </small></td>
 
@@ -254,67 +295,1531 @@ mv tsconfig.json jsconfig.json
 
 [comment]: # "!!! data-auto-animate"
 
-### Primitives
-
-[comment]: # "!!! data-auto-animate"
-
-### Primitives
+### Reference Material
 
 - [JSDoc: Tags: @type](https://jsdoc.app/tags-type)
 - [TypeScript: Everyday Types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html)
 
 [comment]: # "!!! data-auto-animate"
 
-### Primitives
+# CAVEAT
 
-- `"Hello, World!"`
-- `0.0`
-- `true`
+[comment]: # "!!! data-auto-animate"
+
+# CAVEAT
+
+💩, because slides.
+
+[comment]: # "!!! data-auto-animate"
+
+### Type Syntax
+
+```js [1-99]
+/**
+ * ...
+ */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Type Syntax
+
+```js [1]
+/**
+ * ...
+ */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Type Syntax
+
+```js [2]
+/**
+ * ...
+ */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Type Syntax
+
+```js [3]
+/**
+ * ...
+ */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Type Syntax
+
+```js [1]
+/** ... */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Type Syntax
+
+```js [1]
+/** @type {FooPerson} */
+var person;
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Type Syntax
+
+```js [3-4]
+/**
+ * A great person
+ * @typedef {Object} FooPerson
+ * @prop {Number} fooAge
+ */
+```
+
+```js [3-4]
+/**
+ * Greet with great kindness
+ * @callback FooGreeter
+ * @param {FooPerson} other
+ */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+## 1. Single-Value Types
 
 [comment]: # "!!! data-auto-animate"
 
 ### Primitives
 
-- `{BigInt}`
-- `{Boolean}`
-- `{Number}`
-- `{String}`
-
 [comment]: # "!!! data-auto-animate"
 
 ### Primitives
 
-```js
+```js [1-9]
 /** @type {String} */
-let name;
+let name = "Hello World!";
 
 /** @type {Number} */
-let age;
+let answer = 42;
 
 /** @type {Boolean} */
-let human;
+let alive = true;
 ```
 
 [comment]: # "!!! data-auto-animate"
 
 ### Primitives
 
-- ⚠️ `{Buffer}`
-- ⚠️ `{Integer}`
+```js [1-2]
+/** @type {String} */
+let name = "Hello World!";
 
-<small>(kinda, but not)</small>
+/** @type {Number} */
+let answer = 42;
+
+/** @type {Boolean} */
+let alive = true;
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Primitives
+
+```js [4-5]
+/** @type {String} */
+let name = "Hello World!";
+
+/** @type {Number} */
+let answer = 42;
+
+/** @type {Boolean} */
+let alive = true;
+```
 
 [comment]: # "!!! data-auto-animate"
 
 ### Primitives
 
-- `null`
-- `undefined`
-- _not defined_
+```js [7-9]
+/** @type {String} */
+let name = "Hello World!";
+
+/** @type {Number} */
+let answer = 42;
+
+/** @type {Boolean} */
+let alive = true;
+```
 
 [comment]: # "!!! data-auto-animate"
 
 ### Primitives
+
+```js
+/** @type {Boolean?} */
+let alive = null;
+
+/** @type {Boolean?|undefined} */
+let cat;
+```
+
+<small>(more on `null`*ish*ness later...)</small>
+
+[comment]: # "!!! data-auto-animate"
+
+### Primitives
+
+```js [1-99]
+/**
+ * @param {String} name
+ * @param {Number} answer
+ * @param {Boolean} alive
+ */
+function doScience(name, age, alive) {
+  // ...
+}
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### ⚠️ Primitives++
+
+```js
+/** @type {BigInt} */
+let debt = 1_000_000_000_000n;
+
+/** @type {Uint8Array} */
+let answers = Uint8Array.from([11, 37, 42]);
+
+/** @type {Buffer|ArrayBuffer} */
+let bytes = Buffer.from([255, 255, 255, 255]);
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### ⚠️ Built-Ins
+
+```js
+/** @type {Date} */
+let matcher = Date.parse("2022-09-22T15:05:00.000-0600");
+
+/** @type {RegExp} */
+let matcher = /^abc$/;
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Functions
+
+```js [1-99]
+/**
+ * Greet another Person
+ * @callback Greeter
+ * @param {Object} other
+ * @param {String} other.name
+ */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Functions
+
+```js [3]
+/**
+ * Greet another Person
+ * @callback Greeter
+ * @param {Object} other
+ * @param {String} other.name
+ */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Functions
+
+```js [1-99]
+/** @type {Greeter} */
+function greet(other) {
+  return `Hello, ${other.name}!`;
+}
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Functions
+
+```js [1]
+/** @type {Greeter} */
+function (other) {
+    return `Hello, ${other.name}!`;
+}
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### ❌ `@function`
+
+```js [1-99]
+/**
+ * Greet another Person
+ * @function Greeter
+ * @param {Object} other
+ * @param {String} other.name
+ */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### ❌ `@function`
+
+```js [3]
+/**
+ * Greet another Person
+ * @function Greeter
+ * @param {Object} other
+ * @param {String} other.name
+ */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### ❌ `@typedef {Function}`
+
+```js [1-99]
+/**
+ * Greet another Person
+ * @typedef {Function} Greeter
+ * @param {Object} other
+ * @param {String} other.name
+ */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### ❌ `@typedef {Function}`
+
+```js [3]
+/**
+ * Greet another Person
+ * @typedef {Function} Greeter
+ * @param {Object} other
+ * @param {String} other.name
+ */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+## 🪲
+
+<small><a href="https://github.com/microsoft/TypeScript/issues/50274" target="_blank">github.com/microsoft/TypeScript/issues/50274</a></small>
+
+[comment]: # "!!! data-auto-animate"
+
+### Functions
+
+```diff [1-99]
+  /**
+   * Greet another Person
+-  * @callback Greeter
+   * @param {Object} other
+   * @param {String} other.name
+   */
+-
+- /** @type {Greeter} */
+  function (other) {
+      return `Hello, ${other.name}!`;
+  }
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Functions
+
+```js [1-99]
+/**
+ * Greet another Person
+ * @param {Object} other
+ * @param {String} other.name
+ */
+function (other) {
+    return `Hello, ${other.name}!`;
+}
+```
+
+[comment]: # "!!! data-auto-animate"
+
+## Side Note
+
+⚠️ Syntax vs Semantics
+
+[comment]: # "!!! data-auto-animate"
+
+## Side Note
+
+⚠️ Syntax vs Semantics
+
+- "Object" _notation_: {}
+- "Array" _notation_: []
+
+[comment]: # "!!! data-auto-animate"
+
+## Side Note
+
+⚠️ Syntax vs Semantics
+
+- "Object" _notation_: {}
+- "Array" _notation_: []
+
+(no intention / meaning)
+
+[comment]: # "!!! data-auto-animate"
+
+## 2. Multi-Value Types
+
+[comment]: # "!!! data-auto-animate"
+
+### Structs & Tuples
+
+[comment]: # "!!! data-auto-animate"
+
+### Structs
+
+POJO
+
+[comment]: # "!!! data-auto-animate"
+
+### Structs
+
+POJO
+
+(Plain-Old JSON Object)
+
+[comment]: # "!!! data-auto-animate"
+
+### Structs
+
+<small>(a blast from the recent past)</small>
+
+```js [1-99]
+/**
+ * Greet another Person
+ * @callback Greeter
+ * @param {Object} other
+ * @param {String} other.name
+ * @param {Number} other.age
+ */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Structs
+
+```js [4-6]
+/**
+ * Greet another Person
+ * @callback Greeter
+ * @param {Object} other
+ * @param {String} other.name
+ * @param {Number} other.age
+ */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Structs
+
+```js [3]
+/**
+ * A great human being
+ * @typedef {Object} Person
+ * @param {String} other.name
+ * @param {Number} other.age
+ */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Structs
+
+```js [4-6]
+/**
+ * A great human being
+ * @typedef {Object} Person
+ * @prop {String} name
+ * @prop {Number} age
+ */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Structs
+
+```js [2]
+/**
+ * A great human being
+ * @typedef {Object} Person
+ * @prop {String} name
+ * @prop {Number} age
+ */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Structs
+
+```diff [2-3]
+  /**
+-  * Greet another Person
++  * A great human being
+-  * @callback Greeter
++  * @typedef {Object} Person
++  * @prop {String} name
++  * @prop {Number} age
+-  * @param {Object} other
+-  * @param {String} other.name
+-  * @param {Number} other.age
+   */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Structs
+
+```diff [4-5]
+  /**
+-  * Greet another Person
++  * A great human being
+-  * @callback Greeter
++  * @typedef {Object} Person
++  * @prop {String} name
++  * @prop {Number} age
+-  * @param {Object} other
+-  * @param {String} other.name
+-  * @param {Number} other.age
+   */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Structs
+
+```diff [6-10]
+  /**
+-  * Greet another Person
++  * A great human being
+-  * @callback Greeter
++  * @typedef {Object} Person
++  * @prop {String} name
++  * @prop {Number} age
+-  * @param {Object} other
+-  * @param {String} other.name
+-  * @param {Number} other.age
+   */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Structs
+
+```js [6]
+/**
+ * A great human being
+ * @typedef {Object} Person
+ * @prop {String} name
+ * @prop {Number} age
+ * @prop {Array<Person>} friends
+ */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Structs
+
+```js [6]
+/**
+ * A great human being
+ * @typedef {Object} Person
+ * @prop {String} name
+ * @prop {Number} age
+ * @prop {Array<Person>} friends - mutual follows
+ */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Structs
+
+```js [7]
+/**
+ * A great human being
+ * @typedef {Object} Person
+ * @prop {String} name
+ * @prop {Number} age
+ * @prop {Array<Person>} friends - mutual follows
+ * @prop {Greeter} greet
+ */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### ⚠️ `@prop` vs `@param`
+
+[comment]: # "!!! data-auto-animate"
+
+### ⚠️ `@prop` vs `@param`
+
+```js [1-99]
+/**
+ * @callback Greeter
+ * @param {Person} other
+ */
+```
+
+```js [1-99]
+/**
+ * @typedef {Object} Person
+ * @prop {Person} other
+ */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### ⚠️ `@prop` vs `@param`
+
+```js [1-99]
+/**
+ * @callback Greeter
+ * @param {Person} other
+ */
+```
+
+```js [1-99]
+/**
+ * @typedef {Object} Person
+ * @prop {Person} other
+ */
+```
+
+<small>(I mix up <code>@prop</code> and <code>@param</code>
+all the time... 🪲)</small>
+
+[comment]: # "!!! data-auto-animate"
+
+### ⚠️ `@prop` vs `@param`
+
+Why can't <code>@param</code> just be an <em>alias</em> of
+<code>@prop</code>?
+
+[comment]: # "!!! data-auto-animate"
+
+### ⚠️ `@prop` vs `@param`
+
+```js [1-99]
+/**
+ * @callback Greeter
+ * @param {Person} other
+ * @prop {Person} other
+ */
+```
+
+```js [1-99]
+function greet(other) {
+  // ...
+}
+greet.other = person;
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### ⚠️ `@prop` vs `@param`
+
+```js [3-4]
+/**
+ * @callback Greeter
+ * @param {Person} other
+ * @prop {Person} other
+ */
+```
+
+```js [4]
+function greet(other) {
+  // ...
+}
+greet.other = person;
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Tuples
+
+[comment]: # "!!! data-auto-animate"
+
+### Tuples
+
+WAT!?
+
+[comment]: # "!!! data-auto-animate"
+
+### Tuples
+
+Struct...
+
+[comment]: # "!!! data-auto-animate"
+
+### Tuples
+
+Struct...
+
+but _indexed_, rather than _named_
+
+[comment]: # "!!! data-auto-animate"
+
+### Tuples
+
+```js [1-99]
+/**
+ * @typedef {[Person, Error]} PersonResult
+ */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Tuples
+
+```js [1-99]
+/**
+ * @typedef {[Person, Error]} PersonResult
+ */
+```
+
+```js [1-99]
+let [person, err] = await Person.getById(37);
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Tuples
+
+```js [1-99]
+/**
+ * @typedef {[Person, Error]} PersonResult
+ */
+```
+
+```js [1-99]
+let [person, err] = await Person.getById(37);
+```
+
+<small>(Go and Rust devs get this)</small>
+
+[comment]: # "!!! data-auto-animate"
+
+### Tuples
+
+```js [1-99]
+let [person, err] = await Person.getById(37);
+```
+
+```js [1-99]
+let { person, error } = await Person.getById(37);
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Tuples
+
+```js [1-99]
+let { person, error } = await Person.getById(37);
+```
+
+<small>(JavaScript devs get this)</small>
+
+[comment]: # "!!! data-auto-animate"
+
+### Tuples
+
+```js [1-99]
+/**
+ * @typedef {[EventName,EventData]} SocketIoResult
+ */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Tuples
+
+```js [1-99]
+/**
+ * @typedef {[EventName,EventData]} SocketIoResult
+ */
+```
+
+```js [1-99]
+/** @type {SocketIoResult} */
+let result = ["follow", { "source": ... }]
+```
+
+[comment]: # "!!! data-auto-animate"
+
+## 3. Collection Types
+
+[comment]: # "!!! data-auto-animate"
+
+## 3. Collection Types
+
+A bunch of <em>things</em>
+
+[comment]: # "!!! data-auto-animate"
+
+## 3. Collection Types
+
+A bunch of <em>things</em>
+
+of the same (or <em>like</em>) type(s)
+
+[comment]: # "!!! data-auto-animate"
+
+### Maps & Lists
+
+[comment]: # "!!! data-auto-animate"
+
+### Lists
+
+[comment]: # "!!! data-auto-animate"
+
+### Lists
+
+```js [1-99]
+/** @type {Array<String>} */
+let fruits = ["apple", "banana", "grape"];
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Lists
+
+```js [1]
+/** @type {Array<String>} */
+let fruits = ["apple", "banana", "grape"];
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Lists
+
+```js [1]
+/** @type {Array<String>} */
+let fruits = ["apple", "banana", "grape"];
+```
+
+(but that's moot - it's already inferred)
+
+[comment]: # "!!! data-auto-animate"
+
+### Lists
+
+```js [1-99]
+/** @type {Array<Fruit>} */
+let fruits = [
+  { name: "apple", calories: 90 },
+  { name: "banana", calories: 105 },
+];
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Lists
+
+```js [1]
+/** @type {Array<Fruit>} */
+let fruits = [
+  { name: "apple", calories: 90 },
+  { name: "banana", calories: 105 },
+];
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Lists
+
+```js [1,3]
+/** @type {Array<Fruit>} */
+let fruits = [
+  { name: "apple", calories: 90 },
+  { name: "banana", calories: 105 },
+];
+```
+
+🦆 Quack!
+
+[comment]: # "!!! data-auto-animate"
+
+### Lists
+
+⚠️
+
+[comment]: # "!!! data-auto-animate"
+
+### Lists
+
+⚠️
+
+```js [1-99]
+/**
+ * @typedef {Array<String>} Fruits
+ */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Lists
+
+⚠️
+
+```js [1-99]
+/**
+ * @typedef {Array<String>} Fruits
+ */
+```
+
+<small>(type the <em>things</em>, not the
+collections)</small>
+
+[comment]: # "!!! data-auto-animate"
+
+### Maps
+
+[comment]: # "!!! data-auto-animate"
+
+### Maps
+
+```js [1-99]
+/** @type {Object.<String, Fruit>} */
+let fruits = [
+  "apple": {
+    calories: 90,
+    colors: ["green", "yellow", "red"] ,
+  },
+];
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Maps
+
+```js [1]
+/** @type {Object.<String, Fruit>} */
+let fruits = [
+  "apple": {
+    calories: 90,
+    colors: ["green", "yellow", "red"] ,
+  },
+];
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Maps
+
+```js [1-99]
+/** @type {Object.<String, Fruit>} */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Maps
+
+```js [1-99]
+/** @type {Object.<String, Fruit>} */
+```
+
+```js [1-99]
+/** @type {Record<String, Fruit>} */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Maps
+
+```js [1-99]
+/** @type {Object.<String, Fruit>} */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Maps
+
+❌
+
+```js [1]
+/** @type {Object.<Number, Fruit>} */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Maps
+
+❌
+
+```js [1]
+/** @type {Object.<Number, Fruit>} */
+```
+
+(Object keys are _always_ strings)
+
+[comment]: # "!!! data-auto-animate"
+
+### Maps
+
+✅
+
+```js [1-99]
+/**
+ * @typedef {String} FruitNames
+ */
+
+/** @type {Object.<FruitNames, Fruit>} */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Maps
+
+✅
+
+```js [1-99]
+/**
+ * @typedef {"apple"|"banana"|"grape"} FruitNames
+ */
+
+/** @type {Object.<FruitNames, Fruit>} */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Maps
+
+✅
+
+```js [1-99]
+/**
+ * @typedef {"apple"|"banana"|"grape"} FruitNames
+ */
+
+/** @type {Object.<FruitNames, Fruit>} */
+```
+
+(kinda tuple-ish 🤷‍♂️)
+
+[comment]: # "!!! data-auto-animate"
+
+### Maps
+
+⚠️
+
+```js [1-99]
+/** @type {Object.<String, any>} */
+```
+
+(for a cache or some such?)
+
+[comment]: # "!!! data-auto-animate"
+
+### Maps
+
+⚠️
+
+```js [1-99]
+/** @type {Object.<String, any>} */
+```
+
+(will the IDs overlap?)
+
+[comment]: # "!!! data-auto-animate"
+
+### Maps & Lists
+
+- List for when the _order_ (or _index_) is meaningful
+- Map for when the _id_ is more meaningful
+  - Cache
+
+[comment]: # "!!! data-auto-animate"
+
+## 4. Meta Types
+
+[comment]: # "!!! data-auto-animate"
+
+### Enums
+
+[comment]: # "!!! data-auto-animate"
+
+### Enums
+
+- Value Enums
+
+[comment]: # "!!! data-auto-animate"
+
+### Enums
+
+- Value Enums
+- Type Enums
+
+[comment]: # "!!! data-auto-animate"
+
+### Enums
+
+- Value Enums
+- Type Enums
+- Implied? Enums
+
+[comment]: # "!!! data-auto-animate"
+
+### Value Enums
+
+```go
+const (
+  NONE = 0 // falsy, defaulty
+  VIEWER = 1
+  EDITOR = 2
+  OWNER = 3
+)
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### ~~Value~~ Weak Sauce Enums
+
+```go
+const (
+  NONE = 0 // falsy, defaulty
+  VIEWER = 1
+  EDITOR = 2
+  OWNER = 3
+)
+```
+
+❌ (C-style)
+
+[comment]: # "!!! data-auto-animate"
+
+### Value Enums
+
+TODO - Note to self - do enums before type aliases!
+
+```js
+/** @typedef {"apple"|"banana"|"grape"} FruitNames */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Value Enums
+
+```js
+/** @typedef {"apple"|"banana"|"grape"} FruitNames */
+```
+
+```js
+/** @type {FruitNames} */
+let fruit = "monkey";
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Value Enums
+
+```js
+/** @typedef {"apple"|"banana"|"grape"} FruitNames */
+```
+
+```js
+/**
+ * @param {FruitNames} fruitName
+ */
+function smashFruit(fruitName) {
+  // ...
+}
+
+smashFruit("monkey");
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Type Enums
+
+[comment]: # "!!! data-auto-animate"
+
+### Type Enums
+
+```js
+/** @typedef {Array|Uint8Array|Buffer} Bytes */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Type Enums
+
+```js
+/** @typedef {Person|Human} PersonLike */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Type Enums
+
+💩 (code smell)
+
+```js
+/** @typedef {String|Number|BigInt} BigNumber */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Type Enums
+
+🤷‍♂️ (legacy code)
+
+```js
+/**
+ * @param {Object|Function} [opts]
+ * @param {Function} [cb]
+ */
+function getImages(opts, cb) {
+  // ...
+}
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Type Enums
+
+🤷‍♂️ (legacy code)
+
+```js
+/**
+ * @param {WidgetOpts|WidgetCallback} [opts]
+ * @param {WidgetCallback} [cb]
+ */
+function getImages(opts, cb) {
+  // ...
+}
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Implied Enums
+
+[comment]: # "!!! data-auto-animate"
+
+### Implied Enums
+
+> If it fits it ships!
+
+[comment]: # "!!! data-auto-animate"
+
+### Implied Enums
+
+TODO - a superset also fits
+
+[comment]: # "!!! data-auto-animate"
+
+### Type Alias
+
+[comment]: # "!!! data-auto-animate"
+
+### Type Alias
+
+a.k.a. Marker Type
+
+[comment]: # "!!! data-auto-animate"
+
+### Type Alias
+
+```js [1-99]
+/** @typedef {Number} Dollars */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Type Alias
+
+```js [1-99]
+/** @typedef {Number} Dollars */
+```
+
+(improve documentation)
+
+[comment]: # "!!! data-auto-animate"
+
+### Type Alias
+
+(improve documentation)
+
+```js [1-99]
+/** @typedef {Number} Dollars */
+
+/** @type {Dollars}
+let salary = 1_000_000;
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### ❌ NewType
+
+[comment]: # "!!! data-auto-animate"
+
+### ❌ NewType
+
+```js [1-2]
+/** @type {Dollars} */
+let salary = 1_000_000;
+let payPeriods = 24; // Number
+let pay = salary / payPeriods;
+// 💣 Error!
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### ❌ NewType
+
+```js [3]
+/** @type {Dollars} */
+let salary = 1_000_000;
+let payPeriods = 24; // Number
+let pay = salary / payPeriods;
+// 💣 Error!
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### ❌ NewType
+
+```js [4]
+/** @type {Dollars} */
+let salary = 1_000_000;
+let payPeriods = 24; // Number
+let pay = salary / payPeriods;
+// 💣 Error!
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### ❌ NewType
+
+```js [4-5]
+/** @type {Dollars} */
+let salary = 1_000_000;
+let payPeriods = 24; // Number
+let pay = salary / payPeriods;
+// 💣 Error!
+```
+
+[comment]: # "!!! data-auto-animate"
+
+🦆 Quack!
+
+[comment]: # "!!! data-auto-animate"
+
+🦆 Quack!
+
+- Duck-typed
+
+[comment]: # "!!! data-auto-animate"
+
+🦆 Quack!
+
+- Duck-typed
+- Type inference
+
+[comment]: # "!!! data-auto-animate"
+
+🦆 Quack!
+
+- Duck-typed
+- Type inference
+- JIT-optimized
+
+[comment]: # "!!! data-auto-animate"
+
+### Mixins
+
+[comment]: # "!!! data-auto-animate"
+
+### Mixins
+
+Unions
+
+[comment]: # "!!! data-auto-animate"
+
+### Mixins
+
+Polymorphism
+
+[comment]: # "!!! data-auto-animate"
+
+### Mixins
+
+Polymorphism
+
+😬
+
+[comment]: # "!!! data-auto-animate"
+
+### Mixins
+
+/\*\*
+
+- A great human being
+- @typedef {Object} BasePerson
+- @param {String} other.name
+- @param {Number} other.age \*/
+
+[comment]: # "!!! data-auto-animate"
+
+### Mixins
+
+```js [1-4]
+/**
+ * @typedef {Object} WithFriends
+ * @prop {Array<Person>} friends
+ */
+
+/**
+ * @typedef {BasePerson & WithFriends} PersonWithFriends
+ */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Mixins
+
+```js [6-9]
+/**
+ * @typedef {Object} WithFriends
+ * @prop {Array<Person>} friends
+ */
+
+/**
+ * @typedef {BasePerson & WithFriends} PersonWithFriends
+ */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Mixins
+
+```js [1-4]
+/**
+ * @typedef {Object} WithPosts
+ * @prop {Array<Post>} posts
+ */
+
+/**
+ * @typedef {BasePerson & WithPosts} PersonWithPosts
+ */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Mixins
+
+```js [6-9]
+/**
+ * @typedef {Object} WithPosts
+ * @prop {Array<Post>} posts
+ */
+
+/**
+ * @typedef {BasePerson & WithPosts} PersonWithPosts
+ */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Mixins
+
+Full Person
+
+```js [1-99]
+/**
+ * @typedef {BasePerson & WithFriends & WithPosts} FullPerson
+ */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Type Utils
+
+[comment]: # "!!! data-auto-animate"
+
+### Type Utils
+
+Person-like (with Partial)
+
+```js [1-99]
+/**
+ * @typedef {Partial<Person>} PersonLike
+ */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Mixins
+
+```js [1-99]
+/**
+ * @typedef {Object} WithFriends
+ * @prop {Array<Person>}
+ *
+ * @typedef {Person & WithFriends} PersonWithFriends
+ */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+TODO
+
+[comment]: # "!!! data-auto-animate"
+
+```js
+/**
+ * @typedef {Perennial|Annual} Plant
+ */
+```
+
+[comment]: # "!!! data-auto-animate"
+[comment]: # "!!! data-auto-animate"
+
+### TODO
+
+- `@typedef (optional) {Object} <name>`
+- types are file-scope, not package-scope
+- alphabetize for better diffs
+- FruitLike
+
+### LATER - Multi-value
+
+```js
+/**
+ * @param {Object} other
+ * @param {String} other.name
+ */
+```
+
+```js [1-99]
+@callback Greeter - Greets a new user
+@param {Person} other
+function greet(other) {
+    return `Hello, ${other.name}!`;
+}
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Null*ish*
 
 - `null`
 - `undefined`
