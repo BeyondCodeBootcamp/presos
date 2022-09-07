@@ -221,15 +221,64 @@ mv tsconfig.json jsconfig.json
 
 [comment]: # "!!! data-auto-animate"
 
+## JS with Types
+
+[comment]: # "!!! data-auto-animate"
+
+## JS with Types
+
+Why Go 🐹 and Zig ⚡️ developers shouldn't give up on
+JavaScript
+
+[comment]: # "!!! data-auto-animate"
+
+## Static Types are a Lie!
+
+[comment]: # "!!! data-auto-animate"
+
+## Static Types are a Lie!
+
+Types have always been in the tooling.
+
+[comment]: # "!!! data-auto-animate"
+
+## Static Types are a Lie!
+
+Types have always been in the tooling.
+
+Exhibit: C
+
+[comment]: # "!!! data-auto-animate"
+
+## Static Types are a Lie!
+
+Safe languages have always been dynamically-typed.
+
+[comment]: # "!!! data-auto-animate"
+
+## Static Types are a Lie!
+
+Safe languages have always been dynamically-typed.
+
+Runtime checks. Reflection. Etc.
+
+[comment]: # "!!! data-auto-animate"
+
 ## JavaScript is...
 
 [comment]: # "!!! data-auto-animate"
+
+## JavaScript is...
 
 ### Duck-Typed
 
 [comment]: # "!!! data-auto-animate"
 
-### Typed for JIT-Optimization
+## JavaScript is...
+
+### Duck-Typed
+
+(typed for JIT-optimization)
 
 [comment]: # "!!! data-auto-animate"
 
@@ -287,6 +336,7 @@ mv tsconfig.json jsconfig.json
 <li>type enums<br>(functional-style)</li>
 <li>mixins<br>(unions)</li>
 <li>templates</li>
+<li>utilities</li>
 </ul>
 </small></td>
 
@@ -309,6 +359,18 @@ mv tsconfig.json jsconfig.json
 # CAVEAT
 
 💩, because slides.
+
+[comment]: # "!!! data-auto-animate"
+
+# CAVEAT
+
+💩, because slides.
+
+- non-alphabetized `name, age` vs `age, name`
+- backwards naming `BasePerson` vs `PersonBase`
+- etc
+
+(optimized for speakability, not diffability, engineering)
 
 [comment]: # "!!! data-auto-animate"
 
@@ -1406,6 +1468,12 @@ const (
 
 [comment]: # "!!! data-auto-animate"
 
+### ~~Value~~ Weak Sauce Enums
+
+`@enum` 🤷‍♂️
+
+[comment]: # "!!! data-auto-animate"
+
 ### Value Enums
 
 TODO - Note to self - do enums before type aliases!
@@ -1567,6 +1635,120 @@ let salary = 1_000_000;
 
 [comment]: # "!!! data-auto-animate"
 
+### Type Anti-Aliasing
+
+[comment]: # "!!! data-auto-animate"
+
+### Type Guard
+
+Distinguish between similar types
+
+[comment]: # "!!! data-auto-animate"
+
+### Type Guard
+
+```js [1-99]
+/**
+ * @typedef {File | Folder | Symlink | Pipe} DirEntry
+ */
+
+/**
+ * @param {DirEntry} dirEntry
+ * @returns {dirEntry is File}
+ */
+function isFile(dirEntry) {
+  return "file" === dirEntry.type;
+}
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Type Guard
+
+```js [2]
+/**
+ * @typedef {File | Folder | Symlink | Pipe} DirEntry
+ */
+
+/**
+ * @param {DirEntry} dirEntry
+ * @returns {dirEntry is File}
+ */
+function isFile(dirEntry) {
+  return "file" === dirEntry.type;
+}
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Type Guard
+
+```js [6-7]
+/**
+ * @typedef {File | Folder | Symlink | Pipe} DirEntry
+ */
+
+/**
+ * @param {DirEntry} dirEntry
+ * @returns {dirEntry is File}
+ */
+function isFile(dirEntry) {
+  return "file" === dirEntry.type;
+}
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Type Guard
+
+```js [9-11]
+/**
+ * @typedef {File | Folder | Symlink | Pipe} DirEntry
+ */
+
+/**
+ * @param {DirEntry} dirEntry
+ * @returns {dirEntry is File}
+ */
+function isFile(dirEntry) {
+  return "file" === dirEntry.type;
+}
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Type Guard
+
+```js [2-3]
+/**
+ * @param {Animal} animal
+ * @returns {animal is Duck}
+ */
+function isDuck(animal) {
+  return "file" === animal.sound;
+}
+```
+
+(obligatory example)
+
+[comment]: # "!!! data-auto-animate"
+
+### Type Guard
+
+```js [2-3]
+/**
+ * @param {Animal} animal
+ * @returns {animal is Fox}
+ */
+function isFox(animal) {
+  throw new Error("What does the fox say?");
+}
+```
+
+(dad... joke?)
+
+[comment]: # "!!! data-auto-animate"
+
 ### ❌ NewType
 
 [comment]: # "!!! data-auto-animate"
@@ -1620,27 +1802,6 @@ let pay = salary / payPeriods;
 [comment]: # "!!! data-auto-animate"
 
 🦆 Quack!
-
-[comment]: # "!!! data-auto-animate"
-
-🦆 Quack!
-
-- Duck-typed
-
-[comment]: # "!!! data-auto-animate"
-
-🦆 Quack!
-
-- Duck-typed
-- Type inference
-
-[comment]: # "!!! data-auto-animate"
-
-🦆 Quack!
-
-- Duck-typed
-- Type inference
-- JIT-optimized
 
 [comment]: # "!!! data-auto-animate"
 
@@ -1714,7 +1875,7 @@ Polymorphism
 ```js [1-4]
 /**
  * @typedef {Object} WithPosts
- * @prop {Array<Post>} posts
+ * @prop {Array<Post>} ramblings
  */
 
 /**
@@ -1729,7 +1890,7 @@ Polymorphism
 ```js [6-9]
 /**
  * @typedef {Object} WithPosts
- * @prop {Array<Post>} posts
+ * @prop {Array<Post>} ramblings
  */
 
 /**
@@ -1751,15 +1912,223 @@ Full Person
 
 [comment]: # "!!! data-auto-animate"
 
+### Templates
+
+<small><a href="https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html#template" target="_blank">JSDoc
+Reference: @template</a></small>
+
+[comment]: # "!!! data-auto-animate"
+
+### Templates
+
+Generics
+
+/
+
+Utility Functions
+
+[comment]: # "!!! data-auto-animate"
+
+### Templates
+
+```js [1-99]
+/**
+ * @template T
+ * @param {Array<T>} arr
+ * @returns T
+ */
+function last(arr) {
+  return arr[arr.length - 1];
+}
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Templates
+
+```js [2]
+/**
+ * @template T
+ * @param {Array<T>} arr
+ * @returns T
+ */
+function last(arr) {
+  return arr[arr.length - 1];
+}
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Templates
+
+```js [3,6]
+/**
+ * @template T
+ * @param {Array<T>} arr
+ * @returns T
+ */
+function last(arr) {
+  return arr[arr.length - 1];
+}
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Templates
+
+```js [4,7]
+/**
+ * @template T
+ * @param {Array<T>} arr
+ * @returns T
+ */
+function last(arr) {
+  return arr[arr.length - 1];
+}
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Templates
+
+"Like" Types
+
+[comment]: # "!!! data-auto-animate"
+
+### Templates
+
+```js [1-99]
+/**
+ * @template {PersonLike} T
+ * @param {T} p
+ * @returns T
+ */
+Person.sanitize = function (p) {
+  if (p.ssn) {
+    p.ssn = "***-**-" + p.ssn.slice(-4);
+  }
+  return p;
+};
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Templates
+
+```js [2]
+/**
+ * @template {PersonLike} T
+ * @param {T} p
+ * @returns T
+ */
+Person.sanitize = function (p) {
+  if (p.ssn) {
+    p.ssn = "***-**-" + p.ssn.slice(-4);
+  }
+  return p;
+};
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Templates
+
+```js [2,7-9]
+/**
+ * @template {PersonLike} T
+ * @param {T} p
+ * @returns T
+ */
+Person.sanitize = function (p) {
+  if (p.ssn) {
+    p.ssn = "***-**-" + p.ssn.slice(-4);
+  }
+  return p;
+};
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Templates
+
+```js [3,6,11]
+/**
+ * @template {PersonLike} T
+ * @param {T} p
+ * @returns T
+ */
+Person.sanitize = function (p) {
+  if (p.ssn) {
+    p.ssn = "***-**-" + p.ssn.slice(-4);
+  }
+  return p;
+};
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Templates
+
+```js [4,10]
+/**
+ * @template {PersonLike} T
+ * @param {T} p
+ * @returns T
+ */
+Person.sanitize = function (p) {
+  if (p.ssn) {
+    p.ssn = "***-**-" + p.ssn.slice(-4);
+  }
+  return p;
+};
+```
+
+[comment]: # "!!! data-auto-animate"
+
 ### Type Utils
 
 [comment]: # "!!! data-auto-animate"
 
 ### Type Utils
 
-Person-like (with Partial)
+a.k.a. "[Utility Types][utility-types]"
 
-```js [1-99]
+[utility-types]:
+  https://www.typescriptlang.org/docs/handbook/utility-types.html
+
+<!-- -->
+
+[comment]: # "!!! data-auto-animate"
+
+### Type Utils
+
+"Set Operations for Types"
+
+[comment]: # "!!! data-auto-animate"
+
+### Type Utils
+
+"lodash for types"
+
+[comment]: # "!!! data-auto-animate"
+
+### Type Utils
+
+How to create a "Like" type
+
+[comment]: # "!!! data-auto-animate"
+
+### Type Utils
+
+How to create a "Like" type
+
+```js [1-5]
+/**
+ * @template {PersonLike} T
+ * @param {T} p
+ * @returns T
+ */
+
 /**
  * @typedef {Partial<Person>} PersonLike
  */
@@ -1767,14 +2136,200 @@ Person-like (with Partial)
 
 [comment]: # "!!! data-auto-animate"
 
-### Mixins
+### Type Utils
+
+How to create a "Like" type
+
+```js [1-5]
+/**
+ * @template {PersonLike} T
+ * @param {T} p
+ * @returns T
+ */
+
+/**
+ * @typedef {Partial<FullPerson>} PersonLike
+ */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Type Utils
+
+How to create a "Like" type
+
+```js [7-9]
+/**
+ * @template {PersonLike} T
+ * @param {T} p
+ * @returns T
+ */
+
+/**
+ * @typedef {BasePerson | PersonWithFriends | FullPerson>} PersonLike
+ */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Type Utils
+
+How to create a "Like" type
+
+```js [8]
+/**
+ * @template {PersonLike} T
+ * @param {T} p
+ * @returns T
+ */
+
+/**
+ * @typedef {Partial<FullPerson>} PersonLike
+ */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Type Utils
+
+```js [2]
+/**
+ * @typedef {Partial<FullPerson>} PersonLike
+ * @typedef {Required<FullPerson>} PerfectPerson
+ * @typedef {NonNullable<FullPerson>} SteelPerson
+ * @typedef {Pick<BasePerson, "name" | "age">} MiniPerson
+ * @typedef {Omit<BasePerson, "ssn">} PublicPerson
+ */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Type Utils
+
+```js [3]
+/**
+ * @typedef {Partial<FullPerson>} PersonLike
+ * @typedef {Required<FullPerson>} PerfectPerson
+ * @typedef {NonNullable<FullPerson>} SteelPerson
+ * @typedef {Pick<BasePerson, "name" | "age">} MiniPerson
+ * @typedef {Omit<BasePerson, "ssn">} PublicPerson
+ */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Type Utils
+
+```js [4]
+/**
+ * @typedef {Partial<FullPerson>} PersonLike
+ * @typedef {Required<FullPerson>} PerfectPerson
+ * @typedef {NonNullable<FullPerson>} SteelPerson
+ * @typedef {Pick<BasePerson, "name" | "age">} MiniPerson
+ * @typedef {Omit<BasePerson, "ssn">} PublicPerson
+ */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Type Utils
+
+```js [5]
+/**
+ * @typedef {Partial<FullPerson>} PersonLike
+ * @typedef {Required<FullPerson>} PerfectPerson
+ * @typedef {NonNullable<FullPerson>} SteelPerson
+ * @typedef {Pick<BasePerson, "name" | "age">} MiniPerson
+ * @typedef {Omit<BasePerson, "ssn">} PublicPerson
+ */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Type Utils
+
+```js [6]
+/**
+ * @typedef {Partial<FullPerson>} PersonLike
+ * @typedef {Required<FullPerson>} PerfectPerson
+ * @typedef {NonNullable<FullPerson>} SteelPerson
+ * @typedef {Pick<BasePerson, "name" | "age">} MiniPerson
+ * @typedef {Omit<BasePerson, "ssn">} PublicPerson
+ */
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Type Utils
+
+```js [2]
+/**
+ * @param {ReadOnly<PersonLike>} p
+ * @returns {String}
+ */
+Person.hash = function (p) {
+  // ...
+};
+```
+
+[comment]: # "!!! data-auto-animate"
+
+### Type Utils
+
+# ⚠️
+
+[comment]: # "!!! data-auto-animate"
+
+### Type Utils
+
+# ⚠️
+
+> Just because you _can_ \
+> doesn't mean you _should_
+
+[comment]: # "!!! data-auto-animate"
+
+### Type Utils
+
+# ⚠️
+
+> Flat is Better than Nested -
+> [Zen of Python](https://github.com/ewjoachim/zen-of-python)
+
+### Type Utils
+
+# ⚠️
+
+> Avoid Hasty Abstractions -
+> [Kent C. Dodds](https://kentcdodds.com/blog/aha-programming)
+
+[comment]: # "!!! data-auto-animate"
+
+### Type Utils
+
+# ⚠️
+
+> People aren't great at recursion - _Every Juan, Ever_
+
+[comment]: # "!!! data-auto-animate"
+
+### Type Utils
 
 ```js [1-99]
 /**
- * @typedef {Object} WithFriends
- * @prop {Array<Person>}
- *
- * @typedef {Person & WithFriends} PersonWithFriends
+ * @typedef BasePerson
+ * @prop {String} name
+ * @prop {Number?} age
+ */
+```
+
+```js [1-99]
+/**
+ * @typedef FullPerson
+ * @prop {String} name
+ * @prop {Number} age
+ * @prop {Array<Person>} friends
+ * @prop {Array<Post>} ramblings
  */
 ```
 

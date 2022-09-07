@@ -256,17 +256,73 @@ mv tsconfig.json jsconfig.json
 </textarea></section>
 <section data-markdown  data-auto-animate><textarea data-template>
 
+## JS with Types
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## JS with Types
+
+Why Go 🐹 and Zig ⚡️ developers shouldn't give up on
+JavaScript
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Static Types are a Lie!
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Static Types are a Lie!
+
+Types have always been in the tooling.
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Static Types are a Lie!
+
+Types have always been in the tooling.
+
+Exhibit: C
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Static Types are a Lie!
+
+Safe languages have always been dynamically-typed.
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+## Static Types are a Lie!
+
+Safe languages have always been dynamically-typed.
+
+Runtime checks. Reflection. Etc.
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
 ## JavaScript is...
 
 </textarea></section>
 <section data-markdown  data-auto-animate><textarea data-template>
+
+## JavaScript is...
 
 ### Duck-Typed
 
 </textarea></section>
 <section data-markdown  data-auto-animate><textarea data-template>
 
-### Typed for JIT-Optimization
+## JavaScript is...
+
+### Duck-Typed
+
+(typed for JIT-optimization)
 
 </textarea></section>
 <section data-markdown  data-auto-animate><textarea data-template>
@@ -325,6 +381,7 @@ mv tsconfig.json jsconfig.json
 <li>type enums<br>(functional-style)</li>
 <li>mixins<br>(unions)</li>
 <li>templates</li>
+<li>utilities</li>
 </ul>
 </small></td>
 
@@ -350,6 +407,19 @@ mv tsconfig.json jsconfig.json
 # CAVEAT
 
 💩, because slides.
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+# CAVEAT
+
+💩, because slides.
+
+- non-alphabetized `name, age` vs `age, name`
+- backwards naming `BasePerson` vs `PersonBase`
+- etc
+
+(optimized for speakability, not diffability, engineering)
 
 </textarea></section>
 <section data-markdown  data-auto-animate><textarea data-template>
@@ -1546,6 +1616,13 @@ const (
 </textarea></section>
 <section data-markdown  data-auto-animate><textarea data-template>
 
+### ~~Value~~ Weak Sauce Enums
+
+`@enum` 🤷‍♂️
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
 ### Value Enums
 
 TODO - Note to self - do enums before type aliases!
@@ -1724,6 +1801,128 @@ let salary = 1_000_000;
 </textarea></section>
 <section data-markdown  data-auto-animate><textarea data-template>
 
+### Type Anti-Aliasing
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Type Guard
+
+Distinguish between similar types
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Type Guard
+
+```js [1-99]
+/**
+ * @typedef {File | Folder | Symlink | Pipe} DirEntry
+ */
+
+/**
+ * @param {DirEntry} dirEntry
+ * @returns {dirEntry is File}
+ */
+function isFile(dirEntry) {
+  return "file" === dirEntry.type;
+}
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Type Guard
+
+```js [2]
+/**
+ * @typedef {File | Folder | Symlink | Pipe} DirEntry
+ */
+
+/**
+ * @param {DirEntry} dirEntry
+ * @returns {dirEntry is File}
+ */
+function isFile(dirEntry) {
+  return "file" === dirEntry.type;
+}
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Type Guard
+
+```js [6-7]
+/**
+ * @typedef {File | Folder | Symlink | Pipe} DirEntry
+ */
+
+/**
+ * @param {DirEntry} dirEntry
+ * @returns {dirEntry is File}
+ */
+function isFile(dirEntry) {
+  return "file" === dirEntry.type;
+}
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Type Guard
+
+```js [9-11]
+/**
+ * @typedef {File | Folder | Symlink | Pipe} DirEntry
+ */
+
+/**
+ * @param {DirEntry} dirEntry
+ * @returns {dirEntry is File}
+ */
+function isFile(dirEntry) {
+  return "file" === dirEntry.type;
+}
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Type Guard
+
+```js [2-3]
+/**
+ * @param {Animal} animal
+ * @returns {animal is Duck}
+ */
+function isDuck(animal) {
+  return "file" === animal.sound;
+}
+```
+
+(obligatory example)
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Type Guard
+
+```js [2-3]
+/**
+ * @param {Animal} animal
+ * @returns {animal is Fox}
+ */
+function isFox(animal) {
+  throw new Error("What does the fox say?");
+}
+```
+
+(dad... joke?)
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
 ### ❌ NewType
 
 </textarea></section>
@@ -1782,30 +1981,6 @@ let pay = salary / payPeriods;
 <section data-markdown  data-auto-animate><textarea data-template>
 
 🦆 Quack!
-
-</textarea></section>
-<section data-markdown  data-auto-animate><textarea data-template>
-
-🦆 Quack!
-
-- Duck-typed
-
-</textarea></section>
-<section data-markdown  data-auto-animate><textarea data-template>
-
-🦆 Quack!
-
-- Duck-typed
-- Type inference
-
-</textarea></section>
-<section data-markdown  data-auto-animate><textarea data-template>
-
-🦆 Quack!
-
-- Duck-typed
-- Type inference
-- JIT-optimized
 
 </textarea></section>
 <section data-markdown  data-auto-animate><textarea data-template>
@@ -1887,7 +2062,7 @@ Polymorphism
 ```js [1-4]
 /**
  * @typedef {Object} WithPosts
- * @prop {Array<Post>} posts
+ * @prop {Array<Post>} ramblings
  */
 
 /**
@@ -1903,7 +2078,7 @@ Polymorphism
 ```js [6-9]
 /**
  * @typedef {Object} WithPosts
- * @prop {Array<Post>} posts
+ * @prop {Array<Post>} ramblings
  */
 
 /**
@@ -1927,6 +2102,191 @@ Full Person
 </textarea></section>
 <section data-markdown  data-auto-animate><textarea data-template>
 
+### Templates
+
+<small><a href="https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html#template" target="_blank">JSDoc
+Reference: @template</a></small>
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Templates
+
+Generics
+
+/
+
+Utility Functions
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Templates
+
+```js [1-99]
+/**
+ * @template T
+ * @param {Array<T>} arr
+ * @returns T
+ */
+function last(arr) {
+  return arr[arr.length - 1];
+}
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Templates
+
+```js [2]
+/**
+ * @template T
+ * @param {Array<T>} arr
+ * @returns T
+ */
+function last(arr) {
+  return arr[arr.length - 1];
+}
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Templates
+
+```js [3,6]
+/**
+ * @template T
+ * @param {Array<T>} arr
+ * @returns T
+ */
+function last(arr) {
+  return arr[arr.length - 1];
+}
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Templates
+
+```js [4,7]
+/**
+ * @template T
+ * @param {Array<T>} arr
+ * @returns T
+ */
+function last(arr) {
+  return arr[arr.length - 1];
+}
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Templates
+
+"Like" Types
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Templates
+
+```js [1-99]
+/**
+ * @template {PersonLike} T
+ * @param {T} p
+ * @returns T
+ */
+Person.sanitize = function (p) {
+  if (p.ssn) {
+    p.ssn = "***-**-" + p.ssn.slice(-4);
+  }
+  return p;
+};
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Templates
+
+```js [2]
+/**
+ * @template {PersonLike} T
+ * @param {T} p
+ * @returns T
+ */
+Person.sanitize = function (p) {
+  if (p.ssn) {
+    p.ssn = "***-**-" + p.ssn.slice(-4);
+  }
+  return p;
+};
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Templates
+
+```js [2,7-9]
+/**
+ * @template {PersonLike} T
+ * @param {T} p
+ * @returns T
+ */
+Person.sanitize = function (p) {
+  if (p.ssn) {
+    p.ssn = "***-**-" + p.ssn.slice(-4);
+  }
+  return p;
+};
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Templates
+
+```js [3,6,11]
+/**
+ * @template {PersonLike} T
+ * @param {T} p
+ * @returns T
+ */
+Person.sanitize = function (p) {
+  if (p.ssn) {
+    p.ssn = "***-**-" + p.ssn.slice(-4);
+  }
+  return p;
+};
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Templates
+
+```js [4,10]
+/**
+ * @template {PersonLike} T
+ * @param {T} p
+ * @returns T
+ */
+Person.sanitize = function (p) {
+  if (p.ssn) {
+    p.ssn = "***-**-" + p.ssn.slice(-4);
+  }
+  return p;
+};
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
 ### Type Utils
 
 </textarea></section>
@@ -1934,9 +2294,48 @@ Full Person
 
 ### Type Utils
 
-Person-like (with Partial)
+a.k.a. "[Utility Types][utility-types]"
 
-```js [1-99]
+[utility-types]:
+  https://www.typescriptlang.org/docs/handbook/utility-types.html
+
+<!-- -->
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Type Utils
+
+"Set Operations for Types"
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Type Utils
+
+"lodash for types"
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Type Utils
+
+How to create a "Like" type
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Type Utils
+
+How to create a "Like" type
+
+```js [1-5]
+/**
+ * @template {PersonLike} T
+ * @param {T} p
+ * @returns T
+ */
+
 /**
  * @typedef {Partial<Person>} PersonLike
  */
@@ -1945,14 +2344,213 @@ Person-like (with Partial)
 </textarea></section>
 <section data-markdown  data-auto-animate><textarea data-template>
 
-### Mixins
+### Type Utils
+
+How to create a "Like" type
+
+```js [1-5]
+/**
+ * @template {PersonLike} T
+ * @param {T} p
+ * @returns T
+ */
+
+/**
+ * @typedef {Partial<FullPerson>} PersonLike
+ */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Type Utils
+
+How to create a "Like" type
+
+```js [7-9]
+/**
+ * @template {PersonLike} T
+ * @param {T} p
+ * @returns T
+ */
+
+/**
+ * @typedef {BasePerson | PersonWithFriends | FullPerson>} PersonLike
+ */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Type Utils
+
+How to create a "Like" type
+
+```js [8]
+/**
+ * @template {PersonLike} T
+ * @param {T} p
+ * @returns T
+ */
+
+/**
+ * @typedef {Partial<FullPerson>} PersonLike
+ */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Type Utils
+
+```js [2]
+/**
+ * @typedef {Partial<FullPerson>} PersonLike
+ * @typedef {Required<FullPerson>} PerfectPerson
+ * @typedef {NonNullable<FullPerson>} SteelPerson
+ * @typedef {Pick<BasePerson, "name" | "age">} MiniPerson
+ * @typedef {Omit<BasePerson, "ssn">} PublicPerson
+ */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Type Utils
+
+```js [3]
+/**
+ * @typedef {Partial<FullPerson>} PersonLike
+ * @typedef {Required<FullPerson>} PerfectPerson
+ * @typedef {NonNullable<FullPerson>} SteelPerson
+ * @typedef {Pick<BasePerson, "name" | "age">} MiniPerson
+ * @typedef {Omit<BasePerson, "ssn">} PublicPerson
+ */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Type Utils
+
+```js [4]
+/**
+ * @typedef {Partial<FullPerson>} PersonLike
+ * @typedef {Required<FullPerson>} PerfectPerson
+ * @typedef {NonNullable<FullPerson>} SteelPerson
+ * @typedef {Pick<BasePerson, "name" | "age">} MiniPerson
+ * @typedef {Omit<BasePerson, "ssn">} PublicPerson
+ */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Type Utils
+
+```js [5]
+/**
+ * @typedef {Partial<FullPerson>} PersonLike
+ * @typedef {Required<FullPerson>} PerfectPerson
+ * @typedef {NonNullable<FullPerson>} SteelPerson
+ * @typedef {Pick<BasePerson, "name" | "age">} MiniPerson
+ * @typedef {Omit<BasePerson, "ssn">} PublicPerson
+ */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Type Utils
+
+```js [6]
+/**
+ * @typedef {Partial<FullPerson>} PersonLike
+ * @typedef {Required<FullPerson>} PerfectPerson
+ * @typedef {NonNullable<FullPerson>} SteelPerson
+ * @typedef {Pick<BasePerson, "name" | "age">} MiniPerson
+ * @typedef {Omit<BasePerson, "ssn">} PublicPerson
+ */
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Type Utils
+
+```js [2]
+/**
+ * @param {ReadOnly<PersonLike>} p
+ * @returns {String}
+ */
+Person.hash = function (p) {
+  // ...
+};
+```
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Type Utils
+
+# ⚠️
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Type Utils
+
+# ⚠️
+
+> Just because you _can_ \
+> doesn't mean you _should_
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Type Utils
+
+# ⚠️
+
+> Flat is Better than Nested -
+> [Zen of Python](https://github.com/ewjoachim/zen-of-python)
+
+### Type Utils
+
+# ⚠️
+
+> Avoid Hasty Abstractions -
+> [Kent C. Dodds](https://kentcdodds.com/blog/aha-programming)
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Type Utils
+
+# ⚠️
+
+> People aren't great at recursion - _Every Juan, Ever_
+
+</textarea></section>
+<section data-markdown  data-auto-animate><textarea data-template>
+
+### Type Utils
 
 ```js [1-99]
 /**
- * @typedef {Object} WithFriends
- * @prop {Array<Person>}
- *
- * @typedef {Person & WithFriends} PersonWithFriends
+ * @typedef BasePerson
+ * @prop {String} name
+ * @prop {Number?} age
+ */
+```
+
+```js [1-99]
+/**
+ * @typedef FullPerson
+ * @prop {String} name
+ * @prop {Number} age
+ * @prop {Array<Person>} friends
+ * @prop {Array<Post>} ramblings
  */
 ```
 
