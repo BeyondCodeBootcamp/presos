@@ -6,19 +6,24 @@
 [comment]: # "hash: false"
 [comment]: # "respondToHashChanges: false"
 
+## JS with Types 💪
+
+Types without Transpilation
+
+[comment]: # "!!! data-auto-animate"
+
+a.k.a.
+
+Why Go 🐹 and Zig ⚡️ developers \
+shouldn't give up on JavaScript
+
+[comment]: # "!!! data-auto-animate"
+
 # TODOS
 
 - Where do `nullish` best fit?
   - optional params and props vs undefined
-- ## Tips and Tricks
-
-# JavaScript with Types
-
-A deep dive into TSC & JSDoc with Vanilla JS!
-
-[comment]: # "!!! data-auto-animate"
-
-Types without Transpilation
+- Tips and Tricks
 
 [comment]: # "!!! data-auto-animate"
 
@@ -51,32 +56,6 @@ Types without Transpilation
 AJ ONeal <br>
 [@\_beyondcode](https://twitter.com/@_beyondcode) <br>
 [youtube.com/coolaj86](https://youtube.com/coolaj86)
-
-[comment]: # "!!!"
-
-Dangerous Wrong Thinker
-
-Equal Opportunity Offender
-
-Technophobic Technologist Extraordinairé
-
-[comment]: # "!!! data-auto-animate"
-
-Utah Node.js
-
-Utah Rust
-
-[twitch.tv/coolaj86](https://twitch.tv/coolaj86)
-
-[comment]: # "!!! data-auto-animate"
-
-I ❤️ 🐹
-
-[comment]: # "!!! data-auto-animate"
-
-I ❤️ 🐹
-
-[#golang](https://creedsofcraftsmanship.com)
 
 [comment]: # "!!! data-auto-animate"
 
@@ -113,172 +92,6 @@ TSC & JSDoc with Vanilla JS
 - https://github.com/giltayar/jsdoc-typing
 - https://gils-blog.tayar.org/posts/jsdoc-typings-all-the-benefits-none-of-the-drawbacks/
 - https://www.stitcher.com/show/javascript-jabber/episode/typing-without-transpilation-the-beauty-of-jsdoc-jsj-489-84887083
-
-[comment]: # "!!! data-auto-animate"
-
-Write code that runs in Node, and Browsers.
-
-[comment]: # "!!! data-auto-animate"
-
-Code without comments looks too terse
-
-[comment]: # "!!! data-auto-animate"
-
-## The 💸💰🤑💵 💲lide
-
-```js
-curl https://webinstall.dev/vim-essential | bash
-
-npm install --location=global tsc
-
-npm init
-tsc --init
-mv tsconfig.json jsconfig.json
-```
-
-[comment]: # "!!! data-auto-animate"
-
-```diff
--    // "typeRoots": [],
-+    "typeRoots": ["./typings", "node_modules/@types"],
-```
-
-```diff
-+  "include": ["types.js", "*.js", "lib/**/*.js", "lib/**/*.d.ts"],
-+  "exclude": ["node_modules"]
-```
-
-[comment]: # "!!! data-auto-animate"
-
-`basetag`
-
-```diff
--    // "preserveSymlinks": true,
-+    "preserveSymlinks": false,
-```
-
-[comment]: # "!!! data-auto-animate"
-
-```diff
--    "target": "es2021" ,
-+    "target": "esnext",
-```
-
-`target`: not useful
-
-<small>(gotta check _caniuse_ anyway)</small>
-
-[comment]: # "!!! data-auto-animate"
-
-```diff
-+    "allowJs": true,
-+    "checkJs": true,
-```
-
-```diff
--    // "noImplicitAny": true,
-+    "noImplicitAny": true ,
-```
-
-[comment]: # "!!! data-auto-animate"
-
-## Why JavaScript?
-
-[comment]: # "!!! data-auto-animate"
-
-## Why JavaScript?
-
-- simplicity (of language)
-
-[comment]: # "!!! data-auto-animate"
-
-## Why JavaScript?
-
-- simplicity (of language)
-- simplicity (of tooling)
-
-[comment]: # "!!! data-auto-animate"
-
-## Why JavaScript?
-
-- simplicity (of language)
-- simplicity (of tooling)
-- simplicity (of type system)
-
-[comment]: # "!!! data-auto-animate"
-
-## Why NOT TypeScript?
-
-- transpiling
-- C# heritage (Factory Factory)
-
-[comment]: # "!!! data-auto-animate"
-
-## Why NOT ES Modules
-
-- horrendous browser support
-- horrendous node support
-
-[comment]: # "!!! data-auto-animate"
-
-## JS with Types
-
-[comment]: # "!!! data-auto-animate"
-
-## JS with Types
-
-Why Go 🐹 and Zig ⚡️ developers shouldn't give up on
-JavaScript
-
-[comment]: # "!!! data-auto-animate"
-
-## Static Types are a Lie!
-
-[comment]: # "!!! data-auto-animate"
-
-## Static Types are a Lie!
-
-Types have always been in the tooling.
-
-[comment]: # "!!! data-auto-animate"
-
-## Static Types are a Lie!
-
-Types have always been in the tooling.
-
-Exhibit: C
-
-[comment]: # "!!! data-auto-animate"
-
-## Static Types are a Lie!
-
-Safe languages have always been dynamically-typed.
-
-[comment]: # "!!! data-auto-animate"
-
-## Static Types are a Lie!
-
-Safe languages have always been dynamically-typed.
-
-Runtime checks. Reflection. Etc.
-
-[comment]: # "!!! data-auto-animate"
-
-## JavaScript is...
-
-[comment]: # "!!! data-auto-animate"
-
-## JavaScript is...
-
-### Duck-Typed
-
-[comment]: # "!!! data-auto-animate"
-
-## JavaScript is...
-
-### Duck-Typed
-
-(typed for JIT-optimization)
 
 [comment]: # "!!! data-auto-animate"
 
@@ -2770,3 +2583,207 @@ Thanks.
 [comment]: # "!!!"
 
 FIN
+
+[comment]: # "!!!"
+
+Dangerous Wrong Thinker
+
+Equal Opportunity Offender
+
+Technophobic Technologist Extraordinairé
+
+[comment]: # "!!! data-auto-animate"
+
+Utah Node.js
+
+Utah Rust
+
+[twitch.tv/coolaj86](https://twitch.tv/coolaj86)
+
+[comment]: # "!!! data-auto-animate"
+
+I ❤️ 🐹
+
+[comment]: # "!!! data-auto-animate"
+
+I ❤️ 🐹
+
+[#golang](https://creedsofcraftsmanship.com)
+
+[comment]: # "!!! data-auto-animate"
+
+Write code that runs in Node, and Browsers.
+
+[comment]: # "!!! data-auto-animate"
+
+Code without comments looks too terse
+
+[comment]: # "!!! data-auto-animate"
+
+## The 💸💰🤑💵 💲lide
+
+<!-- money shot Money Slide -->
+
+```js
+curl https://webinstall.dev/vim-essential | bash
+
+npm install --location=global tsc
+
+npm init
+
+npx -p typescript -- tsc --init \
+    --allowJs --alwaysStrict --checkJs \
+    --moduleResolution node \
+    --noEmit --noImplicitAny \
+    --target es2022 \
+    --typeRoots './typings,./node_modules/@types'
+mv tsconfig.json jsconfig.json
+```
+
+```js
+--include '*.js,src/**/*.js,lib/**/*.js' \
+--exclude node_modules \
+```
+
+[comment]: # "!!! data-auto-animate"
+
+```diff
+-    // "typeRoots": [],
++    "typeRoots": ["./typings", "node_modules/@types"],
+```
+
+```diff
++  "include": ["types.js", "*.js", "lib/**/*.js", "lib/**/*.d.ts"],
++  "exclude": ["node_modules"]
+```
+
+[comment]: # "!!! data-auto-animate"
+
+`basetag`
+
+```diff
+-    // "preserveSymlinks": true,
++    "preserveSymlinks": false,
+```
+
+[comment]: # "!!! data-auto-animate"
+
+```diff
+-    "target": "es2021" ,
++    "target": "esnext",
+```
+
+`target`: not useful
+
+<small>(gotta check _caniuse_ anyway)</small>
+
+[comment]: # "!!! data-auto-animate"
+
+```diff
++    "allowJs": true,
++    "checkJs": true,
+```
+
+```diff
+-    // "noImplicitAny": true,
++    "noImplicitAny": true ,
+```
+
+[comment]: # "!!! data-auto-animate"
+
+## Why JavaScript?
+
+[comment]: # "!!! data-auto-animate"
+
+## Why JavaScript?
+
+- simplicity (of language)
+
+[comment]: # "!!! data-auto-animate"
+
+## Why JavaScript?
+
+- simplicity (of language)
+- simplicity (of tooling)
+
+[comment]: # "!!! data-auto-animate"
+
+## Why JavaScript?
+
+- simplicity (of language)
+- simplicity (of tooling)
+- simplicity (of type system)
+
+[comment]: # "!!! data-auto-animate"
+
+## Why NOT TypeScript?
+
+- transpiling
+- C# heritage (Factory Factory)
+
+[comment]: # "!!! data-auto-animate"
+
+## Why NOT ES Modules
+
+- horrendous browser support
+- horrendous node support
+
+# JavaScript with Types
+
+A deep dive into TSC & JSDoc with Vanilla JS!
+
+
+
+## JS with Types
+
+[comment]: # "!!! data-auto-animate"
+
+## Static Types are a Lie!
+
+[comment]: # "!!! data-auto-animate"
+
+## Static Types are a Lie!
+
+Types have always been in the tooling.
+
+[comment]: # "!!! data-auto-animate"
+
+## Static Types are a Lie!
+
+Types have always been in the tooling.
+
+Exhibit: C
+
+[comment]: # "!!! data-auto-animate"
+
+## Static Types are a Lie!
+
+Safe languages have always been dynamically-typed.
+
+[comment]: # "!!! data-auto-animate"
+
+## Static Types are a Lie!
+
+Safe languages have always been dynamically-typed.
+
+Runtime checks. Reflection. Etc.
+
+[comment]: # "!!! data-auto-animate"
+
+## JavaScript is...
+
+[comment]: # "!!! data-auto-animate"
+
+## JavaScript is...
+
+### Duck-Typed
+
+[comment]: # "!!! data-auto-animate"
+
+## JavaScript is...
+
+### Duck-Typed
+
+(typed for JIT-optimization)
+
+[comment]: # "!!! data-auto-animate"
