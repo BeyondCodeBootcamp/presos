@@ -7,6 +7,8 @@
 
 Presentation Slides + Videos:
 
+- 💪 [JS With Types](https://jswithtypes.com/)
+  <!-- [2022-09-29 14:47:49 -0600] JS With Types -->
 - 👩‍🏫 [Semantic Javascript](.//semantic-javascript/)
   <!-- [2022-08-24 14:47:49 -0600] Semantic JavaScript -->
 - 💡 [Express.js ProTips™](./express-pro-tips/)
