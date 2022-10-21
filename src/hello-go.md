@@ -8,7 +8,15 @@
 
 # Hello Go
 
-Hello World's Greatest Hits
+Grand Tour of Tooling
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/NtKBcVku6EU?start=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+[comment]: # "!!!"
+
+# Hello Go
+
+Grand Tour of Tooling
 
 [comment]: # "!!!"
 
@@ -18,12 +26,22 @@ Hello World's Greatest Hits
 
 <tr><td>
 <small>Slides:</small></td><td><small>
-<a href="https://beyondcodebootcamp.github.io/presos/hello-go/">https://beyondcodebootcamp.github.io/</a></small></td>
+<a href="https://beyondcodebootcamp.github.io/presos/hello-go/">beyondcodebootcamp.github.io</a></small></td>
+</tr>
+
+<tr><td>
+<small>Appendix:</small></td><td><small>
+<a href="https://github.com/BeyondCodeBootcamp/hello-go/issues/1">github.com/BeyondCodeBootcamp/hello-go/issues/1</a></small></td>
 </tr>
 
 <tr><td>
 <small>Video:</small></td><td><small>
 <a href="https://www.youtube.com/watch?v=NtKBcVku6EU">https://youtu.be/NtKBcVku6EU</a></small>
+</td></tr>
+
+<tr><td>
+<small>Go Proverbs (Poster):</small></td><td><small>
+<a href="https://github.com/BeyondCodeBootcamp/go-proverbs/">github.com/BeyondCodeBootcamp/go-proverbs</a></small>
 </td></tr>
 
 <tr><td>
@@ -54,6 +72,12 @@ Technophobic Technologist Extraordinairé
 
 [comment]: # "!!!"
 
+## Savvi Legal
+
+Startups anyone?
+
+[comment]: # "!!!"
+
 Utah Node.js
 
 Utah Rust
@@ -74,35 +98,21 @@ Useful? Entertaining?
 
 # Hello Go
 
-Hello World's Greatest Hits
-
-[comment]: # "!!!"
-
-A "Hello World"-style survey
-
-of the world of Go Tooling
-
-[comment]: # "!!!"
-
-All the little things
-
-from `fmt.Println()`
-
-to `goreleaser` and `webi`
+Grand Tour of Tooling
 
 [comment]: # "!!!"
 
 <table><tr>
 
 <td><small>
-1. Install<br />
-2. eXtended Library<br />
-3. Effective Go<br />
-4. IDE Tooling<br />
+1. Effective Go<br />
+2. Install<br />
+3. IDE Tooling<br />
+4. eXtended Library<br />
+4. <code>go mod</code><br />
 5. <code>./hello/</code><br />
-6. <code>go mod</code><br />
-7. <code>./internal/</code><br />
-8. <code>go generate</code><br />
+6. <code>./internal/</code><br />
+7. <code>go generate</code><br />
 9. <code>tools.go</code><br />
 </small></td>
 
@@ -132,7 +142,7 @@ to `goreleaser` and `webi`
 - CGO with Zig
 -->
 
-[comment]: # "!!!"
+[comment]: # "!!! data-auto-animate"
 
 # 0. Why Go?
 
@@ -153,68 +163,77 @@ to `goreleaser` and `webi`
 
 [comment]: # "!!! data-auto-animate"
 
-(and cross-platform to boot)
+- Learn it in a Weekend
+- [Go Proverbs](https://go-proverbs.github.io/)
+- Cross-platform to boot
+
+[comment]: # "!!! data-auto-animate"
+
+## 1. Hello (Effective) Go
 
 [comment]: # "!!!"
 
-# 1. Hello Go
+- Go Proverbs
+  - [Rob Pike's Talk](https://www.youtube.com/watch?v=PAAkCSZUG1c)
+  - [Poster](https://github.com/BeyondCodeBootcamp/go-proverbs/)
+    <br> <br>
+- Effective Go
+  - [go.dev/doc/effective_go](https://go.dev/doc/effective_go)
+    <br> <br>
+- [Creeds of Craftsmanship . com](https://creedsofcraftsmanship.com/)
+  - [Simplicity is Complicated](https://www.youtube.com/watch?v=rFejpH_tAHM)
+  - [Things in Go I Never Use](https://www.youtube.com/watch?v=5DVV36uqQ4E)
 
 [comment]: # "!!!"
 
-- <https://golang.org/dl/>
-- <https://golang.org/dl/?mode=json&include=all>
+# 2. Hello Go
 
 [comment]: # "!!!"
 
-`tar` is the best
+```go
+package main
 
-- Just say no to 'pkg'
-- `brew` at your own peril
+import "fmt"
 
-[comment]: # "!!!"
-
-Go is self-contained, conflict-free
-
-- untar to `~/.local/opt`
-- symlink libs and bin
-- update `PATH`
-
-[comment]: # "!!!"
-
-```json
-{
-  "version": "go1.18.5",
-  "stable": true,
-  "files": [
-    {
-      "filename": "go1.18.5.darwin-amd64.tar.gz",
-      "os": "darwin",
-      "arch": "amd64",
-      "version": "go1.18.5",
-      "sha256": "828eeca8b5abea3e56921df8fa4b1101380a5ebcfee10acbc8ffe7ec0bf5876b",
-      "size": 143880926,
-      "kind": "archive"
-    },
-    {
-      "filename": "go1.18.5.darwin-arm64.tar.gz",
-      "os": "darwin",
-      "arch": "arm64",
-      "version": "go1.18.5",
-      "sha256": "923a377c6fc9a2c789f5db61c24b8f64133f7889056897449891f256af34065f",
-      "size": 138253414,
-      "kind": "archive"
-    }
-  ]
+func main() {
+	fmt.Println("Hello, 世界")
 }
 ```
 
+```sh
+go run ./hello.go
+```
+
 [comment]: # "!!!"
 
-[webinstall.dev/golang](https://webinstall.dev/golang)
+Go's JSON Download API
 
-```bash
-curl https://webinstall.dev/golang | bash
+<https://golang.org/dl/?mode=json&include=all>
+
+[comment]: # "!!!"
+
+1. untar to `~/.local/opt`
+2. symlink libs and bin
+3. update `PATH`
+
+[comment]: # "!!!"
+
+Webi: [webinstall.dev/golang](https://webinstall.dev/golang)
+
+```sh
+# Linux, Mac
+curl -sS https://webi.sh/golang | sh
+source ~/.config/envman/PATH.env
 ```
+
+```sh
+# Windows
+curl.exe https://webi.ms/golang | powershell
+```
+
+[comment]: # "!!!"
+
+Update or Switch versions
 
 ```bash
 webi golang@1.18
@@ -222,46 +241,11 @@ webi golang@1.18
 
 [comment]: # "!!!"
 
-```bash
-go run ./script.go
-```
-
-[comment]: # "!!!"
-
-## 2. Hello Go X
-
-- [golang.org/x](https://pkg.go.dev/golang.org/x)
-- [golang.org/x/tools/cmd](https://pkg.go.dev/golang.org/x/tools/cmd)
-
-[comment]: # "!!!"
-
-## Automatic Tooling
-
-(IDE, toolchain)
-
-- `gopls`
-- `goimports`
-- `godoc` \*
-
-[comment]: # "!!!"
-
-## Dev Utils
-
-(`go generate`)
-
-- `stringer`
-- `godoc` \*
-- `embed` \*
-
-[comment]: # "!!!"
-
-## Libs
-
-(special purpose)
-
-- `golang.org/x/crypto`
-- `golang.org/x/sys/windows`
-- `golang.org/x/text`
+- 💪 Go Download API + Webi
+- ⚠️ <https://golang.org/dl/> <!-- (`tar`, _not_ pkg) -->
+- ❌ `brew`
+- 😵‍💫 `apt`
+- 🐳 `FROM scratch`
 
 [comment]: # "!!!"
 
@@ -281,40 +265,38 @@ webi vim-essentials vim-go
 
 [comment]: # "!!!"
 
-```go
-package main
+## 4. Hello Go X
 
-import "fmt"
-
-func main() {
-	fmt.Println("vim-go")
-}
-```
+- [golang.org/x](https://pkg.go.dev/golang.org/x)
+- [golang.org/x/tools/cmd](https://pkg.go.dev/golang.org/x/tools/cmd)
 
 [comment]: # "!!!"
 
-## 4. Hello Project
+<table>
 
-(Anatomy)
+<tr>
+<th><small>Automatic Tooling<br>(IDE, toolchain)</small></th>
+<th><small>Dev Utils<br>(<code>go generate</code>)</small></th>
+<th><small>Libs<br>(special purpose)</small></th>
+</tr>
 
-[comment]: # "!!!"
+<tr>
+<td><small><code>gopls</code></small></td>
+<td><small><code>stringer</code></small></td>
+<td><small><code>golang.org/x/crypto</code></small></td>
+</tr>
 
-```txt
-hello/
-├── .git/
-├── .ignore
-├── go.mod
-├── go.lock
-├── hello.go
-├── assets/
-├── cmd/
-│  └── hello/
-├── internal/
-├── migrations/
-├── tools/
-└── vendor/
-   └── modules.txt
-```
+<tr>
+<td><small><code>goimports</code></small></td>
+<td><small><code>godoc *</code></small></td>
+<td><small><code>golang.org/x/sys/windows</code></small></td>
+</tr>
+
+<tr>
+<td><small><code>godoc</code> **</small></td>
+<td><small><code>embed *</code></small></td>
+<td><small><code>golang.org/x/text</code></small></td>
+</tr>
 
 [comment]: # "!!!"
 
@@ -363,21 +345,41 @@ go: creating new go.mod: module github.com/example/foo
 
 [comment]: # "!!!"
 
-## 6. Hello (Effective) Go
+## 6. Hello Project
 
-[go.dev/doc/effective_go](https://go.dev/doc/effective_go)
-
-[comment]: # "!!!"
-
-## Go Proverbs
-
-- [Go Proverbs (website)](https://go-proverbs.github.io/)
-- [Go Proverbs Poster](https://github.com/BeyondCodeBootcamp/go-proverbs/)
-- [Go Proverbs Talk](https://www.youtube.com/watch?v=PAAkCSZUG1c)
+(Anatomy)
 
 [comment]: # "!!!"
 
-[Creeds of Craftsmanship.com](https://creedsofcraftsmanship.com/)
+```txt
+hello/
+├── .git/
+├── .ignore
+├── go.mod
+├── go.lock
+├── hello.go
+└── cmd/
+   └── hello/
+```
+
+[comment]: # "!!!"
+
+```txt
+hello/
+├── .git/
+├── .ignore
+├── go.mod
+├── go.lock
+├── hello.go
+├── assets/
+├── cmd/
+│  └── hello/
+├── internal/
+├── migrations/
+├── tools/
+└── vendor/
+   └── modules.txt
+```
 
 [comment]: # "!!!"
 
@@ -815,7 +817,9 @@ https://webinstall.dev/goreleaser
 
 [comment]: # "!!! data-auto-animate"
 
-Template Repo: <small>
+Template Repo:
+
+<small>
 <a href="https://github.com/BeyondCodeBootcamp/hello-go">github.com/BeyondCodeBootcamp/hello-go</a></small>
 
 ```txt
@@ -833,6 +837,10 @@ No time. 😢
 [comment]: # "!!!"
 
 [Zig makes CGO Cross-Compilation Just Work](https://dev.to/kristoff/zig-makes-go-cross-compilation-just-work-29ho)
+
+[comment]: # "!!!"
+
+Like, Sub, & Follow
 
 [comment]: # "!!!"
 
