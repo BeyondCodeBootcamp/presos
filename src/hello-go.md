@@ -18,6 +18,8 @@ Grand Tour of Tooling
 
 Grand Tour of Tooling
 
+<img title="QR Code for jswithtypes.com" alt="slides link" src="https://i.imgur.com/M7cV8Kg.png" width="42%">
+
 [comment]: # "!!!"
 
 ### Useful Links
