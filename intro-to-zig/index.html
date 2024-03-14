@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>Intro to Zig</title>
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+<link rel="stylesheet" href="dist/theme/white.css" id="theme">
+		<!-- Theme used for syntax highlighted code -->
+<link rel="stylesheet" href="plugin/highlight/github.min.css" id="highlight-theme"></head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+<section data-markdown  ><textarea data-template>
+[comment]: # "markdown: { smartypants: true }"
+
+## Intro to Zig
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+(in a world that already has Go and Rust)
+
+[beyondcodebootcamp.github.io/presos/intro-to-zig](https://beyondcodebootcamp.github.io/presos/intro-to-zig/)
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+AJ ONeal <br>
+[@\_beyondcode](https://twitter.com/@_beyondcode) <br>
+[github.com/therootcompany](https://github.com/therootcompany/)
+<br> [twitch.tv/coolaj86](https://twitch.tv/coolaj86)
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+Dangerous Wrong Thinker
+
+Equal Opportunity Offender
+
+Technophobic Technologist Extraordinairé
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+## Intro to Zig
+
+[beyondcodebootcamp.github.io/presos/intro-to-zig](https://beyondcodebootcamp.github.io/presos/intro-to-zig/)
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+![](https://i.imgur.com/g8eOl9c.jpg)
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+## Guardrails, The Language
+
+![](https://i.imgur.com/UJgoCT5.jpg)
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+### Go Pros
+
+- Learn in a Weekend
+- Batteries Included
+- Safe
+- Cohesive
+- Write Once, Run Anywhere™
+- Fast...ish
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+### Go Cons
+
+- error handling
+- boilerplate
+- [cgo is not Go](https://dave.cheney.net/2016/01/18/cgo-is-not-go)
+
+```go
+// no hidden control flow!
+n, err := r.Read(buf)
+if err != nil {
+  return nil, err
+}
+```
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+## Cool Kids Kool Aid
+
+![](https://i.imgur.com/K00LpAz.png)
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+## We Were Promised Jet-Packs
+
+![](https://i.imgur.com/lljGPNf.png)
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+```go
+
+```
+
+</textarea></section>
+<section data-markdown ><textarea data-template>
+
+## The Philosophy
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Gv2I7qTux7g?start=650" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<small><a href="https://www.youtube.com/watch?v=Gv2I7qTux7g">https://youtube.com/watch?v=Gv2I7qTux7g</a></small>
+</textarea></section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/math/math.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+Reveal.initialize({
+controls : false,
+markdown : {smartypants: true},
+controls : false,
+keyboard : true,
+hash : false,
+respondToHashChanges : false,
+				hash: true,
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath ]
+			});
+		</script>
+	</body>
+</html>
