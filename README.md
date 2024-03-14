@@ -57,7 +57,7 @@ Presentation Slides + Videos:
 
 ## Quick Start to Render
 
-```bash
+```sh
 watchexec -e md -w "YOUR_PRESO.md" -- mdslides "YOUR_PRESO.md"
 ```
 
@@ -77,19 +77,19 @@ See https://webinstall.dev/pyenv
 
 ### Install pyenv
 
-```bash
-curl -sS https://webinstall.dev/pyenv | bash
+```sh
+curl -sS https://webi.sh/pyenv | sh
 ```
 
 If you see
 `WARNING: Can not proceed... remove '~/.pyenv' first`, then
-you already have `pyenv` installed. No worries. Carry on.
+you already have `pyenv` installed. **No worries**. Carry on.
 
 ### Install the latest python 3
 
 Check the latest version:
 
-```bash
+```sh
 pyenv update
 pyenv install --list | grep -vi '[a-z]' | tail -n 1
 ```
@@ -97,20 +97,22 @@ pyenv install --list | grep -vi '[a-z]' | tail -n 1
 You can install that or, if you want to have the exact setup
 as I have, use 3.10.1:
 
-```bash
+```sh
 pyenv install -v 3.10.1
 ```
 
-Then set that to the current version for your user:
+Then set that to the current version for your project:
 
-```bash
+```sh
 pyenv local 3.10.1
 python --version
 ```
 
+(or `echo '3.10.1' > ./.python-version`)
+
 ### Install Markdown Slides with pip
 
-```bash
+```sh
 python -m pip install git+https://gitlab.com/da_doomer/markdown-slides.git
 ```
 
@@ -183,7 +185,7 @@ Note:
   and contain metadata pertaining to the slide above them.
 - DO NOT use `prettier` on the slides (it will ruin the
   comments)
-  ```bash
+  ```sh
   echo '**/*.md' >> .prettierignore
   ```
 
@@ -197,26 +199,24 @@ of your way.
 ## Render Slides
 
 1. Navigate to the directory for your presentation:
-   ```bash
+   ```sh
    mkdir ./my-presentation
    pushd ./my-presentation
    ```
 2. Render the slides
-
-- as html
-  ```bash
-  mdslides ./slides.md
-  ```
-- or as a pdf
-  ```bash
-  mdslides --pdf ./slides.md
-  ```
-- include additional assets as needed
-  ```bash
-  mdslides --include ./img --include ./js ./slides.md
-  ```
-
+   - as html
+     ```sh
+     mdslides ./slides.md
+     ```
+   - or as a pdf
+     ```sh
+     mdslides --pdf ./slides.md
+     ```
+   - include additional assets as needed
+     ```sh
+     mdslides --include ./img --include ./js ./slides.md
+     ```
 3. The website directory will be the markdown file
-   ```bash
+   ```sh
    open ./slides/index.html
    ```
