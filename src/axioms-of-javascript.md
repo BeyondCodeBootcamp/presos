@@ -253,6 +253,55 @@ async function doStuff() {
 
 [comment]: # "!!!"
 
+❌
+
+```js
+try {
+  oops();
+} catch (e) {
+  /* silencing because not sure what to do here */
+}
+```
+
+[comment]: # "!!!"
+
+Correct the mistake
+
+```js
+Fs.readFile(filepath).catch(function (err) {
+    if (err.code === 'ENOENT') {
+        return await Fs.mkdir(path, { recursive: true });
+    }
+});
+```
+
+[comment]: # "!!!"
+
+Classify for the handler
+
+```sh
+mustValidate(userInput).catch(function (err) {
+    err.status = 400;
+    throw err;
+})
+```
+
+[comment]: # "!!!"
+
+Don't catch uncorrectable errors!
+
+Let them bubble up!
+
+```js
+notFatalButShouldBeLogged().catch(function (err) {
+  // to be logged at top-level handler
+  err.code = "E_WARN";
+  throw err;
+});
+```
+
+[comment]: # "!!!"
+
 ## 6. Gatekeepers at the gates, Doorkeepers at the doors
 
 [comment]: # "!!!"
