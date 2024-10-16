@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>
+      Multi-Section Code Carousel with Active Section and
+      Hash Routing
+    </title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <link href="./slides.css" rel="stylesheet" />
+  </head>
+  <body>
+    <aside>
+      <nav>
+        <button
+          onclick="toggleNav(); document.exitFullscreen()"
+        >
+          Exit ↙️
+        </button>
+        <button
+          onclick="toggleNav(); document.documentElement.requestFullscreen()"
+        >
+          Fullscreen ↗️
+        </button>
+        <ul></ul>
+      </nav>
+    </aside>
+    <main>
+      <article>
+<h1><a href="#passkeys-are-good" aria-hidden="true" class="anchor" id="passkeys-are-good"></a>Passkeys are Good</h1>
+<p>(and WebAuthn isn't <em>that</em> Hard)</p>
+<hr />
+<p>AJ ONeal <br>
+<a href="https://twitter.com/@_beyondcode">@_beyondcode</a> <br>
+<a href="https://github.com/therootcompany/">github.com/therootcompany</a>
+<br> <a href="https://twitch.tv/coolaj86">twitch.tv/coolaj86</a></p>
+<hr />
+<p>Deep-Learner</p>
+<p>Dangerous Wrong Thinker</p>
+<p>Gun for Hire <a href="mailto:aj@therootcompany.com">aj@therootcompany.com</a> <br />
+🐹 ⬡ 🦎 🛜 🔐 🐧</p>
+<hr />
+<h2><a href="#brought-to-you-in-part-by" aria-hidden="true" class="anchor" id="brought-to-you-in-part-by"></a>Brought to you in part by</h2>
+<ul>
+<li>PaperOS: <a href="https://paperos.com">https://paperos.com</a></li>
+<li>Kyle Simpson: <a href="https://x.com/@getifyX">https://x.com/@getifyX</a></li>
+</ul>
+<hr />
+<h1><a href="#webauthn" aria-hidden="true" class="anchor" id="webauthn"></a>WebAuthn</h1>
+<p>A suite of specifications and standards related to
+browser-based authentication.</p>
+<p>FIDO rebranded.</p>
+<hr />
+<h1><a href="#passkeys" aria-hidden="true" class="anchor" id="passkeys"></a>Passkeys</h1>
+<p>The subset of WebAuthn that's implemented* and works.</p>
+<p>WebAuthn rebranded.</p>
+<hr />
+<h1><a href="#demo" aria-hidden="true" class="anchor" id="demo"></a>Demo</h1>
+<p><a href="https://passkeys.js.org">https://passkeys.js.org</a></p>
+<hr />
+<h1><a href="#demo-1" aria-hidden="true" class="anchor" id="demo-1"></a>Demo</h1>
+<p><a href="https://github.com/BeyondCodeBootcamp/vanilla-webauthn">https://github.com/BeyondCodeBootcamp/vanilla-webauthn</a></p>
+<hr />
+<h1><a href="#the-magic" aria-hidden="true" class="anchor" id="the-magic"></a>The Magic™</h1>
+<pre lang="js" style="background-color:#2b303b;"><code><span style="color:#b48ead;">let </span><span style="color:#bf616a;">Creds </span><span style="color:#c0c5ce;">= </span><span style="color:#bf616a;">globalThis</span><span style="color:#c0c5ce;">.navigator?.credentials;
+</span></code></pre>
+<pre lang="js" style="background-color:#2b303b;"><code><span style="color:#c0c5ce;">void </span><span style="color:#bf616a;">Creds</span><span style="color:#c0c5ce;">.</span><span style="color:#8fa1b3;">get</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">onClickAutofillOpts</span><span style="color:#c0c5ce;">).</span><span style="color:#8fa1b3;">then</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">handleAutofill</span><span style="color:#c0c5ce;">);
+</span></code></pre>
+<pre lang="js" style="background-color:#2b303b;"><code><span style="color:#bf616a;">passkeyCtrl</span><span style="color:#c0c5ce;">.</span><span style="color:#8fa1b3;">abort</span><span style="color:#c0c5ce;">();
+</span><span style="color:#b48ead;">let </span><span style="color:#bf616a;">passkey </span><span style="color:#c0c5ce;">= </span><span style="color:#bf616a;">await Creds</span><span style="color:#c0c5ce;">.</span><span style="color:#8fa1b3;">create</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">onClickNewPasskeyOpts</span><span style="color:#c0c5ce;">);
+</span></code></pre>
+<pre lang="js" style="background-color:#2b303b;"><code><span style="color:#bf616a;">passkeyCtrl</span><span style="color:#c0c5ce;">.</span><span style="color:#8fa1b3;">abort</span><span style="color:#c0c5ce;">();
+</span><span style="color:#b48ead;">let </span><span style="color:#bf616a;">passkey </span><span style="color:#c0c5ce;">= </span><span style="color:#bf616a;">await Creds</span><span style="color:#c0c5ce;">.</span><span style="color:#8fa1b3;">get</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">onClickUsePasskeyOpts</span><span style="color:#c0c5ce;">);
+</span></code></pre>
+<p>Note: <em>autofill</em> is mutually exclusive and requires
+<code>AbortController</code>.</p>
+<hr />
+<h1><a href="#context-of-passkeys" aria-hidden="true" class="anchor" id="context-of-passkeys"></a>Context of Passkeys</h1>
+<ul>
+<li>Stronger Authentication for You</li>
+<li>More Convenient for Your Customers</li>
+<li>Single Factor</li>
+<li>One-to-Many</li>
+<li>A Common* Subset</li>
+</ul>
+<p>* <small>Apple, Brave, Google, Firefox, Microsoft, YubiCo,
+etc</small></p>
+<hr />
+<h2><a href="#platform-support" aria-hidden="true" class="anchor" id="platform-support"></a>Platform Support</h2>
+<ul>
+<li>MDN <a href="https://caniuse.com/webauthn">Baseline™</a> Browser
+Support
+<ul>
+<li>Brave, Chrome, Edge, Firefox, Safari,</li>
+<li>Android Browser, UC Browser, WebViews</li>
+</ul>
+</li>
+<li>Universal Platform Support
+<ul>
+<li>Android, Chrome OS, iOS, Linux, macOS, Windows</li>
+<li>iCloud, Google Sync, Microsoft... <em>thingy</em> (?)</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2><a href="#product-support" aria-hidden="true" class="anchor" id="product-support"></a>Product Support</h2>
+<ul>
+<li>Android <em>thingy</em>
+<a href="https://www.reddit.com/r/UXDesign/comments/10ruff4/comment/j6yiob5/">(?)</a></li>
+<li>Face ID</li>
+<li>Touch ID</li>
+<li>YubiKey</li>
+<li>Windows Hello</li>
+</ul>
+<hr />
+<h2><a href="#too-fancy" aria-hidden="true" class="anchor" id="too-fancy"></a>Too Fancy?</h2>
+<hr />
+<p>Just Click OK</p>
+<p><small>(or PIN, or password)</small></p>
+<hr />
+<p>(true progressive enhancement)</p>
+<hr />
+<h1><a href="#context-of-this-presentation" aria-hidden="true" class="anchor" id="context-of-this-presentation"></a>Context of this Presentation</h1>
+<blockquote>
+<p>Flat is better than nested. <br />
+- Zen of Python</p>
+</blockquote>
+<blockquote>
+<p>A little copying is better than a little dependency. <br />
+- Go Proverbs</p>
+</blockquote>
+<blockquote>
+<p>Favor reading code over writing code. <br />
+- Zen of Zig</p>
+</blockquote>
+<hr />
+<h2><a href="#closer-to-the-metal" aria-hidden="true" class="anchor" id="closer-to-the-metal"></a><em>Closer</em> to the Metal</h2>
+<p>Maybe you're better off learning than off-loading.</p>
+<hr />
+<h2><a href="#-but-not-the-metal" aria-hidden="true" class="anchor" id="-but-not-the-metal"></a>... but not <em>the Metal</em></h2>
+<p>Use abstractions to avoid confusion or <em>intense</em> tedium.</p>
+<hr />
+<h2><a href="#can-you-use-passkeys-without-a-library" aria-hidden="true" class="anchor" id="can-you-use-passkeys-without-a-library"></a>Can you use Passkeys without a Library?</h2>
+<hr />
+<h1><a href="#no" aria-hidden="true" class="anchor" id="no"></a>No.</h1>
+<p><small>(well, maybe)</small></p>
+<hr />
+<blockquote>
+<p>The subset of WebAuthn that's implemented* and works.</p>
+</blockquote>
+<p>*: some tedious but critical assembly required</p>
+<p>also *: most of WebAuthn will <em>never</em> be implemented</p>
+<!-- IKEA, but with a non-included tri-wing driver -->
+<hr />
+<h1><a href="#passkeys-vocabulary" aria-hidden="true" class="anchor" id="passkeys-vocabulary"></a>Passkeys Vocabulary</h1>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Authc</td>
+<td>password, magic link, passkey, otp, sign in with, etc</td>
+</tr>
+<tr>
+<td>Authenticator</td>
+<td>Authenticator, the Device or Platform</td>
+</tr>
+<tr>
+<td>Platform</td>
+<td>the browser, OS, plugin, or service</td>
+</tr>
+<tr>
+<td>Credential</td>
+<td>Public Key (<code>P-256</code> or <code>ed25519</code>)</td>
+</tr>
+<tr>
+<td>Assertion</td>
+<td>signed server-side challenge (salt)</td>
+</tr>
+<tr>
+<td>Challenge</td>
+<td>a server-side nonce</td>
+</tr>
+<tr>
+<td>Nonce</td>
+<td>arbitrary single-use data, such as a salt</td>
+</tr>
+<tr>
+<td>Salt</td>
+<td>random bytes, to make a hash unpredictable</td>
+</tr>
+<tr>
+<td>Passkey*</td>
+<td>generally &quot;the implementation&quot;, of WebAuthn</td>
+</tr>
+</tbody>
+</table>
+<p>* overloaded</p>
+<hr />
+<h2><a href="#passkeys-vocabulary-cont-2" aria-hidden="true" class="anchor" id="passkeys-vocabulary-cont-2"></a>Passkeys Vocabulary (cont. 2)</h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>JSON</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Base64</td>
+<td>-</td>
+</tr>
+<tr>
+<td>URL Base64</td>
+<td>Base64 but <code>+</code> =&gt; <code>-</code>, <code>/</code> =&gt; <code>_</code>, <code>=</code> =&gt; ``</td>
+</tr>
+<tr>
+<td>Private Key</td>
+<td><code>x</code> in <code>f(x) =&gt; y</code>, random bytes</td>
+</tr>
+<tr>
+<td>Public Key</td>
+<td><code>y</code> in <code>f(x) =&gt; y</code>, the result of the random bytes</td>
+</tr>
+<tr>
+<td>Hash</td>
+<td>lossy matrix math (tables) on a sequence of bytes</td>
+</tr>
+<tr>
+<td>Signature</td>
+<td>key + salt + matrix math + curve (alt public key)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2><a href="#passkeys-vocabulary-cont-3" aria-hidden="true" class="anchor" id="passkeys-vocabulary-cont-3"></a>Passkeys Vocabulary (cont. 3)</h2>
+<p>SKIP (we'll circle back)</p>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Relying Party</td>
+<td>domain name (the OG origin)</td>
+</tr>
+<tr>
+<td>Attestation</td>
+<td>details about the passkey device or service</td>
+</tr>
+<tr>
+<td>CBOR</td>
+<td>binary JSON</td>
+</tr>
+<tr>
+<td>COSE</td>
+<td>binary JOSE (JWT)</td>
+</tr>
+<tr>
+<td>AttToBeSigned</td>
+<td>a bespoke hash of the bespoke data</td>
+</tr>
+<tr>
+<td>ASN.1 / DER</td>
+<td>binary XML</td>
+</tr>
+<tr>
+<td>P1363</td>
+<td>WebCrypto Signatures</td>
+</tr>
+<tr>
+<td>(bespoke)</td>
+<td>one-off, proprietary to WebAuthn</td>
+</tr>
+<tr>
+<td><em>Foo</em>Credential</td>
+<td>non-implemented WebAuthn stuff (we don't care)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2><a href="#on-to-the-implementation" aria-hidden="true" class="anchor" id="on-to-the-implementation"></a>On to the Implementation</h2>
+<hr />
+<h2><a href="#platform--autofill-support" aria-hidden="true" class="anchor" id="platform--autofill-support"></a>Platform &amp; Autofill Support</h2>
+<pre lang="js" style="background-color:#2b303b;"><code><span style="color:#b48ead;">let </span><span style="color:#bf616a;">passkeyCredential </span><span style="color:#c0c5ce;">= </span><span style="color:#bf616a;">globalThis</span><span style="color:#c0c5ce;">.PublicKeyCredential;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">let </span><span style="color:#bf616a;">hasPlatformSupport </span><span style="color:#c0c5ce;">=
+</span><span style="color:#c0c5ce;">  </span><span style="color:#bf616a;">await passkeyCredential</span><span style="color:#c0c5ce;">?.</span><span style="color:#8fa1b3;">isUserVerifyingPlatformAuthenticatorAvailable</span><span style="color:#c0c5ce;">();
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">let </span><span style="color:#bf616a;">hasAutofillSupport </span><span style="color:#c0c5ce;">=
+</span><span style="color:#c0c5ce;">  </span><span style="color:#bf616a;">await passkeyCredential</span><span style="color:#c0c5ce;">?.</span><span style="color:#8fa1b3;">isConditionalMediationAvailable</span><span style="color:#c0c5ce;">();
+</span></code></pre>
+<pre lang="js" style="background-color:#2b303b;"><code><span style="color:#b48ead;">let </span><span style="color:#bf616a;">passkeySupport </span><span style="color:#c0c5ce;">=
+</span><span style="color:#c0c5ce;">  </span><span style="color:#bf616a;">hasPlatformSupport </span><span style="color:#c0c5ce;">&amp;&amp; </span><span style="color:#bf616a;">hasAutofillSupport</span><span style="color:#c0c5ce;">;
+</span></code></pre>
+<hr />
+<h3><a href="#no-platform-no-autofill-no-service" aria-hidden="true" class="anchor" id="no-platform-no-autofill-no-service"></a>No Platform, No Autofill, No Service</h3>
+<p>Just Say No 🙅‍♀️</p>
+<p><small>diminishing returns on stuff your mom will never
+know</small></p>
+<hr />
+<h1><a href="#process" aria-hidden="true" class="anchor" id="process"></a>Process</h1>
+<ol start="0">
+<li>(server) Challenge Generation</li>
+<li>Credential Registration (<code>webauthn.create</code>)</li>
+<li>(server) Credential Storage</li>
+<li>Credential Authentication (<code>webauthn.get</code>)
+<ul>
+<li>(also called <code>assertion</code>)</li>
+</ul>
+</li>
+<li>(server) Credential Verification</li>
+</ol>
+<hr />
+<h2><a href="#0a-challenge" aria-hidden="true" class="anchor" id="0a-challenge"></a>0.a Challenge</h2>
+<pre lang="js" style="background-color:#2b303b;"><code><span style="color:#b48ead;">let </span><span style="color:#bf616a;">challengeLen </span><span style="color:#c0c5ce;">= </span><span style="color:#d08770;">64</span><span style="color:#c0c5ce;">;
+</span><span style="color:#b48ead;">let </span><span style="color:#bf616a;">challengeBytes </span><span style="color:#c0c5ce;">= new </span><span style="color:#bf616a;">Uint8Array</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">challengeLen</span><span style="color:#c0c5ce;">);
+</span><span style="color:#bf616a;">globalThis</span><span style="color:#c0c5ce;">.crypto.</span><span style="color:#8fa1b3;">randomValues</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">challengeBytes</span><span style="color:#c0c5ce;">);
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">let </span><span style="color:#bf616a;">challenge </span><span style="color:#c0c5ce;">= </span><span style="color:#bf616a;">Bytes</span><span style="color:#c0c5ce;">.</span><span style="color:#8fa1b3;">bufferToBase64</span><span style="color:#c0c5ce;">(
+</span><span style="color:#c0c5ce;">  </span><span style="color:#bf616a;">challengeBytes</span><span style="color:#c0c5ce;">,
+</span><span style="color:#c0c5ce;">  </span><span style="color:#ebcb8b;">Bytes</span><span style="color:#c0c5ce;">.URL_BASE64,
+</span><span style="color:#c0c5ce;">);
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#ebcb8b;">DB</span><span style="color:#c0c5ce;">.Nonces.</span><span style="color:#8fa1b3;">set</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">challenge</span><span style="color:#c0c5ce;">, {
+</span><span style="color:#c0c5ce;">  </span><span style="color:#65737e;">/* ... */
+</span><span style="color:#c0c5ce;">});
+</span></code></pre>
+<hr />
+<h2><a href="#1a-registration" aria-hidden="true" class="anchor" id="1a-registration"></a>1.a Registration</h2>
+<pre lang="js" style="background-color:#2b303b;"><code><span style="color:#b48ead;">let </span><span style="color:#bf616a;">relyingParty </span><span style="color:#c0c5ce;">= {
+</span><span style="color:#c0c5ce;">  id: </span><span style="color:#bf616a;">location</span><span style="color:#c0c5ce;">.hostname, </span><span style="color:#65737e;">// cookie rules
+</span><span style="color:#c0c5ce;">  name: &quot;</span><span style="color:#a3be8c;">My Brand</span><span style="color:#c0c5ce;">&quot;,
+</span><span style="color:#c0c5ce;">};
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">let </span><span style="color:#bf616a;">displayName </span><span style="color:#c0c5ce;">= &quot;</span><span style="color:#a3be8c;">...</span><span style="color:#c0c5ce;">&quot;;
+</span><span style="color:#b48ead;">let </span><span style="color:#bf616a;">email </span><span style="color:#c0c5ce;">= &quot;</span><span style="color:#a3be8c;">...</span><span style="color:#c0c5ce;">&quot;;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">let </span><span style="color:#bf616a;">challenge </span><span style="color:#c0c5ce;">= </span><span style="color:#bf616a;">await App</span><span style="color:#c0c5ce;">.</span><span style="color:#8fa1b3;">getChallengeFor</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">email</span><span style="color:#c0c5ce;">);
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">let </span><span style="color:#bf616a;">credentialIds </span><span style="color:#c0c5ce;">= </span><span style="color:#bf616a;">await App</span><span style="color:#c0c5ce;">.</span><span style="color:#8fa1b3;">getCredIdsFor</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">email</span><span style="color:#c0c5ce;">);
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">let </span><span style="color:#bf616a;">userSecretLen </span><span style="color:#c0c5ce;">= </span><span style="color:#d08770;">64</span><span style="color:#c0c5ce;">;
+</span><span style="color:#b48ead;">let </span><span style="color:#bf616a;">userSecretBytes </span><span style="color:#c0c5ce;">= new </span><span style="color:#bf616a;">Uint8Array</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">userSecretLen</span><span style="color:#c0c5ce;">);
+</span><span style="color:#bf616a;">globalThis</span><span style="color:#c0c5ce;">.crypto.</span><span style="color:#8fa1b3;">randomValues</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">userSecretBytes</span><span style="color:#c0c5ce;">);
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(!</span><span style="color:#bf616a;">passkeyCtrl</span><span style="color:#c0c5ce;">) {
+</span><span style="color:#c0c5ce;">  </span><span style="color:#bf616a;">passkeyCtrl </span><span style="color:#c0c5ce;">= new </span><span style="color:#bf616a;">AbortController</span><span style="color:#c0c5ce;">();
+</span><span style="color:#c0c5ce;">}
+</span></code></pre>
+<hr />
+<h2><a href="#1b-registration" aria-hidden="true" class="anchor" id="1b-registration"></a>1.b Registration</h2>
+<p><carousel data-line-start="1" data-slides="1,2-4,22-23 | 5-9 | 10 | 11 | 12-14 | 15 | 16 | 17-21 | 20"></carousel></p>
+<pre lang="js" style="background-color:#2b303b;"><code><span style="color:#b48ead;">let </span><span style="color:#bf616a;">credRegOpts </span><span style="color:#c0c5ce;">= {
+</span><span style="color:#c0c5ce;">  mediation: &quot;</span><span style="color:#a3be8c;">optional</span><span style="color:#c0c5ce;">&quot;, </span><span style="color:#65737e;">// on button click
+</span><span style="color:#c0c5ce;">  signal: </span><span style="color:#bf616a;">passkeyCtrl</span><span style="color:#c0c5ce;">.signal,
+</span><span style="color:#c0c5ce;">  publicKey: {
+</span><span style="color:#c0c5ce;">    attestation: &quot;</span><span style="color:#a3be8c;">direct</span><span style="color:#c0c5ce;">&quot;,
+</span><span style="color:#c0c5ce;">    authenticatorSelection: {
+</span><span style="color:#c0c5ce;">      residentKey: &quot;</span><span style="color:#a3be8c;">required</span><span style="color:#c0c5ce;">&quot;,
+</span><span style="color:#c0c5ce;">      userVerification: &quot;</span><span style="color:#a3be8c;">preferred</span><span style="color:#c0c5ce;">&quot;,
+</span><span style="color:#c0c5ce;">    },
+</span><span style="color:#c0c5ce;">    challenge: </span><span style="color:#bf616a;">challenge</span><span style="color:#c0c5ce;">,
+</span><span style="color:#c0c5ce;">    excludeCredentials: </span><span style="color:#bf616a;">credentialIds</span><span style="color:#c0c5ce;">, </span><span style="color:#65737e;">// IMPORTANT (authcs)
+</span><span style="color:#c0c5ce;">    pubKeyCredParams: [
+</span><span style="color:#c0c5ce;">      { type: &quot;</span><span style="color:#a3be8c;">public-key</span><span style="color:#c0c5ce;">&quot;, alg: -</span><span style="color:#d08770;">7 </span><span style="color:#c0c5ce;">}, </span><span style="color:#65737e;">// ECDSA P-256
+</span><span style="color:#c0c5ce;">    ],
+</span><span style="color:#c0c5ce;">    rp: </span><span style="color:#bf616a;">relyingParty</span><span style="color:#c0c5ce;">,
+</span><span style="color:#c0c5ce;">    timeout: </span><span style="color:#d08770;">180 </span><span style="color:#c0c5ce;">* </span><span style="color:#d08770;">1000</span><span style="color:#c0c5ce;">,
+</span><span style="color:#c0c5ce;">    user: {
+</span><span style="color:#c0c5ce;">      name: </span><span style="color:#bf616a;">email</span><span style="color:#c0c5ce;">,
+</span><span style="color:#c0c5ce;">      displayName: </span><span style="color:#bf616a;">displayName</span><span style="color:#c0c5ce;">,
+</span><span style="color:#c0c5ce;">      id: </span><span style="color:#bf616a;">userSecretBytes</span><span style="color:#c0c5ce;">, </span><span style="color:#65737e;">// NOT an ID
+</span><span style="color:#c0c5ce;">    },
+</span><span style="color:#c0c5ce;">  },
+</span><span style="color:#c0c5ce;">};
+</span></code></pre>
+<hr />
+<h2><a href="#2b" aria-hidden="true" class="anchor" id="2b"></a>2.b</h2>
+<pre lang="js" style="background-color:#2b303b;"><code><span style="color:#b48ead;">let </span><span style="color:#bf616a;">credAuthOpts </span><span style="color:#c0c5ce;">= {
+</span><span style="color:#c0c5ce;">  mediation: &quot;</span><span style="color:#a3be8c;">optional</span><span style="color:#c0c5ce;">&quot;, </span><span style="color:#65737e;">// on button click
+</span><span style="color:#c0c5ce;">  signal: </span><span style="color:#bf616a;">passkeyCtrl</span><span style="color:#c0c5ce;">.signal,
+</span><span style="color:#c0c5ce;">  publicKey: {
+</span><span style="color:#c0c5ce;">    attestation: &quot;</span><span style="color:#a3be8c;">direct</span><span style="color:#c0c5ce;">&quot;,
+</span><span style="color:#c0c5ce;">    authenticatorSelection: {
+</span><span style="color:#c0c5ce;">      residentKey: &quot;</span><span style="color:#a3be8c;">required</span><span style="color:#c0c5ce;">&quot;,
+</span><span style="color:#c0c5ce;">      userVerification: &quot;</span><span style="color:#a3be8c;">preferred</span><span style="color:#c0c5ce;">&quot;,
+</span><span style="color:#c0c5ce;">    },
+</span><span style="color:#c0c5ce;">    challenge: </span><span style="color:#bf616a;">challenge</span><span style="color:#c0c5ce;">,
+</span><span style="color:#c0c5ce;">    excludeCredentials: </span><span style="color:#bf616a;">credentialIds</span><span style="color:#c0c5ce;">, </span><span style="color:#65737e;">// IMPORTANT (authcs)
+</span><span style="color:#c0c5ce;">    pubKeyCredParams: [
+</span><span style="color:#c0c5ce;">      { type: &quot;</span><span style="color:#a3be8c;">public-key</span><span style="color:#c0c5ce;">&quot;, alg: -</span><span style="color:#d08770;">7 </span><span style="color:#c0c5ce;">}, </span><span style="color:#65737e;">// ECDSA P-256
+</span><span style="color:#c0c5ce;">    ],
+</span><span style="color:#c0c5ce;">    rp: </span><span style="color:#bf616a;">relyingParty</span><span style="color:#c0c5ce;">,
+</span><span style="color:#c0c5ce;">    timeout: </span><span style="color:#d08770;">180 </span><span style="color:#c0c5ce;">* </span><span style="color:#d08770;">1000</span><span style="color:#c0c5ce;">,
+</span><span style="color:#c0c5ce;">    user: {
+</span><span style="color:#c0c5ce;">      name: </span><span style="color:#bf616a;">email</span><span style="color:#c0c5ce;">,
+</span><span style="color:#c0c5ce;">      displayName: </span><span style="color:#bf616a;">displayName</span><span style="color:#c0c5ce;">,
+</span><span style="color:#c0c5ce;">      id: </span><span style="color:#bf616a;">userSecretBytes</span><span style="color:#c0c5ce;">, </span><span style="color:#65737e;">// NOT an ID
+</span><span style="color:#c0c5ce;">    },
+</span><span style="color:#c0c5ce;">  },
+</span><span style="color:#c0c5ce;">};
+</span></code></pre>
+<hr />
+<h2><a href="#1d-registration" aria-hidden="true" class="anchor" id="1d-registration"></a>1.d Registration</h2>
+<p>References</p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/CredentialsContainer/create">https://developer.mozilla.org/en-US/docs/Web/API/CredentialsContainer/create</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredentialCreationOptions">https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredentialCreationOptions</a></li>
+<li><a href="https://caniuse.com/mdn-api_publickeycredential">https://caniuse.com/mdn-api_publickeycredential</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredentialRequestOptions">https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredentialRequestOptions</a></li>
+<li><a href="https://caniuse.com/mdn-api_credentialscontainer_create_publickey_option_extensions">https://caniuse.com/mdn-api_credentialscontainer_create_publickey_option_extensions</a></li>
+</ul>
+<hr />
+<h1><a href="#process-1" aria-hidden="true" class="anchor" id="process-1"></a>Process</h1>
+<ol start="0">
+<li>(server) Challenge Generation</li>
+<li>Credential Registration (<code>webauthn.create</code>)</li>
+<li>(server) Credential Storage</li>
+<li>Credential Authentication (<code>webauthn.get</code>)
+<ul>
+<li>(also called <code>assertion</code>)</li>
+</ul>
+</li>
+<li>(server) Credential Verification</li>
+</ol>
+<hr />
+<h1><a href="#caveats" aria-hidden="true" class="anchor" id="caveats"></a>Caveats</h1>
+<hr />
+<h2><a href="#unsupportable-features" aria-hidden="true" class="anchor" id="unsupportable-features"></a>Unsupportable Features</h2>
+<p>These will probably <em>never</em> be supported:</p>
+<ul>
+<li>passive / background / silent authentication</li>
+<li>cross-origin authentication</li>
+</ul>
+<p><small>unlikely that <em>all</em> vendors will agree</small></p>
+<hr />
+<h2><a href="#good-key-types" aria-hidden="true" class="anchor" id="good-key-types"></a>Good Key Types:</h2>
+<ul>
+<li>✅ -7 ECDSA <code>P-256</code> (a.k.a. <code>ES256</code>, <code>prime256v1</code>)</li>
+<li>⚠️ -8 EdDSA <code>ed25519</code>
+(<a href="https://caniuse.com/mdn-api_subtlecrypto_sign_ed25519">caniuse</a>)</li>
+</ul>
+<hr />
+<h2><a href="#bad-key-types" aria-hidden="true" class="anchor" id="bad-key-types"></a>Bad Key Types</h2>
+<ul>
+<li>❌ RSA</li>
+<li>❌ ECDSA <code>P-256k</code> (a.k.a. <code>secp256k1</code>)</li>
+<li>❌ the other 200+ types</li>
+</ul>
+<hr />
+<h1><a href="#diving-deep" aria-hidden="true" class="anchor" id="diving-deep"></a>Diving Deep</h1>
+<h2><a href="#0b-challenge" aria-hidden="true" class="anchor" id="0b-challenge"></a>0.b Challenge</h2>
+<pre lang="js" style="background-color:#2b303b;"><code><span style="color:#ebcb8b;">Bytes</span><span style="color:#c0c5ce;">.RFC_BASE64 = </span><span style="color:#d08770;">true</span><span style="color:#c0c5ce;">;
+</span><span style="color:#ebcb8b;">Bytes</span><span style="color:#c0c5ce;">.URL_BASE64 = </span><span style="color:#d08770;">false</span><span style="color:#c0c5ce;">;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#65737e;">/**
+</span><span style="color:#65737e;"> * @param {Uint8Array|ArrayBuffer?} buffer
+</span><span style="color:#65737e;"> * @param {Boolean} [rfc]
+</span><span style="color:#65737e;"> */
+</span><span style="color:#ebcb8b;">Bytes</span><span style="color:#c0c5ce;">.</span><span style="color:#8fa1b3;">bufferToBase64 </span><span style="color:#c0c5ce;">= </span><span style="color:#b48ead;">function </span><span style="color:#c0c5ce;">(buffer, rfc) {
+</span><span style="color:#c0c5ce;">  </span><span style="color:#b48ead;">let </span><span style="color:#bf616a;">bytes </span><span style="color:#c0c5ce;">= new </span><span style="color:#bf616a;">Uint8Array</span><span style="color:#c0c5ce;">(buffer);
+</span><span style="color:#c0c5ce;">  </span><span style="color:#b48ead;">let </span><span style="color:#bf616a;">binstr </span><span style="color:#c0c5ce;">= </span><span style="color:#ebcb8b;">String</span><span style="color:#c0c5ce;">.fromCharCode.</span><span style="color:#8fa1b3;">apply</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">null</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">bytes</span><span style="color:#c0c5ce;">);
+</span><span style="color:#c0c5ce;">  </span><span style="color:#b48ead;">let </span><span style="color:#bf616a;">rfcBase64 </span><span style="color:#c0c5ce;">= </span><span style="color:#8fa1b3;">btoa</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">binstr</span><span style="color:#c0c5ce;">);
+</span><span style="color:#c0c5ce;">  </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">rfc</span><span style="color:#c0c5ce;">) {
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">return </span><span style="color:#bf616a;">rfcBase64</span><span style="color:#c0c5ce;">;
+</span><span style="color:#c0c5ce;">  }
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">  </span><span style="color:#bf616a;">Bytes</span><span style="color:#c0c5ce;">.</span><span style="color:#8fa1b3;">rfcBase64ToUrlBase64</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">rfcBase64</span><span style="color:#c0c5ce;">);
+</span><span style="color:#c0c5ce;">};
+</span></code></pre>
+<hr />
+<h2><a href="#0c-challenge" aria-hidden="true" class="anchor" id="0c-challenge"></a>0.c Challenge</h2>
+<pre lang="js" style="background-color:#2b303b;"><code><span style="color:#65737e;">/**
+</span><span style="color:#65737e;"> * @param {String} rfcBase64
+</span><span style="color:#65737e;"> */
+</span><span style="color:#ebcb8b;">Bytes</span><span style="color:#c0c5ce;">.</span><span style="color:#8fa1b3;">rfcBase64ToUrlBase64 </span><span style="color:#c0c5ce;">= </span><span style="color:#b48ead;">function </span><span style="color:#c0c5ce;">(rfcBase64) {
+</span><span style="color:#c0c5ce;">  </span><span style="color:#b48ead;">let </span><span style="color:#bf616a;">urlBase64 </span><span style="color:#c0c5ce;">= </span><span style="color:#bf616a;">rfcBase64</span><span style="color:#c0c5ce;">.</span><span style="color:#8fa1b3;">replace</span><span style="color:#c0c5ce;">(/</span><span style="color:#96b5b4;">=</span><span style="color:#c0c5ce;">+</span><span style="color:#b48ead;">$</span><span style="color:#c0c5ce;">/</span><span style="color:#b48ead;">g</span><span style="color:#c0c5ce;">, &quot;&quot;);
+</span><span style="color:#c0c5ce;">  </span><span style="color:#bf616a;">urlBase64 </span><span style="color:#c0c5ce;">= </span><span style="color:#bf616a;">urlBase64</span><span style="color:#c0c5ce;">.</span><span style="color:#8fa1b3;">replace</span><span style="color:#c0c5ce;">(/</span><span style="color:#d08770;">[/]</span><span style="color:#c0c5ce;">/</span><span style="color:#b48ead;">g</span><span style="color:#c0c5ce;">, &quot;</span><span style="color:#a3be8c;">_</span><span style="color:#c0c5ce;">&quot;);
+</span><span style="color:#c0c5ce;">  </span><span style="color:#bf616a;">urlBase64 </span><span style="color:#c0c5ce;">= </span><span style="color:#bf616a;">urlBase64</span><span style="color:#c0c5ce;">.</span><span style="color:#8fa1b3;">replace</span><span style="color:#c0c5ce;">(/</span><span style="color:#d08770;">[+]</span><span style="color:#c0c5ce;">/</span><span style="color:#b48ead;">g</span><span style="color:#c0c5ce;">, &quot;</span><span style="color:#a3be8c;">-</span><span style="color:#c0c5ce;">&quot;);
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">  </span><span style="color:#b48ead;">return </span><span style="color:#bf616a;">urlBase64</span><span style="color:#c0c5ce;">;
+</span><span style="color:#c0c5ce;">};
+</span></code></pre>
+<hr />
+            </article>
+        </main>
+
+        <script src='./slides.js'></script>
+    </body>
+</html>
