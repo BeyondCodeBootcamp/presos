@@ -1,0 +1,268 @@
+:root {
+  --font-size: 2cqw;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  display: flex;
+}
+
+h1 {
+  padding-bottom: 3cqw;
+}
+h2 {
+  padding-bottom: 3cqw;
+}
+h3 {
+  padding-bottom: 3cqw;
+}
+h4 {
+  padding-bottom: 3cqw;
+}
+h5 {
+  padding-bottom: 3cqw;
+}
+h6 {
+  padding-bottom: 3cqw;
+}
+
+aside {
+  width: 20%;
+  transition: /* Smooth collapse */
+    left 0.3s ease-in-out,
+    width 0.3s ease,
+    padding 0.3s ease;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20%;
+  height: 100%;
+
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-right: 2px solid #ccc;
+  flex-shrink: 0;
+  overflow-y: auto;
+  transition: /* Smooth collapse */
+    left 0.3s ease-in-out,
+    width 0.3s ease,
+    padding 0.3s ease;
+
+  & ul {
+    list-style-type: none;
+  }
+
+  & ol {
+    cursor: pointer;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #ddd;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+
+  & ol:hover {
+    background-color: #bbb;
+  }
+
+  & .miniature {
+    width: 100%; /* Scale miniature relative to its container */
+    aspect-ratio: 16 / 9; /* Maintain 16:9 aspect ratio */
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 10px;
+  }
+
+  & .miniature-content {
+    padding: 5px; /* Reduce padding for miniature version */
+    /* font-size: var(--font-size); */
+    font-size: 0.25cqw;
+  }
+}
+
+.collapsed {
+  width: 0;
+  padding: 0;
+  overflow: hidden;
+  left: -25%;
+}
+
+main {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto;
+  container-type: inline-size;
+}
+
+article {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  flex-grow: 1;
+  gap: 20px;
+  font-size: 4cqw;
+}
+
+section {
+  transition: /* Smooth collapse */ width 0.3s ease;
+  border: 2px solid transparent;
+  padding: 20px;
+  margin-bottom: 50px;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5cqw;
+  border-color: #0000ff0f;
+  background-color: #f0f8ff;
+  transition:
+    border-color 0.5s,
+    background-color 0.5s;
+}
+
+section.active {
+  border-color: transparent;
+  background-color: transparent;
+  transition:
+    border-color 0.5s,
+    background-color 0.5s;
+}
+
+section {
+  > ol,
+  > ul {
+    padding-left: 6cqw; /* Space for gutter */
+  }
+
+  > li {
+    min-height: 1cqw; /* Ensures space is taken by empty lines */
+  }
+
+  > ul > li {
+    list-style: disc inside; /* Keep bullets for grandchildren */
+  }
+
+  ol,
+  ul {
+    position: relative;
+    counter-reset: line-number;
+    list-style: none;
+  }
+
+  li {
+    position: relative;
+  }
+
+  ol > li {
+    counter-increment: line-number;
+  }
+
+  li::before {
+    position: absolute;
+    left: -6cqw;
+    width: 4cqw;
+    text-align: right;
+    opacity: 0.5;
+  }
+
+  ol > li::before {
+    content: counter(line-number);
+  }
+
+  /* Dimming styles */
+  ol .dimmed,
+  ul .dimmed {
+    opacity: 0.3;
+    transition: opacity 0.4s ease;
+  }
+
+  ol .focused,
+  ul .focused {
+    opacity: 1;
+    transition: opacity 0.4s ease;
+  }
+
+  & table {
+    width: 100%;
+    font-size: 3.2cqw;
+  }
+  & table td,
+  & table th {
+    border: 0.2cqw solid #dbdbdb;
+    border-width: 0 0 0.2cqw; /* 1px = 0.2cqw */
+    padding: 0.2cqw 0.75cqw;
+    vertical-align: top;
+  }
+  & table th {
+    color: #363636;
+  }
+  & table th:not([align]) {
+    text-align: inherit;
+  }
+  & table thead td,
+  & table thead th {
+    border-width: 0 0 0.4cqw;
+    color: #363636;
+  }
+  & table tfoot td,
+  & table tfoot th {
+    border-width: 0.4cqw 0 0;
+    color: #363636;
+  }
+  & table tbody tr:last-child td,
+  & table tbody tr:last-child th {
+    border-bottom-width: 0;
+  }
+
+  & code {
+    font-size: 3.2cqw;
+  }
+
+  & pre {
+    font-family: monospace;
+    line-height: 1.2;
+    position: relative;
+    outline: none; /* Remove focus outline/border on <pre> */
+    padding: 1cqw;
+    & ul {
+      line-height: 1.2;
+    }
+    & li {
+      line-height: 1.2;
+    }
+  }
+
+  & pre,
+  & pre > code,
+  & pre * {
+    font-size: 2.2cqw;
+  }
+
+  & blockquote {
+    font-family: Helvetica, "Trebuchet MS", Verdana,
+      sans-serif;
+    font-weight: 300;
+    font-style: italic;
+    /* font-style: oblique 5deg; */
+    /* transform: skew(-5deg); */
+    background-color: #f5f5f5;
+    border-left: 5px solid #dbdbdb;
+    padding: 1.25cqw 1.5cqw;
+  }
+}
+
+.miniature {
+  font-size: var(--font-size);
+}

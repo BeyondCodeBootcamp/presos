@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>
+      Multi-Section Code Carousel with Active Section and
+      Hash Routing
+    </title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <link href="./slides.css" rel="stylesheet" />
+  </head>
+  <body>
+    <aside>
+      <nav>
+        <button
+          onclick="toggleNav(); document.exitFullscreen()"
+        >
+          Exit ↙️
+        </button>
+        <button
+          onclick="toggleNav(); document.documentElement.requestFullscreen()"
+        >
+          Fullscreen ↗️
+        </button>
+        <ul></ul>
+      </nav>
+    </aside>
+    <main>
+      <article>
