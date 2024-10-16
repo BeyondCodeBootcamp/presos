@@ -13,25 +13,6 @@ body {
   display: flex;
 }
 
-h1 {
-  padding-bottom: 3cqw;
-}
-h2 {
-  padding-bottom: 3cqw;
-}
-h3 {
-  padding-bottom: 3cqw;
-}
-h4 {
-  padding-bottom: 3cqw;
-}
-h5 {
-  padding-bottom: 3cqw;
-}
-h6 {
-  padding-bottom: 3cqw;
-}
-
 aside {
   width: 20%;
   transition: /* Smooth collapse */
@@ -57,11 +38,11 @@ nav {
     width 0.3s ease,
     padding 0.3s ease;
 
-  & ul {
+  > ul {
     list-style-type: none;
   }
 
-  & ol {
+  > ol {
     cursor: pointer;
     margin-bottom: 10px;
     padding: 10px;
@@ -70,7 +51,7 @@ nav {
     transition: background-color 0.3s;
   }
 
-  & ol:hover {
+  > ol:hover {
     background-color: #bbb;
   }
 
@@ -111,7 +92,7 @@ article {
   flex-direction: column;
   height: auto;
   flex-grow: 1;
-  gap: 20px;
+  gap: 4cqw;
   font-size: 4cqw;
 }
 
@@ -258,7 +239,8 @@ section {
     /* font-style: oblique 5deg; */
     /* transform: skew(-5deg); */
     background-color: #f5f5f5;
-    border-left: 5px solid #dbdbdb;
+    border-left: 0.6cqw solid #dbdbdb;
+
     padding: 1.25cqw 1.5cqw;
   }
 }
