@@ -1,5 +1,7 @@
 :root {
   --font-size: 2cqw;
+  --anchor-text: #0d47a1;
+  --anchor-hover-text: #0f49a3;
 }
 
 * {
@@ -18,6 +20,17 @@ html {
 body {
   width: 100%;
   display: flex;
+}
+
+a,
+a:visited {
+  color: var(--anchor-text);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--anchor-hover-text);
+  text-decoration: underline;
 }
 
 aside {
@@ -115,6 +128,7 @@ section {
   gap: 2.5cqw;
   border-color: #0000ff0f;
   background-color: #f0f8ff;
+  border-radius: 0.75cqw;
   transition:
     border-color 0.5s,
     background-color 0.5s;
@@ -123,9 +137,11 @@ section {
 section.active {
   border-color: transparent;
   background-color: transparent;
+  border-radius: 0cqw;
   transition:
+    background-color 0.5s,
     border-color 0.5s,
-    background-color 0.5s;
+    border-radius 0.5s;
 }
 
 section {
@@ -221,6 +237,8 @@ section {
   & pre {
     font-family: Consolas, Menlo, Monaco, "Andale Mono",
       "Ubuntu Mono", monospace;
+    border: 0.25cqw solid #666;
+    border-radius: 0.5cqw;
     line-height: 1.2;
     position: relative;
     outline: none; /* Remove focus outline/border on <pre> */
