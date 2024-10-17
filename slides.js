@@ -346,7 +346,15 @@ document.addEventListener("DOMContentLoaded", function () {
   // Component 4: Global Key Listeners for Section Navigation (up, down, spacebar)
   function setupGlobalKeyListeners() {
     window.addEventListener("keydown", function (e) {
-      if (["ArrowUp", "ArrowDown", " "].includes(e.key)) {
+      if (
+        [
+          "ArrowUp",
+          "ArrowDown",
+          " ",
+          "Backspace",
+          "Delete",
+        ].includes(e.key)
+      ) {
         e.preventDefault(); // Disable default scroll behavior
       }
 
@@ -354,11 +362,16 @@ document.addEventListener("DOMContentLoaded", function () {
         Array.from(sections).indexOf(activeSection);
 
       if (e.key === "ArrowDown" || e.key === " ") {
-        // Move to the next section on Down or Spacebar key
         if (currentIndex < sections.length - 1) {
           triggerClickOnSection(sections[currentIndex + 1]);
         }
-      } else if (e.key === "ArrowUp") {
+      }
+
+      if (
+        e.key === "ArrowUp" ||
+        e.key === "Backspace" ||
+        e.key === "Delete"
+      ) {
         // Move to the previous section on Up key
         if (currentIndex > 0) {
           triggerClickOnSection(sections[currentIndex - 1]);

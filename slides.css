@@ -8,6 +8,13 @@
   box-sizing: border-box;
 }
 
+html {
+  font-family: -apple-system, BlinkMacSystemFont,
+    "Avenir Next", Avenir, "Nimbus Sans L", Roboto,
+    "Noto Sans", "Segoe UI", Arial, Helvetica,
+    "Helvetica Neue", sans-serif;
+}
+
 body {
   width: 100%;
   display: flex;
@@ -212,7 +219,8 @@ section {
   }
 
   & pre {
-    font-family: monospace;
+    font-family: Consolas, Menlo, Monaco, "Andale Mono",
+      "Ubuntu Mono", monospace;
     line-height: 1.2;
     position: relative;
     outline: none; /* Remove focus outline/border on <pre> */
