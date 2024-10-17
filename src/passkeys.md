@@ -1,83 +1,170 @@
-# Passkeys are Good
+## Passkeys are Kinda Great
 
-(and WebAuthn isn't _that_ Hard)
+<center><img src="https://private-user-images.githubusercontent.com/122831/377632002-a5f95f86-2c64-4a72-bd81-01e68cfda991.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjkxOTg5NTcsIm5iZiI6MTcyOTE5ODY1NywicGF0aCI6Ii8xMjI4MzEvMzc3NjMyMDAyLWE1Zjk1Zjg2LTJjNjQtNGE3Mi1iZDgxLTAxZTY4Y2ZkYTk5MS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQxMDE3JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MTAxN1QyMDU3MzdaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT00Yzc4YWU3ZjM0MzIyYzQ1OTJhMTFjZDNjYTJiNjc5NDYxNDYxMTE1ZTgxZGU3OTVmMGQ4ZjUxNjAxNDMzODY2JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.pLUXt2zlQhmux7N7GZc6QKZJV_Ad4LkoLGdgzTzb-e8" style="width: 60cqw;" /></center>
 
 ---
 
-AJ ONeal <br>
+## AJ ONeal
+
 [@\_beyondcode](https://twitter.com/@_beyondcode) <br>
+[twitch.tv/coolaj86](https://twitch.tv/coolaj86) <br>
 [github.com/therootcompany](https://github.com/therootcompany/)
-<br> [twitch.tv/coolaj86](https://twitch.tv/coolaj86)
 
----
+<br>
 
 Deep-Learner
 
 Dangerous Wrong Thinker
 
-Gun for Hire <aj@therootcompany.com> \
-🐹 ⬡ 🦎 🛜 🔐 🐧
+---
+
+# Gun for Hire
+
+<br>
+
+🐹 Go 📦 Node 🦎 Zig
+
+🛜 Net 🔐 Sec 🐧 POSIX
+
+<br>
+
+<aj@therootcompany.com>
 
 ---
 
-## Brought to you in part by
+# Act I: The Happy Path™
+
+<center><img src="https://private-user-images.githubusercontent.com/122831/377632002-a5f95f86-2c64-4a72-bd81-01e68cfda991.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjkxOTg5NTcsIm5iZiI6MTcyOTE5ODY1NywicGF0aCI6Ii8xMjI4MzEvMzc3NjMyMDAyLWE1Zjk1Zjg2LTJjNjQtNGE3Mi1iZDgxLTAxZTY4Y2ZkYTk5MS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQxMDE3JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MTAxN1QyMDU3MzdaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT00Yzc4YWU3ZjM0MzIyYzQ1OTJhMTFjZDNjYTJiNjc5NDYxNDYxMTE1ZTgxZGU3OTVmMGQ4ZjUxNjAxNDMzODY2JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.pLUXt2zlQhmux7N7GZc6QKZJV_Ad4LkoLGdgzTzb-e8" style="width: 60cqw;" /></center>
+
+---
+
+# Brought to you in part by
 
 - PaperOS: https://paperos.com
 - Kyle Simpson: https://x.com/@getifyX
 
 ---
 
-# WebAuthn
+# What are Passkeys?
 
-A suite of specifications and standards related to
-browser-based authentication.
+<br>
 
-FIDO rebranded.
+1. A WebAuthn subset that's implemented\* and works. \
+   (WebAuthn rebranded) <br> <br>
+2. The Password Manager, Reloaded™. \
+   (High-entropy, push-button)
+
+---
+
+# Platform Support
+
+<br>
+
+- [Baseline™](https://caniuse.com/webauthn) Browser Support
+  - Brave, Chrome, Edge, Firefox, Safari,
+  - Android Browser, UC Browser, WebViews <br><br>
+- Universal OS / Cloud Support
+  - Android, Chrome OS, iOS, Linux, macOS, Windows
+  - iCloud, Google Sync, Microsoft... _thingy_ (?)
 
 ---
 
-# Passkeys
+# Product Support
 
-The subset of WebAuthn that's implemented\* and works.
-
-WebAuthn rebranded.
+- Android _thingy_
+  [(?)](https://www.reddit.com/r/UXDesign/comments/10ruff4/comment/j6yiob5/)
+- Face ID
+- Touch ID
+- YubiKey
+- Windows Hello
 
 ---
+
+## Too New, Too Fancy?
+
+---
+
+Just Click "OK"
+
+<small>(or PIN, or password)</small>
+
+---
+
+(true progressive enhancement)
+
+---
+
+<br>
 
 # Demo
+
+<br>
 
 <https://passkeys.js.org>
 
 ---
 
-# Demo
+# The Magic™ (Three Modes)
 
-<https://github.com/BeyondCodeBootcamp/vanilla-webauthn>
+1. Autofill
+   ```js
+   let autofillCtrl = new AbortController();
+   void navigator.credentials.get(autofillOpts).then(onAutofill);
+   ```
+2. Register
+   ```js
+   autofillCtrl.abort();
+   let resp = await navigator.credentials.create(registerOpts);
+   ```
+3. Login
+   ```js
+   autofillCtrl.abort();
+   let resp = await navigator.credentials.get(loginOpts);
+   ```
 
 ---
 
-# The Magic™
+# Passkeys
 
-```js
-let Creds = globalThis.navigator?.credentials;
-```
+- What are Passkeys?
+- Where should we set our Expectations?
+- How to think about them?
 
-```js
-void Creds.get(onClickAutofillOpts).then(handleAutofill);
-```
+---
 
-```js
-passkeyCtrl.abort();
-let passkey = await Creds.create(onClickNewPasskeyOpts);
-```
+### JAPM™
 
-```js
-passkeyCtrl.abort();
-let passkey = await Creds.get(onClickUsePasskeyOpts);
-```
+<br>
 
-Note: _autofill_ is mutually exclusive and requires
-`AbortController`.
+Just Another Password Manager
+
+---
+
+<br>
+<br>
+
+- more _secure_ for you (higher entropy, public key)
+- _NOT_ more _trustworthy_
+- more convenient for your customers
+- a _single_ multi-factor
+
+<br>
+
+<small>Note to self:<br>DO NOT GO DOWN THE <em>SRP</em> OR <em>TPM</em> RABBIT
+HOLES YET!</small>
+
+---
+
+\* <small>Apple, Brave, Google, Firefox, Microsoft, YubiCo, etc</small>
+
+---
+
+# List, Delete?
+
+No.
+
+- [How to Manage Passkeys: OS, Browser, Key, etc](https://github.com/BeyondCodeBootcamp/passkeys/issues/4)
+- <chrome://settings/passkeys>
 
 ---
 
@@ -89,80 +176,11 @@ Note: _autofill_ is mutually exclusive and requires
 - One-to-Many
 - A Common\* Subset
 
-\* <small>Apple, Brave, Google, Firefox, Microsoft, YubiCo,
-etc</small>
+\* <small></small>
 
 ---
 
-## Platform Support
-
-- MDN [Baseline™](https://caniuse.com/webauthn) Browser
-  Support
-  - Brave, Chrome, Edge, Firefox, Safari,
-  - Android Browser, UC Browser, WebViews
-- Universal Platform Support
-  - Android, Chrome OS, iOS, Linux, macOS, Windows
-  - iCloud, Google Sync, Microsoft... _thingy_ (?)
-
----
-
-## Product Support
-
-- Android _thingy_
-  [(?)](https://www.reddit.com/r/UXDesign/comments/10ruff4/comment/j6yiob5/)
-- Face ID
-- Touch ID
-- YubiKey
-- Windows Hello
-
----
-
-## Too Fancy?
-
----
-
-Just Click OK
-
-<small>(or PIN, or password)</small>
-
----
-
-(true progressive enhancement)
-
----
-
-# Context of this Presentation
-
-> Flat is better than nested. \
-> \- Zen of Python
-
-> A little copying is better than a little dependency. \
-> \- Go Proverbs
-
-> Favor reading code over writing code. \
-> \- Zen of Zig
-
----
-
-## _Closer_ to the Metal
-
-Maybe you're better off learning than off-loading.
-
----
-
-## ... but not _the Metal_
-
-Use abstractions to avoid confusion or _intense_ tedium.
-
----
-
-## Can you use Passkeys without a Library?
-
----
-
-# No.
-
-<small>(well, maybe)</small>
+## Act II: The Quagmire™
 
 ---
 
@@ -243,8 +261,7 @@ let hasAutofillSupport =
 ```
 
 ```js
-let passkeySupport =
-  hasPlatformSupport && hasAutofillSupport;
+let passkeySupport = hasPlatformSupport && hasAutofillSupport;
 ```
 
 ---
@@ -253,8 +270,7 @@ let passkeySupport =
 
 Just Say No 🙅‍♀️
 
-<small>diminishing returns on stuff your mom will never
-know</small>
+<small>diminishing returns on stuff your mom will never know</small>
 
 ---
 
@@ -276,10 +292,7 @@ let challengeLen = 64;
 let challengeBytes = new Uint8Array(challengeLen);
 globalThis.crypto.randomValues(challengeBytes);
 
-let challenge = Bytes.bufferToBase64(
-  challengeBytes,
-  Bytes.URL_BASE64,
-);
+let challenge = Bytes.bufferToBase64(challengeBytes, Bytes.URL_BASE64);
 
 DB.Nonces.set(challenge, {
   /* ... */
@@ -422,6 +435,16 @@ These will probably _never_ be supported:
 
 ---
 
+## Can you use Passkeys without a Library?
+
+---
+
+# No.
+
+<small>(well, maybe)</small>
+
+---
+
 ## Bad Key Types
 
 - ❌ RSA
@@ -470,5 +493,40 @@ Bytes.rfcBase64ToUrlBase64 = function (rfcBase64) {
   return urlBase64;
 };
 ```
+
+---
+
+# Context of this Presentation
+
+> Flat is better than nested. \
+> \- Zen of Python
+
+> A little copying is better than a little dependency. \
+> \- Go Proverbs
+
+> Favor reading code over writing code. \
+> \- Zen of Zig
+
+---
+
+## _Closer_ to the Metal
+
+Maybe you're better off learning than off-loading.
+
+---
+
+## ... but not _the Metal_
+
+Use abstractions to avoid confusion or _intense_ tedium.
+
+---
+
+# What's WebAuthn?
+
+A suite of specifications and standards related to browser-based authentication.
+
+FIDO rebranded.
+
+(enterprise, government, _lots_ of backwards compatibility)
 
 ---
