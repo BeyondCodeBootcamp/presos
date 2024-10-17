@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const navItem = document.createElement("ol");
       navItem.textContent = sectionHeader;
       navItem.onclick = function () {
-        triggerClickOnSection(sections[index]);
+        activateSectionManual(sections[index]);
       };
 
       // Clone the section for the miniature and adjust for miniature display
@@ -142,19 +142,15 @@ document.addEventListener("DOMContentLoaded", function () {
         currentHighlight = segmentNumber;
       }
       setupCarousel(section, currentHighlight);
-      setupSectionActivation(section);
     });
     setupGlobalKeyListeners(); // Handle up/down/space key navigation
     setupResizeListener(); // Add listener for window resizing
   }
 
-  function setupSectionActivation(section) {
-    section.addEventListener("click", onClick);
-    function onClick() {
-      manualActivation = true;
-      activateSection(section, true); // Scroll into view when clicked
-      updateHash(section); // Update hash based on selection
-    }
+  function activateSectionManual(section) {
+    manualActivation = true;
+    activateSection(section, true); // Scroll into view when clicked
+    updateHash(section); // Update hash based on selection
   }
 
   function activateSection(section, shouldScroll) {
@@ -345,44 +341,37 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Component 4: Global Key Listeners for Section Navigation (up, down, spacebar)
   function setupGlobalKeyListeners() {
+    let nextKeys = [/*"ArrowDown",*/ " "];
+    let prevKeys = [/*"ArrowUp",*/ "Backspace", "Delete"];
+    let specialKeys = [].concat(nextKeys, prevKeys);
+
     window.addEventListener("keydown", function (e) {
-      if (
-        [
-          "ArrowUp",
-          "ArrowDown",
-          " ",
-          "Backspace",
-          "Delete",
-        ].includes(e.key)
-      ) {
+      let isSpecialKey = specialKeys.includes(e.key);
+      if (isSpecialKey) {
         e.preventDefault(); // Disable default scroll behavior
       }
 
-      const currentIndex =
+      let currentIndex =
         Array.from(sections).indexOf(activeSection);
 
-      if (e.key === "ArrowDown" || e.key === " ") {
-        if (currentIndex < sections.length - 1) {
-          triggerClickOnSection(sections[currentIndex + 1]);
+      let isNextKey = nextKeys.includes(e.key);
+      if (isNextKey) {
+        currentIndex += 1;
+        if (currentIndex < sections.length) {
+          activateSectionManual(sections[currentIndex]);
         }
+        return;
       }
 
-      if (
-        e.key === "ArrowUp" ||
-        e.key === "Backspace" ||
-        e.key === "Delete"
-      ) {
-        // Move to the previous section on Up key
-        if (currentIndex > 0) {
-          triggerClickOnSection(sections[currentIndex - 1]);
+      let isPrevKey = prevKeys.includes(e.key);
+      if (isPrevKey) {
+        currentIndex -= 1;
+        if (currentIndex >= 0) {
+          activateSectionManual(sections[currentIndex]);
         }
+        return;
       }
     });
-  }
-
-  // Trigger a click event programmatically
-  function triggerClickOnSection(section) {
-    section.click();
   }
 
   // Component 5: Dynamic Padding for Final Section
