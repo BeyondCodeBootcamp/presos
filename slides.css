@@ -11,9 +11,8 @@
 }
 
 html {
-  font-family: -apple-system, BlinkMacSystemFont,
-    "Avenir Next", Avenir, "Nimbus Sans L", Roboto,
-    "Noto Sans", "Segoe UI", Arial, Helvetica,
+  font-family: -apple-system, BlinkMacSystemFont, "Avenir Next", Avenir,
+    "Nimbus Sans L", Roboto, "Noto Sans", "Segoe UI", Arial, Helvetica,
     "Helvetica Neue", sans-serif;
 }
 
@@ -145,9 +144,18 @@ section.active {
 }
 
 section {
+  small {
+    font-size: 2.5cqw;
+  }
   > ol,
   > ul {
     padding-left: 6cqw; /* Space for gutter */
+  }
+  > ul > li > ul > li,
+  > ol > li > ul > li {
+    font-size: 3cqw;
+    padding-left: 6cqw; /* Space for gutter */
+    list-style: square inside; /* Keep bullets for grandchildren */
   }
 
   > li {
@@ -235,8 +243,8 @@ section {
   }
 
   & pre {
-    font-family: Consolas, Menlo, Monaco, "Andale Mono",
-      "Ubuntu Mono", monospace;
+    font-family: Consolas, Menlo, Monaco, "Andale Mono", "Ubuntu Mono",
+      monospace;
     border: 0.25cqw solid #666;
     border-radius: 0.5cqw;
     line-height: 1.2;
@@ -258,8 +266,7 @@ section {
   }
 
   & blockquote {
-    font-family: Helvetica, "Trebuchet MS", Verdana,
-      sans-serif;
+    font-family: Helvetica, "Trebuchet MS", Verdana, sans-serif;
     font-weight: 300;
     font-style: italic;
     /* font-style: oblique 5deg; */
