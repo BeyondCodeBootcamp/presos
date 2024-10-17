@@ -42,10 +42,32 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  document.addEventListener("keydown", function (event) {
-    console.log("Global event:", event.key, event.code);
-    if (event.key === "Escape") {
+  document.addEventListener("keydown", function (ev) {
+    console.log("Global event:", ev.key, ev.code);
+    if (ev.key === "Escape") {
       toggleNav();
+      return;
+    }
+
+    let isModifierPressed =
+      ev.shiftKey || ev.ctrlKey || ev.altKey || ev.metaKey;
+    if (isModifierPressed) {
+      return;
+    }
+
+    if (ev.key === "n") {
+      toggleNav();
+      return;
+    }
+
+    if (ev.key === "f") {
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+      } else {
+        document.documentElement.requestFullscreen();
+      }
+      toggleNav();
+      return;
     }
   });
 
@@ -100,10 +122,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function createMinis(navList, sections) {
     sections.forEach(function (section, index) {
-      // Get the header text for each section
-      const sectionHeader =
-        section.querySelector("h2")?.textContent ||
-        `Untitled (${index})`;
+      let sectionHeader = `Untitled (${index})`;
+      for (let child of section.childNodes) {
+        let text = child.textContent.trim();
+        if (text) {
+          sectionHeader = text;
+          break;
+        }
+      }
 
       // Create an <ol> element for navigation
       const navItem = document.createElement("ol");
@@ -357,18 +383,20 @@ document.addEventListener("DOMContentLoaded", function () {
       let isNextKey = nextKeys.includes(e.key);
       if (isNextKey) {
         currentIndex += 1;
-        if (currentIndex < sections.length) {
-          activateSectionManual(sections[currentIndex]);
+        if (currentIndex >= sections.length) {
+          currentIndex = sections.length - 1;
         }
+        activateSectionManual(sections[currentIndex]);
         return;
       }
 
       let isPrevKey = prevKeys.includes(e.key);
       if (isPrevKey) {
         currentIndex -= 1;
-        if (currentIndex >= 0) {
-          activateSectionManual(sections[currentIndex]);
+        if (currentIndex < 0) {
+          currentIndex = 0;
         }
+        activateSectionManual(sections[currentIndex]);
         return;
       }
     });

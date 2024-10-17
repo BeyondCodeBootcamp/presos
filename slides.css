@@ -118,7 +118,7 @@ article {
 
 section {
   transition: /* Smooth collapse */ width 0.3s ease;
-  border: 2px solid transparent;
+  border: 0.25cqw solid transparent;
   padding: 20px;
   margin-bottom: 50px;
   width: 100%;
@@ -135,9 +135,9 @@ section {
 }
 
 section.active {
-  border-color: transparent;
+  border-color: #fafafacc;
   background-color: transparent;
-  border-radius: 0cqw;
+  border-radius: 0.25cqw;
   transition:
     background-color 0.5s,
     border-color 0.5s,
