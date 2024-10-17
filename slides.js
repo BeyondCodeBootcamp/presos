@@ -9,15 +9,11 @@ document.addEventListener("DOMContentLoaded", function () {
   let activeSection = sections[0];
   let manualActivation = false; // Manual activation flag to prevent conflicts during scrolling
 
-  function toggleNav() {
-    const nav = document.querySelector("nav");
-    const aside = document.querySelector("aside");
-    nav.classList.toggle("collapsed");
-    aside.classList.toggle("collapsed");
-    activateSection(activeSection, true);
+  function keepInView() {
+    manualActivation = true;
 
     let times = [];
-    for (let i = 0; i < 500; i += 25) {
+    for (let i = 0; i < 500; i += 20) {
       times.push(i);
     }
     function activeWithScroll() {
@@ -26,6 +22,21 @@ document.addEventListener("DOMContentLoaded", function () {
     for (let ms of times) {
       setTimeout(activeWithScroll, ms);
     }
+
+    let lastMs = times[times.length - 1];
+    setTimeout(function () {
+      manualActivation = false;
+    }, lastMs);
+  }
+
+  function toggleNav() {
+    manualActivation = true;
+
+    const nav = document.querySelector("nav");
+    const aside = document.querySelector("aside");
+    nav.classList.toggle("collapsed");
+    aside.classList.toggle("collapsed");
+    keepInView();
   }
 
   // Initialize the page
@@ -36,23 +47,6 @@ document.addEventListener("DOMContentLoaded", function () {
   setupScrollActivation(); // Set up scroll-based section activation
   handleHashChange(); // Activate based on the initial hash
   window.addEventListener("hashchange", handleHashChange); // Handle hash changes
-
-  let isScrolling;
-  let lastPosition = window.scrollY;
-  window.addEventListener("scroll", function () {
-    // Clear the previous timeout
-    clearTimeout(isScrolling);
-
-    // Check if the scroll position has changed
-    if (lastPosition !== window.scrollY) {
-      lastPosition = window.scrollY;
-
-      // Set a timeout to detect if scrolling has stopped
-      isScrolling = setTimeout(function () {
-        manualActivation = false;
-      }, 50); // The timeout duration can be adjusted
-    }
-  });
 
   document.addEventListener("keydown", function (ev) {
     console.log("Global event:", ev.key, ev.code);
@@ -73,11 +67,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (ev.key === "f") {
+      manualActivation = true;
+
       if (document.fullscreenElement) {
         document.exitFullscreen();
       } else {
         document.documentElement.requestFullscreen();
       }
+
+      keepInView();
       toggleNav();
       return;
     }
@@ -328,7 +326,8 @@ document.addEventListener("DOMContentLoaded", function () {
   function setupScrollActivation() {
     window.addEventListener("scroll", function () {
       if (manualActivation) {
-        return; // Skip scroll-based activation during manual actions
+        // Skip scroll-based activation during manual actions
+        return;
       }
 
       const scrollY = window.scrollY;
