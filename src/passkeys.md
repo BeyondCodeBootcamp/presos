@@ -1,6 +1,6 @@
 ## Passkeys are Kinda Great
 
-<center><img src="https://private-user-images.githubusercontent.com/122831/377632002-a5f95f86-2c64-4a72-bd81-01e68cfda991.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjkxOTg5NTcsIm5iZiI6MTcyOTE5ODY1NywicGF0aCI6Ii8xMjI4MzEvMzc3NjMyMDAyLWE1Zjk1Zjg2LTJjNjQtNGE3Mi1iZDgxLTAxZTY4Y2ZkYTk5MS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQxMDE3JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MTAxN1QyMDU3MzdaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT00Yzc4YWU3ZjM0MzIyYzQ1OTJhMTFjZDNjYTJiNjc5NDYxNDYxMTE1ZTgxZGU3OTVmMGQ4ZjUxNjAxNDMzODY2JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.pLUXt2zlQhmux7N7GZc6QKZJV_Ad4LkoLGdgzTzb-e8" style="width: 60cqw;" /></center>
+<center><img src="https://github.com/user-attachments/assets/a5f95f86-2c64-4a72-bd81-01e68cfda991" style="width: 60cqw;" /></center>
 
 ---
 
