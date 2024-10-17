@@ -1,10 +1,3 @@
-function toggleNav() {
-  const nav = document.querySelector("nav");
-  const aside = document.querySelector("aside");
-  nav.classList.toggle("collapsed");
-  aside.classList.toggle("collapsed");
-}
-
 document.addEventListener("DOMContentLoaded", function () {
   const article = document.querySelector("article");
   markdownToSlides(article);
@@ -15,6 +8,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let activeSection = sections[0];
   let manualActivation = false; // Manual activation flag to prevent conflicts during scrolling
+
+  function toggleNav() {
+    const nav = document.querySelector("nav");
+    const aside = document.querySelector("aside");
+    nav.classList.toggle("collapsed");
+    aside.classList.toggle("collapsed");
+    activateSection(activeSection, true);
+
+    let times = [];
+    for (let i = 0; i < 500; i += 25) {
+      times.push(i);
+    }
+    function activeWithScroll() {
+      activateSection(activeSection, true);
+    }
+    for (let ms of times) {
+      setTimeout(activeWithScroll, ms);
+    }
+  }
 
   // Initialize the page
 
@@ -92,8 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (node.tagName === "HR") {
         // When an <hr> is encountered, finalize the current slide
         if (currentCount === 0) {
-          currentSlide.textContent =
-            "(this slide unintentionally left blank)";
+          currentSlide.textContent = "(this slide unintentionally left blank)";
         }
         currentSlide = null;
         continue;
@@ -109,8 +120,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     if (currentSlide) {
       if (currentCount === 0) {
-        currentSlide.textContent =
-          "(this slide unintentionally left blank)";
+        currentSlide.textContent = "(this slide unintentionally left blank)";
       }
     }
 
@@ -139,8 +149,7 @@ document.addEventListener("DOMContentLoaded", function () {
       };
 
       // Clone the section for the miniature and adjust for miniature display
-      const miniatureSection =
-        document.createElement("div");
+      const miniatureSection = document.createElement("div");
       miniatureSection.classList.add("miniature");
 
       const miniatureContent = section.cloneNode(true);
@@ -157,11 +166,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Component 1: Section Management
-  function initSections(
-    sections,
-    sectionIndex,
-    segmentNumber,
-  ) {
+  function initSections(sections, sectionIndex, segmentNumber) {
     sections.forEach(function (section, i) {
       let currentHighlight = 0;
       if (sectionIndex === i) {
@@ -203,11 +208,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     const $pre = section.querySelector("pre");
     const $code = $pre.querySelector("code");
-    const startCountAt =
-      Number(carousel.getAttribute("data-line-start")) || 1;
-    const carouselSegemnts = carousel
-      .getAttribute("data-slides")
-      .split(/[|;]/);
+    const startCountAt = Number(carousel.getAttribute("data-line-start")) || 1;
+    const carouselSegemnts = carousel.getAttribute("data-slides").split(/[|;]/);
     Prism.highlightAll();
     wrapLinesWithNumbers($pre, $code, startCountAt);
 
@@ -224,11 +226,7 @@ document.addEventListener("DOMContentLoaded", function () {
         segmentIndex = 0;
       }
 
-      console.log(
-        "segmentIndex 2:",
-        carouselSegemnts.length,
-        segmentIndex,
-      );
+      console.log("segmentIndex 2:", carouselSegemnts.length, segmentIndex);
       let segmentGroup = carouselSegemnts[segmentIndex];
       let segmentRanges = parseSlideRanges(segmentGroup);
       applyLineFocus($pre, startCountAt, segmentRanges);
@@ -286,17 +284,12 @@ document.addEventListener("DOMContentLoaded", function () {
     $pre.appendChild($ol);
   }
 
-  function applyLineFocus(
-    pre,
-    startCountAt,
-    selectedLineNumbers,
-  ) {
+  function applyLineFocus(pre, startCountAt, selectedLineNumbers) {
     let wild = selectedLineNumbers.length === 0;
     const lines = pre.querySelectorAll("ol li");
     lines.forEach((line, index) => {
       let lineNumber = index + startCountAt;
-      let selected =
-        wild || selectedLineNumbers.includes(lineNumber);
+      let selected = wild || selectedLineNumbers.includes(lineNumber);
       if (selected) {
         line.classList.add("focused");
         line.classList.remove("dimmed");
@@ -355,10 +348,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
       // Activate the new section, but don't scroll to it (shouldScroll = false)
-      if (
-        newActiveSection &&
-        newActiveSection !== activeSection
-      ) {
+      if (newActiveSection && newActiveSection !== activeSection) {
         activateSection(newActiveSection, false); // No scrolling when activating via scroll
         updateHash(newActiveSection);
       }
@@ -377,8 +367,7 @@ document.addEventListener("DOMContentLoaded", function () {
         e.preventDefault(); // Disable default scroll behavior
       }
 
-      let currentIndex =
-        Array.from(sections).indexOf(activeSection);
+      let currentIndex = Array.from(sections).indexOf(activeSection);
 
       let isNextKey = nextKeys.includes(e.key);
       if (isNextKey) {
@@ -408,14 +397,10 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function adjustBottomPadding() {
-    let dynamicPaddingElement = document.querySelector(
-      ".dynamic-padding",
-    );
+    let dynamicPaddingElement = document.querySelector(".dynamic-padding");
     if (!dynamicPaddingElement) {
       dynamicPaddingElement = document.createElement("div");
-      dynamicPaddingElement.classList.add(
-        "dynamic-padding",
-      );
+      dynamicPaddingElement.classList.add("dynamic-padding");
       dynamicPaddingElement.style.height = 0;
       article.appendChild(dynamicPaddingElement);
     }
@@ -424,10 +409,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const sectionHeight = lastSection.offsetHeight;
 
     // Calculate the required padding to align the last section's title at the top
-    const neededPadding = Math.max(
-      0,
-      viewportHeight - sectionHeight,
-    );
+    const neededPadding = Math.max(0, viewportHeight - sectionHeight);
     dynamicPaddingElement.style.height = `${neededPadding}px`;
   }
 
@@ -439,9 +421,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function parseHash() {
     let hash = window.location.hash.substring(1); // Get hash without '#'
     console.log("###### the hash change", hash);
-    let [sectionNumber, segmentNumber] = hash
-      .split(".")
-      .map(Number);
+    let [sectionNumber, segmentNumber] = hash.split(".").map(Number);
 
     // Handle section selection (clamp to valid range)
     let lastOrCurrentSection = Math.min(
