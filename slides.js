@@ -274,7 +274,7 @@ document.addEventListener("DOMContentLoaded", function () {
     $ol.style.counterReset = `line-number ${startLine}`;
     for (let line of lines) {
       let $li = document.createElement("li");
-      $li.innerHTML = line;
+      $li.innerHTML = line + `&nbsp;`;
       $ol.appendChild($li);
     }
 
