@@ -128,12 +128,13 @@ Dangerous Wrong Thinker
 # Registration
 
 1. 🌎 Generate Challenge
-2. 👨‍💻 Register Credential (`webauthn.create`)
-3. 🌎 Store Credential (one-to-many)
+2. 🌎 Get Credential IDs (i.e. by email)
+3. 👨‍💻 Register Credential (`webauthn.create`)
+4. 🌎 Store Credential (one-to-many)
 
 ---
 
-# Authentication
+# Assertion
 
 1. 🌎 Generate Challenge
 2. 🌎 Get Credential IDs (i.e. by email)
@@ -202,7 +203,7 @@ Use abstractions to avoid confusion or _intense_ tedium.
 
 ---
 
-# Registration 1 of 3: Challenge Vocabulary
+# Registration 1 of 4: Challenge Vocabulary
 
 | Term         | Meaning                                     |
 | ------------ | ------------------------------------------- |
@@ -215,7 +216,7 @@ Use abstractions to avoid confusion or _intense_ tedium.
 
 ---
 
-#### Registration 1 of 3: 🌎 Challenge
+#### Registration 1 of 4: 🌎 Challenge
 
 <carousel data-line-start="1" data-slides="1-3 | 5 | 7-9"></carousel>
 
@@ -227,13 +228,27 @@ globalThis.crypto.randomValues(challengeBytes);
 let challenge = Bytes.bufferToBase64(challengeBytes, Bytes.URL_BASE64);
 
 DB.Nonces.set(challenge, {
-	/* ... */
+  /* ... */
 });
 ```
 
 ---
 
-# Registration 2 of 3: Credential Vocabulary
+#### Registration 3 of 4: 🌎 Credential IDs
+
+```js
+app.get(`/api/passkeys-credential-ids`, async function (req, res) {
+  let credentialIds = await DB.Customers.getCredentialIds(req.body.email);
+
+  res.json({
+    credentialIds: credentialIds,
+  });
+});
+```
+
+---
+
+# Registration 3 of 4: Credential Vocabulary
 
 | Term          | Meaning                                     |
 | ------------- | ------------------------------------------- |
@@ -249,14 +264,14 @@ DB.Nonces.set(challenge, {
 
 ---
 
-#### Registration 2 of 3: 👨‍💻 Credential
+#### Registration 3 of 4: 👨‍💻 Credential
 
 <carousel data-line-start="1" data-slides="1-4 | 2 | 6-7 | 9-10 | 12-14 | 16-18"></carousel>
 
 ```js
 let relyingParty = {
-	id: location.hostname, // cookie rules
-	name: "My Brand",
+  id: location.hostname, // cookie rules
+  name: "My Brand",
 };
 
 let displayName = "...";
@@ -270,7 +285,7 @@ let userSecretBytes = new Uint8Array(userSecretLen);
 globalThis.crypto.randomValues(userSecretBytes);
 
 if (!autofillCtrl) {
-	autofillCtrl = new AbortController();
+  autofillCtrl = new AbortController();
 }
 ```
 
@@ -280,33 +295,33 @@ if (!autofillCtrl) {
 
 ```js
 let registrationOpts = {
-	mediation: "optional", // on button click
-	signal: autofillCtrl.signal,
-	publicKey: {
-		attestation: "direct",
-		authenticatorSelection: {
-			residentKey: "required",
-			userVerification: "preferred",
-		},
-		challenge: challenge,
-		excludeCredentials: credentialIds, // IMPORTANT (authcs)
-		pubKeyCredParams: [
-			{ type: "public-key", alg: -7 }, // ECDSA P-256
-		],
-		rp: relyingParty,
-		timeout: 180 * 1000,
-		user: {
-			name: email,
-			displayName: displayName,
-			id: userSecretBytes, // NOT an ID
-		},
-	},
+  mediation: "optional", // on button click
+  signal: autofillCtrl.signal,
+  publicKey: {
+    attestation: "direct",
+    authenticatorSelection: {
+      residentKey: "required",
+      userVerification: "preferred",
+    },
+    challenge: challenge,
+    excludeCredentials: credentialIds, // IMPORTANT (authcs)
+    pubKeyCredParams: [
+      { type: "public-key", alg: -7 }, // ECDSA P-256
+    ],
+    rp: relyingParty,
+    timeout: 180 * 1000,
+    user: {
+      name: email,
+      displayName: displayName,
+      id: userSecretBytes, // NOT an ID
+    },
+  },
 };
 ```
 
 ---
 
-#### Registration 2 of 3: 👨‍💻 Credential
+#### Registration 3 of 4: 👨‍💻 Credential
 
 <carousel data-line-start="1" data-slides="1 | 2 | 4"></carousel>
 
@@ -323,27 +338,27 @@ console.log(credential); // 😱
 
 ```js
 function registrationToJSON(cred) {
-	let authenticatorData = cred.response.getAuthenticatorData();
-	let asn1Pubkey = cred.response.getPublicKey(); // ArrayBuffer
-	let coseKeyType = cred.response.getPublicKeyAlgorithm(); // -7
+  let authenticatorData = cred.response.getAuthenticatorData();
+  let asn1Pubkey = cred.response.getPublicKey(); // ArrayBuffer
+  let coseKeyType = cred.response.getPublicKeyAlgorithm(); // -7
 
-	let jsonCred = {
-		authenticatorAttachment: cred.authenticatorAttachment, // "platform"
-		id: cred.id,
-		rawId: Bytes.bufferToBase64(cred.rawId), // same as cred.id
-		response: {
-			attestationObject: Bytes.bufferToBase64(attResp.attestationObject),
-			authenticatorData: Bytes.bufferToBase64(authenticatorData),
-			clientDataJSON: Bytes.bufferToBase64(attResp.clientDataJSON),
-			publicKey: Bytes.bufferToBase64(asn1Pubkey),
-			publicKeyAlgorithm: coseKeyType,
-			// ["usb", "ble", "nfc", "internal"]
-			transports: attResp.getTransports(),
-		},
-		type: cred.type, // "webauthn.create"
-	};
+  let jsonCred = {
+    authenticatorAttachment: cred.authenticatorAttachment, // "platform"
+    id: cred.id,
+    rawId: Bytes.bufferToBase64(cred.rawId), // same as cred.id
+    response: {
+      attestationObject: Bytes.bufferToBase64(cred.response.attestationObject),
+      authenticatorData: Bytes.bufferToBase64(authenticatorData),
+      clientDataJSON: Bytes.bufferToBase64(cred.response.clientDataJSON),
+      publicKey: Bytes.bufferToBase64(asn1Pubkey),
+      publicKeyAlgorithm: coseKeyType,
+      // ["usb", "ble", "nfc", "internal"]
+      transports: cred.response.getTransports(),
+    },
+    type: cred.type, // "webauthn.create"
+  };
 
-	return jsonCred;
+  return jsonCred;
 }
 ```
 
@@ -359,7 +374,7 @@ Fully Expanded Passkey Objects + JSDoc types
 
 ---
 
-#### Registration 3 of 3: 🌎 Store
+#### Registration 4 of 4: 🌎 Store
 
 ```js
 // 👨‍💻
@@ -372,14 +387,14 @@ await Customer.addPasskey(verifiedEmail, credential);
 ```js
 // 🌎
 app.post(`/api/customers`, async function (req, res) {
-	mustMostlyValidatePasskey(req.body.passkey);
-	DB.Passkeys.store(req.customer.email, req.body.passkey);
+  mustMostlyValidatePasskey(req.body.passkey);
+  DB.Passkeys.store(req.customer.email, req.body.passkey);
 });
 ```
 
 ---
 
-#### Registration 3 of 3: 🌎 Store
+#### Registration 4 of 4: 🌎 Store
 
 ```sql
 CREATE TABLE "customer" (
@@ -398,7 +413,7 @@ CREATE TABLE "customer" (
 
 ---
 
-#### Registration 3 of 3: 🌎 Store
+#### Registration 4 of 4: 🌎 Store
 
 ```sql
 CREATE TABLE "authenticator" (
@@ -419,6 +434,98 @@ CREATE TABLE "authenticator" (
     FOREIGN KEY ("customer_id") REFERENCES "customer" ("id")
 );
 ```
+
+---
+
+#### Assertion 1 of 5: 🌎 Challenge (same)
+
+<carousel data-line-start="1" data-slides="1-3 | 5 | 7-9"></carousel>
+
+```js
+let challengeLen = 64;
+let challengeBytes = new Uint8Array(challengeLen);
+globalThis.crypto.randomValues(challengeBytes);
+
+let challenge = Bytes.bufferToBase64(challengeBytes, Bytes.URL_BASE64);
+
+DB.Nonces.set(challenge, {
+  /* ... */
+});
+```
+
+---
+
+#### Assertion 2 of 5: 🌎 Credential IDs (same)
+
+```js
+app.get(`/api/passkeys-credential-ids`, async function (req, res) {
+  let credentialIds = await DB.Customers.getCredentialIds(req.body.email);
+
+  res.json({
+    credentialIds: credentialIds,
+  });
+});
+```
+
+---
+
+#### Assertion 2 of 5: 🌎 Credential
+
+```js
+const AUTOFILL = "conditional";
+const BUTTON = "optional";
+
+let assertionOpts = {
+  mediation: BUTTON,
+  signal: autofillCtrl.signal,
+  publicKey: {
+    challenge: challenge,
+    rpId: relyingParty.id,
+    timeout: 180 * 1000,
+    userVerification: "preferred",
+  },
+};
+
+autofillCtrl.abort(); //let autofillCtrl = new AbortController();
+let assertion = await navigator.credentials.get(assertionOpts);
+```
+
+---
+
+#### Assertion 2 of 5: 🌎 Credential
+
+```js
+function assertionToJSON(assert) {
+  let jsonCred = {
+    authenticatorAttachment: assert.authenticatorAttachment, // "platform"
+    id: assert.id,
+    rawId: Bytes.bufferToBase64(assert.rawId), // same as assert.id
+    response: {
+      authenticatorData: Bytes.bufferToBase64(authenticatorData),
+      clientDataJSON: Bytes.bufferToBase64(assert.response.clientDataJSON),
+      signature: Bytes.bufferToBase64(assert.response.signature)
+      publicKey: Bytes.bufferToBase64(asn1Pubkey),
+      publicKeyAlgorithm: coseKeyType,
+      getUserSecret: function () {
+        return assert.response.userHandle;
+      }
+    },
+    type: assert.type, // "webauthn.get"
+  };
+
+  return jsonCred;
+}
+```
+
+---
+
+```js
+signature
+```
+
+---
+
+FIN
 
 ---
 
@@ -474,10 +581,10 @@ No.
 let passkeyCredential = globalThis.PublicKeyCredential;
 
 let hasPlatformSupport =
-	await passkeyCredential?.isUserVerifyingPlatformAuthenticatorAvailable();
+  await passkeyCredential?.isUserVerifyingPlatformAuthenticatorAvailable();
 
 let hasAutofillSupport =
-	await passkeyCredential?.isConditionalMediationAvailable();
+  await passkeyCredential?.isConditionalMediationAvailable();
 ```
 
 ```js
@@ -509,27 +616,27 @@ Just Say No 🙅‍♀️
 
 ```js
 let credAuthOpts = {
-	mediation: "optional", // on button click
-	signal: autofillCtrl.signal,
-	publicKey: {
-		attestation: "direct",
-		authenticatorSelection: {
-			residentKey: "required",
-			userVerification: "preferred",
-		},
-		challenge: challenge,
-		excludeCredentials: credentialIds, // IMPORTANT (authcs)
-		pubKeyCredParams: [
-			{ type: "public-key", alg: -7 }, // ECDSA P-256
-		],
-		rp: relyingParty,
-		timeout: 180 * 1000,
-		user: {
-			name: email,
-			displayName: displayName,
-			id: userSecretBytes, // NOT an ID
-		},
-	},
+  mediation: "optional", // on button click
+  signal: autofillCtrl.signal,
+  publicKey: {
+    attestation: "direct",
+    authenticatorSelection: {
+      residentKey: "required",
+      userVerification: "preferred",
+    },
+    challenge: challenge,
+    excludeCredentials: credentialIds, // IMPORTANT (authcs)
+    pubKeyCredParams: [
+      { type: "public-key", alg: -7 }, // ECDSA P-256
+    ],
+    rp: relyingParty,
+    timeout: 180 * 1000,
+    user: {
+      name: email,
+      displayName: displayName,
+      id: userSecretBytes, // NOT an ID
+    },
+  },
 };
 ```
 
@@ -617,14 +724,14 @@ Bytes.URL_BASE64 = false;
  * @param {Boolean} [rfc]
  */
 Bytes.bufferToBase64 = function (buffer, rfc) {
-	let bytes = new Uint8Array(buffer);
-	let binstr = String.fromCharCode.apply(null, bytes);
-	let rfcBase64 = btoa(binstr);
-	if (rfc) {
-		return rfcBase64;
-	}
+  let bytes = new Uint8Array(buffer);
+  let binstr = String.fromCharCode.apply(null, bytes);
+  let rfcBase64 = btoa(binstr);
+  if (rfc) {
+    return rfcBase64;
+  }
 
-	Bytes.rfcBase64ToUrlBase64(rfcBase64);
+  Bytes.rfcBase64ToUrlBase64(rfcBase64);
 };
 ```
 
@@ -637,11 +744,11 @@ Bytes.bufferToBase64 = function (buffer, rfc) {
  * @param {String} rfcBase64
  */
 Bytes.rfcBase64ToUrlBase64 = function (rfcBase64) {
-	let urlBase64 = rfcBase64.replace(/=+$/g, "");
-	urlBase64 = urlBase64.replace(/[/]/g, "_");
-	urlBase64 = urlBase64.replace(/[+]/g, "-");
+  let urlBase64 = rfcBase64.replace(/=+$/g, "");
+  urlBase64 = urlBase64.replace(/[/]/g, "_");
+  urlBase64 = urlBase64.replace(/[+]/g, "-");
 
-	return urlBase64;
+  return urlBase64;
 };
 ```
 
