@@ -34,7 +34,7 @@ Dangerous Wrong Thinker
 
 # Act I: The Happy Path™
 
-<center><img src="https://private-user-images.githubusercontent.com/122831/377632002-a5f95f86-2c64-4a72-bd81-01e68cfda991.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjkxOTg5NTcsIm5iZiI6MTcyOTE5ODY1NywicGF0aCI6Ii8xMjI4MzEvMzc3NjMyMDAyLWE1Zjk1Zjg2LTJjNjQtNGE3Mi1iZDgxLTAxZTY4Y2ZkYTk5MS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQxMDE3JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MTAxN1QyMDU3MzdaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT00Yzc4YWU3ZjM0MzIyYzQ1OTJhMTFjZDNjYTJiNjc5NDYxNDYxMTE1ZTgxZGU3OTVmMGQ4ZjUxNjAxNDMzODY2JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.pLUXt2zlQhmux7N7GZc6QKZJV_Ad4LkoLGdgzTzb-e8" style="width: 60cqw;" /></center>
+<center><img src="https://github.com/user-attachments/assets/a5f95f86-2c64-4a72-bd81-01e68cfda991" style="width: 60cqw;" /></center>
 
 ---
 
@@ -82,15 +82,16 @@ Dangerous Wrong Thinker
 
 ## Too New, Too Fancy?
 
----
-
-Just Click "OK"
-
-<small>(or PIN, or password)</small>
+<kbd><img src="https://github.com/user-attachments/assets/f51e3652-5cd9-4b9b-86d4-8d7186100e1d" style="width: 60cqw;"></kbd>
 
 ---
 
-(true progressive enhancement)
+<br>
+<br>
+<br>
+<br>
+
+<center>(true progressive enhancement)</center>
 
 ---
 
@@ -106,56 +107,351 @@ Just Click "OK"
 
 # The Magic™ (Three Modes)
 
-1. Autofill
+1. Register (`webauthn.create`)
+   ```js
+   autofillCtrl.abort();
+   let credRegistration = await navigator.credentials.create(registrationOpts);
+   ```
+2. Login (`webauthn.get`)
+   ```js
+   autofillCtrl.abort();
+   let credAttestation = await navigator.credentials.get(loginOpts);
+   ```
+3. Autofill (`webauthn.get`, `mediation = "conditional"`)
    ```js
    let autofillCtrl = new AbortController();
    void navigator.credentials.get(autofillOpts).then(onAutofill);
    ```
-2. Register
-   ```js
-   autofillCtrl.abort();
-   let resp = await navigator.credentials.create(registerOpts);
-   ```
-3. Login
-   ```js
-   autofillCtrl.abort();
-   let resp = await navigator.credentials.get(loginOpts);
-   ```
 
 ---
 
-# Passkeys
+# Registration
 
-- What are Passkeys?
-- Where should we set our Expectations?
-- How to think about them?
+1. 🌎 Generate Challenge
+2. 👨‍💻 Register Credential (`webauthn.create`)
+3. 🌎 Store Credential (one-to-many)
 
 ---
 
-### JAPM™
+# Authentication
 
-<br>
-
-Just Another Password Manager
+1. 🌎 Generate Challenge
+2. 🌎 Get Credential IDs (i.e. by email)
+3. 👨‍💻 Authenticate Credential (`webauthn.get`)
+4. 🌎 Verify Message & Signature
+5. 🌎 (optional) Update Counter
 
 ---
 
 <br>
 <br>
-
-- more _secure_ for you (higher entropy, public key)
-- _NOT_ more _trustworthy_
-- more convenient for your customers
-- a _single_ multi-factor
-
 <br>
 
-<small>Note to self:<br>DO NOT GO DOWN THE <em>SRP</em> OR <em>TPM</em> RABBIT
-HOLES YET!</small>
+<center><strong>Can you use Passkeys without a Library?</strong></center>
 
 ---
 
-\* <small>Apple, Brave, Google, Firefox, Microsoft, YubiCo, etc</small>
+<br>
+<br>
+
+# No.
+
+<small>(well, maybe)</small>
+
+---
+
+## _Closer_ to the Metal
+
+Maybe you're better off learning than off-loading.
+
+---
+
+> Flat is better than nested. \
+> \- Zen of Python
+
+> A little copying is better than a little dependency. \
+> \- Go Proverbs
+
+> Favor reading code over writing code. \
+> \- Zen of Zig
+
+---
+
+## ... but not _the Metal_
+
+Use abstractions to avoid confusion or _intense_ tedium.
+
+---
+
+<br>
+<br>
+<br>
+<br>
+
+<center>(some assembly required, and... <em>nuance</em>)</center>
+
+---
+
+# Auth Vocabulary
+
+| Term  | Meaning                                                             |
+| ----- | ------------------------------------------------------------------- |
+| Authc | Password, Magic Link,<br> Passkey, OTP,<br> "Sign in with ...", etc |
+| Authn | authentication <br>(who has access)                                 |
+| Authz | authorization <br>(what can be accessed)                            |
+
+---
+
+# Registration 1 of 3: Challenge Vocabulary
+
+| Term         | Meaning                                     |
+| ------------ | ------------------------------------------- |
+| Registration | Add a Passkey to Profile (new or updated)   |
+| Challenge    | a server-side nonce                         |
+| Nonce        | arbitrary single-use data, such as a salt   |
+| Salt         | random bytes, to make a hash unpredictable  |
+| Base64       | -                                           |
+| URL Base64   | Base64 but ( `+` `/` `=` ) ➡️ ( `-` `_` ␡ ) |
+
+---
+
+#### Registration 1 of 3: 🌎 Challenge
+
+<carousel data-line-start="1" data-slides="1-3 | 5 | 7-9"></carousel>
+
+```js
+let challengeLen = 64;
+let challengeBytes = new Uint8Array(challengeLen);
+globalThis.crypto.randomValues(challengeBytes);
+
+let challenge = Bytes.bufferToBase64(challengeBytes, Bytes.URL_BASE64);
+
+DB.Nonces.set(challenge, {
+	/* ... */
+});
+```
+
+---
+
+# Registration 2 of 3: Credential Vocabulary
+
+| Term          | Meaning                                     |
+| ------------- | ------------------------------------------- |
+| Authenticator | Authenticator, the Device or Platform       |
+| Platform      | the browser, OS, plugin, or service         |
+| Credential    | Public Key (`P-256` or `ed25519`)           |
+| Credential ID | Authenticator's Pairwise ID                 |
+| Pairwise      | Tied to two (or more) things                |
+| Relying Party | domain name (the OG origin)                 |
+| Attestation   | details about the passkey device or service |
+
+\* <small>note: <em>Passkey</em> isn't on the list</small>
+
+---
+
+#### Registration 2 of 3: 👨‍💻 Credential
+
+<carousel data-line-start="1" data-slides="1-4 | 2 | 6-7 | 9-10 | 12-14 | 16-18"></carousel>
+
+```js
+let relyingParty = {
+	id: location.hostname, // cookie rules
+	name: "My Brand",
+};
+
+let displayName = "...";
+let email = "...";
+
+let challenge = await App.getChallengeFor(email);
+let credentialIds = await App.getCredIdsFor(email);
+
+let userSecretLen = 64;
+let userSecretBytes = new Uint8Array(userSecretLen);
+globalThis.crypto.randomValues(userSecretBytes);
+
+if (!autofillCtrl) {
+	autofillCtrl = new AbortController();
+}
+```
+
+---
+
+<carousel data-line-start="1" data-slides="1,23 | 1,2-4,22-23 | 5-9 | 10 | 11 | 12-14 | 15 | 16 | 17-21 | 20"></carousel>
+
+```js
+let registrationOpts = {
+	mediation: "optional", // on button click
+	signal: autofillCtrl.signal,
+	publicKey: {
+		attestation: "direct",
+		authenticatorSelection: {
+			residentKey: "required",
+			userVerification: "preferred",
+		},
+		challenge: challenge,
+		excludeCredentials: credentialIds, // IMPORTANT (authcs)
+		pubKeyCredParams: [
+			{ type: "public-key", alg: -7 }, // ECDSA P-256
+		],
+		rp: relyingParty,
+		timeout: 180 * 1000,
+		user: {
+			name: email,
+			displayName: displayName,
+			id: userSecretBytes, // NOT an ID
+		},
+	},
+};
+```
+
+---
+
+#### Registration 2 of 3: 👨‍💻 Credential
+
+<carousel data-line-start="1" data-slides="1 | 2 | 4"></carousel>
+
+```js
+autofillCtrl.abort();
+let credential = await navigator.credentials.create(registrationOpts);
+
+console.log(credential); // 😱
+```
+
+---
+
+<carousel data-line-start="1" data-slides="1,23 | 2,12 | 3-4,14-15 | 7,16,17,19 | 8-9 | 2,11-13 | 3-4,14-15 | 16-17 | 7,16,17,19"></carousel>
+
+```js
+function registrationToJSON(cred) {
+	let authenticatorData = cred.response.getAuthenticatorData();
+	let asn1Pubkey = cred.response.getPublicKey(); // ArrayBuffer
+	let coseKeyType = cred.response.getPublicKeyAlgorithm(); // -7
+
+	let jsonCred = {
+		authenticatorAttachment: cred.authenticatorAttachment, // "platform"
+		id: cred.id,
+		rawId: Bytes.bufferToBase64(cred.rawId), // same as cred.id
+		response: {
+			attestationObject: Bytes.bufferToBase64(attResp.attestationObject),
+			authenticatorData: Bytes.bufferToBase64(authenticatorData),
+			clientDataJSON: Bytes.bufferToBase64(attResp.clientDataJSON),
+			publicKey: Bytes.bufferToBase64(asn1Pubkey),
+			publicKeyAlgorithm: coseKeyType,
+			// ["usb", "ble", "nfc", "internal"]
+			transports: attResp.getTransports(),
+		},
+		type: cred.type, // "webauthn.create"
+	};
+
+	return jsonCred;
+}
+```
+
+---
+
+<br>
+<br>
+<br>
+
+<center>
+Fully Expanded Passkey Objects + JSDoc types
+<br><small><a href="https://github.com/BeyondCodeBootcamp/passkeys/issues/6">https://github.com/BeyondCodeBootcamp/passkeys/issues/6</a></small></center>
+
+---
+
+#### Registration 3 of 3: 🌎 Store
+
+```js
+// 👨‍💻
+await Customer.register(emailToVerify, credential);
+
+// or (authenticated)
+await Customer.addPasskey(verifiedEmail, credential);
+```
+
+```js
+// 🌎
+app.post(`/api/customers`, async function (req, res) {
+	mustMostlyValidatePasskey(req.body.passkey);
+	DB.Passkeys.store(req.customer.email, req.body.passkey);
+});
+```
+
+---
+
+#### Registration 3 of 3: 🌎 Store
+
+```sql
+CREATE TABLE "customer" (
+  "id" UUID PRIMARY KEY,
+  "username" VARCHAR(100) DEFAULT NULL,
+  "given_name" VARCHAR(100) DEFAULT NULL,
+  "family_name" VARCHAR(100) DEFAULT NULL,
+  "zoneinfo" VARCHAR(255) NOT NULL DEFAULT '',
+  "locale" VARCHAR(255) NOT NULL DEFAULT '',
+  "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "updated_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+);
+```
+
+\* <small>note the absence of 'email', 'phone', 'password'</small>
+
+---
+
+#### Registration 3 of 3: 🌎 Store
+
+```sql
+CREATE TABLE "authenticator" (
+  "id" UUID NOT NULL,
+  "customer_id" UUID NOT NULL,
+  "priority" BIGINT NOT NULL CHECK ("priority" > 0),
+  "type" VARCHAR(16) NOT NULL,
+  "value" VARCHAR(255) NOT NULL,
+  "details" JSON NOT NULL DEFAULT '{}',
+  "verified_at" TIMESTAMP DEFAULT NULL,
+  "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "updated_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "revoked_at" TIMESTAMP DEFAULT NULL,
+  PRIMARY KEY ("id"),
+  UNIQUE ("id", "priority"),
+  UNIQUE ("id", "type", "value"),
+  CONSTRAINT "authenticator_customer_id_foreign"
+    FOREIGN KEY ("customer_id") REFERENCES "customer" ("id")
+);
+```
+
+---
+
+#### Registration 2 of 3: 👨‍💻 Credential
+
+| Term        | Meaning                                            |
+| ----------- | -------------------------------------------------- |
+| JSON        | -                                                  |
+| Private Key | `x` in `f(x) => y`, random bytes                   |
+| Public Key  | `y` in `f(x) => y`, the result of the random bytes |
+| Hash        | lossy matrix math (tables) on a sequence of bytes  |
+| Signature   | key + salt + matrix math + curve (alt public key)  |
+
+---
+
+## Passkeys Vocabulary (cont. 3)
+
+SKIP (we'll circle back)
+
+| Term            | Meaning                                        |
+| --------------- | ---------------------------------------------- |
+| Assertion       | signed server-side challenge (salt)            |
+| CBOR            | binary JSON                                    |
+| COSE            | binary JOSE (JWT)                              |
+| AttToBeSigned   | a bespoke hash of the bespoke data             |
+| ASN.1 / DER     | binary XML                                     |
+| P1363           | WebCrypto Signatures                           |
+| (bespoke)       | one-off, proprietary to WebAuthn               |
+| *Foo*Credential | non-implemented WebAuthn stuff (we don't care) |
+
+---
+
+#### Registration: Challenge
 
 ---
 
@@ -165,6 +461,93 @@ No.
 
 - [How to Manage Passkeys: OS, Browser, Key, etc](https://github.com/BeyondCodeBootcamp/passkeys/issues/4)
 - <chrome://settings/passkeys>
+
+---
+
+## On to the Implementation
+
+---
+
+## Platform & Autofill Support
+
+```js
+let passkeyCredential = globalThis.PublicKeyCredential;
+
+let hasPlatformSupport =
+	await passkeyCredential?.isUserVerifyingPlatformAuthenticatorAvailable();
+
+let hasAutofillSupport =
+	await passkeyCredential?.isConditionalMediationAvailable();
+```
+
+```js
+let passkeySupport = hasPlatformSupport && hasAutofillSupport;
+```
+
+---
+
+### No Platform, No Autofill, No Service
+
+Just Say No 🙅‍♀️
+
+<small>diminishing returns on stuff your mom will never know</small>
+
+---
+
+# Process
+
+0. (server) Challenge Generation
+1. Credential Registration (`webauthn.create`)
+2. (server) Credential Storage
+3. Credential Authentication (`webauthn.get`)
+   - (also called `assertion`)
+4. (server) Credential Verification
+
+---
+
+## 2.b
+
+```js
+let credAuthOpts = {
+	mediation: "optional", // on button click
+	signal: autofillCtrl.signal,
+	publicKey: {
+		attestation: "direct",
+		authenticatorSelection: {
+			residentKey: "required",
+			userVerification: "preferred",
+		},
+		challenge: challenge,
+		excludeCredentials: credentialIds, // IMPORTANT (authcs)
+		pubKeyCredParams: [
+			{ type: "public-key", alg: -7 }, // ECDSA P-256
+		],
+		rp: relyingParty,
+		timeout: 180 * 1000,
+		user: {
+			name: email,
+			displayName: displayName,
+			id: userSecretBytes, // NOT an ID
+		},
+	},
+};
+```
+
+---
+
+## 1.d Registration
+
+References
+
+- https://developer.mozilla.org/en-US/docs/Web/API/CredentialsContainer/create
+- https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredentialCreationOptions
+- https://caniuse.com/mdn-api_publickeycredential
+- https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredentialRequestOptions
+- https://caniuse.com/mdn-api_credentialscontainer_create_publickey_option_extensions
+
+---
+
+# Caveats
 
 ---
 
@@ -194,228 +577,6 @@ also \*: most of WebAuthn will _never_ be implemented
 
 ---
 
-# Passkeys Vocabulary
-
-| Term          | Meaning                                               |
-| ------------- | ----------------------------------------------------- |
-| Authc         | password, magic link, passkey, otp, sign in with, etc |
-| Authenticator | Authenticator, the Device or Platform                 |
-| Platform      | the browser, OS, plugin, or service                   |
-| Credential    | Public Key (`P-256` or `ed25519`)                     |
-| Assertion     | signed server-side challenge (salt)                   |
-| Challenge     | a server-side nonce                                   |
-| Nonce         | arbitrary single-use data, such as a salt             |
-| Salt          | random bytes, to make a hash unpredictable            |
-| Passkey\*     | generally "the implementation", of WebAuthn           |
-
-\* overloaded
-
----
-
-## Passkeys Vocabulary (cont. 2)
-
-| Term        | Meaning                                            |
-| ----------- | -------------------------------------------------- |
-| JSON        | -                                                  |
-| Base64      | -                                                  |
-| URL Base64  | Base64 but `+` => `-`, `/` => `_`, `=` => ``       |
-| Private Key | `x` in `f(x) => y`, random bytes                   |
-| Public Key  | `y` in `f(x) => y`, the result of the random bytes |
-| Hash        | lossy matrix math (tables) on a sequence of bytes  |
-| Signature   | key + salt + matrix math + curve (alt public key)  |
-
----
-
-## Passkeys Vocabulary (cont. 3)
-
-SKIP (we'll circle back)
-
-| Term            | Meaning                                        |
-| --------------- | ---------------------------------------------- |
-| Relying Party   | domain name (the OG origin)                    |
-| Attestation     | details about the passkey device or service    |
-| CBOR            | binary JSON                                    |
-| COSE            | binary JOSE (JWT)                              |
-| AttToBeSigned   | a bespoke hash of the bespoke data             |
-| ASN.1 / DER     | binary XML                                     |
-| P1363           | WebCrypto Signatures                           |
-| (bespoke)       | one-off, proprietary to WebAuthn               |
-| *Foo*Credential | non-implemented WebAuthn stuff (we don't care) |
-
----
-
-## On to the Implementation
-
----
-
-## Platform & Autofill Support
-
-```js
-let passkeyCredential = globalThis.PublicKeyCredential;
-
-let hasPlatformSupport =
-  await passkeyCredential?.isUserVerifyingPlatformAuthenticatorAvailable();
-
-let hasAutofillSupport =
-  await passkeyCredential?.isConditionalMediationAvailable();
-```
-
-```js
-let passkeySupport = hasPlatformSupport && hasAutofillSupport;
-```
-
----
-
-### No Platform, No Autofill, No Service
-
-Just Say No 🙅‍♀️
-
-<small>diminishing returns on stuff your mom will never know</small>
-
----
-
-# Process
-
-0. (server) Challenge Generation
-1. Credential Registration (`webauthn.create`)
-2. (server) Credential Storage
-3. Credential Authentication (`webauthn.get`)
-   - (also called `assertion`)
-4. (server) Credential Verification
-
----
-
-## 0.a Challenge
-
-```js
-let challengeLen = 64;
-let challengeBytes = new Uint8Array(challengeLen);
-globalThis.crypto.randomValues(challengeBytes);
-
-let challenge = Bytes.bufferToBase64(challengeBytes, Bytes.URL_BASE64);
-
-DB.Nonces.set(challenge, {
-  /* ... */
-});
-```
-
----
-
-## 1.a Registration
-
-```js
-let relyingParty = {
-  id: location.hostname, // cookie rules
-  name: "My Brand",
-};
-
-let displayName = "...";
-let email = "...";
-
-let challenge = await App.getChallengeFor(email);
-
-let credentialIds = await App.getCredIdsFor(email);
-
-let userSecretLen = 64;
-let userSecretBytes = new Uint8Array(userSecretLen);
-globalThis.crypto.randomValues(userSecretBytes);
-
-if (!passkeyCtrl) {
-  passkeyCtrl = new AbortController();
-}
-```
-
----
-
-## 1.b Registration
-
-<carousel data-line-start="1" data-slides="1,2-4,22-23 | 5-9 | 10 | 11 | 12-14 | 15 | 16 | 17-21 | 20"></carousel>
-
-```js
-let credRegOpts = {
-  mediation: "optional", // on button click
-  signal: passkeyCtrl.signal,
-  publicKey: {
-    attestation: "direct",
-    authenticatorSelection: {
-      residentKey: "required",
-      userVerification: "preferred",
-    },
-    challenge: challenge,
-    excludeCredentials: credentialIds, // IMPORTANT (authcs)
-    pubKeyCredParams: [
-      { type: "public-key", alg: -7 }, // ECDSA P-256
-    ],
-    rp: relyingParty,
-    timeout: 180 * 1000,
-    user: {
-      name: email,
-      displayName: displayName,
-      id: userSecretBytes, // NOT an ID
-    },
-  },
-};
-```
-
----
-
-## 2.b
-
-```js
-let credAuthOpts = {
-  mediation: "optional", // on button click
-  signal: passkeyCtrl.signal,
-  publicKey: {
-    attestation: "direct",
-    authenticatorSelection: {
-      residentKey: "required",
-      userVerification: "preferred",
-    },
-    challenge: challenge,
-    excludeCredentials: credentialIds, // IMPORTANT (authcs)
-    pubKeyCredParams: [
-      { type: "public-key", alg: -7 }, // ECDSA P-256
-    ],
-    rp: relyingParty,
-    timeout: 180 * 1000,
-    user: {
-      name: email,
-      displayName: displayName,
-      id: userSecretBytes, // NOT an ID
-    },
-  },
-};
-```
-
----
-
-## 1.d Registration
-
-References
-
-- https://developer.mozilla.org/en-US/docs/Web/API/CredentialsContainer/create
-- https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredentialCreationOptions
-- https://caniuse.com/mdn-api_publickeycredential
-- https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredentialRequestOptions
-- https://caniuse.com/mdn-api_credentialscontainer_create_publickey_option_extensions
-
----
-
-# Process
-
-0. (server) Challenge Generation
-1. Credential Registration (`webauthn.create`)
-2. (server) Credential Storage
-3. Credential Authentication (`webauthn.get`)
-   - (also called `assertion`)
-4. (server) Credential Verification
-
----
-
-# Caveats
-
----
-
 ## Unsupportable Features
 
 These will probably _never_ be supported:
@@ -432,16 +593,6 @@ These will probably _never_ be supported:
 - ✅ -7 ECDSA `P-256` (a.k.a. `ES256`, `prime256v1`)
 - ⚠️ -8 EdDSA `ed25519`
   ([caniuse](https://caniuse.com/mdn-api_subtlecrypto_sign_ed25519))
-
----
-
-## Can you use Passkeys without a Library?
-
----
-
-# No.
-
-<small>(well, maybe)</small>
 
 ---
 
@@ -466,14 +617,14 @@ Bytes.URL_BASE64 = false;
  * @param {Boolean} [rfc]
  */
 Bytes.bufferToBase64 = function (buffer, rfc) {
-  let bytes = new Uint8Array(buffer);
-  let binstr = String.fromCharCode.apply(null, bytes);
-  let rfcBase64 = btoa(binstr);
-  if (rfc) {
-    return rfcBase64;
-  }
+	let bytes = new Uint8Array(buffer);
+	let binstr = String.fromCharCode.apply(null, bytes);
+	let rfcBase64 = btoa(binstr);
+	if (rfc) {
+		return rfcBase64;
+	}
 
-  Bytes.rfcBase64ToUrlBase64(rfcBase64);
+	Bytes.rfcBase64ToUrlBase64(rfcBase64);
 };
 ```
 
@@ -486,38 +637,13 @@ Bytes.bufferToBase64 = function (buffer, rfc) {
  * @param {String} rfcBase64
  */
 Bytes.rfcBase64ToUrlBase64 = function (rfcBase64) {
-  let urlBase64 = rfcBase64.replace(/=+$/g, "");
-  urlBase64 = urlBase64.replace(/[/]/g, "_");
-  urlBase64 = urlBase64.replace(/[+]/g, "-");
+	let urlBase64 = rfcBase64.replace(/=+$/g, "");
+	urlBase64 = urlBase64.replace(/[/]/g, "_");
+	urlBase64 = urlBase64.replace(/[+]/g, "-");
 
-  return urlBase64;
+	return urlBase64;
 };
 ```
-
----
-
-# Context of this Presentation
-
-> Flat is better than nested. \
-> \- Zen of Python
-
-> A little copying is better than a little dependency. \
-> \- Go Proverbs
-
-> Favor reading code over writing code. \
-> \- Zen of Zig
-
----
-
-## _Closer_ to the Metal
-
-Maybe you're better off learning than off-loading.
-
----
-
-## ... but not _the Metal_
-
-Use abstractions to avoid confusion or _intense_ tedium.
 
 ---
 
