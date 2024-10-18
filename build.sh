@@ -2,14 +2,14 @@
 set -e
 set -u
 
-b_article="${1}"
+b_article="$(echo "${1}" | tr -d '/' | tr -d '.')"
 
 rm -rf ./"${b_article}"/
 mkdir -p ./"${b_article}"/
 
 {
     cat ./head.html.tmpl
-    comrak --gfm ./src/passkeys.md
+    comrak --gfm ./src/"${b_article}".md
     cat ./tail.html.tmpl
 } > ./"${b_article}"/index.html
 echo ./"${b_article}"/index.html
