@@ -1,0 +1,13 @@
+#!/bin/sh
+set -e
+set -u
+
+my_preso="${1}"
+
+./build.sh "${my_preso}"
+
+git add src/"${my_preso}".md
+git add "${my_preso}"/
+
+git commit -m "f: ${my_preso}"
+git push
