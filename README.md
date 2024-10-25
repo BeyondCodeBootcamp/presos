@@ -7,11 +7,13 @@
 
 Presentation Slides + Videos:
 
-- [Go Just Works](./go-just-works/)
+- 🤮 [JS for Go Devs](./js-fo-go-devs/)
+- 🔑 [Passkeys](./passkeys/)
+- 👨‍🍳 [Go Just Works](./go-just-works/)
   <!-- [2024-04-02 17:41:48 -0600] Go Just Works™ -->
-- [Intro To Zig](./intro-to-zig/)
+- 🦎 [Intro To Zig](./intro-to-zig/)
   <!-- [2024-04-02 14:20:44 -0600] Intro to Zig -->
-- [Semantic Lambdas](./semantic-lambdas/)
+- λ [Semantic Lambdas](./semantic-lambdas/)
   <!-- [2022-09-01 15:58:19 -0600] Semantic Lambdas -->
 - 👩‍🏫 [Semantic Javascript](./semantic-javascript/)
   <!-- [2022-08-24 14:47:49 -0600] Semantic JavaScript -->
