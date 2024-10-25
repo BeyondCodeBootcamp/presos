@@ -7,7 +7,7 @@
 
 Presentation Slides + Videos:
 
-- 🤮 [JS for Go Devs](./js-fo-go-devs/)
+- 🤮 [JS for Go Devs](./js-for-go-devs/)
 - 🔑 [Passkeys](./passkeys/)
 - 👨‍🍳 [Go Just Works](./go-just-works/)
   <!-- [2024-04-02 17:41:48 -0600] Go Just Works™ -->

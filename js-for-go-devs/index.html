@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>
+      Multi-Section Code Carousel with Active Section and
+      Hash Routing
+    </title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <link href="./slides.css" rel="stylesheet" />
+  </head>
+  <body>
+    <aside>
+      <nav>
+        <button
+          onclick="toggleNav(); document.exitFullscreen()"
+        >
+          Exit ↙️
+        </button>
+        <button
+          onclick="toggleNav(); document.documentElement.requestFullscreen()"
+        >
+          Fullscreen ↗️
+        </button>
+        <ul></ul>
+      </nav>
+    </aside>
+    <main>
+      <article>
+<h1><a href="#js-for-go-devs" aria-hidden="true" class="anchor" id="js-for-go-devs"></a>JS for Go Devs</h1>
+<p><small><a href="https://beyondcodebootcamp.github.io/presos/js-for-go-devs/">beyondcodebootcamp.github.io/presos/js-for-go-devs/</a></small></p>
+<hr />
+<h1><a href="#dependency-management" aria-hidden="true" class="anchor" id="dependency-management"></a>Dependency Management</h1>
+<hr />
+<p>Go: 10 Years <br> (2009 - 2019)</p>
+<p><small>(but perfect)</small></p>
+<hr />
+<p>JavaScript: 30 Years <br> (1995 - 2025)</p>
+<p><small>(and is... workable)</small></p>
+<p><small><a href="https://git.rootprojects.org/root/walk.js/issues/1#issuecomment-9821">git.rootprojects.org/root/walk.js/issues/1</a></small></p>
+<hr />
+<h4><a href="#javascript" aria-hidden="true" class="anchor" id="javascript"></a>JavaScript</h4>
+<br>
+<p>a fundamentally good language <br />
+with a fundamentally bad community.</p>
+<hr />
+<h4><a href="#gopher-values" aria-hidden="true" class="anchor" id="gopher-values"></a>Gopher Values</h4>
+<ul>
+<li>Pathologically Simple</li>
+<li>Inferred, Duck-Typed</li>
+</ul>
+<hr />
+<h1><a href="#browser-js-module-declaration" aria-hidden="true" class="anchor" id="browser-js-module-declaration"></a>Browser JS: Module Declaration</h1>
+<p><code>go.mod</code> =&gt; <code>index.html</code></p>
+<h1><a href="#indexhtml" aria-hidden="true" class="anchor" id="indexhtml"></a><code>index.html</code></h1>
+<p><carousel data-line-start="1" data-slides="1,9 | 4-6 | 4 | 5 | 6"></carousel></p>
+<pre lang="html" style="background-color:#2b303b;"><code><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">script </span><span style="color:#d08770;">type</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">importmap</span><span style="color:#c0c5ce;">&quot;&gt;
+</span><span style="color:#c0c5ce;">  {
+</span><span style="color:#c0c5ce;">    &quot;</span><span style="color:#a3be8c;">imports</span><span style="color:#c0c5ce;">&quot;: {
+</span><span style="color:#c0c5ce;">      &quot;</span><span style="color:#a3be8c;">@root/passkey</span><span style="color:#c0c5ce;">&quot;: &quot;</span><span style="color:#a3be8c;">./passkey.js</span><span style="color:#c0c5ce;">&quot;,
+</span><span style="color:#c0c5ce;">      &quot;</span><span style="color:#a3be8c;">@root/passkey/</span><span style="color:#c0c5ce;">&quot;: &quot;</span><span style="color:#a3be8c;">./lib/</span><span style="color:#c0c5ce;">&quot;,
+</span><span style="color:#c0c5ce;">      &quot;</span><span style="color:#a3be8c;">localstore</span><span style="color:#c0c5ce;">&quot;: &quot;</span><span style="color:#a3be8c;">./vendor/localstore.js</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#c0c5ce;">    }
+</span><span style="color:#c0c5ce;">  }
+</span><span style="color:#c0c5ce;">&lt;/</span><span style="color:#bf616a;">script</span><span style="color:#c0c5ce;">&gt;
+</span></code></pre>
+<hr />
+<h1><a href="#js-export-module" aria-hidden="true" class="anchor" id="js-export-module"></a>JS: Export Module</h1>
+<p>(one file of a Package)</p>
+<br>
+<pre lang="js" style="background-color:#2b303b;"><code><span style="color:#65737e;">// filename: ./passkey.js
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">let </span><span style="color:#bf616a;">Passkey </span><span style="color:#c0c5ce;">= {};
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#65737e;">// ...
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">export default </span><span style="color:#bf616a;">Passkey</span><span style="color:#c0c5ce;">;
+</span></code></pre>
+<hr />
+<h4><a href="#-the-other-12-ways" aria-hidden="true" class="anchor" id="-the-other-12-ways"></a>❌ (the other 12 ways)</h4>
+<hr />
+<h1><a href="#js-import-module" aria-hidden="true" class="anchor" id="js-import-module"></a>JS: Import Module</h1>
+<h4><a href="#" aria-hidden="true" class="anchor" id=""></a>✅</h4>
+<pre lang="js" style="background-color:#2b303b;"><code><span style="color:#b48ead;">import </span><span style="color:#bf616a;">Passkey </span><span style="color:#b48ead;">from </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">@root/passkey</span><span style="color:#c0c5ce;">&quot;;
+</span></code></pre>
+<h4><a href="#-1" aria-hidden="true" class="anchor" id="-1"></a>❌</h4>
+<p>(the other 12 ways)</p>
+<hr />
+<h1><a href="#node-js-module-declaration" aria-hidden="true" class="anchor" id="node-js-module-declaration"></a>Node JS: Module Declaration</h1>
+<p><code>go.mod</code> =&gt; <code>package.json</code></p>
+<p><carousel data-line-start="1" data-slides="4 | 5-8 | 2,10 | 9-13 | 14-16"></carousel></p>
+<pre lang="js" style="background-color:#2b303b;"><code><span style="color:#c0c5ce;">{
+</span><span style="color:#c0c5ce;">  &quot;</span><span style="color:#a3be8c;">name</span><span style="color:#c0c5ce;">&quot;: &quot;</span><span style="color:#a3be8c;">@root/passkey</span><span style="color:#c0c5ce;">&quot;,
+</span><span style="color:#c0c5ce;">  &quot;</span><span style="color:#a3be8c;">main</span><span style="color:#c0c5ce;">&quot;: &quot;</span><span style="color:#a3be8c;">./passkey.js</span><span style="color:#c0c5ce;">&quot;,
+</span><span style="color:#c0c5ce;">  &quot;</span><span style="color:#a3be8c;">type</span><span style="color:#c0c5ce;">&quot;: &quot;</span><span style="color:#a3be8c;">module</span><span style="color:#c0c5ce;">&quot;,
+</span><span style="color:#c0c5ce;">  &quot;</span><span style="color:#a3be8c;">exports</span><span style="color:#c0c5ce;">&quot;: {
+</span><span style="color:#c0c5ce;">    &quot;</span><span style="color:#a3be8c;">.</span><span style="color:#c0c5ce;">&quot;: &quot;</span><span style="color:#a3be8c;">./passkey.js</span><span style="color:#c0c5ce;">&quot;,
+</span><span style="color:#c0c5ce;">    &quot;</span><span style="color:#a3be8c;">./*</span><span style="color:#c0c5ce;">&quot;: &quot;</span><span style="color:#a3be8c;">./*</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#c0c5ce;">  },
+</span><span style="color:#c0c5ce;">  &quot;</span><span style="color:#a3be8c;">imports</span><span style="color:#c0c5ce;">&quot;: {
+</span><span style="color:#c0c5ce;">    &quot;</span><span style="color:#a3be8c;">@root/passkey</span><span style="color:#c0c5ce;">&quot;: &quot;</span><span style="color:#a3be8c;">./passkey.js</span><span style="color:#c0c5ce;">&quot;,
+</span><span style="color:#c0c5ce;">    &quot;</span><span style="color:#a3be8c;">@root/passkey/</span><span style="color:#c0c5ce;">&quot;: &quot;</span><span style="color:#a3be8c;">./lib/</span><span style="color:#c0c5ce;">&quot;,
+</span><span style="color:#c0c5ce;">    &quot;</span><span style="color:#a3be8c;">localstore</span><span style="color:#c0c5ce;">&quot;: &quot;</span><span style="color:#a3be8c;">./vendor/localstore.js</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#c0c5ce;">  },
+</span><span style="color:#c0c5ce;">  &quot;</span><span style="color:#a3be8c;">dependencies</span><span style="color:#c0c5ce;">&quot;: {
+</span><span style="color:#c0c5ce;">    &quot;</span><span style="color:#a3be8c;">foo</span><span style="color:#c0c5ce;">&quot;: &quot;</span><span style="color:#a3be8c;">1.0.0</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#c0c5ce;">  }
+</span><span style="color:#c0c5ce;">}
+</span></code></pre>
+<hr />
+<h1><a href="#js-type-linter-module-declaration" aria-hidden="true" class="anchor" id="js-type-linter-module-declaration"></a>JS Type Linter: Module Declaration</h1>
+<p>TSC's <code>go.mod</code> =&gt; <code>jsconfig.json</code></p>
+<pre lang="js" style="background-color:#2b303b;"><code><span style="color:#c0c5ce;">{
+</span><span style="color:#c0c5ce;">  &quot;</span><span style="color:#a3be8c;">compilerOptions</span><span style="color:#c0c5ce;">&quot;: {
+</span><span style="color:#c0c5ce;">    &quot;</span><span style="color:#a3be8c;">paths</span><span style="color:#c0c5ce;">&quot;: {
+</span><span style="color:#c0c5ce;">      &quot;</span><span style="color:#a3be8c;">passkey</span><span style="color:#c0c5ce;">&quot;: [&quot;</span><span style="color:#a3be8c;">./passkey.js</span><span style="color:#c0c5ce;">&quot;],
+</span><span style="color:#c0c5ce;">      &quot;</span><span style="color:#a3be8c;">passkey/*</span><span style="color:#c0c5ce;">&quot;: [&quot;</span><span style="color:#a3be8c;">./lib/*</span><span style="color:#c0c5ce;">&quot;],
+</span><span style="color:#c0c5ce;">      &quot;</span><span style="color:#a3be8c;">localstore</span><span style="color:#c0c5ce;">&quot;: [&quot;</span><span style="color:#a3be8c;">./vendor/localstore.js</span><span style="color:#c0c5ce;">&quot;]
+</span><span style="color:#c0c5ce;">    }
+</span><span style="color:#c0c5ce;">  }
+</span><span style="color:#c0c5ce;">}
+</span></code></pre>
+<hr />
+<h1><a href="#types" aria-hidden="true" class="anchor" id="types"></a>Types</h1>
+<p>(are in the Tooling)</p>
+<pre lang="sh" style="background-color:#2b303b;"><code><span style="color:#8fa1b3;">//</span><span style="color:#c0c5ce;"> init jsconfig.json that works
+</span><span style="color:#8fa1b3;">npx</span><span style="color:#c0c5ce;"> jswt init
+</span></code></pre>
+<hr />
+<h1><a href="#js-types" aria-hidden="true" class="anchor" id="js-types"></a>JS Types</h1>
+<p><small>(they exist)</small></p>
+<hr />
+<pre lang="js" style="background-color:#2b303b;"><code><span style="color:#b48ead;">let </span><span style="color:#bf616a;">person </span><span style="color:#c0c5ce;">= {
+</span><span style="color:#c0c5ce;">  name: &quot;</span><span style="color:#a3be8c;">AJ</span><span style="color:#c0c5ce;">&quot;,
+</span><span style="color:#c0c5ce;">  age: </span><span style="color:#d08770;">38</span><span style="color:#c0c5ce;">,
+</span><span style="color:#c0c5ce;">};
+</span></code></pre>
+<hr />
+<pre lang="js" style="background-color:#2b303b;"><code><span style="color:#65737e;">/**
+</span><span style="color:#65737e;"> * @typedef Person
+</span><span style="color:#65737e;"> * @prop {String} name
+</span><span style="color:#65737e;"> * @prop {Number} age
+</span><span style="color:#65737e;"> */
+</span></code></pre>
+<hr />
+<p><carousel data-line-start="1" data-slides="1 | 2-5"></carousel></p>
+<pre lang="js" style="background-color:#2b303b;"><code><span style="color:#65737e;">/** @type {Person} */
+</span><span style="color:#b48ead;">let </span><span style="color:#bf616a;">person </span><span style="color:#c0c5ce;">= {
+</span><span style="color:#c0c5ce;">  name: &quot;</span><span style="color:#a3be8c;">AJ</span><span style="color:#c0c5ce;">&quot;,
+</span><span style="color:#c0c5ce;">  age: </span><span style="color:#d08770;">38</span><span style="color:#c0c5ce;">,
+</span><span style="color:#c0c5ce;">};
+</span></code></pre>
+<hr />
+<p><carousel data-line-start="1" data-slides="2 | 2-3 | 4 | 5 "></carousel></p>
+<pre lang="js" style="background-color:#2b303b;"><code><span style="color:#65737e;">/**
+</span><span style="color:#65737e;"> * @param {Object} opts
+</span><span style="color:#65737e;"> * @param {String} opts.name
+</span><span style="color:#65737e;"> * @param {Number} [opts.age]
+</span><span style="color:#65737e;"> * @param {Person?} [opts.partner]
+</span><span style="color:#65737e;"> */
+</span><span style="color:#b48ead;">function </span><span style="color:#8fa1b3;">createPerson</span><span style="color:#c0c5ce;">(opts) {
+</span><span style="color:#c0c5ce;">  </span><span style="color:#b48ead;">let </span><span style="color:#bf616a;">person </span><span style="color:#c0c5ce;">= {};
+</span><span style="color:#c0c5ce;">  </span><span style="color:#bf616a;">person</span><span style="color:#c0c5ce;">.name = </span><span style="color:#bf616a;">opts</span><span style="color:#c0c5ce;">.name;
+</span><span style="color:#c0c5ce;">  </span><span style="color:#bf616a;">person</span><span style="color:#c0c5ce;">.age = </span><span style="color:#bf616a;">opts</span><span style="color:#c0c5ce;">.age;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">  </span><span style="color:#65737e;">// ...
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">  </span><span style="color:#b48ead;">return </span><span style="color:#bf616a;">person</span><span style="color:#c0c5ce;">;
+</span><span style="color:#c0c5ce;">}
+</span></code></pre>
+<hr />
+<p><carousel data-line-start="1" data-slides="2 | 3"></carousel></p>
+<pre lang="js" style="background-color:#2b303b;"><code><span style="color:#65737e;">/**
+</span><span style="color:#65737e;"> * @callback {CreatePerson}
+</span><span style="color:#65737e;"> * @param {Partial&lt;Person&gt;} opts
+</span><span style="color:#65737e;"> */
+</span></code></pre>
+<hr />
+<h1><a href="#utility-types" aria-hidden="true" class="anchor" id="utility-types"></a>Utility Types</h1>
+<p><carousel data-line-start="1" data-slides="2,5 | 3,12"></carousel></p>
+<pre lang="js" style="background-color:#2b303b;"><code><span style="color:#65737e;">/**
+</span><span style="color:#65737e;"> * @param {Partial&lt;Person&gt;}
+</span><span style="color:#65737e;"> * @returns {Required&lt;Person&gt; &amp; SoulMater}
+</span><span style="color:#65737e;"> */
+</span><span style="color:#b48ead;">function </span><span style="color:#8fa1b3;">complete</span><span style="color:#c0c5ce;">(person) {
+</span><span style="color:#c0c5ce;">  </span><span style="color:#b48ead;">let </span><span style="color:#bf616a;">defaults </span><span style="color:#c0c5ce;">= {
+</span><span style="color:#c0c5ce;">    name: &quot;</span><span style="color:#a3be8c;">Unknown</span><span style="color:#c0c5ce;">&quot;,
+</span><span style="color:#c0c5ce;">    age: -</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">,
+</span><span style="color:#c0c5ce;">    partner: </span><span style="color:#d08770;">null</span><span style="color:#c0c5ce;">,
+</span><span style="color:#c0c5ce;">  };
+</span><span style="color:#c0c5ce;">  </span><span style="color:#ebcb8b;">Object</span><span style="color:#c0c5ce;">.</span><span style="color:#8fa1b3;">assign</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">defaults</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">person</span><span style="color:#c0c5ce;">);
+</span><span style="color:#c0c5ce;">  </span><span style="color:#b48ead;">return </span><span style="color:#bf616a;">person</span><span style="color:#c0c5ce;">;
+</span><span style="color:#c0c5ce;">}
+</span></code></pre>
+<hr />
+<h1><a href="#javascript-types-actually" aria-hidden="true" class="anchor" id="javascript-types-actually"></a>JavaScript Types, Actually</h1>
+<p><carousel data-line-start="1" data-slides="4 | 3 | 1 | 2"></carousel></p>
+<pre lang="js" style="background-color:#2b303b;"><code><span style="color:#65737e;">/** @typedef {Number} Int32 */
+</span><span style="color:#65737e;">/** @typedef {Number} UInt32 */ // ex: -1 &gt;&gt;&gt; 0
+</span><span style="color:#65737e;">/** @typedef {Number} Int53 */
+</span><span style="color:#65737e;">/** @typedef {Number} Float64 */
+</span></code></pre>
+<hr />
+<h1><a href="#go-explicit-ignore" aria-hidden="true" class="anchor" id="go-explicit-ignore"></a>Go: Explicit Ignore</h1>
+<pre lang="go" style="background-color:#2b303b;"><code><span style="color:#b48ead;">func </span><span style="color:#8fa1b3;">greet</span><span style="color:#c0c5ce;">() </span><span style="color:#b48ead;">string </span><span style="color:#c0c5ce;">{
+</span><span style="color:#c0c5ce;">  </span><span style="color:#b48ead;">return </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">Hello, World!</span><span style="color:#c0c5ce;">&quot;;
+</span><span style="color:#c0c5ce;">}
+</span></code></pre>
+<pre lang="go" style="background-color:#2b303b;"><code><span style="color:#c0c5ce;">_ = </span><span style="color:#8fa1b3;">greet</span><span style="color:#c0c5ce;">()
+</span></code></pre>
+<hr />
+<h1><a href="#js-explicit-ignore" aria-hidden="true" class="anchor" id="js-explicit-ignore"></a>JS: Explicit Ignore</h1>
+<pre lang="js" style="background-color:#2b303b;"><code><span style="color:#b48ead;">function </span><span style="color:#8fa1b3;">greet</span><span style="color:#c0c5ce;">() {
+</span><span style="color:#c0c5ce;">  </span><span style="color:#b48ead;">return </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">Hello, World!</span><span style="color:#c0c5ce;">&quot;;
+</span><span style="color:#c0c5ce;">}
+</span></code></pre>
+<pre lang="js" style="background-color:#2b303b;"><code><span style="color:#c0c5ce;">void </span><span style="color:#8fa1b3;">greet</span><span style="color:#c0c5ce;">();
+</span></code></pre>
+<hr />
+<pre lang="diff" style="background-color:#2b303b;"><code><span style="color:#bf616a;">- void greet();
+</span><span style="color:#a3be8c;">+ void greet()
+</span></code></pre>
+<hr />
+<h1><a href="#go-defer" aria-hidden="true" class="anchor" id="go-defer"></a>Go: Defer</h1>
+<pre lang="go" style="background-color:#2b303b;"><code><span style="color:#b48ead;">func </span><span style="color:#8fa1b3;">doFileStuff</span><span style="color:#c0c5ce;">(path) {
+</span><span style="color:#c0c5ce;">  </span><span style="color:#bf616a;">f </span><span style="color:#c0c5ce;">:= os.</span><span style="color:#8fa1b3;">Open</span><span style="color:#c0c5ce;">(path);
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">  </span><span style="color:#b48ead;">defer func </span><span style="color:#c0c5ce;">() {
+</span><span style="color:#c0c5ce;">    f.</span><span style="color:#8fa1b3;">Close</span><span style="color:#c0c5ce;">()
+</span><span style="color:#c0c5ce;">  }()
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">  </span><span style="color:#65737e;">// ...
+</span><span style="color:#c0c5ce;">}
+</span></code></pre>
+<hr />
+<h1><a href="#javascript-defer" aria-hidden="true" class="anchor" id="javascript-defer"></a>JavaScript: Defer</h1>
+<pre lang="js" style="background-color:#2b303b;"><code><span style="color:#b48ead;">function </span><span style="color:#8fa1b3;">doFileStuff</span><span style="color:#c0c5ce;">(path) {
+</span><span style="color:#c0c5ce;">  </span><span style="color:#b48ead;">try </span><span style="color:#c0c5ce;">{
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">let </span><span style="color:#bf616a;">f </span><span style="color:#c0c5ce;">= </span><span style="color:#bf616a;">Fs</span><span style="color:#c0c5ce;">.</span><span style="color:#96b5b4;">open</span><span style="color:#c0c5ce;">(path);
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#65737e;">// ...
+</span><span style="color:#c0c5ce;">  } </span><span style="color:#b48ead;">finally </span><span style="color:#c0c5ce;">{
+</span><span style="color:#c0c5ce;">    </span><span style="color:#bf616a;">f</span><span style="color:#c0c5ce;">.</span><span style="color:#96b5b4;">close</span><span style="color:#c0c5ce;">();
+</span><span style="color:#c0c5ce;">  }
+</span><span style="color:#c0c5ce;">}
+</span></code></pre>
+<p><small>(better to have a new function than to nest)</small></p>
+            </article>
+        </main>
+
+        <script src='./slides.js'></script>
+    </body>
+</html>
