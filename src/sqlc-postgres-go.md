@@ -161,7 +161,7 @@ See <https://docs.sqlc.dev/en/latest/reference/query-annotations.html>.
 -- name: OneByID :one
 SELECT "slug"
 FROM "todos"
-WHERE "id" = $1 // ⚠️
+WHERE "id" = $1 // 🤷‍♂️
 LIMIT 1;
 ```
 
