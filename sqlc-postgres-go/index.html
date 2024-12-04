@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Sqlc Postgres Go</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <link href="./slides.css" rel="stylesheet" />
+  </head>
+  <body>
+    <aside>
+      <nav>
+        <button
+          onclick="toggleNav(); document.exitFullscreen()"
+        >
+          Exit ↙️
+        </button>
+        <button
+          onclick="toggleNav(); document.documentElement.requestFullscreen()"
+        >
+          Fullscreen ↗️
+        </button>
+        <ul></ul>
+      </nav>
+    </aside>
+    <main>
+      Last updated: 2024-12-04 13:50
+      <article>
+<h2><a href="#sqlc--postgres--go" aria-hidden="true" class="anchor" id="sqlc--postgres--go"></a>Sqlc + Postgres + Go</h2>
+<p>A winning combo</p>
+<hr />
+<h2><a href="#aj-oneal" aria-hidden="true" class="anchor" id="aj-oneal"></a>AJ ONeal</h2>
+<p><a href="https://twitter.com/@_beyondcode">@_beyondcode</a> <br>
+<a href="https://twitch.tv/coolaj86">twitch.tv/coolaj86</a> <br>
+<a href="https://github.com/therootcompany/">github.com/therootcompany</a></p>
+<br>
+<p>Deep-Learner</p>
+<p>Dangerous Wrong Thinker</p>
+<hr />
+<h1><a href="#gun-for-hire" aria-hidden="true" class="anchor" id="gun-for-hire"></a>Gun for Hire</h1>
+<br>
+<p>🐹 Go 📦 Node 🦎 Zig</p>
+<p>🛜 Net 🔐 Sec 🐧 POSIX</p>
+<br>
+<p><a href="mailto:aj@therootcompany.com">aj@therootcompany.com</a></p>
+<hr />
+<h1><a href="#brought-to-you-in-part-by" aria-hidden="true" class="anchor" id="brought-to-you-in-part-by"></a>Brought to you in part by</h1>
+<ul>
+<li>BNNA: <a href="https://bnna.net">https://bnna.net</a></li>
+<li>PaperOS: <a href="https://paperos.com">https://paperos.com</a></li>
+</ul>
+<hr />
+<h1><a href="#sqlc-the-anti-orm" aria-hidden="true" class="anchor" id="sqlc-the-anti-orm"></a>SQLC: The Anti-ORM</h1>
+<blockquote>
+<p>Cut out the middle-man, and save!</p>
+</blockquote>
+<hr />
+<p><code>./sql/queries/todos.sql</code>:</p>
+<pre lang="sql" style="background-color:#2b303b;"><code><span style="color:#65737e;">-- name: All :many
+</span><span style="color:#b48ead;">SELECT
+</span><span style="color:#c0c5ce;">    &quot;</span><span style="color:#a3be8c;">uuid</span><span style="color:#c0c5ce;">&quot;,
+</span><span style="color:#c0c5ce;">    &quot;</span><span style="color:#a3be8c;">task</span><span style="color:#c0c5ce;">&quot;,
+</span><span style="color:#c0c5ce;">    &quot;</span><span style="color:#a3be8c;">priority</span><span style="color:#c0c5ce;">&quot;,
+</span><span style="color:#c0c5ce;">    &quot;</span><span style="color:#a3be8c;">group</span><span style="color:#c0c5ce;">&quot;,
+</span><span style="color:#c0c5ce;">    &quot;</span><span style="color:#a3be8c;">created_at</span><span style="color:#c0c5ce;">&quot;,
+</span><span style="color:#c0c5ce;">    &quot;</span><span style="color:#a3be8c;">completed_at</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#b48ead;">FROM
+</span><span style="color:#c0c5ce;">    &quot;</span><span style="color:#a3be8c;">todos</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#b48ead;">WHERE
+</span><span style="color:#c0c5ce;">    &quot;</span><span style="color:#a3be8c;">group</span><span style="color:#c0c5ce;">&quot; = ANY(</span><span style="color:#d08770;">sqlc</span><span style="color:#c0c5ce;">.</span><span style="color:#d08770;">arg</span><span style="color:#c0c5ce;">(&#39;</span><span style="color:#a3be8c;">group</span><span style="color:#c0c5ce;">&#39;)::</span><span style="color:#b48ead;">text</span><span style="color:#c0c5ce;">[])
+</span><span style="color:#b48ead;">ORDER BY
+</span><span style="color:#c0c5ce;">    &quot;</span><span style="color:#a3be8c;">priority</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#c0c5ce;">;
+</span></code></pre>
+<hr />
+<p><code>./db/todos.go</code></p>
+<pre lang="go" style="background-color:#2b303b;"><code><span style="color:#b48ead;">import </span><span style="color:#c0c5ce;">(
+</span><span style="color:#c0c5ce;">    &quot;</span><span style="color:#a3be8c;">context</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#c0c5ce;">    &quot;</span><span style="color:#a3be8c;">os</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#c0c5ce;">    &quot;</span><span style="color:#a3be8c;">git.example.com/todos/db/todos</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#c0c5ce;">    &quot;</span><span style="color:#a3be8c;">github.com/jackc/pgx/v5/pgxpool</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#c0c5ce;">)
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">func </span><span style="color:#8fa1b3;">main</span><span style="color:#c0c5ce;">() {
+</span><span style="color:#c0c5ce;">    </span><span style="color:#bf616a;">pgURL </span><span style="color:#c0c5ce;">:= os.</span><span style="color:#8fa1b3;">Getenv</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">PG_URL</span><span style="color:#c0c5ce;">&quot;)
+</span><span style="color:#c0c5ce;">    </span><span style="color:#bf616a;">pgPool</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">err </span><span style="color:#c0c5ce;">:= pgxpool.</span><span style="color:#8fa1b3;">Connect</span><span style="color:#c0c5ce;">(context.</span><span style="color:#8fa1b3;">Background</span><span style="color:#c0c5ce;">(), pgURL)
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">defer</span><span style="color:#c0c5ce;"> dbPool.</span><span style="color:#8fa1b3;">Close</span><span style="color:#c0c5ce;">()
+</span><span style="color:#c0c5ce;">    </span><span style="color:#bf616a;">TodosQueries </span><span style="color:#c0c5ce;">:= todos.</span><span style="color:#8fa1b3;">New</span><span style="color:#c0c5ce;">(pgPool)
+</span><span style="color:#c0c5ce;">    </span><span style="color:#bf616a;">todoRows</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">err </span><span style="color:#c0c5ce;">:= TodosQueries.</span><span style="color:#8fa1b3;">All</span><span style="color:#c0c5ce;">(context.</span><span style="color:#8fa1b3;">Background</span><span style="color:#c0c5ce;">())
+</span><span style="color:#c0c5ce;">    </span><span style="color:#65737e;">// ...
+</span><span style="color:#c0c5ce;">}
+</span></code></pre>
+<hr />
+<h1><a href="#overview" aria-hidden="true" class="anchor" id="overview"></a>Overview</h1>
+<ul>
+<li>SQLC YAML</li>
+<li>SQLC Comments</li>
+<li>Parameterization</li>
+<li><code>IN</code> vs <code>= ANY</code></li>
+<li>Dynamic Queries</li>
+<li>Insert (and Return)</li>
+<li>Many Rows, Many Fields</li>
+<li>Many Rows, Single Field</li>
+<li>Single Row, Many Fields</li>
+<li>Single Row, Single Field</li>
+</ul>
+<hr />
+<h1><a href="#sqlc-annotations" aria-hidden="true" class="anchor" id="sqlc-annotations"></a>SQLC Annotations</h1>
+<pre lang="sql" style="background-color:#2b303b;"><code><span style="color:#65737e;">-- name: &lt;name&gt; &lt;command&gt;
+</span></code></pre>
+<pre lang="slql" style="background-color:#2b303b;"><code><span style="color:#c0c5ce;">-- name: InsertOne :exec
+</span><span style="color:#c0c5ce;">-- name: InsertAndReturnOne :one
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">-- name: ByID :one
+</span><span style="color:#c0c5ce;">-- name: ByGroup :many
+</span></code></pre>
+<p>See <a href="https://docs.sqlc.dev/en/latest/reference/query-annotations.html">https://docs.sqlc.dev/en/latest/reference/query-annotations.html</a>.</p>
+<hr />
+<h1><a href="#result-annotations" aria-hidden="true" class="anchor" id="result-annotations"></a>Result Annotations</h1>
+<pre lang="sql" style="background-color:#2b303b;"><code><span style="color:#65737e;">-- name: InsertOne :execlastid
+</span><span style="color:#65737e;">-- (returns id)
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#65737e;">-- name: DeleteSome :execresult
+</span><span style="color:#65737e;">-- (returns number of affected rows)
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#65737e;">-- name: DeleteAll :execrows
+</span><span style="color:#65737e;">-- (returns affected rows)
+</span></code></pre>
+<p>See <a href="https://docs.sqlc.dev/en/latest/reference/query-annotations.html">https://docs.sqlc.dev/en/latest/reference/query-annotations.html</a>.</p>
+<hr />
+<h1><a href="#pgxv5-annotations" aria-hidden="true" class="anchor" id="pgxv5-annotations"></a>pgx/v5 Annotations</h1>
+<pre lang="text" style="background-color:#2b303b;"><code><span style="color:#c0c5ce;">:batchexec
+</span><span style="color:#c0c5ce;">:batchone
+</span><span style="color:#c0c5ce;">:batchmany
+</span></code></pre>
+<pre lang="text" style="background-color:#2b303b;"><code><span style="color:#c0c5ce;">:copyfrom
+</span></code></pre>
+<p>See <a href="https://docs.sqlc.dev/en/latest/reference/query-annotations.html">https://docs.sqlc.dev/en/latest/reference/query-annotations.html</a>.</p>
+<hr />
+<h1><a href="#parameterization" aria-hidden="true" class="anchor" id="parameterization"></a>Parameterization</h1>
+<pre lang="sql" style="background-color:#2b303b;"><code><span style="color:#65737e;">-- name: OneByID :one
+</span><span style="color:#b48ead;">SELECT </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">slug</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#b48ead;">FROM </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">todos</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#b48ead;">WHERE </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">id</span><span style="color:#c0c5ce;">&quot; = $</span><span style="color:#d08770;">1 </span><span style="color:#c0c5ce;">// ⚠️
+</span><span style="color:#b48ead;">LIMIT </span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">;
+</span></code></pre>
+<pre lang="sql" style="background-color:#2b303b;"><code><span style="color:#65737e;">-- name: OneByID :one
+</span><span style="color:#b48ead;">SELECT </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">slug</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#b48ead;">FROM </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">todos</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#b48ead;">WHERE </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">id</span><span style="color:#c0c5ce;">&quot; = </span><span style="color:#d08770;">sqlc</span><span style="color:#c0c5ce;">.</span><span style="color:#d08770;">arg</span><span style="color:#c0c5ce;">(&#39;</span><span style="color:#a3be8c;">id</span><span style="color:#c0c5ce;">&#39;) // ✅
+</span><span style="color:#b48ead;">LIMIT </span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">;
+</span></code></pre>
+<hr />
+<h1><a href="#insert--return-row" aria-hidden="true" class="anchor" id="insert--return-row"></a>Insert &amp; Return Row</h1>
+<pre lang="sql" style="background-color:#2b303b;"><code><span style="color:#65737e;">-- name: OneByID :one
+</span><span style="color:#b48ead;">INSERT INTO </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">todos</span><span style="color:#c0c5ce;">&quot; (
+</span><span style="color:#c0c5ce;">    &quot;</span><span style="color:#a3be8c;">uuid</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">task</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">priority</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">group</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">created_at</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">completed_at</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#c0c5ce;">) </span><span style="color:#b48ead;">VALUES</span><span style="color:#c0c5ce;"> (
+</span><span style="color:#c0c5ce;">    </span><span style="color:#d08770;">sqlc</span><span style="color:#c0c5ce;">.</span><span style="color:#d08770;">argv</span><span style="color:#c0c5ce;">(&#39;</span><span style="color:#a3be8c;">uuid</span><span style="color:#c0c5ce;">&#39;),
+</span><span style="color:#c0c5ce;">    </span><span style="color:#d08770;">sqlc</span><span style="color:#c0c5ce;">.</span><span style="color:#d08770;">argv</span><span style="color:#c0c5ce;">(&#39;</span><span style="color:#a3be8c;">task</span><span style="color:#c0c5ce;">&#39;),
+</span><span style="color:#c0c5ce;">    </span><span style="color:#d08770;">sqlc</span><span style="color:#c0c5ce;">.</span><span style="color:#d08770;">argv</span><span style="color:#c0c5ce;">(&#39;</span><span style="color:#a3be8c;">priority</span><span style="color:#c0c5ce;">&#39;),
+</span><span style="color:#c0c5ce;">    </span><span style="color:#d08770;">sqlc</span><span style="color:#c0c5ce;">.</span><span style="color:#d08770;">argv</span><span style="color:#c0c5ce;">(&#39;</span><span style="color:#a3be8c;">group</span><span style="color:#c0c5ce;">&#39;),
+</span><span style="color:#c0c5ce;">    </span><span style="color:#d08770;">sqlc</span><span style="color:#c0c5ce;">.</span><span style="color:#d08770;">argv</span><span style="color:#c0c5ce;">(&#39;</span><span style="color:#a3be8c;">created_at</span><span style="color:#c0c5ce;">&#39;),
+</span><span style="color:#c0c5ce;">    </span><span style="color:#d08770;">sqlc</span><span style="color:#c0c5ce;">.</span><span style="color:#d08770;">argv</span><span style="color:#c0c5ce;">(&#39;</span><span style="color:#a3be8c;">completed_at</span><span style="color:#c0c5ce;">&#39;)
+</span><span style="color:#c0c5ce;">) RETURNING *;
+</span></code></pre>
+<hr />
+<h1><a href="#one-row-single-value" aria-hidden="true" class="anchor" id="one-row-single-value"></a>One Row, Single Value</h1>
+<pre lang="sql" style="background-color:#2b303b;"><code><span style="color:#65737e;">-- name: OneByID :one
+</span><span style="color:#b48ead;">SELECT
+</span><span style="color:#c0c5ce;">    &quot;</span><span style="color:#a3be8c;">slug</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#b48ead;">FROM
+</span><span style="color:#c0c5ce;">    &quot;</span><span style="color:#a3be8c;">todos</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#b48ead;">WHERE
+</span><span style="color:#c0c5ce;">    &quot;</span><span style="color:#a3be8c;">id</span><span style="color:#c0c5ce;">&quot; = </span><span style="color:#d08770;">sqlc</span><span style="color:#c0c5ce;">.</span><span style="color:#d08770;">arg</span><span style="color:#c0c5ce;">(&#39;</span><span style="color:#a3be8c;">id</span><span style="color:#c0c5ce;">&#39;)
+</span><span style="color:#b48ead;">LIMIT </span><span style="color:#d08770;">1
+</span><span style="color:#c0c5ce;">;
+</span></code></pre>
+<p>(0 results = not found error)</p>
+<hr />
+<h1><a href="#many-rows-single-value" aria-hidden="true" class="anchor" id="many-rows-single-value"></a>Many Rows, Single Value</h1>
+<pre lang="sql" style="background-color:#2b303b;"><code><span style="color:#65737e;">-- name: AllByID :many
+</span><span style="color:#b48ead;">SELECT
+</span><span style="color:#c0c5ce;">    slug
+</span><span style="color:#b48ead;">FROM
+</span><span style="color:#c0c5ce;">    todos
+</span><span style="color:#c0c5ce;">;
+</span></code></pre>
+<hr />
+<p>See also: <a href="https://docs.sqlc.dev/en/latest/reference/config.html">https://docs.sqlc.dev/en/latest/reference/config.html</a></p>
+<p><code>./sqlc.yaml</code>:</p>
+<pre lang="yaml" style="background-color:#2b303b;"><code><span style="color:#bf616a;">version</span><span style="color:#c0c5ce;">: &quot;</span><span style="color:#a3be8c;">2</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#bf616a;">sql</span><span style="color:#c0c5ce;">:
+</span><span style="color:#c0c5ce;">  - </span><span style="color:#bf616a;">engine</span><span style="color:#c0c5ce;">: &quot;</span><span style="color:#a3be8c;">postgresql</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#c0c5ce;">    </span><span style="color:#bf616a;">queries</span><span style="color:#c0c5ce;">: &quot;</span><span style="color:#a3be8c;">./sql/queries/todos/</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#c0c5ce;">    </span><span style="color:#bf616a;">schema</span><span style="color:#c0c5ce;">: &quot;</span><span style="color:#a3be8c;">./sql/migrations/</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#c0c5ce;">    </span><span style="color:#bf616a;">gen</span><span style="color:#c0c5ce;">:
+</span><span style="color:#c0c5ce;">      </span><span style="color:#bf616a;">go</span><span style="color:#c0c5ce;">:
+</span><span style="color:#c0c5ce;">        </span><span style="color:#bf616a;">sql_package</span><span style="color:#c0c5ce;">: &quot;</span><span style="color:#a3be8c;">pgx/v5</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#c0c5ce;">        </span><span style="color:#bf616a;">package</span><span style="color:#c0c5ce;">: &quot;</span><span style="color:#a3be8c;">todos</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#c0c5ce;">        </span><span style="color:#bf616a;">out</span><span style="color:#c0c5ce;">: &quot;</span><span style="color:#a3be8c;">./db/todos/</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#c0c5ce;">        </span><span style="color:#bf616a;">emit_json_tags</span><span style="color:#c0c5ce;">: </span><span style="color:#d08770;">true
+</span><span style="color:#c0c5ce;">        </span><span style="color:#bf616a;">json_tags_case_style</span><span style="color:#c0c5ce;">: &quot;</span><span style="color:#a3be8c;">snake</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#c0c5ce;">        </span><span style="color:#bf616a;">overrides</span><span style="color:#c0c5ce;">:
+</span><span style="color:#c0c5ce;">          - </span><span style="color:#bf616a;">column</span><span style="color:#c0c5ce;">: &quot;</span><span style="color:#a3be8c;">todos.created_at</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#c0c5ce;">            </span><span style="color:#bf616a;">go_struct_tag</span><span style="color:#c0c5ce;">: &#39;</span><span style="color:#a3be8c;">json:&quot;-&quot;</span><span style="color:#c0c5ce;">&#39;
+</span></code></pre>
+            </article>
+        </main>
+
+        <script src='./slides.js'></script>
+    </body>
+</html>
