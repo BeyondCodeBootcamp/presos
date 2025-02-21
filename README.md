@@ -7,6 +7,7 @@
 
 Presentation Slides + Videos:
 
+- 📦 [You don't know ESM](./javascript-modules/)
 - 🤮 [JS for Go Devs](./js-for-go-devs/)
 - 🔑 [Passkeys](./passkeys/)
 - 👨‍🍳 [Go Just Works](./go-just-works/)
