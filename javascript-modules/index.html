@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Javascript Modules</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <link href="./slides.css" rel="stylesheet" />
+  </head>
+  <body>
+    <aside>
+      <nav>
+        <button
+          onclick="toggleNav(); document.exitFullscreen()"
+        >
+          Exit ↙️
+        </button>
+        <button
+          onclick="toggleNav(); document.documentElement.requestFullscreen()"
+        >
+          Fullscreen ↗️
+        </button>
+        <ul></ul>
+      </nav>
+    </aside>
+    <main>
+      Last updated: 2025-02-21 13:01
+      <article>
+<h1><a href="#you-dont-know-esm" aria-hidden="true" class="anchor" id="you-dont-know-esm"></a>You Don't Know ESM</h1>
+<p><small><a href="https://beyondcodebootcamp.github.io/presos/javascript-modules/">beyondcodebootcamp.github.io/presos/javascript-modules/</a></small></p>
+<hr />
+<h1><a href="#javascript-modules" aria-hidden="true" class="anchor" id="javascript-modules"></a>JavaScript Modules</h1>
+<hr />
+<h2><a href="#aj-oneal" aria-hidden="true" class="anchor" id="aj-oneal"></a>AJ ONeal</h2>
+<p><a href="https://twitter.com/@_beyondcode">@_beyondcode</a> <br>
+<a href="https://twitch.tv/coolaj86">twitch.tv/coolaj86</a> <br>
+<a href="https://github.com/therootcompany/">github.com/therootcompany</a></p>
+<br>
+<p>Deep-Learner</p>
+<p>Dangerous Wrong Thinker</p>
+<hr />
+<h1><a href="#gun-for-hire" aria-hidden="true" class="anchor" id="gun-for-hire"></a>Gun for Hire</h1>
+<br>
+<p>🐹 Go 📦 Node 🦎 Zig</p>
+<p>🛜 Net 🔐 Sec 🐧 POSIX</p>
+<br>
+<p><a href="mailto:aj@therootcompany.com">aj@therootcompany.com</a></p>
+<hr />
+<h2><a href="#tldr" aria-hidden="true" class="anchor" id="tldr"></a>TL;DR</h2>
+<ul>
+<li>3 syntaxes (that work)</li>
+<li>3 import configs</li>
+</ul>
+<p>Should you use it? 💯%</p>
+<hr />
+<h2><a href="#create--export" aria-hidden="true" class="anchor" id="create--export"></a>Create / Export</h2>
+<hr />
+<h5><a href="#default-export" aria-hidden="true" class="anchor" id="default-export"></a>Default Export</h5>
+<pre lang="js" style="background-color:#2b303b;"><code><span style="color:#b48ead;">let </span><span style="color:#bf616a;">Foo </span><span style="color:#c0c5ce;">= {};
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#ebcb8b;">Foo</span><span style="color:#c0c5ce;">.</span><span style="color:#8fa1b3;">noop </span><span style="color:#c0c5ce;">= </span><span style="color:#b48ead;">function </span><span style="color:#c0c5ce;">() {};
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">export default </span><span style="color:#bf616a;">Foo</span><span style="color:#c0c5ce;">;
+</span></code></pre>
+<h5><a href="#default-import" aria-hidden="true" class="anchor" id="default-import"></a>Default Import</h5>
+<pre lang="js" style="background-color:#2b303b;"><code><span style="color:#b48ead;">import </span><span style="color:#bf616a;">Foo </span><span style="color:#b48ead;">from </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">./foo.js</span><span style="color:#c0c5ce;">&quot;;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">void </span><span style="color:#bf616a;">Foo</span><span style="color:#c0c5ce;">.</span><span style="color:#8fa1b3;">noop</span><span style="color:#c0c5ce;">();
+</span></code></pre>
+<h5><a href="#default-require-" aria-hidden="true" class="anchor" id="default-require-"></a>Default Require 🥴</h5>
+<pre lang="js" style="background-color:#2b303b;"><code><span style="color:#b48ead;">let </span><span style="color:#bf616a;">FooMeta </span><span style="color:#c0c5ce;">= </span><span style="color:#8fa1b3;">require</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">./foo.js</span><span style="color:#c0c5ce;">&quot;);
+</span><span style="color:#b48ead;">let </span><span style="color:#bf616a;">Foo </span><span style="color:#c0c5ce;">= </span><span style="color:#ebcb8b;">FooMeta</span><span style="color:#c0c5ce;">.default;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">void </span><span style="color:#bf616a;">Foo</span><span style="color:#c0c5ce;">.</span><span style="color:#8fa1b3;">noop</span><span style="color:#c0c5ce;">();
+</span></code></pre>
+<hr />
+<h5><a href="#default-export-1" aria-hidden="true" class="anchor" id="default-export-1"></a>Default Export</h5>
+<pre lang="js" style="background-color:#2b303b;"><code><span style="color:#b48ead;">let </span><span style="color:#bf616a;">Foo </span><span style="color:#c0c5ce;">= {};
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#ebcb8b;">Foo</span><span style="color:#c0c5ce;">.</span><span style="color:#8fa1b3;">noop </span><span style="color:#c0c5ce;">= </span><span style="color:#b48ead;">function </span><span style="color:#c0c5ce;">() {};
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">export let </span><span style="color:#bf616a;">noop </span><span style="color:#c0c5ce;">= </span><span style="color:#ebcb8b;">Foo</span><span style="color:#c0c5ce;">.noop;
+</span></code></pre>
+<h5><a href="#full-import-" aria-hidden="true" class="anchor" id="full-import-"></a>Full Import 🤕</h5>
+<pre lang="js" style="background-color:#2b303b;"><code><span style="color:#b48ead;">import </span><span style="color:#d08770;">* </span><span style="color:#b48ead;">as </span><span style="color:#bf616a;">Foo </span><span style="color:#b48ead;">from </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">./foo.js</span><span style="color:#c0c5ce;">&quot;;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">void </span><span style="color:#bf616a;">Foo</span><span style="color:#c0c5ce;">.</span><span style="color:#8fa1b3;">noop</span><span style="color:#c0c5ce;">();
+</span></code></pre>
+<h5><a href="#full-require" aria-hidden="true" class="anchor" id="full-require"></a>Full Require</h5>
+<pre lang="js" style="background-color:#2b303b;"><code><span style="color:#b48ead;">let </span><span style="color:#bf616a;">Foo </span><span style="color:#c0c5ce;">= </span><span style="color:#8fa1b3;">require</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">./foo.js</span><span style="color:#c0c5ce;">&quot;);
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">void </span><span style="color:#bf616a;">Foo</span><span style="color:#c0c5ce;">.</span><span style="color:#8fa1b3;">noop</span><span style="color:#c0c5ce;">();
+</span></code></pre>
+<hr />
+<p>The rumors are NOT true...</p>
+<ul>
+<li>async module loading</li>
+<li>tree shaking</li>
+<li>ALL-THE-CONFERENCE-SLIDES!</li>
+</ul>
+<hr />
+<pre lang="sh" style="background-color:#2b303b;"><code><span style="color:#65737e;"># ✅
+</span><span style="color:#8fa1b3;">grep</span><span style="color:#bf616a;"> -r -F </span><span style="color:#c0c5ce;">&#39;</span><span style="color:#a3be8c;">Foo.</span><span style="color:#c0c5ce;">&#39;
+</span></code></pre>
+<pre lang="js" style="background-color:#2b303b;"><code><span style="color:#65737e;">// ❌
+</span><span style="color:#b48ead;">import </span><span style="color:#c0c5ce;">{ </span><span style="color:#bf616a;">createStutter</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">getStutter </span><span style="color:#c0c5ce;">} </span><span style="color:#b48ead;">from </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">./stuttering.js</span><span style="color:#c0c5ce;">&quot;;
+</span></code></pre>
+<hr />
+<h2><a href="#browser--npm" aria-hidden="true" class="anchor" id="browser--npm"></a>Browser + NPM</h2>
+<pre lang="js" style="background-color:#2b303b;"><code><span style="color:#b48ead;">let </span><span style="color:#bf616a;">Foo </span><span style="color:#c0c5ce;">= {};
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#ebcb8b;">Foo</span><span style="color:#c0c5ce;">.</span><span style="color:#8fa1b3;">noop </span><span style="color:#c0c5ce;">= </span><span style="color:#b48ead;">function </span><span style="color:#c0c5ce;">() {};
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">export let </span><span style="color:#bf616a;">noop </span><span style="color:#c0c5ce;">= </span><span style="color:#ebcb8b;">Foo</span><span style="color:#c0c5ce;">.noop; </span><span style="color:#65737e;">// for require()
+</span><span style="color:#b48ead;">export default </span><span style="color:#bf616a;">Foo</span><span style="color:#c0c5ce;">; </span><span style="color:#65737e;">// for import
+</span></code></pre>
+<hr />
+<h1><a href="#what-about-module-packages" aria-hidden="true" class="anchor" id="what-about-module-packages"></a>What about Module <em>Packages</em>?</h1>
+<ul>
+<li>index.html</li>
+<li>package.json</li>
+<li>jsconfig.json (tsconfig.json)</li>
+</ul>
+<hr />
+<h5><a href="#indexhtml" aria-hidden="true" class="anchor" id="indexhtml"></a>index.html</h5>
+<pre lang="html" style="background-color:#2b303b;"><code><span style="color:#c0c5ce;">  &lt;</span><span style="color:#bf616a;">form </span><span style="color:#d08770;">method</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">dialog</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#c0c5ce;">    </span><span style="color:#d08770;">onsubmit</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#bf616a;">FooUI</span><span style="color:#c0c5ce;">.</span><span style="color:#96b5b4;">submit</span><span style="color:#c0c5ce;">(window.event);&quot;&gt; ... &lt;/</span><span style="color:#bf616a;">form</span><span style="color:#c0c5ce;">&gt;
+</span><span style="color:#c0c5ce;">  &lt;</span><span style="color:#bf616a;">script </span><span style="color:#d08770;">type</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">importmap</span><span style="color:#c0c5ce;">&quot;&gt;
+</span><span style="color:#c0c5ce;">    {
+</span><span style="color:#c0c5ce;">      &quot;</span><span style="color:#a3be8c;">imports</span><span style="color:#c0c5ce;">&quot;: {
+</span><span style="color:#c0c5ce;">        &quot;</span><span style="color:#a3be8c;">foo</span><span style="color:#c0c5ce;">&quot;: &quot;</span><span style="color:#a3be8c;">./foo.js</span><span style="color:#c0c5ce;">&quot;,
+</span><span style="color:#c0c5ce;">        &quot;</span><span style="color:#a3be8c;">foo/</span><span style="color:#c0c5ce;">&quot;: &quot;</span><span style="color:#a3be8c;">./lib/</span><span style="color:#c0c5ce;">&quot;,
+</span><span style="color:#c0c5ce;">        &quot;</span><span style="color:#a3be8c;">bar</span><span style="color:#c0c5ce;">&quot;: &quot;</span><span style="color:#a3be8c;">./node_modules/bar/index.js</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#c0c5ce;">      }
+</span><span style="color:#c0c5ce;">    }
+</span><span style="color:#c0c5ce;">  &lt;/</span><span style="color:#bf616a;">script</span><span style="color:#c0c5ce;">&gt;
+</span><span style="color:#c0c5ce;">  &lt;</span><span style="color:#bf616a;">script </span><span style="color:#d08770;">type</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">module</span><span style="color:#c0c5ce;">&quot;&gt;
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">import </span><span style="color:#bf616a;">FooUI </span><span style="color:#b48ead;">from </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">foo/ui.js</span><span style="color:#c0c5ce;">&quot;;
+</span><span style="color:#c0c5ce;">    window.FooUI = </span><span style="color:#bf616a;">FooUI</span><span style="color:#c0c5ce;">;
+</span><span style="color:#c0c5ce;">  &lt;/</span><span style="color:#bf616a;">script</span><span style="color:#c0c5ce;">&gt;
+</span></code></pre>
+<hr />
+<h5><a href="#packagejson" aria-hidden="true" class="anchor" id="packagejson"></a>package.json</h5>
+<pre lang="json" style="background-color:#2b303b;"><code><span style="color:#c0c5ce;">{
+</span><span style="color:#c0c5ce;">  &quot;</span><span style="color:#a3be8c;">type</span><span style="color:#c0c5ce;">&quot;: &quot;</span><span style="color:#a3be8c;">module</span><span style="color:#c0c5ce;">&quot;,
+</span><span style="color:#c0c5ce;">  &quot;</span><span style="color:#a3be8c;">imports</span><span style="color:#c0c5ce;">&quot;: {
+</span><span style="color:#c0c5ce;">    &quot;</span><span style="color:#a3be8c;">foo</span><span style="color:#c0c5ce;">&quot;: &quot;</span><span style="color:#a3be8c;">./foo.js</span><span style="color:#c0c5ce;">&quot;,
+</span><span style="color:#c0c5ce;">    &quot;</span><span style="color:#a3be8c;">foo/</span><span style="color:#c0c5ce;">&quot;: &quot;</span><span style="color:#a3be8c;">./lib/</span><span style="color:#c0c5ce;">&quot;,
+</span><span style="color:#c0c5ce;">    &quot;</span><span style="color:#a3be8c;">baz</span><span style="color:#c0c5ce;">&quot;: &quot;</span><span style="color:#a3be8c;">./vendor/baz.js</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#c0c5ce;">  },
+</span><span style="color:#c0c5ce;">  &quot;</span><span style="color:#a3be8c;">exports</span><span style="color:#c0c5ce;">&quot;: {
+</span><span style="color:#c0c5ce;">    &quot;</span><span style="color:#a3be8c;">.</span><span style="color:#c0c5ce;">&quot;: &quot;</span><span style="color:#a3be8c;">foo.js</span><span style="color:#c0c5ce;">&quot;,
+</span><span style="color:#c0c5ce;">    &quot;</span><span style="color:#a3be8c;">./*</span><span style="color:#c0c5ce;">&quot;: &quot;</span><span style="color:#a3be8c;">./foo/*</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#c0c5ce;">  }
+</span><span style="color:#c0c5ce;">}
+</span></code></pre>
+<hr />
+<h5><a href="#jsconfigjson" aria-hidden="true" class="anchor" id="jsconfigjson"></a>jsconfig.json</h5>
+<pre lang="json" style="background-color:#2b303b;"><code><span style="color:#c0c5ce;">{
+</span><span style="color:#c0c5ce;">  &quot;</span><span style="color:#a3be8c;">compilerOptions</span><span style="color:#c0c5ce;">&quot;: {
+</span><span style="color:#c0c5ce;">    &quot;</span><span style="color:#a3be8c;">target</span><span style="color:#c0c5ce;">&quot;: &quot;</span><span style="color:#a3be8c;">es2022</span><span style="color:#c0c5ce;">&quot;,
+</span><span style="color:#c0c5ce;">    &quot;</span><span style="color:#a3be8c;">module</span><span style="color:#c0c5ce;">&quot;: &quot;</span><span style="color:#a3be8c;">nodenext</span><span style="color:#c0c5ce;">&quot;,
+</span><span style="color:#c0c5ce;">    &quot;</span><span style="color:#a3be8c;">moduleResolution</span><span style="color:#c0c5ce;">&quot;: &quot;</span><span style="color:#a3be8c;">nodenext</span><span style="color:#c0c5ce;">&quot;,
+</span><span style="color:#c0c5ce;">    &quot;</span><span style="color:#a3be8c;">paths</span><span style="color:#c0c5ce;">&quot;: {
+</span><span style="color:#c0c5ce;">      &quot;</span><span style="color:#a3be8c;">foo/*</span><span style="color:#c0c5ce;">&quot;: [&quot;</span><span style="color:#a3be8c;">./lib/*</span><span style="color:#c0c5ce;">&quot;],
+</span><span style="color:#c0c5ce;">      &quot;</span><span style="color:#a3be8c;">foo</span><span style="color:#c0c5ce;">&quot;: [&quot;</span><span style="color:#a3be8c;">./foo.js</span><span style="color:#c0c5ce;">&quot;],
+</span><span style="color:#c0c5ce;">      &quot;</span><span style="color:#a3be8c;">baz</span><span style="color:#c0c5ce;">&quot;: [&quot;</span><span style="color:#a3be8c;">./vendor/baz.js</span><span style="color:#c0c5ce;">&quot;]
+</span><span style="color:#c0c5ce;">    }
+</span><span style="color:#c0c5ce;">}
+</span></code></pre>
+<hr />
+<h2><a href="#things-to-know" aria-hidden="true" class="anchor" id="things-to-know"></a>Things to Know...</h2>
+<hr />
+<h3><a href="#ubër-async" aria-hidden="true" class="anchor" id="ubër-async"></a>Ubër Async</h3>
+<pre lang="js" style="background-color:#2b303b;"><code><span style="color:#b48ead;">let </span><span style="color:#bf616a;">Foo </span><span style="color:#c0c5ce;">= </span><span style="color:#bf616a;">await </span><span style="color:#b48ead;">import</span><span style="color:#c0c5ce;">(&#39;</span><span style="color:#a3be8c;">./foo.js</span><span style="color:#c0c5ce;">&#39;)
+</span></code></pre>
+<hr />
+<h3><a href="#__dirname" aria-hidden="true" class="anchor" id="__dirname"></a>__dirname</h3>
+<pre lang="js" style="background-color:#2b303b;"><code><span style="color:#b48ead;">import </span><span style="color:#bf616a;">Path </span><span style="color:#b48ead;">from </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">node:path</span><span style="color:#c0c5ce;">&quot;;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">let </span><span style="color:#bf616a;">modulePath </span><span style="color:#c0c5ce;">= </span><span style="color:#bf616a;">import</span><span style="color:#c0c5ce;">.meta.url.</span><span style="color:#8fa1b3;">slice</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">file://</span><span style="color:#c0c5ce;">&quot;.length);
+</span><span style="color:#b48ead;">let </span><span style="color:#bf616a;">moduleDir </span><span style="color:#c0c5ce;">= </span><span style="color:#bf616a;">Path</span><span style="color:#c0c5ce;">.</span><span style="color:#8fa1b3;">dirname</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">modulePath</span><span style="color:#c0c5ce;">);
+</span></code></pre>
+<hr />
+<p>END</p>
+<hr />
+<p>Q&amp;A</p>
+            </article>
+        </main>
+
+        <script src='./slides.js'></script>
+    </body>
+</html>
