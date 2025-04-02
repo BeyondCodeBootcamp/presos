@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Go Flag</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <link href="./slides.css" rel="stylesheet" />
+  </head>
+  <body>
+    <aside>
+      <nav>
+        <button
+          onclick="toggleNav(); document.exitFullscreen()"
+        >
+          Exit ↙️
+        </button>
+        <button
+          onclick="toggleNav(); document.documentElement.requestFullscreen()"
+        >
+          Fullscreen ↗️
+        </button>
+        <ul></ul>
+      </nav>
+    </aside>
+    <main>
+      Last updated: 2025-04-01 18:36
+      <article>
+<h1><a href="#you-might-not-need-cobra" aria-hidden="true" class="anchor" id="you-might-not-need-cobra"></a>You might not need Cobra</h1>
+<p><small><a href="https://beyondcodebootcamp.github.io/presos/go-flag/">beyondcodebootcamp.github.io/presos/go-flag/</a></small></p>
+<hr />
+<h1><a href="#go-flag-and-flags" aria-hidden="true" class="anchor" id="go-flag-and-flags"></a>Go Flag, and Flags</h1>
+<p><a href="https://pkg.go.dev/flag">https://pkg.go.dev/flag</a></p>
+<hr />
+<h2><a href="#aj-oneal" aria-hidden="true" class="anchor" id="aj-oneal"></a>AJ ONeal</h2>
+<p><a href="https://twitter.com/@_beyondcode">@_beyondcode</a> <br>
+<a href="https://twitch.tv/coolaj86">twitch.tv/coolaj86</a> <br>
+<a href="https://github.com/therootcompany/">github.com/therootcompany</a></p>
+<br>
+<p>Deep-Learner</p>
+<p>Dangerous Wrong Thinker</p>
+<hr />
+<h1><a href="#gun-for-hire" aria-hidden="true" class="anchor" id="gun-for-hire"></a>Gun for Hire</h1>
+<br>
+<p>🐹 Go 📦 Node 🦎 Zig</p>
+<p>🛜 Net 🔐 Sec 🐧 Proxmox</p>
+<br>
+<p><a href="mailto:aj@therootcompany.com">aj@therootcompany.com</a></p>
+<hr />
+<p>Utah Colo on Meetup</p>
+<p><a href="https://www.meetup.com/utah-colo/">https://www.meetup.com/utah-colo/</a></p>
+<hr />
+<pre lang="go" style="background-color:#2b303b;"><code><span style="color:#c0c5ce;">-flag
+</span><span style="color:#c0c5ce;">--flag   </span><span style="color:#65737e;">// double dashes are also permitted
+</span><span style="color:#c0c5ce;">-flag=x
+</span><span style="color:#c0c5ce;">-flag x  </span><span style="color:#65737e;">// non-boolean flags only
+</span></code></pre>
+<hr />
+<h1><a href="#a-long-time-ago" aria-hidden="true" class="anchor" id="a-long-time-ago"></a>A Long Time Ago</h1>
+<h2><a href="#in-a-shell-far-far-away" aria-hidden="true" class="anchor" id="in-a-shell-far-far-away"></a>In a Shell, Far, Far Away...</h2>
+<hr />
+<h2><a href="#posix" aria-hidden="true" class="anchor" id="posix"></a>POSIX</h2>
+<ol>
+<li>Strings</li>
+<li>Flags</li>
+<li>Options (GNU)</li>
+<li>Arguments</li>
+</ol>
+<p><a href="https://gist.github.com/coolaj86/1759b70e72f038869b7bf87816d9dc2e">https://gist.github.com/coolaj86/1759b70e72f038869b7bf87816d9dc2e</a></p>
+<hr />
+<h2><a href="#1-posix-strings" aria-hidden="true" class="anchor" id="1-posix-strings"></a>1. POSIX Strings</h2>
+<pre lang="sh" style="background-color:#2b303b;"><code><span style="color:#8fa1b3;">expression
+</span><span style="color:#c0c5ce;">&#39;</span><span style="color:#a3be8c;">string literal</span><span style="color:#c0c5ce;">&#39;
+</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">string expression</span><span style="color:#c0c5ce;">&quot;
+</span></code></pre>
+<hr />
+<h3><a href="#whitespace-delimited" aria-hidden="true" class="anchor" id="whitespace-delimited"></a>Whitespace-delimited</h3>
+<pre lang="sh" style="background-color:#2b303b;"><code><span style="color:#96b5b4;">echo</span><span style="color:#c0c5ce;"> foo bar baz
+</span><span style="color:#96b5b4;">echo</span><span style="color:#c0c5ce;">   foo   bar   baz
+</span><span style="color:#96b5b4;">echo </span><span style="color:#c0c5ce;">&#39;</span><span style="color:#a3be8c;">   foo   bar   baz   </span><span style="color:#c0c5ce;">&#39;
+</span></code></pre>
+<hr />
+<h3><a href="#string-literals" aria-hidden="true" class="anchor" id="string-literals"></a>String Literals</h3>
+<p>Same as Go's <code>`</code> string literals:</p>
+<ul>
+<li><em>absolutely</em> literal</li>
+<li><em>NO</em> escapes</li>
+</ul>
+<hr />
+<h3><a href="#string-literals-1" aria-hidden="true" class="anchor" id="string-literals-1"></a>String Literals</h3>
+<pre lang="text" style="background-color:#2b303b;"><code><span style="color:#c0c5ce;">echo &#39;$foo \&#39;
+</span><span style="color:#c0c5ce;">echo &#39;bar
+</span><span style="color:#c0c5ce;">      baz&#39;
+</span></code></pre>
+<hr />
+<h3><a href="#string-expressions" aria-hidden="true" class="anchor" id="string-expressions"></a>String Expressions</h3>
+<p>Handle escape sequences, and <code>$</code>, <code>$(...)</code>, <code>${...}</code> expressions.</p>
+<hr />
+<h3><a href="#string-expressions-1" aria-hidden="true" class="anchor" id="string-expressions-1"></a>String Expressions</h3>
+<pre lang="sh" style="background-color:#2b303b;"><code><span style="color:#96b5b4;">echo </span><span style="color:#c0c5ce;">&quot;$</span><span style="color:#bf616a;">foo</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#96b5b4;">echo </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">Filename: </span><span style="color:#c0c5ce;">$</span><span style="color:#a3be8c;">(</span><span style="color:#8fa1b3;">date </span><span style="color:#c0c5ce;">&#39;</span><span style="color:#a3be8c;">+%F_%H.%M.%S</span><span style="color:#c0c5ce;">&#39;</span><span style="color:#a3be8c;">)</span><span style="color:#c0c5ce;">&quot;
+</span></code></pre>
+<hr />
+<h3><a href="#string-expr-vs-expr" aria-hidden="true" class="anchor" id="string-expr-vs-expr"></a>String Expr vs Expr</h3>
+<pre lang="sh" style="background-color:#2b303b;"><code><span style="color:#96b5b4;">echo </span><span style="color:#c0c5ce;">&quot;$</span><span style="color:#a3be8c;">(</span><span style="color:#96b5b4;">echo </span><span style="color:#c0c5ce;">&#39;</span><span style="color:#a3be8c;">   foo   bar   baz   </span><span style="color:#c0c5ce;">&#39;</span><span style="color:#a3be8c;">)</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#96b5b4;">echo </span><span style="color:#c0c5ce;">$(</span><span style="color:#96b5b4;">echo </span><span style="color:#c0c5ce;">&#39;</span><span style="color:#a3be8c;">   foo   bar   baz   </span><span style="color:#c0c5ce;">&#39;)
+</span></code></pre>
+<hr />
+<h3><a href="#expressions" aria-hidden="true" class="anchor" id="expressions"></a>Expressions</h3>
+<p>All of the goodies of string expressions, plus...</p>
+<pre lang="sh" style="background-color:#2b303b;"><code><span style="color:#96b5b4;">echo
+</span><span style="color:#96b5b4;">echo </span><span style="color:#c0c5ce;">$</span><span style="color:#bf616a;">PATH
+</span><span style="color:#96b5b4;">echo</span><span style="color:#c0c5ce;"> (echo &quot;</span><span style="color:#a3be8c;">Hello, World!</span><span style="color:#c0c5ce;">&quot;)
+</span><span style="color:#c0c5ce;">{
+</span><span style="color:#c0c5ce;">    </span><span style="color:#96b5b4;">printf </span><span style="color:#c0c5ce;">&#39;</span><span style="color:#a3be8c;">Hello, </span><span style="color:#c0c5ce;">&#39;
+</span><span style="color:#c0c5ce;">    </span><span style="color:#96b5b4;">echo </span><span style="color:#c0c5ce;">&#39;</span><span style="color:#a3be8c;">World!</span><span style="color:#c0c5ce;">&#39;
+</span><span style="color:#c0c5ce;">} &gt; greeting.txt
+</span><span style="color:#bf616a;">cmd_curl</span><span style="color:#c0c5ce;">=&quot;$</span><span style="color:#a3be8c;">(</span><span style="color:#96b5b4;">echo </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">curl -fsSL</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">)</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#c0c5ce;">$</span><span style="color:#bf616a;">cmd_curl </span><span style="color:#c0c5ce;">&#39;</span><span style="color:#a3be8c;">https://example.com</span><span style="color:#c0c5ce;">&#39;
+</span><span style="color:#c0c5ce;">&quot;$</span><span style="color:#bf616a;">cmd_curl</span><span style="color:#c0c5ce;">&quot; &#39;</span><span style="color:#a3be8c;">https://example.com</span><span style="color:#c0c5ce;">&#39;
+</span></code></pre>
+<hr />
+<h3><a href="#pop-quiz" aria-hidden="true" class="anchor" id="pop-quiz"></a>Pop Quiz!</h3>
+<pre lang="text" style="background-color:#2b303b;"><code><span style="color:#c0c5ce;">echo string&#39; # not a comment
+</span><span style="color:#c0c5ce;">       string literal # also not a comment
+</span><span style="color:#c0c5ce;">                     \&#39;\&#39;&quot;string expression
+</span><span style="color:#c0c5ce;">                                        \&quot;&quot;\\# word # comment
+</span></code></pre>
+<hr />
+<h3><a href="#-answer" aria-hidden="true" class="anchor" id="-answer"></a>🫣 Answer</h3>
+<pre lang="text" style="background-color:#2b303b;"><code><span style="color:#c0c5ce;">string # not a comment
+</span><span style="color:#c0c5ce;">       string literal # also not a comment
+</span><span style="color:#c0c5ce;">                     \&#39;string expression
+</span><span style="color:#c0c5ce;">                                        &quot;\# word
+</span></code></pre>
+<hr />
+<h2><a href="#bonus-args-all-the-way-down" aria-hidden="true" class="anchor" id="bonus-args-all-the-way-down"></a>Bonus: Args All the Way Down</h2>
+<pre lang="sh" style="background-color:#2b303b;"><code><span style="color:#c0c5ce;">&#39;</span><span style="color:#a3be8c;">echo</span><span style="color:#c0c5ce;">&#39; &#39;</span><span style="color:#a3be8c;">foo</span><span style="color:#c0c5ce;">&#39; &#39;</span><span style="color:#a3be8c;">bar</span><span style="color:#c0c5ce;">&#39; &#39;</span><span style="color:#a3be8c;">baz</span><span style="color:#c0c5ce;">&#39;
+</span></code></pre>
+<p>Note: this is a property of the shell</p>
+<hr />
+<h2><a href="#2-posix-flags" aria-hidden="true" class="anchor" id="2-posix-flags"></a>2. POSIX Flags</h2>
+<p>Flags are all arguments that:</p>
+<ul>
+<li>begin with '-'</li>
+<li>until the first argument that <em>doesn't</em> begin with '-'</li>
+<li>or '--'</li>
+</ul>
+<hr />
+<pre lang="sh" style="background-color:#2b303b;"><code><span style="color:#8fa1b3;">-flag1
+</span><span style="color:#8fa1b3;">-flag1</span><span style="color:#bf616a;"> --flag2
+</span><span style="color:#8fa1b3;">-flag1</span><span style="color:#bf616a;"> --flag2</span><span style="color:#c0c5ce;"> arg1
+</span><span style="color:#8fa1b3;">-flag1</span><span style="color:#bf616a;"> --flag2</span><span style="color:#c0c5ce;"> arg1</span><span style="color:#bf616a;"> -arg2
+</span><span style="color:#8fa1b3;">-flag1</span><span style="color:#bf616a;"> --flag2</span><span style="color:#c0c5ce;"> -- -arg1
+</span></code></pre>
+<hr />
+<h3><a href="#escaping-flags" aria-hidden="true" class="anchor" id="escaping-flags"></a>Escaping Flags</h3>
+<pre lang="sh" style="background-color:#2b303b;"><code><span style="color:#8fa1b3;">touch </span><span style="color:#c0c5ce;">&#39;</span><span style="color:#a3be8c;">foo</span><span style="color:#c0c5ce;">&#39;</span><span style="color:#bf616a;"> -rf
+</span><span style="color:#8fa1b3;">rm</span><span style="color:#c0c5ce;"> -- -rf
+</span></code></pre>
+<hr />
+<h2><a href="#2-gnu-opts" aria-hidden="true" class="anchor" id="2-gnu-opts"></a>2. GNU Opts</h2>
+<p>Options are arguments to a flag</p>
+<pre lang="sh" style="background-color:#2b303b;"><code><span style="color:#8fa1b3;">foo</span><span style="color:#bf616a;"> --bar</span><span style="color:#c0c5ce;"> ./baz
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#8fa1b3;">foo</span><span style="color:#bf616a;"> --bar</span><span style="color:#c0c5ce;">=./baz
+</span></code></pre>
+<hr />
+<p>Be wary...</p>
+<pre lang="sh" style="background-color:#2b303b;"><code><span style="color:#8fa1b3;">foo</span><span style="color:#bf616a;"> --bar ~</span><span style="color:#c0c5ce;">/baz
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#8fa1b3;">foo</span><span style="color:#bf616a;"> --bar</span><span style="color:#c0c5ce;">=</span><span style="color:#bf616a;">~</span><span style="color:#c0c5ce;">/baz
+</span></code></pre>
+<hr />
+<h2><a href="#3-arguments-again" aria-hidden="true" class="anchor" id="3-arguments-again"></a>3. Arguments, again</h2>
+<p>The first argument after <code>--</code>, or not preceded by an option flag.</p>
+<pre lang="sh" style="background-color:#2b303b;"><code><span style="color:#8fa1b3;">tar</span><span style="color:#bf616a;"> -cf</span><span style="color:#c0c5ce;"> ./etc.tar /etc
+</span></code></pre>
+<hr />
+<h2><a href="#go-flag" aria-hidden="true" class="anchor" id="go-flag"></a>Go Flag</h2>
+<pre lang="go" style="background-color:#2b303b;"><code><span style="color:#b48ead;">import </span><span style="color:#c0c5ce;">(
+</span><span style="color:#c0c5ce;">    &quot;</span><span style="color:#a3be8c;">flag</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#c0c5ce;">)
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">func </span><span style="color:#8fa1b3;">main</span><span style="color:#c0c5ce;">() {
+</span><span style="color:#c0c5ce;">    </span><span style="color:#bf616a;">name </span><span style="color:#c0c5ce;">:= flag.</span><span style="color:#8fa1b3;">String</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">name</span><span style="color:#c0c5ce;">&quot;, &quot;&quot;, &quot;</span><span style="color:#a3be8c;">the user&#39;s real name</span><span style="color:#c0c5ce;">&quot;)
+</span><span style="color:#c0c5ce;">    flag.</span><span style="color:#8fa1b3;">Parse</span><span style="color:#c0c5ce;">()
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#65737e;">// ...
+</span><span style="color:#c0c5ce;">}
+</span></code></pre>
+<hr />
+<h3><a href="#rule-1-there-are-no-rules" aria-hidden="true" class="anchor" id="rule-1-there-are-no-rules"></a>Rule #1: There are no Rules</h3>
+<pre lang="go" style="background-color:#2b303b;"><code><span style="color:#b48ead;">import </span><span style="color:#c0c5ce;">(
+</span><span style="color:#c0c5ce;">    &quot;</span><span style="color:#a3be8c;">os</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#c0c5ce;">)
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">func </span><span style="color:#8fa1b3;">main</span><span style="color:#c0c5ce;">() {
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">if </span><span style="color:#96b5b4;">len</span><span style="color:#c0c5ce;">(os.</span><span style="color:#bf616a;">Args</span><span style="color:#c0c5ce;">) &gt; </span><span style="color:#d08770;">1 </span><span style="color:#c0c5ce;">{
+</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">switch</span><span style="color:#c0c5ce;"> os.</span><span style="color:#bf616a;">Args</span><span style="color:#c0c5ce;">[</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">] {
+</span><span style="color:#c0c5ce;">            </span><span style="color:#b48ead;">case </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">-V</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">--version</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">version</span><span style="color:#c0c5ce;">&quot;:
+</span><span style="color:#c0c5ce;">                </span><span style="color:#8fa1b3;">printVersion</span><span style="color:#c0c5ce;">()
+</span><span style="color:#c0c5ce;">                </span><span style="color:#b48ead;">return
+</span><span style="color:#c0c5ce;">        }
+</span><span style="color:#c0c5ce;">    }
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#65737e;">// ...
+</span><span style="color:#c0c5ce;">}
+</span></code></pre>
+<hr />
+<ul>
+<li><a href="https://yourbasic.org/golang/command-line-arguments/">https://yourbasic.org/golang/command-line-arguments/</a></li>
+<li><a href="https://gobyexample.com/command-line-flags">https://gobyexample.com/command-line-flags</a></li>
+<li><a href="https://pkg.go.dev/flag">https://pkg.go.dev/flag</a></li>
+</ul>
+<hr />
+<h3><a href="#rule-2-avoid-pointers" aria-hidden="true" class="anchor" id="rule-2-avoid-pointers"></a>Rule #2: Avoid pointers</h3>
+<pre lang="go" style="background-color:#2b303b;"><code><span style="color:#b48ead;">func </span><span style="color:#8fa1b3;">main</span><span style="color:#c0c5ce;">() {
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">verbose </span><span style="color:#b48ead;">bool
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">email </span><span style="color:#b48ead;">string
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    flag.</span><span style="color:#8fa1b3;">BoolVar</span><span style="color:#c0c5ce;">(&amp;verbose, &quot;</span><span style="color:#a3be8c;">verbose</span><span style="color:#c0c5ce;">&quot;, </span><span style="color:#d08770;">false</span><span style="color:#c0c5ce;">, &quot;</span><span style="color:#a3be8c;">show lots of detail</span><span style="color:#c0c5ce;">&quot;)
+</span><span style="color:#c0c5ce;">    flag.</span><span style="color:#8fa1b3;">StringVar</span><span style="color:#c0c5ce;">(&amp;email, &quot;</span><span style="color:#a3be8c;">email</span><span style="color:#c0c5ce;">&quot;, &quot;&quot;, &quot;</span><span style="color:#a3be8c;">show lots of detail</span><span style="color:#c0c5ce;">&quot;)
+</span><span style="color:#c0c5ce;">}
+</span></code></pre>
+<hr />
+<h3><a href="#rule-3-create-an-instance" aria-hidden="true" class="anchor" id="rule-3-create-an-instance"></a>Rule #3: Create an instance</h3>
+<pre lang="go" style="background-color:#2b303b;"><code><span style="color:#b48ead;">func </span><span style="color:#8fa1b3;">main</span><span style="color:#c0c5ce;">() {
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">verbose </span><span style="color:#b48ead;">bool
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">	</span><span style="color:#bf616a;">mainFlags </span><span style="color:#c0c5ce;">:= flag.</span><span style="color:#8fa1b3;">NewFlagSet</span><span style="color:#c0c5ce;">(&quot;&quot;, flag.</span><span style="color:#bf616a;">ContinueOnError</span><span style="color:#c0c5ce;">)
+</span><span style="color:#c0c5ce;">    mainFlags.</span><span style="color:#8fa1b3;">BoolVar</span><span style="color:#c0c5ce;">(&amp;verbose, &quot;</span><span style="color:#a3be8c;">verbose</span><span style="color:#c0c5ce;">&quot;, </span><span style="color:#d08770;">false</span><span style="color:#c0c5ce;">, &quot;</span><span style="color:#a3be8c;">show lots of detail</span><span style="color:#c0c5ce;">&quot;)
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">if </span><span style="color:#bf616a;">err </span><span style="color:#c0c5ce;">:= mainFlags.</span><span style="color:#8fa1b3;">Parse</span><span style="color:#c0c5ce;">(); err != </span><span style="color:#d08770;">nil </span><span style="color:#c0c5ce;">{
+</span><span style="color:#c0c5ce;">        fmt.</span><span style="color:#8fa1b3;">Println</span><span style="color:#c0c5ce;">(err)
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        mainFlags.</span><span style="color:#8fa1b3;">Usage</span><span style="color:#c0c5ce;">()
+</span><span style="color:#c0c5ce;">        os.</span><span style="color:#8fa1b3;">Exit</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">)
+</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">return
+</span><span style="color:#c0c5ce;">    }
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#65737e;">// ...
+</span><span style="color:#c0c5ce;">}
+</span></code></pre>
+<hr />
+<ul>
+<li><a href="https://gobyexample.com/command-line-subcommands">https://gobyexample.com/command-line-subcommands</a></li>
+</ul>
+<hr />
+<h3><a href="#how-to-know-a-flag-was-set" aria-hidden="true" class="anchor" id="how-to-know-a-flag-was-set"></a>How to know a flag was set</h3>
+<pre lang="go" style="background-color:#2b303b;"><code><span style="color:#b48ead;">func </span><span style="color:#8fa1b3;">isFlagSet</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">name </span><span style="color:#b48ead;">string</span><span style="color:#c0c5ce;">) </span><span style="color:#b48ead;">bool </span><span style="color:#c0c5ce;">{
+</span><span style="color:#c0c5ce;">    </span><span style="color:#bf616a;">found </span><span style="color:#c0c5ce;">:= </span><span style="color:#d08770;">false
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    flag.</span><span style="color:#8fa1b3;">Visit</span><span style="color:#c0c5ce;">(</span><span style="color:#b48ead;">func</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">f </span><span style="color:#c0c5ce;">*flag.Flag) {
+</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">if</span><span style="color:#c0c5ce;"> f.</span><span style="color:#bf616a;">Name </span><span style="color:#c0c5ce;">== name {
+</span><span style="color:#c0c5ce;">            found = </span><span style="color:#d08770;">true
+</span><span style="color:#c0c5ce;">        }
+</span><span style="color:#c0c5ce;">    })
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">return</span><span style="color:#c0c5ce;"> found
+</span><span style="color:#c0c5ce;">}
+</span></code></pre>
+<hr />
+<p>END</p>
+<hr />
+<p>Q&amp;A</p>
+            </article>
+        </main>
+
+        <script src='./slides.js'></script>
+    </body>
+</html>

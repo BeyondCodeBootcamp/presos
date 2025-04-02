@@ -7,6 +7,7 @@
 
 Presentation Slides + Videos:
 
+- ⛳️ [Go Flag, and Flags](./go-flag/)
 - 📦 [You don't know ESM](./javascript-modules/)
 - 🤮 [JS for Go Devs](./js-for-go-devs/)
 - 🔑 [Passkeys](./passkeys/)
