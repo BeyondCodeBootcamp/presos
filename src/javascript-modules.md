@@ -10,15 +10,9 @@
 
 ## AJ ONeal
 
-[@\_beyondcode](https://twitter.com/@_beyondcode) <br>
-[twitch.tv/coolaj86](https://twitch.tv/coolaj86) <br>
-[github.com/therootcompany](https://github.com/therootcompany/)
+<aj@therootcompany.com> <br>
 
-<br>
-
-Deep-Learner
-
-Dangerous Wrong Thinker
+Deep-Learner <br> Dangerous Wrong Thinker
 
 ---
 
@@ -26,20 +20,92 @@ Dangerous Wrong Thinker
 
 <br>
 
-🐹 Go 📦 Node 🦎 Zig
+🐹 Go 📦 Proxmox 💽 TrueNAS
 
 🛜 Net 🔐 Sec 🐧 POSIX
 
-<br>
+(and Node.js)
 
-<aj@therootcompany.com>
+---
+
+## Like, Sub, Follow, & Share
+
+[@\_beyondcode](https://x.com/@_beyondcode) <br>
+[twitch.tv/coolaj86](https://twitch.tv/coolaj86) <br>
+[github.com/therootcompany](https://github.com/therootcompany/)
+
+---
+
+## "JavaScript" Modules
+
+https://www.youtube.com/watch?v=Wt46wuoVZT8
+
+---
+
+# "JavaScript"
+
+ESM, WHATWG, JS Foundation
+
+---
+
+Syntax v. Implementation
+
+```js
+import "...";
+```
+
+---
+
+TC39 ECMAScript Modules
+
+<https://tc39.es/ecma262/#sec-modules>
+
+<https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import>
+
+<https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export>
+
+---
+
+WHATWG (import map)
+
+<https://html.spec.whatwg.org/multipage/webappapis.html#import-map>
+
+---
+
+package.json (server entry points)
+
+<https://nodejs.org/api/packages.html#package-entry-points>
+
+---
+
+jsconfig.json (linting paths)
+
+<https://www.typescriptlang.org/tsconfig/#paths> <br>
+<https://www.typescriptlang.org/docs/handbook/modules/reference.html#paths>
+
+---
+
+# Module
+
+1. use code from another file
+2. use code from another package
+
+---
+
+2025: The year of ESM
+
+> You can publish a package as a module without breaking downstream
+> dependencies.
+
+<https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/script/type/importmap>
+<br> <https://nodejs.org/en/blog/release/v22.12.0>
 
 ---
 
 ## TL;DR
 
 - 3 syntaxes (that work)
-- 3 import configs
+- 3 import path configs
 
 Should you use it? 💯%
 
@@ -75,9 +141,10 @@ let Foo = FooMeta.default;
 
 void Foo.noop();
 ```
+
 ---
 
-##### Default Export
+##### Full Export
 
 ```js
 let Foo = {};
@@ -105,6 +172,34 @@ void Foo.noop();
 
 ---
 
+##### Not ESM
+
+```js
+import "./foo";
+import "./style.css";
+import "./data.json";
+```
+
+ESM is for _JavaScript_
+
+---
+
+##### Cautiously ESM
+
+```js
+# ⚠️ requires importmap, etc
+import "foobar";
+```
+
+```js
+# ⚠️ not for packages
+await Foo.bar();
+```
+
+---
+
+##### ESM FUD
+
 The rumors are NOT true...
 
 - async module loading
@@ -113,14 +208,18 @@ The rumors are NOT true...
 
 ---
 
+LIES!!
+
+```js
+// ❌ stuttering
+import { createFoo, getFoo } from "./stuttering-foo.js";
+```
+
+Truths!
+
 ```sh
 # ✅
 grep -r -F 'Foo.'
-```
-
-```js
-// ❌
-import { createStutter, getStutter } from "./stuttering.js";
 ```
 
 ---
@@ -130,15 +229,17 @@ import { createStutter, getStutter } from "./stuttering.js";
 ```js
 let Foo = {};
 
-Foo.noop = function () {};
+Foo.create = function () {
+  /* ... */
+};
 
-export let noop = Foo.noop; // for require()
 export default Foo; // for import
+export let create = Foo.create; // for require()
 ```
 
 ---
 
-# What about Module _Packages_?
+# Module _Packages_?
 
 - index.html
 - package.json
@@ -149,21 +250,20 @@ export default Foo; // for import
 ##### index.html
 
 ```html
-  <form method="dialog"
-    onsubmit="FooUI.submit(window.event);"> ... </form>
-  <script type="importmap">
-    {
-      "imports": {
-        "foo": "./foo.js",
-        "foo/": "./lib/",
-        "bar": "./node_modules/bar/index.js"
-      }
+<form method="dialog" onsubmit="FooUI.submit(window.event);">...</form>
+<script type="importmap">
+  {
+    "imports": {
+      "foo": "./foo.js",
+      "foo/": "./lib/",
+      "bar": "./node_modules/bar/index.js"
     }
-  </script>
-  <script type="module">
-    import FooUI from "foo/ui.js";
-    window.FooUI = FooUI;
-  </script>
+  }
+</script>
+<script type="module">
+  import FooUI from "foo/ui.js";
+  window.FooUI = FooUI;
+</script>
 ```
 
 ---
@@ -172,6 +272,7 @@ export default Foo; // for import
 
 ```json
 {
+  "name": "foo",
   "type": "module",
   "imports": {
     "foo": "./foo.js",
@@ -180,7 +281,7 @@ export default Foo; // for import
   },
   "exports": {
     ".": "foo.js",
-    "./*": "./foo/*"
+    "./*": "./lib/*"
   }
 }
 ```
@@ -212,12 +313,12 @@ export default Foo; // for import
 ### Ubër Async
 
 ```js
-let Foo = await import('./foo.js')
+let Foo = await import("./foo.js");
 ```
 
 ---
 
-### __dirname
+### \_\_dirname
 
 ```js
 import Path from "node:path";
@@ -232,4 +333,16 @@ END
 
 ---
 
-Q&A
+## Q&A
+
+AJ ONeal
+
+<aj@therootcompany.com>
+
+🐹 Go 📦 Proxmox 💽 TrueNAS
+
+🛜 Net 🔐 Sec 🐧 POSIX
+
+(and Node.js)
+
+<small><a href="https://beyondcodebootcamp.github.io/presos/javascript-modules/">beyondcodebootcamp.github.io/presos/javascript-modules/</a></small>
